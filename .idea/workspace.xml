@@ -2,318 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/ui-grid.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/ui-grid.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/ui-grid.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/assets/images/backgrounds/material-backgrounds/mb-bg-02.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/assets/images/font/material-font-0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/assets/images/font/material-font-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/assets/images/font/material-font-4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/assets/images/font/material-font-5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/assets/images/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/favicon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.eslintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/dictionaries/aleksandarvolos.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/kaiam2.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/libraries/dassfab_node_modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/libraries/meteor_packages_auto_import_browser.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/libraries/meteor_packages_auto_import_npm.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.meteor/.finished-upgraders" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.meteor/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.meteor/.id" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.meteor/packages" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.meteor/platforms" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.meteor/release" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/.meteor/versions" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/client/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/client/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/client/main.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/_authentication.module.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/authentication.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/authentication.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/authentication.run.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/forgot/forgot.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/forgot/forgot.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/layouts/authentication.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/lock/lock.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/lock/lock.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/login/_login.tmpl.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/login/login.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/login/login.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/profile/_profile.tmpl.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/profile/profile.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/profile/profile.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/reset-password/reset-password.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/reset-password/reset-password.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/signup/password.messages.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/signup/same-password.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/signup/signup.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/authentication/signup/signup.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/dashboard/dashboard.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/dashboard/dashboard.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/dashboard/dashboard.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/dashboard/dashboard.run.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/dashboard/dashboard.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/components/dashboard/dashboard.tmpl.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/401.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/404.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/500.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/config.triangular.layout.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/config.triangular.settings.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/config.triangular.themes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/daasfab.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/daasfab.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/daasfab.run.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/error-page.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/_triangular.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/footer/footer.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/footer/footer.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/leftsidenav/leftsidenav.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/leftsidenav/leftsidenav.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/loader/_loader.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/loader/loader.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/loader/loader.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/rightsidenav/rightsidenav.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/rightsidenav/rightsidenav.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/toolbar/_toolbar.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/toolbar/toolbar.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/layouts/toolbar/toolbar.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/data/users.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/pages/permission-define.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/pages/permission-routes.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/pages/permission-views.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/pages/permission.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/pages/permission.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/permission.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/permission.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/permission.run.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/role.factory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/permission/user.factory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/_material-backgrounds.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_attention-seekers.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_bounce.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_flash.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_pulse.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_rubberBand.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_shake.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_swing.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_tada.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_wobble.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-entrances/_bounceIn.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-entrances/_bounceInDown.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-entrances/_bounceInLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-entrances/_bounceInRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-entrances/_bounceInUp.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-entrances/_bouncing-entrances.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-exits/_bounceOut.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-exits/_bounceOutDown.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-exits/_bounceOutLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-exits/_bounceOutRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-exits/_bounceOutUp.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_bouncing-exits/_bouncing-exits.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeIn.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeInDown.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeInDownBig.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeInLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeInLeftBig.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeInRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeInRightBig.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeInUp.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fadeInUpBig.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fading-entrances.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOut.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOutDown.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOutDownBig.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOutLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOutLeftBig.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOutRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOutRightBig.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOutUp.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fadeOutUpBig.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fading-exits.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_flippers/_flip.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_flippers/_flipInX.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_flippers/_flipInY.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_flippers/_flipOutX.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_flippers/_flipOutY.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_flippers/_flippers.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_lightspeed/_lightSpeedIn.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_lightspeed/_lightSpeedOut.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_lightspeed/_lightspeed.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_properties.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-entrances/_rotateIn.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-entrances/_rotateInDownLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-entrances/_rotateInDownRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-entrances/_rotateInUpLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-entrances/_rotateInUpRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-entrances/_rotating-entrances.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-exits/_rotateOut.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-exits/_rotateOutDownLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-exits/_rotateOutDownRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-exits/_rotateOutUpLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-exits/_rotateOutUpRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_rotating-exits/_rotating-exits.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-entrances/_slideInDown.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-entrances/_slideInLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-entrances/_slideInRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-entrances/_slideInUp.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-entrances/_sliding-entrances.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-exits/_slideOutDown.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-exits/_slideOutLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-exits/_slideOutRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-exits/_slideOutUp.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_sliding-exits/_sliding-exits.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_specials/_hinge.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_specials/_rollIn.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_specials/_rollOut.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_specials/_specials.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-entrances/_zoomIn.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-entrances/_zoomInDown.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-entrances/_zoomInLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-entrances/_zoomInRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-entrances/_zoomInUp.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-entrances/_zooming-entrances.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-exits/_zoomOut.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-exits/_zoomOutDown.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-exits/_zoomOutLeft.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-exits/_zoomOutRight.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-exits/_zoomOutUp.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/scss/animate.css-scss/_zooming-exits/_zooming-exits.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/translate.filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/_triangular.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/_variables.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/breadcrumbs/breadcrumbs.service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/components.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/footer/footer.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/footer/footer.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/loader/loader-service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/loader/loader.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/menu/menu-item-divider.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/menu/menu-item-dropdown.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/menu/menu-item-link.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/menu/menu-item.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/menu/menu.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/menu/menu.provider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/notifications-panel/notifications-panel.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/notifications-panel/notifications-panel.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/table/table-cell-image.filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/table/table-directive.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/table/table-start-from.filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/table/table.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/toolbars/toolbar.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/toolbars/toolbar.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/widget/widget.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/widget/widget.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/wizard/wizard-form.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/components/wizard/wizard.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/directives/countupto.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/directives/directives.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/directives/palette-background.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/directives/same-password.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/directives/theme-background.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/default/default-content.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/default/default-content.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/default/default-layout.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/default/default-no-scroll.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/default/default.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/layouts.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/layouts.provider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/states/triangular/triangular.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/layouts/states/triangular/triangular.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/router/router.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/router/router.provider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/router/router.run.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_contextual.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_dialogs.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_material-overrides.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_print.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_reset.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_social.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_tables.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_typography.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/_utilities.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/components/_footer.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/components/_loader.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/components/_menu.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/components/_notifications-panel.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/components/_table.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/components/_toolbar.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/components/_widget.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/components/_wizard.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/layouts/_default.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/scss/layouts/states/_triangular.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/settings.provider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/themes/skins.provider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/themes/themes.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/themes/theming.provider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/translate/translate.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/translate/translate.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/triangular.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/triangular.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/imports/ui/daasfab/triangular/triangular.run.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-infinite-scroll/angular-infinite-scroll.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-infinite-scroll/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-print/angular-print.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-print/angular-print.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-print/json-formatter.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-print/json-formatter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-print/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-tree/angular-tree.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-tree/angular-tree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/angular-tree/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/barcode/CODE128.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/barcode/jsbarcode.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/barcode/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/canvasjs/canvasjs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/canvasjs/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/count-up/count-up.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/count-up/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/data-table/data-table.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/data-table/data-table.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/data-table/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/hashids/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/hashids/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/hashids/common.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/hashids/hashids.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/hashids/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/hashids/smart.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/csv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/ui-grid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/ui-grid.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/packages/ui-grid/ui-grid.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/authentication/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/authentication/fr.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/bpmn-design/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/charts/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/custtrans/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/custtrans/fr.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/dashboard/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/dashboard/fr.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/exportdata/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/exportdata/fr.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/home/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/home/fr.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/rma/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/rma/fr.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/sces/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/settings/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/spec-actions/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/transceiver/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/public/i18n/transceiver/fr.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kaiam2/server/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kaiam2/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kaiam2/.idea/workspace.xml" />
     </list>
     <ignored path="dassfab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -671,12 +360,20 @@
       <workItem from="1464537835889" duration="598000" />
       <workItem from="1465317414813" duration="810000" />
       <workItem from="1465343276674" duration="6900000" />
-      <workItem from="1465416276631" duration="2344000" />
+      <workItem from="1465416276631" duration="2543000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1465419582807</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1465419582807</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90786000" />
+    <option name="totallyTimeSpent" value="90985000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="138" y="-1417" width="1237" height="1397" extended-state="0" />
@@ -712,6 +409,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
@@ -726,6 +427,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -738,6 +440,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -745,6 +448,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -752,6 +456,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -759,6 +464,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#30#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -766,6 +474,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -773,6 +482,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -780,6 +490,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -787,6 +498,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -794,6 +506,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -801,6 +514,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -808,6 +522,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3272">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -815,6 +530,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -822,6 +538,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -829,6 +546,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -836,6 +554,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -843,6 +562,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -850,6 +570,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -857,6 +578,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -864,6 +586,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="330" selection-start-line="1" selection-start-column="329" selection-end-line="1" selection-end-column="330" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -876,6 +599,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -883,6 +607,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#30#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -890,6 +617,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
           <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -897,6 +627,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -904,6 +635,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -911,6 +643,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -918,6 +651,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -930,6 +664,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -937,6 +672,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -944,6 +680,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -951,6 +688,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
