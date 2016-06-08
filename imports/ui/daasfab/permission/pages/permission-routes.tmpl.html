@@ -1,0 +1,50 @@
+<div class="md-padding">
+    <h2 class="md-display-1">Route Permissions</h2>
+
+    <h3 class="md-subheading">Blocking Routes</h3>
+    <p>In order to block routes from being accessed when a usre doesn't have permission just add the following code to your <code>$stateProvider</code> declaration inside your config file.</p>
+
+    <p>For example</p>
+
+    <div class="md-whiteframe-1dp" layout="column">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>my-module.config.js</h2>
+            </div>
+        </md-toolbar>
+        <div flex hljs language="js">
+    $stateProvider
+    .state('triangular.my-page', {
+        url: '/mypage',
+        templateUrl: 'app/my-module/my-page.tmpl.html',
+        data: {
+            permissions: {
+                only: ['viewMyPage']
+            }
+        }
+    });
+        </div>
+    </div>
+
+    <p>So now if any user that doesn't have the permission <code>viewMyPage</code> tries to access <code>/mypage</code> in the browser they will be redirected to the <a href="#/401">401 Page</a></p>
+
+    <h3 class="md-subheading">Hiding menus</h3>
+    <p>As well as blocking the route you will also want to hide the menu item.  This is also easy, just add a permission to the menu item when you add it in your config file.</p>
+
+    <div class="md-whiteframe-1dp" layout="column">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>my-module.config.js</h2>
+            </div>
+        </md-toolbar>
+        <div flex hljs language="js">
+    triMenuProvider.addMenu({
+        name: 'My Page',
+        type: 'link',
+        permission: 'viewMyPage',
+    });
+        </div>
+    </div>
+
+    <p>Now unless the user has the <code>viewMyPage</code> permission they will not see the menu item in the left sidebar.</p>
+</div>

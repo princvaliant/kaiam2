@@ -1,0 +1,21 @@
+<!-- left sidebar -->
+<md-sidenav class="triangular-sidenav-left md-sidenav-left md-whiteframe-z2" ng-if="layout.sideMenuSize !== 'off'" md-component-id="left" md-is-locked-open="layout.sideMenuSize !== 'hidden' && $mdMedia('gt-sm')" ui-view="sidebarLeft" ng-class="{ 'admin-sidebar-collapsed': layout.sideMenuSize == 'icon' }" ng-mouseover="stateController.activateHover()" ng-mouseleave="stateController.removeHover()"></md-sidenav>
+
+<!-- main content -->
+<div class="triangular-toolbar-and-content" layout="column" flex>
+    <!-- loading animation -->
+    <!-- <tri-loader></tri-loader> -->
+
+    <!-- top toolbar -->
+    <md-toolbar class="triangular-toolbar md-whiteframe-z1" ng-if="layout.showToolbar" ng-class="[layout.toolbarSize,layout.toolbarClass]" md-theme="{{triSkin.elements.toolbar}}" ui-view="toolbar"></md-toolbar>
+
+    <!-- scrollable content -->
+    <md-content class="triangular-content" ng-class="layout.contentClass" flex ui-view></md-content>
+
+    <div ui-view="belowContent"></div>
+
+    <div class="triangular-loader" ng-show="stateController.showLoader" layout="column" ui-view="loader"></div>
+</div>
+
+<!-- right sidebar -->
+<md-sidenav layout layout-fill class="triangular-sidenav-right md-sidenav-right md-whiteframe-z2" md-component-id="notifications" ui-view="sidebarRight"></md-sidenav>

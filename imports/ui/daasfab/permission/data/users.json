@@ -1,0 +1,29 @@
+[{
+    "username": "christos",
+    "displayName": "Christos",
+    "avatar": "assets/images/avatars/avatar-5.png",
+    "roles": [
+        "SUPERADMIN"
+    ]
+},{
+    "username": "jennifer",
+    "displayName": "Jennifer",
+    "avatar": "assets/images/avatars/avatar-2.png",
+    "roles": [
+        "ADMIN"
+    ]
+},{
+    "username": "morris",
+    "displayName": "Morris",
+    "avatar": "assets/images/avatars/avatar-3.png",
+    "roles": [
+        "USER"
+    ]
+},{
+    "username": "alice",
+    "displayName": "Alice",
+    "avatar": "assets/images/avatars/avatar-6.png",
+    "roles": [
+        "ANONYMOUS"
+    ]
+}]

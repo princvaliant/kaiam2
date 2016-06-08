@@ -1,0 +1,59 @@
+{
+    "MENU": {
+        "DASHBOARDS": {
+            "DASHBOARDS": "Des tableaux de bord",
+            "GENERAL": "Général",
+            "ANALYTICS": "Analytics",
+            "SERVER": "Serveur",
+            "WIDGETS": "Les Widgets",
+            "SOCIAL": "Social"
+        }
+    },
+    "DASHBOARDS": {
+        "GENERAL": {
+            "CONTACTS": "Contacts",
+            "CHAT": "Chat"
+        },
+        "ANALYTICS": {
+            "COMMENTS": "Commentaires",
+            "TWEETS": "Tweets",
+            "LIKES": "Aime",
+            "REACH": "Atteindre",
+            "PAGEVIEWS": "Le Nombre De Pages Vues Et De Visites",
+            "REFERRALS": "L'Aiguillage De Trafic",
+            "SOCIAL": "Réseau De Références",
+            "LOCATION": "Emplacement",
+            "DATE": "11/03/15 - 11/4/15"
+        },
+        "SERVER": {
+            "IP": "Adresse IP",
+            "MEMORY": "De mémoire",
+            "DISK": "Disque",
+            "LOCATION": "Emplacement",
+            "REAL_TIME": "Temps Réel",
+            "24HRS": "24 Heures",
+            "7DAYS": "7 Jours",
+            "365DAYS": "365 Jours",
+            "CPU": "CPU",
+            "BANDWIDTH": "La bande passante",
+            "DISKS": "Disques",
+            "JOB": "De Travail Hôte De La File D'Attente",
+            "STATUS": "L'État Du Serveur",
+            "CURRENTLY": "Votre serveur est actuellement",
+            "RUNNING": "L'exécution de",
+            "RESTART": "Redémarrer",
+            "SHUTDOWN": "Arrêtez",
+            "USAGE": "Utilisation Mensuelle",
+            "LIMIT": "de la limite mensuelle",
+            "TASKS": "Tâches actuelles",
+            "DATE": "11/03/15 - 11/4/15",
+            "DISKUSAGE": "L'Utilisation Du Disque"
+        },
+        "WIDGETS": {
+            "SALES": "Vente",
+            "COMMENTS": "Commentaires",
+            "SERVER_UPTIME": "La Disponibilité Des Serveurs",
+            "FULLDATA": "Les Données Complètes"
+        }
+    }
+}

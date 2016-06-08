@@ -1,0 +1,38 @@
+<div class="md-padding">
+    <h2 class="md-display-1">Defining Roles & Permissions</h2>
+
+    <p>To get started we recommend looking at the example app and how the roles and permissions are defined there.</p>
+
+    <p>Take a look at the file <code>permission/permission.run.js</code> to see how the apps roles & permissions.</p>
+    <p>For example</p>
+
+    <div class="md-whiteframe-1dp" layout="column">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>permission/permission.run.js</h2>
+            </div>
+        </md-toolbar>
+        <div flex hljs language="js">
+    // create roles for app
+    RoleStore
+    .defineRole('SUPERADMIN', ['viewEmail', 'viewGitHub', 'viewCalendar', 'viewLayouts', 'viewTodo', 'viewElements', 'viewAuthentication', 'viewCharts', 'viewMaps'], checkRole);
+    RoleStore
+    .defineRole('ADMIN', ['viewLayouts', 'viewTodo', 'viewElements', 'viewAuthentication', 'viewCharts', 'viewMaps'], checkRole);
+    RoleStore
+    .defineRole('USER', ['viewAuthentication', 'viewCharts', 'viewMaps'], checkRole);
+    RoleStore
+    .defineRole('ANONYMOUS', [], checkRole);
+
+    // function that calls user service to check if permission is allowed
+    function checkRole(permission, transitionProperties) {
+        return UserService.hasPermission(permission, transitionProperties);
+    }
+        </div>
+    </div>
+
+    <p>In the first lines we define the roles SUPERADMIN, ADMIN, USER, and ANONYMOUS.  These roles each have their own permissions except for ANONYMOUS which doesn't have any permissions set.</p>
+
+    <p>We also tell angular permission to use a function called checkRole to verify that the current user has a permission.</p>
+
+    <p>This function calls the main UserService to check the users permissions.</p>
+</div>

@@ -1,0 +1,75 @@
+{
+    "MENU": {
+        "DASHBOARDS": {
+            "DASHBOARDS": "Dashboard",
+            "GENERAL": "General",
+            "ANALYTICS": "Analytics",
+            "SERVER": "Server",
+            "WIDGETS": "Widgets",
+            "SOCIAL": "Social"
+        }
+    },
+    "DASHBOARDS": {
+        "TESTCOUNTTODAY": "Total today",
+        "TESTCOUNTWEEK": "Total this week",
+        "YIELDTODAY": "Yield % today",
+        "YIELDWEEK": "Yield % this week",
+        "GENERAL": {
+            "CONTACTS": "Contacts",
+            "CHAT": "Chat"
+        },
+        "ANALYTICS": {
+            "COMMENTS": "Comments",
+            "TWEETS": "Tweets",
+            "LIKES": "Likes",
+            "REACH": "Reach",
+            "PAGEVIEWS": "Pageviews & Visits",
+            "REFERRALS": "Referral Traffic",
+            "SOCIAL": "Network Referrals",
+            "LOCATION": "Location",
+            "DATE": "11/03/15 - 11/4/15"
+        },
+        "SERVER": {
+            "IP": "IP Address",
+            "MEMORY": "Memory",
+            "DISK": "Disk",
+            "LOCATION": "Location",
+            "REAL_TIME": "Real Time",
+            "24HRS": "24 Hours",
+            "7DAYS": "7 Days",
+            "365DAYS": "365 Days",
+            "CPU": "CPU",
+            "BANDWIDTH": "Bandwidth",
+            "DISKS": "Disks",
+            "JOB": "Host Job Queue",
+            "STATUS": "Server Status",
+            "CURRENTLY": "Your server is currently",
+            "RUNNING": "Running",
+            "RESTART": "Restart",
+            "SHUTDOWN": "Shut Down",
+            "USAGE": "Monthly Usage",
+            "LIMIT": "of monthly limit",
+            "TASKS": "Current tasks",
+            "DATE": "11/03/15 - 11/4/15",
+            "DISKUSAGE": "Disk Usage"
+        },
+        "SOCIAL": {
+            "STATUS": {
+                "UPDATE": "Update your status",
+                "MIND": "Whats on your mind?"
+            }
+        },
+        "WIDGETS": {
+            "MENU": {
+                "REFRESH": "Refresh",
+                "DETAILS": "Details",
+                "SHARE": "Share",
+                "PRINT": "Print"
+            },
+            "SALES": "Sales",
+            "COMMENTS": "Comments",
+            "SERVER_UPTIME": "Server Uptime",
+            "FULLDATA": "Full Data"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+// Authentication Pages
+.authentication-page {
+  background: url(assets/images/backgrounds/material-backgrounds/mb-bg-02.jpg) center;
+  background-size: cover;
+}
+
+#ui-login {
+  &.ng-enter {
+    @include slideInUp($delay: 0.2s);
+  }
+  &.ng-leave {
+    @include slideOutDown($delay: 0.2s);
+  }
+}

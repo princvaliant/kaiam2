@@ -1,0 +1,21 @@
+<div class="md-padding">
+    <h2 class="md-display-1">View Permissions</h2>
+
+    <h3 class="md-subheading">Hiding view elements</h3>
+
+    <p>You can also use angular permission to hide elements on the page.</p>
+
+    <p>For example to a button on your app unless the user has a <code>canDelete</code> permission you would do the following.</p>
+
+    <div class="md-whiteframe-1dp" layout="column">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>my-page.tmpl.html</h2>
+            </div>
+        </md-toolbar>
+        <div flex hljs language="html">
+<md-button permission permission-only="'canDelete'">Delete</md-button></div>
+    </div>
+
+    <p>So now if any user that doesn't have the permission <code>canDelete</code> they wont see this button.</p>
+</div>

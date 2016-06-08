@@ -1,0 +1,42 @@
+<div layout="row" flex layout-padding layout-fill layout-align="center center">
+    <div flex="40" flex-lg="50" flex-md="70" flex-sm="100">
+        <md-card>
+            <md-toolbar>
+                <div class="padding-20 text-center">
+                    <div><img src="assets/images/logo.png" alt="{{appName}}"></div>
+                    <h1 class="md-headline">
+                        {{'LOGIN.TITLE' | translate}}
+                    </h1>
+                </div>
+            </md-toolbar>
+            <md-content class="md-padding">
+                <form name="login" layout="column">
+                    <md-input-container>
+                        <label for="email">{{'LOGIN.EMAIL.LABEL' | translate}}</label>
+                        <input id="email" label="email" name="email" type="email" ng-model="user.email" required/>
+                        <div ng-messages="login.email.$error">
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label for="password">{{'LOGIN.PASSWORD.LABEL' | translate}}</label>
+                        <input id="password" label="password" name="password" type="password" ng-model="user.password" required/>
+                        <div ng-messages for="login.password.$error">
+                        </div>
+                    </md-input-container>
+  <!--                   <div layout="row" layout-align="space-between center">
+                        <md-input-container>
+                            <md-checkbox ng-model="user.rememberMe">
+                                {{'LOGIN.REMEMBER' | translate}}
+                            </md-checkbox>
+                        </md-input-container>
+                        <md-input-container>
+                        </md-input-container>
+                    </div> -->
+                    <md-button class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10" ng-click="loginClick()" ng-disabled="login.$invalid">{{'LOGIN.BUTTON' | translate}}</md-button>
+                    <md-button class="md-primary full-width margin-left-0 margin-right-0 margin-top-10 " href="signup">{{'LOGIN.SIGNUP_LINK' | translate}}</md-button>
+                       <md-button flex class="md-primary full-width margin-left-0 margin-right-0 margin-bottom-10" href="forgot">{{'LOGIN.FORGOT' | translate}}</md-button>
+                </form>
+            </md-content>
+        </md-card>
+    </div>
+</div>

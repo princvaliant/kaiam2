@@ -1,0 +1,105 @@
+<div class="padding-20 padding-top-200 overlay-gradient-30" layout="row" layout-align="start center" style="background: url(assets/images/backgrounds/bg-2.jpg) no-repeat; background-size: cover;">
+    <div class="margin-right-20">
+        <img src="assets/images/avatars/avatar-5.png" alt="girl-avatar" class="make-round" width="100"/>
+    </div>
+    <div class="text-light">
+	    <h3 class="font-weight-600 margin-bottom-0 text-light">Christos / Profile</h3>
+	    <p class="font-weight-300 margin-top-0">Edit your name, avatar etc</p>
+	 </div>
+</div>
+
+<div layout="row" class="profile" layout-wrap>
+  	<div flex="100" flex-gt-md="100">
+	    <md-tabs md-dynamic-height md-border-bottom>
+	      	<md-tab label="Profile">
+	         	<md-content class="md-padding">
+		            <form name="profile">
+		                <md-input-container>
+		                    <label for="name">{{'PROFILE.NAME.LABEL' | translate}}</label>
+		                    <input id="name" label="name" name="name" type="text" ng-model="user.name" required/>
+		                    <div ng-messages="profile.name.$error">
+		                        <div ng-message when="required">
+		                            {{'PROFILE.NAME.PLEASE_ENTER' | translate}}
+		                        </div>
+		                    </div>
+		                </md-input-container>
+		                <md-input-container>
+		                    <label for="email">{{'PROFILE.EMAIL.LABEL' | translate}}</label>
+		                    <input id="email" label="email" name="email" type="email" ng-model="user.email" required/>
+		                    <div ng-messages="profile.email.$error">
+		                        <div ng-message when="required">
+		                            {{'PROFILE.EMAIL.PLEASE_ENTER' | translate}}
+		                        </div>
+		                        <div ng-message when="email">
+		                            {{'PROFILE.EMAIL.PLEASE_VALID' | translate}}
+		                        </div>
+		                    </div>
+		                </md-input-container>
+
+		                <md-input-container>
+		                    <label for="location">{{'PROFILE.LOCATION.LABEL' | translate}}</label>
+		                    <input id="location" label="location" name="location" type="text" ng-model="user.location"/>
+		                </md-input-container>
+
+		                <md-input-container>
+		                    <label for="website">{{'PROFILE.WEBSITE.LABEL' | translate}}</label>
+		                    <input id="website" label="website" name="website" type="text" ng-model="user.website"/>
+		                </md-input-container>
+
+		                <md-input-container>
+		                    <label for="twitter">{{'PROFILE.TWITTER.LABEL' | translate}}</label>
+		                    <input id="twitter" label="twitter" name="twitter" type="text" ng-model="user.twitter"/>
+		                </md-input-container>
+
+		                <md-input-container>
+		                    <label for="bio">{{'PROFILE.BIO.LABEL' | translate}}</label>
+		                    <textarea id="bio" label="bio" name="bio" ng-model="user.bio"></textarea>
+		                </md-input-container>
+
+		                <md-button class="md-raised md-primary margin-left-0"  ng-click="updateSettingsClick()" ng-disabled="profile.$invalid">{{'PROFILE.BUTTON' | translate}}</md-button>
+		            </form>
+	        	</md-content>
+	      	</md-tab>
+	      	<md-tab label="Password">
+	        	<md-content class="md-padding">
+		          	<form name="password">
+		                <md-input-container>
+		                    <label for="old-password">{{'PROFILE.PASSWORD.CURRENT' | translate}}</label>
+		                    <input id="old-password" label="old-password" name="old-password" type="text" ng-model="user.current"/>
+		                </md-input-container>
+
+		                <md-input-container>
+		                    <label for="password">{{'PROFILE.PASSWORD.LABEL' | translate}}</label>
+		                    <input id="password" label="password" name="password" type="password" ng-model="user.password" same-password="password.confirm" ng-minlength="8" required/>
+		                    <ng-messages for="password.password.$error" ng-include="'client/modules/authentication/signup/password.messages.ng.html'"></ng-messages>
+		                </md-input-container>
+
+		                <md-input-container>
+		                    <label for="confirm">{{'PROFILE.PASSWORD_CONFIRM.LABEL' | translate}}</label>
+		                    <input id="confirm" label="confirm" name="confirm" type="password" ng-model="user.confirm" same-password="password.password" ng-minlength="8" required/>
+		                    <ng-messages for="password.confirm.$error" ng-include="'client/modules/authentication/signup/password.messages.ng.html'"></ng-messages>
+		                </md-input-container>
+
+		                <md-button class="md-raised md-primary margin-left-0"  ng-click="updateSettingsClick()" ng-disabled="profile.$invalid">{{'PROFILE.BUTTON' | translate}}</md-button>
+
+		            </form>
+	        	</md-content>
+	      	</md-tab>
+	      	<md-tab label="Notifications">
+	        	<md-content class="md-padding">
+		         	<md-list>
+			            <div ng-repeat="group in settingsGroups">
+			                <md-subheader class="md-accent">{{group.name | translate}}</md-subheader>
+			                <md-list-item ng-repeat="setting in group.settings" layout="row" layout-align="space-around center">
+			                    <md-icon md-font-icon="{{setting.icon}}"></md-icon>
+			                    <p>{{setting.title | translate}}</p>
+			                    <md-switch class="md-secondary" ng-model="setting.enabled"></md-switch>
+			                </md-list-item>
+			            </div>
+		        	</md-list>
+	       	 	</md-content>
+	      	</md-tab>
+	    </md-tabs>
+  	</div>
+
+</div>

@@ -1,0 +1,20 @@
+{
+    "MENU": {
+        "CUSTTRANS": {
+            "CUSTTRANS": "Transceivers"
+        }
+    },
+    "CUSTTRANS" :{
+        "LIST": "List",
+        "NEW-RMA-BTN": "New return request",
+        "NEW-RMA-MSG": "You are about to create new return request. Please confirm to continue.",
+        "RMA-TOTAL": "Total transceivers",
+        "RMA-LOG": "Action log",
+        "SUBMIT-BTN": "Submit to Kaiam",
+        "DELETE-BTN": "Delete",
+        "ADD-TRANSCEIVER": "Add transceiver",
+        "IMPORT-TRANSCEIVERS": "Import .csv",
+        "LIST-TRANSCEIVERS": "List of transceivers",
+        "EMPTY-LIST": "Can not submit request with empty transceiver list. Please, add or import transceivers."
+    }
+}

@@ -1,0 +1,40 @@
+.triangular-non-scrolling {
+  position: relative;
+  z-index: 0;
+  & > * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+.triangular-toolbar-and-content {
+  position: relative;
+}
+
+.triangular-loader {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.triangular-sidenav-left._md-locked-open {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  -ms-overflow-style: none; /* ie fix for removing scrollbars */
+  &.admin-sidebar-collapsed {
+    min-width: 48px;
+    max-width: 48px;
+    transition: all .3s;
+    &.hover {
+      min-width: 260px;
+      max-width: 260px;
+    }
+  }
+}

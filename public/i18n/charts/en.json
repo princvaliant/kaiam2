@@ -1,0 +1,133 @@
+{
+  "MENU": {
+    "CHARTS": {
+      "SPCS": "Statistic process control",
+      "TIMETREND": "Test trends",
+      "RXTESTS": {
+        "RXTESTS": "Rx tests",
+        "SENSITIVITY": "Sensitivity",
+        "RSSITEST": "RSSI",
+        "LOSTEST": "LOS",
+        "RXAMPLITUDE": "Rx amplitude",
+        "RXFUNCTIONALITY": "Rx functional"
+      },
+      "TXTESTS": {
+        "TXTESTS": "Tx tests",
+        "CHANNELDATA": "Channel data"
+      },
+      "TXTEST": {
+        "TXTEST": "Tx tests 100GB",
+        "CAPTUREEYES" : "Capture eyes",
+        "CALIBRATEDCAPOWEROFFSET": "Calibrated power offset"
+      },
+      "TXSETUPS": {
+        "TXSETUPS": "Tx setups",
+        "CHANNELDATA": "Tx Setup",
+        "MATRIX": "Matrix"
+      },
+      "RXSETUPS": {
+        "RXSETUPS": "Rx setups",
+        "RSSISETUP": "RSSI setup",
+        "LOSSSETUP": "Los setup"
+      },
+      "MODULETESTS": {
+        "MODULETESTS": "Module tests",
+        "MSATEMP": "MSA temp",
+        "VCCTEST": "VCC test",
+        "POWER": "Power"
+      },
+      "MODULESETUPS": {
+        "MODULESETUPS": "Module setups",
+        "TEMPSETUP": "Temperature setup",
+        "VCCSETUP": "VCC setup"
+      },
+      "POWERCALBEFORETX" : {
+        "POWERCALBEFORETX": "Power calibration",
+        "BEFORETX": "Before Tx"
+      },
+      "POWERCHECKASSEMBLY" : {
+        "POWERCHECKASSEMBLY": "Power check",
+        "ASSEMBLY": "Assembly"
+      },
+      "PACKOUT":  "Packout",
+      "YIELD":  "Yield",
+      "YIELDPARAMETRIC":  "Parametric yield",
+      "LOSS":  "Loss distribution",
+      "ANALYSIS": "Analysis",
+      "LOSSTREND": "Loss trends",
+      "TESTSPEED": "Test speed"
+    }
+  },
+
+  "MM_in_percent": "MM [%]",
+  "OMA_in_dBm": "OMA [dBm]",
+  "Er_in_dB": "Er [dB]",
+  "Pavg_in_dBm": "Pavg [dBm]",
+  "PPJitter_in_picoSeconds": "PP Jitter [ps]",
+  "RMSJitter_in_picoSeconds": "RMS Jitter [ps]",
+  "Mod_Bias_in_mA": "MOD Bias [mA]",
+  "I_DC_in_mA": "IDC [mA]",
+
+  "Amplitude": "Amplitude",
+
+  "ExtrapolatedPower_dBm": "Extrapolate power [dBm]",
+
+  "AssertPower": "Assert power",
+  "DeAssertPower" :  "Deassert power",
+  "Hysterisis": "Hysterisis",
+
+  "Attenuation":  "Attenuation",
+
+  "BMON_in_mA": "BMON [mA]",
+  "BMON_Offset": "BMON offset",
+  "BMON_Scale": "BMON scale",
+  "EyeOneLevelPower_in_mW": "EyeOneLevel [mW]",
+  "EyeZeroLevelPower_in_mW": "EyeZerolevel [mW]",
+  "Mod_Bias_Set_in_mA": "MOD Bias set [mA]",
+  "I_DC_Set_in_mA": "IDC set [mA]",
+
+  "PD0Weight": "PD0 weight",
+  "PD1Weight": "PD1 weight",
+  "PD2Weight": "PD2 weight",
+  "PD3Weight": "PD3 weight",
+
+  "Offset": "Offset",
+  "Slope": "Slope",
+
+  "Gain4A": "Gain4A",
+
+  "MSATemperatureDelta_C": "MSA temp delta [C]",
+  "TemperatureTCReading_C": "Temp reading [C]",
+  "VccBoardReadback": "VCC readback",
+  "VccDeltaPercent": "VCC delta [%]",
+  "VccMSARead": "VCC MSA read",
+  "PowerConsumption_W": "Power consumption [W]",
+  "PowerConsumptionDelta_W": "Power consumption delta [W]",
+
+  "SerialNumber": "Serial number",
+  "SEARCH-SERIAL": "Search by serial#",
+  "timestamp": "Date",
+  "SPC_OPTIONS_EXPORT": "Export",
+  "SPC_OPTIONS_SLOT": "Slot",
+  "SPC_OPTIONS_CHANNEL": "Channel",
+  "SPC_OPTIONS_RACK": "Choose Rack",
+  "SPC_OPTIONS_DUT": "Choose DUT",
+  "SPC_OPTIONS_SERIALNUMBER": "Control part",
+  "LOSS_TREND_VALUE": "Y type",
+  "TIMETREND_OPTIONS_INTERVAL" : "Choose interval",
+  "TIMETREND_OPTIONS_PARTFAMILY": "Part Family",
+  "TIMETREND_OPTIONS_PARTNUMBER": "Part Number",
+  "OPTIONS_MANUFACTURERS":  "Contract manufacturers",
+  "YIELD_OPTIONS_MIN_TOTAL": "Min total",
+  "INTERVAL_TODAY" : "Today",
+  "INTERVAL_YESTERDAY" : "Yesterday",
+  "INTERVAL_BEFORE_YESTERDAY" : "Before yesterday",
+  "INTERVAL_LAST7DAYS" : "Last 7 days",
+  "INTERVAL_LAST30DAYS": "Last 30 days",
+  "INTERVAL_LAST90DAYS":  "Last 90 days",
+  "INTERVAL_THISWEEK": "This week",
+  "INTERVAL_LASTWEEK": "Last week",
+  "INTERVAL_2WEEKSAGO": "2 weeks ago",
+  "INTERVAL_3WEEKSAGO": "3 weeks ago",
+  "INTERVAL_4WEEKSAGO": "4 weeks ago"
+}

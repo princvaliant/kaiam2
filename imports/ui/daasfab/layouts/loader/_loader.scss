@@ -1,0 +1,10 @@
+.triangular-loader {
+  background: #fff;
+}
+
+// make progress bar not use full width
+.app-loader {
+  md-progress-linear {
+    width:80%;
+  }
+}

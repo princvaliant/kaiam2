@@ -1,0 +1,93 @@
+{
+  "MENU": {
+    "SCES": {
+      "SCES": "Supply Chain"
+    }
+  },
+
+  "SCES": {
+    "SCAN-BAR-CODE": "WAITING FOR BAR CODE SCAN . . . ",
+    "SCAN-FIND": "SCAN",
+    "BAR-CODE-PRINT": "To print bar code label select unit type and press PRINT",
+    "BAR-CODE-PRINTLABEL-BTN": "PRINT LABEL",
+
+    "NEW-TRAY-LABEL": "Select tray type and part number, then click confirm to create new tray",
+    "NEW-TRAY-TYPE": "Select tray type",
+    "NEW-TRAY-PARTNUMBER": "Select part number",
+    "PART-NUMBER-NO-MATCH": "Part numbers do not match",
+    "TRAY-IS-FULL": "Tray is full",
+    "TRAY-TOTAL": "Current count",
+    "SEAL-TRAY": "Seal tray",
+    "SCAN-REMOVE": "Scan remove",
+    "SCAN-ADD": "Scan add",
+    "MANUAL": "Manual",
+    "NEW-BATCHREQUEST": "New batch request",
+
+    "ORDER": "Sales order#",
+    "STATUS": "Status",
+    "ORDER-CUSTOMER": "Customer",
+    "ORDER-CUSTOMER-PO": "Customer PO#",
+    "ORDER-ITEMS": "Item",
+    "ORDER-LINE": "Line",
+    "EXISTING-ORDER": "Sales order",
+    "NEW-ORDER": "Upload sales orders",
+    "DROP-CSV-FILE": "",
+    "IMPORTED-SALES-ORDER": "sales orders successfully imported",
+
+    "NEW-SHIPMENT-OPEN-ORDERS": "Open order line items",
+    "NEW-SHIPMENT-SELECTED-ORDERS": "Order line items that will be added to shipment",
+    "SHIPMENT-FOR-ORDER": "Select sales order",
+    "CONFIRM-SEND-SHIPMENT": "Mark shipment as 'Sent'",
+    "ORDER-SEARCH-TEXT": "Search open orders",
+    "NEW-SHIPMENT-CONFIRM": "Click confirm to create new shipment for order ",
+    "SEND-SHIPMENT": "Send",
+    "SHIP-ASSIGNED-TRANSCEIVERS": "List of Transceivers",
+    "SHIP-ACTION-LOG": "Action log",
+    "ORDERED-REMAIN-COUNT": "Remaining on order",
+    "ORDERED-CURRENT": "On this shipment",
+    "QTY-ON-TRAY-TO-BIG": "Transceivers quantity on tray larger than remaining on order",
+    "NO-QTY-ON-TRAY": "Tray is empty",
+    "NO-QTY-ON-SHIPMENT": "Shipment is empty",
+    "TRAY-ALREADY-ASSIGNED": "Tray already assigned",
+    "ERROR-NO-PACKOUT": "Didn't pass through packout successfully",
+
+    "ASSIGNED-TRANSCEIVERS": "Transceivers",
+    "ASSIGNED-TRANSCEIVERS-TOTAL": "Total transceivers",
+    "ASSIGNED-SHIPMENT": "Shipments",
+    "ASSIGNED-TRAYS": "Trays",
+    "ASSIGNED-SALESORDERS": "Sales order",
+
+    "TRANSCEIVER": "Transceiver",
+    "CREATE-DESC": "List of actions",
+    "SERIAL-NUMBER": "Serial#",
+    "PART-NUMBER": "Part#",
+    "TRAY-TYPE": "Tray type",
+    "CREATE-DOMAIN": "Create domain",
+    "ADD-BTN": "Add",
+    "CONFIRM": "Confirm",
+    "CANCEL": "Cancel",
+    "UNDO": "Undo",
+    "SEARCH-FILTER": "Filter",
+    "SEARCH-TEXT": "Search",
+
+    "USER-NOT-LOGGED": "User not logged in",
+    "PROCDEF_NOT_FOUND": "Process definition not found",
+    "USER_CAN_NOT_CREATE": "User is not allowed to create domain",
+    "USER_CAN_NOT_MOVE": "User is not allowed to move",
+    "INVALID-ITEM": "Invalid serial number",
+    "INVALID-STATE": "Invalid state",
+    "INVALID-DOMAIN-TYPE": "Invalid domain type",
+    "ITEM-ALREADY-ASSIGNED": "Item already assigned",
+    "NOT-VALID-TOSA": "TOSA is damaged",
+    "NOT-VALID-ROSA": "ROSA is damaged",
+    "UPLOAD-SALES-ORDERS": "Upload sales orders",
+    "NEW-TRAY": "New tray",
+    "NEW-SHIPMENT": "New shipment",
+    "BROWSE-TEXT": "Browse"
+  },
+
+  "tray": "Tray",
+  "shipment": "Shipment",
+  "transceiver": "Transceiver",
+  "salesOrder": "Sales order"
+}

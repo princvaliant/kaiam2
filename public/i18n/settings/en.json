@@ -1,0 +1,13 @@
+{
+  "SETTINGS": {
+    "SEARCH-TEXT": "Search",
+    "CREATED": "Registered",
+    "USEREMAIL": "Email",
+    "USERNAME": "User name",
+    "ROLES": "Roles",
+    "SUBMIT": "Save",
+    "PROFILE.COMPANY": "Company",
+    "PROFILE.ROLES": "Roles",
+    "USER_UPDATED": "User updated succesfully"
+  }
+}
