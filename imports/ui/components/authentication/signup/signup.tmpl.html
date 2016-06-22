@@ -37,13 +37,13 @@
                     <md-input-container>
                         <label for="password">{{'SIGNUP.PASSWORD.LABEL' | translate}}</label>
                         <input id="password" label="password" name="password" type="password" ng-model="user.password" same-password="signup.confirm" ng-minlength="8" required/>
-                        <ng-messages for="signup.password.$error" ng-include="'client/modules/authentication/signup/password.messages.ng.html'"></ng-messages>
+                        <ng-messages for="signup.password.$error" ng-include="'imports/ui/components/authentication/signup/password.messages.html'"></ng-messages>
                     </md-input-container>
 
                     <md-input-container>
                         <label for="password">{{'SIGNUP.PASSWORD_CONFIRM.LABEL' | translate}}</label>
                         <input id="confirm" label="confirm" name="confirm" type="password" ng-model="user.confirm" same-password="signup.password" ng-minlength="8" required/>
-                        <ng-messages for="signup.confirm.$error" ng-include="'client/modules/authentication/signup/password.messages.ng.html'"></ng-messages>
+                        <ng-messages for="signup.confirm.$error" ng-include="'imports/ui/components/authentication/signup/password.messages.html'"></ng-messages>
                     </md-input-container>
 
                     <md-button class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10"  ng-click="signupClick()" ng-disabled="signup.$invalid">{{'SIGNUP.BUTTON' | translate}}</md-button>
