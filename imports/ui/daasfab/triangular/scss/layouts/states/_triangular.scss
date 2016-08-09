@@ -24,17 +24,17 @@
 }
 
 .triangular-sidenav-left._md-locked-open {
-  width: 260px;
-  min-width: 260px;
-  max-width: 260px;
+  width: 290px;
+  min-width: 290px;
+  max-width: 290px;
   -ms-overflow-style: none; /* ie fix for removing scrollbars */
   &.admin-sidebar-collapsed {
     min-width: 48px;
     max-width: 48px;
     transition: all .3s;
     &.hover {
-      min-width: 260px;
-      max-width: 260px;
+      min-width: 290px;
+      max-width: 290px;
     }
   }
 }

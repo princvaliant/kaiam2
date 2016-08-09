@@ -8,60 +8,70 @@ routeConfig.$inject = ['$stateProvider'];
 
 /* @ngInject */
 function routeConfig($stateProvider) {
-    $stateProvider
-        .state('triangular', {
-            abstract: true,
-            views: {
-                'root': {
-                    templateUrl: 'imports/ui/daasfab/triangular/layouts/states/triangular/triangular.tmpl.html',
-                    controller: 'TriangularStateController',
-                    controllerAs: 'stateController'
+    $stateProvider.state('triangular', {
+        abstract: true,
+        views: {
+            'root': {
+                templateUrl: 'imports/ui/daasfab/triangular/layouts/states/triangular/triangular.tmpl.html',
+                controller: 'TriangularStateController',
+                controllerAs: 'stateController'
+            },
+            'sidebarLeft@triangular': {
+                templateProvider: ($templateRequest, triLayout) => {
+                    if (angular.isDefined(triLayout.layout.sidebarLeftTemplateUrl)) {
+                        return $templateRequest(triLayout.layout.sidebarLeftTemplateUrl);
+                    }
                 },
-                'sidebarLeft@triangular': {
-                    templateProvider: function ($templateRequest, triLayout) {
-                        if (angular.isDefined(triLayout.layout.sidebarLeftTemplateUrl)) {
-                            return $templateRequest(triLayout.layout.sidebarLeftTemplateUrl);
-                        }
-                    },
-                    controllerProvider: function (triLayout) {
-                        return triLayout.layout.sidebarLeftController;
-                    },
-                    controllerAs: 'vm'
+                controllerProvider: (triLayout) => {
+                    return triLayout.layout.sidebarLeftController;
                 },
-                'sidebarRight@triangular': {
-                    templateProvider: function ($templateRequest, triLayout) {
-                        if (angular.isDefined(triLayout.layout.sidebarRightTemplateUrl)) {
-                            return $templateRequest(triLayout.layout.sidebarRightTemplateUrl);
-                        }
-                    },
-                    controllerProvider: function (triLayout) {
-                        return triLayout.layout.sidebarRightController;
-                    },
-                    controllerAs: 'vm'
+                controllerAs: 'vm'
+            },
+            'sidebarRight@triangular': {
+                templateProvider: ($templateRequest, triLayout) => {
+                    if (angular.isDefined(triLayout.layout.sidebarRightTemplateUrl)) {
+                        return $templateRequest(triLayout.layout.sidebarRightTemplateUrl);
+                    }
                 },
-                'toolbar@triangular': {
-                    templateProvider: function ($templateRequest, triLayout) {
-                        if (angular.isDefined(triLayout.layout.toolbarTemplateUrl)) {
-                            return $templateRequest(triLayout.layout.toolbarTemplateUrl);
-                        }
-                    },
-                    controllerProvider: function (triLayout) {
-                        return triLayout.layout.toolbarController;
-                    },
-                    controllerAs: 'vm'
+                controllerProvider: (triLayout) => {
+                    return triLayout.layout.sidebarRightController;
                 },
-                'loader@triangular': {
-                    templateProvider: function ($templateRequest, triLayout) {
-                        if (angular.isDefined(triLayout.layout.loaderTemplateUrl)) {
-                            return $templateRequest(triLayout.layout.loaderTemplateUrl);
-                        }
-                    },
-                    controllerProvider: function (triLayout) {
-                        return triLayout.layout.loaderController;
-                    },
-                    controllerAs: 'loader'
-                }
+                controllerAs: 'vm'
+            },
+            'toolbar@triangular': {
+                templateProvider: ($templateRequest, triLayout) => {
+                    if (angular.isDefined(triLayout.layout.toolbarTemplateUrl)) {
+                        return $templateRequest(triLayout.layout.toolbarTemplateUrl);
+                    }
+                },
+                controllerProvider: (triLayout) => {
+                    return triLayout.layout.toolbarController;
+                },
+                controllerAs: 'vm'
+            },
+            'loader@triangular': {
+                templateProvider: ($templateRequest, triLayout) => {
+                    if (angular.isDefined(triLayout.layout.loaderTemplateUrl)) {
+                        return $templateRequest(triLayout.layout.loaderTemplateUrl);
+                    }
+                },
+                controllerProvider: (triLayout) => {
+                    return triLayout.layout.loaderController;
+                },
+                controllerAs: 'loader'
             }
-        });
+        },
+        resolve: {
+            'auth': ['$q',
+                function ($q) {
+                   if (Meteor.userId()) {
+                       return true;
+                   } else {
+                       return $q.reject('AUTH_REQUIRED');
+                   }
+                }
+            ]
+        }
+    });
 }
 

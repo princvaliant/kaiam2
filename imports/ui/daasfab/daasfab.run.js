@@ -1,27 +1,24 @@
-
 import angular from 'angular';
 
 angular.module('daasfab')
-    .run( runFunction);
+    .run(runFunction);
 
-runFunction.$inject =  ['$rootScope', '$state'];
+runFunction.$inject = ['$rootScope', '$state'];
 
 /* @ngInject */
 function runFunction($rootScope, $state) {
 
     // default redirect if access is denied
-    function redirectError() {
-        $state.go('500');
+    function redirectError(event, toState, toParams, fromState, fromParams, error) {
+        if (error === 'AUTH_REQUIRED') {
+            // It is better to use $state instead of $location. See Issue #283.
+            $state.go('authentication.login');
+        } else {
+            $state.go('500');
+        }
     }
 
-    // watches
-
     // redirect all errors to permissions to 500
-    var errorHandle = $rootScope.$on('$stateChangeError', redirectError);
-
-    // remove watch on destroy
-    $rootScope.$on('$destroy', function () {
-        errorHandle();
-    });
+    $rootScope.$on('$stateChangeError', redirectError);
 }
 

@@ -1,0 +1,67 @@
+$sidenav-mobile-width: 260px;
+$sidenav-desktop-width: 280px;
+
+// import angular material scss
+@import "{}/node_modules/angular-material/angular-material.scss";
+@import "{}/node_modules/angular-material/modules/scss/angular-material.layouts.scss";
+@import "{}/node_modules/angular-material/modules/scss/angular-material.layout-attributes.scss";
+
+body {
+  color: #212121;
+}
+
+// set template font family
+button, select, html, textarea, input {
+  font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
+}
+
+// import animate scss
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_properties.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_attention-seekers/_attention-seekers.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_bouncing-entrances/_bouncing-entrances.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_bouncing-exits/_bouncing-exits.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_fading-entrances/_fading-entrances.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_fading-exits/_fading-exits.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_flippers/_flippers.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_lightspeed/_lightspeed.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_rotating-entrances/_rotating-entrances.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_rotating-exits/_rotating-exits.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_sliding-entrances/_sliding-entrances.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_sliding-exits/_sliding-exits.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_specials/_specials.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_zooming-entrances/_zooming-entrances.scss";
+@import "{}/imports/ui/daasfab/scss/animate.css-scss/_zooming-exits/_zooming-exits.scss";
+
+
+@import "{}/imports/ui/daasfab/scss/_material-backgrounds.scss";
+@import "{}/imports/ui/daasfab/layouts/_triangular.scss";
+@import "{}/imports/ui/daasfab/layouts/toolbar/_toolbar.scss";
+@import "{}/imports/ui/daasfab/layouts/loader/_loader.scss";
+
+
+@import "{}/imports/ui/daasfab/triangular/_triangular.scss";
+@import "{}/imports/ui/daasfab/triangular/_variables.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_material-overrides.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_contextual.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_typography.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_utilities.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_social.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_tables.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_reset.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_print.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/_dialogs.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/layouts/_default.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/layouts/states/_triangular.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/components/_footer.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/components/_loader.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/components/_menu.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/components/_notifications-panel.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/components/_table.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/components/_toolbar.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/components/_widget.scss";
+@import "{}/imports/ui/daasfab/triangular/scss/components/_wizard.scss";
+
+// Authentication module scss imports
+@import "{}/imports/ui/components/authentication/_authentication.module.scss";
+@import "{}/imports/ui/components/authentication/login/_login.tmpl.scss";
+@import "{}/imports/ui/components/authentication/profile/_profile.tmpl.scss";

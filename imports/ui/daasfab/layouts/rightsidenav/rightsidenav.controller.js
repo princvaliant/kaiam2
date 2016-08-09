@@ -161,12 +161,12 @@ function RightSidenavController($scope, $http, $mdSidenav, $state, API_CONFIG) {
     });
 
     // fetch some dummy emails from the API
-    $http({
-        method: 'GET',
-        url: API_CONFIG.url + 'email/inbox'
-    }).success(function (data) {
-        vm.emails = data.slice(1, 20);
-    });
+    // $http({
+    //     method: 'GET',
+    //     url: API_CONFIG.url + 'email/inbox'
+    // }).success(function (data) {
+    //     vm.emails = data.slice(1, 20);
+    // });
 
     function openMail() {
         $state.go('triangular-no-scroll.email.inbox');
