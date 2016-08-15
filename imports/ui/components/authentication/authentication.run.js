@@ -9,8 +9,8 @@ import './authentication.config';
  * The `kaiamAuthentication` module adds an login page
  */
 angular.module('kaiamAuthentication').config(run);
-run.$inject = [ ];
-function run( ) {
+run.$inject = [];
+function run () {
 
 }
 

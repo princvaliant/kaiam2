@@ -84,16 +84,17 @@
     },
     "FORGOT": {
         "TITLE": "Forgot your password?",
-        "ENTER_EMAIL": "Please enter your email below",
+        "ENTER_EMAIL": "Please enter your email",
         "EMAIL": {
             "LABEL": "email",
             "PLEASE_ENTER": "Please enter your email address.",
             "PLEASE_VALID": "Please enter a valid email address."
         },
         "RESET": "Reset",
+        "RESET-LABEL": "Enter new password",
         "LOGIN": "Remembered it? Login in here",
         "MESSAGES": {
-            "RESET_SENT": "Your new password has been mailed",
+            "RESET_SENT": "Reset instructions have been mailed to ",
             "LOGIN_NOW": "Login",
             "NO_RESET": "Could not reset users password"
         }

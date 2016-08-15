@@ -16,6 +16,7 @@ es5-shim@4.6.13                # ECMAScript 5 compatibility for older browsers.
 angular-templates
 pbastowski:angular-babel
 email@1.1.16
+accounts-password
 accounts-ui-unstyled@1.1.12
 
 # Misc packages
@@ -26,6 +27,12 @@ percolate:synced-cron
 peerlibrary:directcollection
 meteorhacks:aggregate
 ixdi:material-design-iconic-font
+cfs:http-methods
+msavin:mongol
+harrison:papa-parse
+simple:highlight.js
+aldeed:simple-schema
+aldeed:collection2
 
 # Local packages
 angular-infinite-scroll
@@ -37,4 +44,4 @@ count-up
 hashids
 ui-grid
 data-table
-
+everpolate

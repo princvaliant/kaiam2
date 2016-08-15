@@ -50,7 +50,7 @@
     "NO-QTY-ON-SHIPMENT": "Shipment is empty",
     "TRAY-ALREADY-ASSIGNED": "Tray already assigned",
     "ERROR-NO-PACKOUT": "Didn't pass through packout successfully",
-
+    "ERROR-SERIAL-NUMBER-NOT-ALLOWED": "Serial number not allowed to be shipped (less than 3000)",
     "ASSIGNED-TRANSCEIVERS": "Transceivers",
     "ASSIGNED-TRANSCEIVERS-TOTAL": "Total transceivers",
     "ASSIGNED-SHIPMENT": "Shipments",

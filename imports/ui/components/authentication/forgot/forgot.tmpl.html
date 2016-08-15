@@ -11,10 +11,10 @@
             </md-toolbar>
 
             <md-content class="md-padding">
-                <p>{{'FORGOT.ENTER_EMAIL' | translate}}</p>
+
                 <form name="forgot">
                     <md-input-container>
-                        <label for="email">{{'FORGOT.EMAIL.LABEL' | translate}}</label>
+                        <label for="email">{{'FORGOT.ENTER_EMAIL' | translate}}</label>
                         <input id="email" label="email" name="email" type="email" ng-model="user.email" required/>
                         <div ng-messages="login.email.$error">
                             <div ng-message when="required">
@@ -26,9 +26,13 @@
                         </div>
                     </md-input-container>
 
-                    <md-button class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10" ng-click="resetClick()" ng-disabled="lock.$invalid">{{'FORGOT.RESET' | translate}}</md-button>
+                    <md-button
+                            class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10"
+                            ng-click="resetClick()"
+                            ng-disabled="lock.$invalid">{{'FORGOT.RESET' | translate}}</md-button>
 
-                    <md-button  class="md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10" href="/login">{{'FORGOT.LOGIN' | translate}}</md-button>
+                    <md-button class="md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10"
+                               href="/login">{{'FORGOT.LOGIN' | translate}}</md-button>
 
                 </form>
             </md-content>

@@ -1,4 +1,6 @@
 import angular from 'angular';
+import {Meteor} from 'meteor/meteor';
+
 /**
  * @ngdoc function
  * @name LoginController
@@ -19,22 +21,24 @@ angular.module('kaiamAuthentication')
             };
             // controller to handle login check
             $scope.loginClick = function () {
-                // $meteor.loginWithPassword($scope.user.email, $scope.user.password).then(function () {
-                //     $rootScope.$broadcast('event:loginConfirmed');
-                //     // set default routes when no path specified
-                //     if (Meteor.user().profile.isClient === 'Y') {
-                //         $state.go('admin-panel.client.home');
-                //     } else {
-                //         $state.go('admin-panel.default.dashboard');
-                //     }
-                // }, function (err) {
-                //     $mdToast.show(
-                //         $mdToast.simple()
-                //             .content('Login - ' + err)
-                //             .position('bottom right')
-                //             .hideDelay(3000)
-                //     );
-                // });
+                Meteor.loginWithPassword($scope.user.email, $scope.user.password, (err) => {
+                    if (err) {
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .content('Login - ' + err)
+                                .position('bottom right')
+                                .hideDelay(3000)
+                        );
+                    } else {
+                        $rootScope.$broadcast('event:loginConfirmed');
+                        // set default routes when no path specified
+                        if (Meteor.user().profile.isClient === 'Y') {
+                            $state.go('triangular.client');
+                        } else {
+                            $state.go('triangular.dashboard');
+                        }
+                    }
+                });
             };
         }
     ]);

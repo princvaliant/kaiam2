@@ -26,7 +26,7 @@ function translateConfig($translateProvider, $translatePartialLoaderProvider, tr
      *  each module will have a i18n folder that will contain its translations
      */
     $translateProvider.useLoader('$translatePartialLoader', {
-        urlTemplate: 'i18n/{part}/{lang}.json'
+        urlTemplate: '/i18n/{part}/{lang}.json'
     });
 
     $translatePartialLoaderProvider.addPart('app');

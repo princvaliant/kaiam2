@@ -8,8 +8,8 @@ import './login/login.tmpl.html';
 import './login/login.controller';
 import './profile/profile.controller';
 import './profile/profile.tmpl.html';
-import './reset-password/reset-password.controller';
-import './reset-password/reset-password.tmpl.html';
+import './resetpassword/resetpassword.controller';
+import './resetpassword/resetpassword.tmpl.html';
 import './signup/password.messages.html';
 import './signup/same-password.directive';
 import './signup/signup.controller';
@@ -29,29 +29,29 @@ function routeConfig($translatePartialLoaderProvider, $stateProvider) {
             }
         })
         .state('authentication.login', {
-          url: '/login',
-          templateUrl: 'imports/ui/components/authentication/login/login.tmpl.html',
-          controller: 'LoginController'
+            url: '/login',
+            templateUrl: 'imports/ui/components/authentication/login/login.tmpl.html',
+            controller: 'LoginController'
         })
         .state('authentication.signup', {
-          url: '/signup',
-          templateUrl: 'imports/ui/components/authentication/signup/signup.tmpl.html',
-          controller: 'SignupController'
+            url: '/signup',
+            templateUrl: 'imports/ui/components/authentication/signup/signup.tmpl.html',
+            controller: 'SignupController'
         })
         .state('authentication.lock', {
-          url: '/lock',
-          templateUrl: 'imports/ui/components/authentication/lock/lock.tmpl.html',
-          controller: 'LockController'
+            url: '/lock',
+            templateUrl: 'imports/ui/components/authentication/lock/lock.tmpl.html',
+            controller: 'LockController'
         })
         .state('authentication.forgot', {
-          url: '/forgot',
-          templateUrl: 'imports/ui/components/authentication/forgot/forgot.tmpl.html',
-          controller: 'ForgotController'
+            url: '/forgot',
+            templateUrl: 'imports/ui/components/authentication/forgot/forgot.tmpl.html',
+            controller: 'ForgotController'
         })
-        .state('authentication.reset-password', {
-          url: '/reset-password/:token',
-          templateUrl: 'imports/ui/components/authentication/reset-password/reset-password.tmpl.html',
-          controller: 'ResetPasswordController'
+        .state('authentication.resetpassword', {
+            url: '/resetpassword/:token',
+            templateUrl: 'imports/ui/components/authentication/resetpassword/resetpassword.tmpl.html',
+            controller: 'ResetPasswordController'
         });
 }
 

@@ -13,17 +13,19 @@
       },
       "TXTESTS": {
         "TXTESTS": "Tx tests",
-        "CHANNELDATA": "Channel data"
+        "CHANNELDATA": "Channel data",
+        "TXFUNCTIONALITY": "Tx func"
       },
       "TXTEST": {
         "TXTEST": "Tx tests 100GB",
-        "CAPTUREEYES" : "Capture eyes",
+        "CAPTUREEYES": "Capture eyes",
         "CALIBRATEDCAPOWEROFFSET": "Calibrated power offset"
       },
       "TXSETUPS": {
         "TXSETUPS": "Tx setups",
         "CHANNELDATA": "Tx Setup",
-        "MATRIX": "Matrix"
+        "MATRIX": "Matrix",
+        "APCTARGET": "Apc target"
       },
       "RXSETUPS": {
         "RXSETUPS": "Rx setups",
@@ -41,15 +43,34 @@
         "TEMPSETUP": "Temperature setup",
         "VCCSETUP": "VCC setup"
       },
-      "POWERCALBEFORETX" : {
+      "POWERCALBEFORETX": {
         "POWERCALBEFORETX": "Power calibration",
         "BEFORETX": "Before Tx"
       },
-      "POWERCHECKASSEMBLY" : {
+      "POWERCHECKASSEMBLY": {
         "POWERCHECKASSEMBLY": "Power check",
         "ASSEMBLY": "Assembly"
       },
-      "PACKOUT":  "Packout",
+      "ACTIONSTATUS": {
+        "ACTIONSTATUS": "Action status",
+        "ERROR": "Error"
+      },
+      "DOWNLOAD": {
+        "DOWNLOAD": "Download"
+      },
+      "PACKOUT": {
+        "PACKOUT": "Packout"
+      },
+      "CALIBRATION" : {
+        "CALIBRATION": "Calibration",
+        "OPTICALATTENCALCHANNEL": "Optical atten",
+        "TP3PRIM3CALMODULE": "TP3 cal module",
+        "TP3PRIMECALCHANNEL": "TP3 cal channel"
+      },
+      "LINK" : {
+        "LINK": "Link",
+        "TEST": "Test"
+      },
       "YIELD":  "Yield",
       "YIELDPARAMETRIC":  "Parametric yield",
       "LOSS":  "Loss distribution",

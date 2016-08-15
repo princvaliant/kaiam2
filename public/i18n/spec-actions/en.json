@@ -1,7 +1,10 @@
 {
   "MENU": {
     "SPECACTIONS": {
-      "SPECACTIONS": "Specs and Actions"
+      "SPECACTIONS": "Specs, Actions, Files ",
+      "ACTION": "Actions",
+      "SPEC": "Specs",
+      "FILE": "Files"
     }
   }
 }

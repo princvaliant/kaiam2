@@ -1,6 +1,6 @@
 import angular from 'angular';
-import { Meteor } from 'meteor/meteor';
-import { name as Daasfab } from '../imports/ui/daasfab/daasfab.module';
+import {Meteor} from 'meteor/meteor';
+import {name as Daasfab} from '../imports/ui/daasfab/daasfab.module';
 
 import '../imports/ui/daasfab/translate.filter';
 import '../imports/ui/daasfab/error-page.controller';
@@ -10,7 +10,7 @@ import '../imports/ui/daasfab/config.triangular.settings';
 import '../imports/ui/daasfab/config.triangular.themes';
 import '../imports/ui/daasfab/daasfab.run';
 
-function onReady() {
+function onReady () {
     angular.bootstrap(document, [
         Daasfab
     ], {

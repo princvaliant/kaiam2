@@ -1,7 +1,12 @@
+'use strict';
+
+import angular from 'angular';
+import { Meteor } from 'meteor/meteor';
+
 /**
  * @ngdoc function
- * @name LoginCtrl
- * @module triangular.authentication
+ * @name LockController
+ * @module kaiamAuthentication
  * @kind function
  *
  * @description
@@ -10,22 +15,20 @@
  *
  */
 angular.module('kaiamAuthentication')
-.controller('LockController', ['$scope', '$state', function ($scope, $state) {
-    $scope.user = {
-        name: 'Morris Onions',
-        email: 'info@oxygenna.com',
-        password: 'demo'
-    };
-
-    // controller to handle login check
-    $scope.loginClick = function() {
-        // user logged in ok so goto the dashboard
-        $state.go('admin-panel.default.dashboard-general');
-    };
+    .controller('LockController', ['$scope', '$state', function ($scope, $state) {
+        // controller to handle login check
+        $scope.loginClick = function () {
+            // user logged in ok so goto the dashboard
+            if (Meteor.user().profile.isClient === 'Y') {
+                $state.go('triangular.client');
+            } else {
+                $state.go('triangular.dashboard');
+            }
+        };
 
 
-    $scope.logoutClick = function() {
-        // go back to login screen
-        $state.go('public.auth.login');
-    };
-}]);
+        $scope.logoutClick = function () {
+            // go back to login screen
+            $state.go('authentication.login');
+        };
+    }]);
