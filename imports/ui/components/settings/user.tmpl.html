@@ -1,0 +1,48 @@
+<md-dialog class="mobile-fullwidth-dialog" tabindex="0">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 flex>
+                    <span>{{entity.username}}</span>
+                </h2>
+                <md-button class="md-icon-button" ng-click="closeClick()" aria-label="cancel">
+                    <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column"  class="md-padding">
+            <md-input-container class="md-icon-float" flex="94" style="margin-top:10px;">
+                <label for="username">{{'SETTINGS.USERNAME' | translate}}</label>
+                <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
+                <input type="text" name="username" ng-required="true" ng-model="entity.username">
+            </md-input-container>
+            <md-input-container class="md-icon-float" flex="94">
+                <label for="username">Company</label>
+                <md-icon md-font-icon="zmdi zmdi-city-alt"></md-icon>
+                <input type="text" name="profile.company" ng-required="true" ng-model="entity.profile.company">
+            </md-input-container>
+            <md-input-container flex="94">
+                <label for="username">Is customer?</label>
+                <md-icon md-font-icon="zmdi zmdi-city-alt"></md-icon>
+                <input type="text" name="profile.isClient" ng-required="false" ng-model="entity.profile.isClient">
+            </md-input-container>
+            <fieldset class="standard" style="margin-left:38px;">
+                <legend>{{'SETTINGS.ROLES' | translate}}</legend>
+                <div layout="column" layout-wrap="" flex="">
+                    <div flex="50" ng-repeat="role in roles">
+                        <md-checkbox ng-checked="exists(role, selected)" ng-click="toggle(role, selected)">
+                            {{role}}
+                        </md-checkbox>
+                    </div>
+                </div>
+            </fieldset>
+        </md-dialog-content>
+        <md-dialog-actions>
+            <span flex></span>
+            <md-button aria-label="{{'SETTINGS.SUBMIT' | translate}}" class="md-primary" ng-click="submit()">
+                <md-icon md-font-icon="zmdi zmdi-save"></md-icon>
+                {{'SETTINGS.SUBMIT' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

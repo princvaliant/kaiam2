@@ -1,5 +1,5 @@
 import angular from 'angular';
-
+import '../../daasfab/triangular/components/widget/widget-chart.directive';
 import './dashboard.controller';
 import './dashboard.tmpl.html';
 
@@ -12,13 +12,13 @@ import './dashboard.tmpl.html';
  */
 
 angular.module('kaiamDashboard').config(['$translatePartialLoaderProvider', '$stateProvider',
-    function($translatePartialLoaderProvider, $stateProvider) {
+    function ($translatePartialLoaderProvider, $stateProvider) {
         $translatePartialLoaderProvider.addPart('dashboard');
         $stateProvider
             .state('triangular.dashboard', {
                 url: '/dashboard',
                 templateUrl: 'imports/ui/components/dashboard/dashboard.tmpl.html',
-                controller: 'DashboardController'
+                controller: 'DashboardController as ctrl'
             });
     }
 ]);

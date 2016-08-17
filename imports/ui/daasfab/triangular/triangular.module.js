@@ -11,6 +11,8 @@ import './components/menu/menu.directive';
 import './components/breadcrumbs/breadcrumbs.service';
 import './components/footer/footer.controller';
 import './components/loader/loader.directive';
+import './components/widget/widget.directive';
+import './components/widget/widget-chart.directive';
 
 import './layouts/layouts.module';
 

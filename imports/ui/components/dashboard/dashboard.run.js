@@ -10,33 +10,31 @@ import '/imports/ui/daasfab/triangular/components/menu/menu.provider';
  * The `kaiamDashboard` module adds an dashboard page
  */
 
-angular.module('kaiamDashboard').run(['$rootScope', 'triMenu', '$meteor', '$translate',
-    function($rootScope, triMenu, $meteor, $translate) {
-    let user;
+angular.module('kaiamDashboard').run(['$rootScope', 'triMenu', '$meteor',
+    function ($rootScope, triMenu, $meteor) {
+        let user;
+        function initMenu () {
+            if (user) {
+                return;
+            }
+            user = Meteor.user();
+            if (user && !user.profile.isClient && _.contains(user.profile.roles, 'DASHBOARD_ACCESS')) {
+                triMenu.addMenu({
+                    type: 'link',
+                    name: 'MENU.DASHBOARDS.DASHBOARDS',
+                    state: 'triangular.dashboard',
+                    icon: 'dashboard',
+                    badge: 1,
+                    priority: 1.1
+                });
+            }
+        }
 
-    $rootScope.$on('event:loginConfirmed', function() {
-        initMenu();
-    });
-    $meteor.waitForUser().then(function() {
-        initMenu();
-    });
+        $rootScope.$on('event:loginConfirmed', function () {
+            initMenu();
+        });
 
-    function initMenu() {
-     //   if (user) {
-     //       return;
-      //  }
-    //    user = Meteor.users.findOne(Meteor.userId());
-    //    if (user && !user.profile.isClient && _.contains(user.profile.roles, 'DASHBOARD_ACCESS')) {
-        triMenu.addMenu({
-                type: 'link',
-                name: 'MENU.DASHBOARDS.DASHBOARDS',
-                state: 'triangular.dashboard',
-                icon: 'dashboard',
-                badge: 1,
-                priority: 1.1
-            });
-
-
-    //    }
-    }
-}]);
+        $meteor.waitForUser().then(function () {
+            initMenu();
+        });
+    }]);

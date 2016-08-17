@@ -28,11 +28,12 @@ import './triangular/router/router.provider';
 import './triangular/router/router.run';
 
 import './triangular/layouts/layouts.provider';
+import './permission/permission.module';
 
+// Application modules
 import '../components/authentication/authentication.run';
 import '../components/dashboard/dashboard.run';
-
-import './permission/permission.module';
+import '../components/settings/settings.config';
 
 const name = 'daasfab';
 
@@ -72,7 +73,8 @@ export default angular.module(name, [
 
      // Kaiam modules
     'kaiamAuthentication',
-    'kaiamDashboard'
+    'kaiamDashboard',
+    'kaiamSettings'
 ]);
 
 angular.module(name)

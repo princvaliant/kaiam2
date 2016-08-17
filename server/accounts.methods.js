@@ -28,21 +28,6 @@ Meteor.startup(function() {
           }
         });
       });
-    },
-    updateUser: function(entity, roles) {
-      ScesDomains.getUser(this.userId);
-      Meteor.users.update({
-        _id: entity._id
-      }, {
-        $set: {
-          username: entity.username,
-          'profile.company': entity.profile.company,
-          'profile.isClient': entity.profile.isClient,
-          'profile.roles': _.filter(roles, function(num) {
-            return num !== null;
-          })
-        }
-      });
     }
   });
 });

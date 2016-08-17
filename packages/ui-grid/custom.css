@@ -1,4 +1,3 @@
-
 #ui-grid-twbs #ui-grid-twbs .form-horizontal .form-group:before,
 #ui-grid-twbs #ui-grid-twbs .form-horizontal .form-group:after,
 #ui-grid-twbs #ui-grid-twbs .btn-toolbar:before,
@@ -14,7 +13,7 @@
   clear: both;
 }
 .ui-grid {
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
   box-sizing: content-box;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -38,15 +37,15 @@
   background-color: transparent;
 }
 .ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar {
-  background-color: #bc6819;
+  background-color: #BEEDA1;
 }
 .ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
-  background-color: #d1cc83;
+  background-color: #02D436;
 }
 .ui-grid-header-cell:last-child .ui-grid-vertical-bar {
   right: -1px;
   width: 1px;
-  background-color: #bc6819;
+  background-color: #BEEDA1;
 }
 .ui-grid-clearfix:before,
 .ui-grid-clearfix:after {
@@ -75,27 +74,27 @@
   border: 0;
 }
 .ui-grid-top-panel-background {
-  background: #d3741c;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d3741c), color-stop(1, #e89b53));
-  background: -ms-linear-gradient(bottom, #d3741c, #e89b53);
-  background: -moz-linear-gradient(center bottom, #d3741c 0%, #e89b53 100%);
-  background: -o-linear-gradient(#e89b53, #d3741c);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e89b53', endColorstr='#d3741c', GradientType=0);
+  background: #daecf4;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #BEEDA1), color-stop(1, #ffffff));
+  background: -ms-linear-gradient(bottom, #BEEDA1, #ffffff);
+  background: -moz-linear-gradient(center bottom, #BEEDA1 0%, #ffffff 100%);
+  background: -o-linear-gradient(#ffffff, #BEEDA1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#BEEDA1', GradientType=0);
 }
 .ui-grid-header {
-  border-bottom: 1px solid #d1cc83;
+  border-bottom: 1px solid #02D436;
   box-sizing: border-box;
 }
 .ui-grid-top-panel {
   position: relative;
   overflow: hidden;
   font-weight: bold;
-  background: #d3741c;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d3741c), color-stop(1, #e89b53));
-  background: -ms-linear-gradient(bottom, #d3741c, #e89b53);
-  background: -moz-linear-gradient(center bottom, #d3741c 0%, #e89b53 100%);
-  background: -o-linear-gradient(#e89b53, #d3741c);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e89b53', endColorstr='#d3741c', GradientType=0);
+  background: #daecf4;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #BEEDA1), color-stop(1, #ffffff));
+  background: -ms-linear-gradient(bottom, #BEEDA1, #ffffff);
+  background: -moz-linear-gradient(center bottom, #BEEDA1 0%, #ffffff 100%);
+  background: -o-linear-gradient(#ffffff, #BEEDA1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#BEEDA1', GradientType=0);
   -webkit-border-top-right-radius: -1px;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -139,7 +138,7 @@
   box-sizing: border-box;
   background-color: inherit;
   border-right: 1px solid;
-  border-color: #bc6819;
+  border-color: #c6e2ee;
   display: table-cell;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -267,7 +266,7 @@ input[type="text"].ui-grid-filter-input {
   margin: 0;
   border: 0;
   width: 100%;
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -285,14 +284,14 @@ input[type="text"].ui-grid-filter-input {
   background-clip: padding-box;
 }
 input[type="text"].ui-grid-filter-input:hover {
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
 }
 select.ui-grid-filter-select {
   padding: 0;
   margin: 0;
   border: 0;
   width: 90%;
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -310,7 +309,7 @@ select.ui-grid-filter-select {
   background-clip: padding-box;
 }
 select.ui-grid-filter-select:hover {
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
 }
 .ui-grid-filter-cancel-button-hidden select.ui-grid-filter-select {
   width: 100%;
@@ -350,13 +349,13 @@ select.ui-grid-filter-select:hover {
   padding-top: 1px;
 }
 .ui-grid-row:nth-child(odd) .ui-grid-cell {
-  background-color: #fdffe3;
+  background-color: #ffffff;
 }
 .ui-grid-row:nth-child(even) .ui-grid-cell {
-  background-color: #e6e3bb;
+  background-color: #EDFCEE;
 }
 .ui-grid-row:last-child .ui-grid-cell {
-  border-bottom-color: #d1cc83;
+  border-bottom-color: #EDFCEE;
   border-bottom-style: solid;
 }
 .ui-grid-no-row-overlay {
@@ -366,12 +365,12 @@ select.ui-grid-filter-select:hover {
   left: 0;
   right: 0;
   margin: 10%;
-  background: #d3741c;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d3741c), color-stop(1, #e89b53));
-  background: -ms-linear-gradient(bottom, #d3741c, #e89b53);
-  background: -moz-linear-gradient(center bottom, #d3741c 0%, #e89b53 100%);
-  background: -o-linear-gradient(#e89b53, #d3741c);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e89b53', endColorstr='#d3741c', GradientType=0);
+  background: #daecf4;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #daecf4), color-stop(1, #ffffff));
+  background: -ms-linear-gradient(bottom, #daecf4, #ffffff);
+  background: -moz-linear-gradient(center bottom, #daecf4 0%, #ffffff 100%);
+  background: -o-linear-gradient(#ffffff, #daecf4);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#daecf4', GradientType=0);
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -387,7 +386,7 @@ select.ui-grid-filter-select:hover {
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
   font-size: 2em;
   text-align: center;
 }
@@ -430,7 +429,7 @@ select.ui-grid-filter-select:hover {
   float: left;
   background-color: inherit;
   border-right: 1px solid;
-  border-color: #d1cc83;
+  border-color: #94c0d2;
   box-sizing: border-box;
 }
 .ui-grid-cell:last-child {
@@ -456,28 +455,28 @@ select.ui-grid-filter-select:hover {
 }
 .ui-grid-row .ui-grid-cell.ui-grid-row-header-cell {
   background-color: #f0f0ee;
-  border-bottom: solid 1px #d1cc83;
+  border-bottom: solid 1px #94c0d2;
 }
 .ui-grid-footer-panel-background {
-  background: #d3741c;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d3741c), color-stop(1, #e89b53));
-  background: -ms-linear-gradient(bottom, #d3741c, #e89b53);
-  background: -moz-linear-gradient(center bottom, #d3741c 0%, #e89b53 100%);
-  background: -o-linear-gradient(#e89b53, #d3741c);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e89b53', endColorstr='#d3741c', GradientType=0);
+  background: #daecf4;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #daecf4), color-stop(1, #ffffff));
+  background: -ms-linear-gradient(bottom, #daecf4, #ffffff);
+  background: -moz-linear-gradient(center bottom, #daecf4 0%, #ffffff 100%);
+  background: -o-linear-gradient(#ffffff, #daecf4);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#daecf4', GradientType=0);
 }
 .ui-grid-footer-panel {
   position: relative;
-  border-bottom: 1px solid #d1cc83;
-  border-top: 1px solid #d1cc83;
+  border-bottom: 1px solid #94c0d2;
+  border-top: 1px solid #94c0d2;
   overflow: hidden;
   font-weight: bold;
-  background: #d3741c;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d3741c), color-stop(1, #e89b53));
-  background: -ms-linear-gradient(bottom, #d3741c, #e89b53);
-  background: -moz-linear-gradient(center bottom, #d3741c 0%, #e89b53 100%);
-  background: -o-linear-gradient(#e89b53, #d3741c);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e89b53', endColorstr='#d3741c', GradientType=0);
+  background: #daecf4;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #daecf4), color-stop(1, #ffffff));
+  background: -ms-linear-gradient(bottom, #daecf4, #ffffff);
+  background: -moz-linear-gradient(center bottom, #daecf4 0%, #ffffff 100%);
+  background: -o-linear-gradient(#ffffff, #daecf4);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#daecf4', GradientType=0);
   -webkit-border-top-right-radius: -1px;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -526,7 +525,7 @@ select.ui-grid-filter-select:hover {
   overflow: hidden;
   background-color: inherit;
   border-right: 1px solid;
-  border-color: #d1cc83;
+  border-color: #94c0d2;
   box-sizing: border-box;
   display: table-cell;
 }
@@ -534,11 +533,10 @@ select.ui-grid-filter-select:hover {
   border-right: 0;
 }
 input[type="text"].ui-grid-filter-input {
-  padding: 0;
+  padding: 3px 0px 3px 0px;
   margin: 0;
-  border: 0;
   width: 100%;
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -556,15 +554,15 @@ input[type="text"].ui-grid-filter-input {
   background-clip: padding-box;
 }
 input[type="text"].ui-grid-filter-input:hover {
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
 }
 .ui-grid-menu-button {
   z-index: 2;
   position: absolute;
   right: 0;
   top: 0;
-  background: #d3741c;
-  border: 1px solid #d1cc83;
+  background: #daecf4;
+  border: 1px solid #94c0d2;
   cursor: pointer;
   height: 31px;
   font-weight: normal;
@@ -577,7 +575,7 @@ input[type="text"].ui-grid-filter-input:hover {
 }
 .ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid {
   overflow: scroll;
-  border: 1px solid #d1cc83;
+  border: 1px solid #94c0d2;
 }
 .ui-grid-menu {
   z-index: 2;
@@ -587,8 +585,8 @@ input[type="text"].ui-grid-filter-input:hover {
   box-sizing: border-box;
 }
 .ui-grid-menu .ui-grid-menu-inner {
-  background: #d3741c;
-  border: 1px solid #d1cc83;
+  background: #daecf4;
+  border: 1px solid #94c0d2;
   position: relative;
   white-space: nowrap;
   -webkit-border-radius: 0px;
@@ -612,10 +610,6 @@ input[type="text"].ui-grid-filter-input:hover {
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  border-radius: 4px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -748,7 +742,7 @@ fieldset[disabled] .ui-grid-menu .ui-grid-menu-inner .ui-grid-menu-close-button.
   background-color: #af6017;
 }
 .ui-grid-menu .ui-grid-menu-inner ul li:not(:last-child) > button {
-  border-bottom: 1px solid #d1cc83;
+  border-bottom: 1px solid #94c0d2;
 }
 .ui-grid-sortarrow {
   right: 5px;
@@ -771,6 +765,7 @@ fieldset[disabled] .ui-grid-menu .ui-grid-menu-inner .ui-grid-menu-close-button.
   src: url('ui-grid.eot#iefix') format('embedded-opentype'), url('ui-grid.woff') format('woff'), url('ui-grid.ttf') format('truetype'), url('ui-grid.svg?#ui-grid') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-size: 9px;
 }
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
@@ -832,7 +827,7 @@ fieldset[disabled] .ui-grid-menu .ui-grid-menu-inner .ui-grid-menu-close-button.
 }
 .ui-grid[dir=rtl] .ui-grid-cell:last-child,
 .ui-grid[dir=rtl] .ui-grid-header-cell:last-child {
-  border-right: 1px solid #d1cc83;
+  border-right: 1px solid #94c0d2;
   border-left: 0;
 }
 .ui-grid[dir=rtl] .ui-grid-header-cell:first-child .ui-grid-vertical-bar,
@@ -845,8 +840,8 @@ fieldset[disabled] .ui-grid-menu .ui-grid-menu-inner .ui-grid-menu-close-button.
   position: absolute;
   left: 0;
   right: auto;
-  background: #d3741c;
-  border: 1px solid #d1cc83;
+  background: #daecf4;
+  border: 1px solid #94c0d2;
   cursor: pointer;
   min-height: 27px;
   font-weight: normal;
@@ -950,9 +945,12 @@ fieldset[disabled] .ui-grid-menu .ui-grid-menu-inner .ui-grid-menu-close-button.
     More info at: http://lesselements.com
   ---------------------------------------------------*/
 .ui-grid {
-  color: #242729;
+  color: #003f59;
+  font-size:12px;
 }
+
 .ui-grid-header,
 .ui-grid-column-menu {
-  color: #faeada;
+  font-size: 11px;
+  color: #2a3a1a;
 }

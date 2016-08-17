@@ -92,7 +92,7 @@
     z-index: 100;
     background: white;
     .widget-loading-inner {
-      transform: scale(0.5);
+      transform: scale(2.5);
     }
     &.ng-hide {
       @include fadeOut();

@@ -8,21 +8,27 @@ import angular from 'angular';
  *
  *
  */
-angular.module('kaiamDashboard').controller('DashboardController', ['$scope', '$meteor', '$mdToast', '$timeout',
-    function ($scope, $meteor, $mdToast, $timeout) {
-        $scope.loading = true;
-        // $scope.dashboards = $scope.$meteorCollection(Dashboards, false).subscribe('dashboard');
-        //  $scope.$watch('dashboards', function(newValue) {
-        //    $scope.summaries = [];
-        //    $scope.total = {};
-        //    newValue.forEach(processRow);
-        //    $timeout(function() {
-        //      $scope.widgetCtrl.setLoading(false);
-        //    }, 300);
-        //  }, true);
+angular.module('kaiamDashboard').controller('DashboardController', ['$scope', '$reactive', '$timeout',
+    function ($scope, $reactive, $timeout) {
+        // $reactive(this).attach($scope);
+        $scope.summaries = [];
+        $scope.total = {};
+        $scope.subscribe('dashboard');
+        $scope.helpers({
+            dashboards: () => {
+                return Dashboards.find();
+            }
+        });
+        $scope.autorun(() => {
+            $scope.summaries = [];
+            $scope.total = {};
+            $scope.getReactively('dashboards').forEach(processRow);
+            $timeout(function () {
+                $scope.widgetCtrl.setLoading(false);
+            }, 100);
+        });
 
-
-        function processRow(obj) {
+        function processRow (obj) {
             let item = _.findWhere($scope.summaries, {
                 name: obj.id.p
             });

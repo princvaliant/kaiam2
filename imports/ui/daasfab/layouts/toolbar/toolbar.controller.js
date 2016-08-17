@@ -1,14 +1,19 @@
 import angular from 'angular';
+import {Meteor} from 'meteor/meteor';
 import '../../permission/user.factory';
 
 angular
     .module('triangular.components')
     .controller('ToolbarController', DefaultToolbarController);
 
-DefaultToolbarController.$inject = ['$scope', '$injector', '$rootScope', '$mdMedia', '$filter', '$mdUtil', '$mdSidenav', '$mdToast',  '$document', 'triBreadcrumbsService', 'triSettings', 'triLayout', 'UserService'];
+DefaultToolbarController.$inject = ['$scope', '$state', '$injector', '$rootScope', '$mdMedia', '$filter',
+    '$mdUtil', '$mdSidenav', '$mdToast', '$document', 'triBreadcrumbsService', 'triSettings', 'triLayout',
+    'UserService'];
 
 /* @ngInject */
-function DefaultToolbarController($scope, $injector, $rootScope, $mdMedia, $filter, $mdUtil, $mdSidenav, $mdToast,  $document, triBreadcrumbsService, triSettings, triLayout, UserService) {
+function DefaultToolbarController($scope, $state, $injector, $rootScope, $mdMedia, $filter,
+                                  $mdUtil, $mdSidenav, $mdToast, $document, triBreadcrumbsService,
+                                  triSettings, triLayout, UserService) {
     let vm = this;
     vm.breadcrumbs = triBreadcrumbsService.breadcrumbs;
     vm.emailNew = false;
@@ -24,13 +29,13 @@ function DefaultToolbarController($scope, $injector, $rootScope, $mdMedia, $filt
 
     ////////////////
 
-    function openSideNav(navID) {
+    function openSideNav (navID) {
         $mdUtil.debounce(function () {
             $mdSidenav(navID).toggle();
         }, 300)();
     }
 
-    function switchLanguage(languageCode) {
+    function switchLanguage (languageCode) {
         if ($injector.has('$translate')) {
             let $translate = $injector.get('$translate');
             $translate.use(languageCode)
@@ -46,7 +51,7 @@ function DefaultToolbarController($scope, $injector, $rootScope, $mdMedia, $filt
         }
     }
 
-    function hideMenuButton() {
+    function hideMenuButton () {
         switch (triLayout.layout.sideMenuSize) {
             case 'hidden':
                 // always show button if menu is hidden
@@ -60,12 +65,12 @@ function DefaultToolbarController($scope, $injector, $rootScope, $mdMedia, $filt
         }
     }
 
-    function toggleNotificationsTab(tab) {
+    function toggleNotificationsTab (tab) {
         $rootScope.$broadcast('triSwitchNotificationTab', tab);
         vm.openSideNav('notifications');
     }
 
-    function toggleFullScreen() {
+    function toggleFullScreen () {
         vm.isFullScreen = !vm.isFullScreen;
         vm.fullScreenIcon = vm.isFullScreen ? 'zmdi zmdi-fullscreen-exit' : 'zmdi zmdi-fullscreen';
         // more info here: https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
@@ -96,5 +101,30 @@ function DefaultToolbarController($scope, $injector, $rootScope, $mdMedia, $filt
     $scope.$on('newMailNotification', function () {
         vm.emailNew = true;
     });
-}
 
+    this.logout = function () {
+        Meteor.logout(() => {
+            $state.go('authentication.login');
+        });
+    };
+
+    this.openUsers = function() {
+        $state.go('triangular.settings-users');
+    };
+
+    this.openCompanies = function() {
+        $state.go('triangular.settings-companies');
+    };
+
+    this.openReworkCodes = function() {
+        $state.go('triangular.settings-rework-codes');
+    };
+
+    this.isAdmin = function() {
+        let user = Meteor.users.findOne(Meteor.userId());
+        if (user && _.intersection(user.profile.roles, ['ADMIN']).length > 0) {
+            return true;
+        }
+        return false;
+    };
+}

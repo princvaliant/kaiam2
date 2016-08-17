@@ -7,7 +7,7 @@ widget.$inject = ['$mdTheming'];
 Controller.$inject = [];
 
 /* @ngInject */
-function widget($mdTheming) {
+function widget ($mdTheming) {
     // Usage:
     //
     // ```html
@@ -74,7 +74,7 @@ function widget($mdTheming) {
 function Controller() {
     let vm = this;
     vm.menu = null;
-    vm.loading = false;
+    vm.loading = true;
 
     this.setMenu = function (menu) {
         vm.menu = menu;
