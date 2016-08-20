@@ -115,10 +115,10 @@ Meteor.methods({
     }, {
       $match: {
         p: orderId,
-        t: 'transceiver',
-        d: {
-          $gt: lastOrderUpdateDate
-        }
+        t: 'transceiver'
+        // ,d: {
+        //   $gt: lastOrderUpdateDate
+        // }
       }
     }]).length;
     return s;

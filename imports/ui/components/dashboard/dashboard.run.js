@@ -13,7 +13,8 @@ import '/imports/ui/daasfab/triangular/components/menu/menu.provider';
 angular.module('kaiamDashboard').run(['$rootScope', 'triMenu', '$meteor',
     function ($rootScope, triMenu, $meteor) {
         let user;
-        function initMenu () {
+
+        function initMenu() {
             if (user) {
                 return;
             }
@@ -30,11 +31,11 @@ angular.module('kaiamDashboard').run(['$rootScope', 'triMenu', '$meteor',
             }
         }
 
-        $rootScope.$on('event:loginConfirmed', function () {
+        $rootScope.$on('event:loginConfirmed', () => {
             initMenu();
         });
 
-        $meteor.waitForUser().then(function () {
+        $meteor.waitForUser().then(() => {
             initMenu();
         });
     }]);

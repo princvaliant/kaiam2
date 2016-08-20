@@ -1,0 +1,104 @@
+// Dashboard
+// Dashboard Container
+.spc-container {
+    position: absolute;
+    overflow:auto !important;
+    height:100% !important;
+    width: 100% !important;
+    [layout-margin] {
+        margin: 0px;
+    }
+}
+
+// - Chart Container
+.spc-fullwidth-chart {
+    .chart-container {
+        position: relative;
+        left: -5px;
+        bottom: -5px;
+        width: calc(100% + 10px);
+    }
+}
+
+.chartContainer {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 300px !important;
+    width: 98% !important;
+}
+
+.chartPackaoutContainer {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 650px !important;
+    width: 100% !important;
+}
+
+.chartTrendContainer {
+    margin-top: -24px;
+    margin-bottom: 0px;
+    height: 670px !important;
+    width: 100% !important;
+}
+
+.spc-no-bar-tabs {
+    md-tabs-wrapper {
+        display: none;
+    }
+}
+
+.google-chart {
+    height: 100%;
+    width: 100%;
+}
+
+// Social Dashboard
+.tabs-tall {
+    md-pagination-wrapper,
+    md-tabs-canvas {
+        height: 72px;
+    }
+}
+
+table.gridtable {
+    font-family: verdana,arial,sans-serif;
+    font-size:10px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+    margin-left:20px;
+    margin-top:13px;
+    margin-bottom:23px;
+}
+table.gridtable th {
+    border-width: 1px;
+    padding: 8px;
+    text-align: center;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+table.gridtable td {
+    border-width: 1px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: #666666;
+}
+
+.c1 {
+    background-color: #107A10;
+}
+.c2 {
+    background-color: #5AE66C;
+}
+.c3 {
+    background-color: #ED9D42;
+}
+.c4 {
+    background-color: #F7434C;
+}
+

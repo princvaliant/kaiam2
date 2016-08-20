@@ -1,5 +1,7 @@
 <md-button ng-click="triMenuItem.toggleDropdownMenu()" class="md-raised md-primary side-menu-link">
-    <md-icon ng-if="::(triMenuItem.item.icon !== undefined)" class="side-menu-icon" md-font-icon="{{::triMenuItem.item.icon}}"></md-icon>
+    <ng-md-icon ng-if="::(triMenuItem.item.icon !== undefined)" class="side-menu-icon"
+                icon="{{::triMenuItem.item.icon}}" size="22"
+    ></ng-md-icon>
     <span translate>{{::triMenuItem.item.name}}</span>
     <md-icon class="menu-toggle-icon" md-font-icon="zmdi zmdi-chevron-right" ng-class="{ open: triMenuItem.item.open }"></md-icon>
 </md-button>

@@ -1,0 +1,19 @@
+<div class="spc-container overlay-10" layout="column">
+    <div layout="row" layout-margin flex="grow" >
+        <tri-widget widget-chart flex="grow" layout="column">
+            <div layout="row" flex="1">
+                <md-select layout-padding placeholder="{{'TIMETREND_OPTIONS_INTERVAL' | translate}}" ng-model="interval"  ng-change="changeInterval(interval)">
+                    <md-option ng-repeat="i in ['Daily','Weekly']" value="{{i}}">{{i}}</md-option>
+                </md-select>
+                <md-select layout-padding placeholder="{{'OPTIONS_MANUFACTURERS' | translate}}" ng-model="manufacturer"  ng-change="changeManufacturer(manufacturer)">
+                    <md-option ng-repeat="manufacturer in manufacturers | orderBy" value="{{manufacturer}}">{{manufacturer}}</md-option>
+                </md-select>
+                <md-button ng-click="exportClick()">
+                    <md-icon md-font-icon="icon-more"></md-icon>
+                    {{'SPC_OPTIONS_EXPORT' | translate}}
+                </md-button>
+            </div>
+            <div id="packoutChart" class="chartPackaoutContainer" flex="grow"></div>
+        </tri-widget>
+    </div>
+</div>

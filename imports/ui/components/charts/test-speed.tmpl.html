@@ -1,0 +1,10 @@
+<div class="spc-container overlay-10" layout="column">
+    <md-select layout-padding placeholder="Device" ng-model="device" ng-change="changeDevice(device)" style="width:100px">
+        <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
+    </md-select>
+    <div layout="row" layout-margin flex="100">
+        <div flex="100" >
+            <div id="testSpeedChart" class="chartPackaoutContainer" flex="100"></div>
+        </div>
+    </div>
+</div>

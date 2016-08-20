@@ -1,0 +1,23 @@
+<div layout="row" flex layout-padding layout-fill layout-align="center center" >
+    <form name="signup">
+        <md-input-container>
+            <label for="lowLimit">Low limit</label>
+            <input id="lowLimit"  name="lowLimit" type="text" ng-model="lowLimit"/>
+        </md-input-container>
+        <md-input-container>
+            <label for="highLimit">High limit</label>
+            <input id="highLimit" name="highLimit" type="text" ng-model="highLimit"
+                   />
+        </md-input-container>
+
+        <md-button
+                class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10"
+                ng-click="submit()">Submit
+        </md-button>
+
+        <md-button
+                class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10"
+                ng-click="cancel()">Cancel
+        </md-button>
+    </form>
+</div>

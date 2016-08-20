@@ -70,8 +70,7 @@ function execSar(pnum) {
             for (let i = 0; i < serials.length; i += 10) {
                 let array = serials.slice(i, i + 10);
                 // Get all testdata for pnum from certain date and aggregate by serial number and mid
-                // processAllTestData(getAllTestData(pnum, array), specs);
-                processCustomVars(getLastTestData(pnum, array));
+                processAllTestData(getAllTestData(pnum, array), specs);
                 processLastTestData(pnum, getLastTestData(pnum, array), specs, getSpecOrder(s), s);
             }
         }

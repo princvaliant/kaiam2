@@ -1,0 +1,50 @@
+<div class="spc-container overlay-10" layout="column">
+    <div layout="row" layout-margin flex="grow">
+        <tri-widget widget-chart flex="grow" layout="column" style="min-height:2400px;">
+            <div flex="1">
+                <div layout-sm="column" layout="row" layout-align-sm="start start" layout-align="space-around center" flex="1">
+                    <md-select layout-padding placeholder="Device" ng-model="device" ng-change="changeDevice(device)">
+                        <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
+                    </md-select>
+                    <md-radio-group ng-model="grouping" layout="row" ng-change="changeGrouping(grouping)" flex="40">
+                        <md-radio-button value="slot" class="md-primary">{{'SPC_OPTIONS_SLOT' | translate}}</md-radio-button>
+                        <md-radio-button value="channel">{{'SPC_OPTIONS_CHANNEL' | translate}}</md-radio-button>
+                    </md-radio-group>
+                    <md-select layout-padding placeholder="{{'SPC_OPTIONS_RACK' | translate}}" ng-model="rack" ng-change="changeRack(rack)">
+                        <md-option ng-repeat="rack in racks" value="{{rack}}">{{rack}}</md-option>
+                    </md-select>
+                    <md-select layout-padding placeholder="{{'SPC_OPTIONS_SERIALNUMBER' | translate}}" ng-model="serialNumber" ng-change="changeSerialNumber(serialNumber)">
+                        <md-option ng-repeat="serialNumber in serialNumbers | orderBy" value="{{serialNumber}}">{{serialNumber}}</md-option>
+                    </md-select>
+                    <md-input-container>
+                        <label for="search">{{'SEARCH-SERIAL' | translate}}</label>
+                        <input type="text" name="search" ng-model="searchSerial" aria-label="{{'SEARCH-SERIAL' | translate}}" style="width:300px !important;">
+                    </md-input-container>
+                    <md-button layout-padding aria-label="{{'SEARCH-SERIAL' | translate}}" style="margin-left:-28px;" ng-click="searchClick(searchSerial)">
+                        <md-icon md-font-icon="icon-replay"></md-icon>
+                    </md-button>
+                    <md-button layout-padding ng-click="exportClick()">
+                        <md-icon md-font-icon="icon-more"></md-icon>
+                        {{'SPC_OPTIONS_EXPORT' | translate}}
+                    </md-button>
+                    <md-checkbox ng-model="showAll" aria-label="Show all" ng-change="showAllClicked(showAll)">
+                        Show all
+                    </md-checkbox>
+                    <a target="_self" id="spcexportlink" download="{{filename}}" ng-href="{{url}}" ng-show="false">Export</a>
+                </div>
+            </div>
+            <md-tabs class="chartTrendContainer" md-selected="selectedIndex" md-dynamic-height md-border-bottom flex="grow">
+                <md-tab data-ng-repeat="(field, serials) in charts" md-on-select="tabSelected(field)" label="{{field | translate}}">
+                    <md-content>
+                        <md-grid-list flex md-cols-sm="1" md-cols-md="2" md-cols-gt-md="{{cols}}" md-row-height="300px" md-gutter="5px">
+                            <md-grid-tile md-colspan="1" data-ng-repeat="(serial, chart) in serials">
+                                <div id="spc{{field}}{{serial}}" class="chartContainer"></div>
+                            </md-grid-tile>
+                        </md-grid-list>
+
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </tri-widget>
+    </div>
+</div>

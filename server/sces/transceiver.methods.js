@@ -9,8 +9,8 @@ Meteor.methods({
 
         // Check if this serial number is already assigned
         let domain = ScesDomains.getDomain(snum);
-        if (domain) {
-    //        return ScesDomains.addEvent(tray._id, 'error', 'SCES.ITEM-ALREADY-ASSIGNED', snum);
+        if (domain && tray.dc.isRma !== true) {
+            return ScesDomains.addEvent(tray._id, 'error', 'SCES.ITEM-ALREADY-ASSIGNED', snum);
         }
         // Check if this serial number successfully passed through packout
         let regsnum = new RegExp(snum, 'i');
@@ -30,6 +30,25 @@ Meteor.methods({
             if (testsumm.f === 1 && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
             }
+            // Check if successfuly passed through packout
+            let td = Testdata.findOne({
+                'device.SerialNumber': {
+                    $regex: regsnum
+                },
+                type: 'packout',
+                subtype: 'packout',
+                result: {$in: ['OK', 'P']}
+            }, {
+                fields: {
+                    'device': 1
+                },
+                sort: {
+                    timestamp: -1
+                }
+            });
+            if (!td) {
+                return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
+            }
             // Check if tranceiver serial number is les than 3000 (< Q3000)
             let num = parseInt(snum.match(/\d+/)[0]);
             if (num < 3000) {
@@ -47,13 +66,17 @@ Meteor.methods({
                 }).length >= totl) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.TRAY-IS-FULL', snum);
             }
-
-            // Insert transceiver into domains table
-            ScesDomains.create('transceiver', this.userId, snum, [tray._id], {
-                SerialNumber: snum,
-                PartNumber: testsumm.pnum,
-                ContractManufacturer: testsumm.cm
-            }, adminOverride ? [testsumm.cm, 'ADMIN_OVERRIDE'] : [testsumm.cm]);
+            if (tray.dc.isRma === true && domain) {
+                // If this is RMA authorization
+                ScesDomains.move(this.userId, snum, [tray._id], [], {isRma: true}, [], 'AddedToTray');
+            } else {
+                // Insert transceiver into domains table
+                ScesDomains.create('transceiver', this.userId, snum, [tray._id], {
+                    SerialNumber: snum,
+                    PartNumber: testsumm.pnum,
+                    ContractManufacturer: testsumm.cm
+                }, adminOverride ? [testsumm.cm, 'ADMIN_OVERRIDE'] : [testsumm.cm]);
+            }
             ScesDomains.addEvent(tray._id, 'add',
                 snum + ' transceiver added to tray - CM ' + testsumm.cm, snum);
         } else {
@@ -106,9 +129,13 @@ Meteor.methods({
                 }).length >= totl) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.TRAY-IS-FULL', snum);
             }
-
-            // Insert transceiver into domains table
-            ScesDomains.create('transceiver', this.userId, snum, [tray._id], td.device, [td.device.ContractManufacturer]);
+            if (tray.dc.isRma === true && domain) {
+                // If this is RMA authorization
+                ScesDomains.move(this.userId, snum, [tray._id], [], {isRma: true}, [], 'AddedToTray');
+            } else {
+                // Insert transceiver into domains table
+                ScesDomains.create('transceiver', this.userId, snum, [tray._id], td.device, [td.device.ContractManufacturer]);
+            }
             ScesDomains.addEvent(tray._id, 'add',
                 snum + ' transceiver added to tray - CM ' + td.device.ContractManufacturer, snum);
             return '';
@@ -144,7 +171,6 @@ Meteor.methods({
     getFailedTestdata: function (id) {
         check(id, String);
         ScesDomains.getUser(this.userId);
-
         let testdata = Testdata.aggregate([{
             $match: {
                 'device.SerialNumber': id
@@ -177,21 +203,21 @@ Meteor.methods({
         }])[0];
 
         if (!testdata) {
-            return 'NOID';
+            return {status: 'NOID'};
         }
 
         let pnum = Settings.partNumbers[testdata.pnum];
         if (!pnum) {
-            return 'NOID';
+            return {status: 'NOID', pnum: testdata.pnum};
         }
 
         // If this is 100GB device
         if (pnum.device === '100GB') {
             let summ = Testsummary.find({sn: id}, {sort: {timestamp: -1}}).fetch()[0];
             if (summ) {
-                return _returnSummary(summ);
+                return {status: 'OK', pnum: testdata.pnum, data: _returnSummary(summ)};
             } else {
-                return 'NOID';
+                return {status: 'NOID', pnum: testdata.pnum};
             }
         } else {
             let filtered = _.filter(testdata.list, (o) => {
@@ -201,24 +227,35 @@ Meteor.methods({
                 return o.t + o.st;
             });
             if (ret.length > 0) {
-                return ret;
+                return {status: 'OK', pnum: testdata.pnum, data: ret};
             }
             ret = _.where(testdata.list, {
                 r: 'OK',
                 s: 'F'
             });
+            let retf;
             if (ret.length > 0) {
-                return [{
-                    d: ret[0].d,
-                    sn: id,
-                    t: 'unknown',
-                    st: '',
-                    ts: ret[0].ts,
-                    s: 'F',
-                    r: 'OK'
-                }];
+                retf = {
+                    status: 'OK',
+                    pnum: testdata.pnum,
+                    data: [{
+                        d: ret[0].d,
+                        sn: id,
+                        t: 'unknown',
+                        st: '',
+                        ts: ret[0].ts,
+                        s: 'F',
+                        r: 'OK'
+                    }]
+                };
+            } else {
+                retf = {
+                    status: 'OK',
+                    pnum: testdata.pnum,
+                    data: testdata.list[testdata.list.length - 1].t
+                };
             }
-            return testdata.list[testdata.list.length - 1].t;
+            return retf;
         }
     },
 
