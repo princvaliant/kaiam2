@@ -1,4 +1,6 @@
 'use strict';
+
+import angular from 'angular';
 /**
  * @ngdoc service
  * @name SpcChartsService
@@ -9,8 +11,8 @@
  */
 
 angular.module('kaiamCharts')
-    .service('ExportDataService', ['$meteor',
-        function($meteor) {
+    .service('ExportDataService', ['$reactive',
+        function($reactive) {
             let service = {
                 exportData: function (data, exportDetails, pnum) {
                     let ret = '';

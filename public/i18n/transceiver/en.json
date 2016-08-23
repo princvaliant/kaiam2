@@ -1,7 +1,7 @@
 {
     "MENU": {
-        "TRANSCEIVER": {
-            "TRANSCEIVER": "Transceiver check"
+        "TRANSCEIVER-VIEW": {
+            "TRANSCEIVER-VIEW": "Transceiver view"
         }
     }
 }

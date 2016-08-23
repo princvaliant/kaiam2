@@ -1,0 +1,39 @@
+<div class="spc-container overlay-10">
+    <md-card>
+        <md-card-content layout="column">
+            <div class="exportsmall">Comma delimited serial numbers</div>
+            <md-input-container>
+                <input type="text" name="serial" ng-model="serial" aria-label="Serial#" style="width:500px">
+            </md-input-container>
+            <div class="exportsmall">Part number</div>
+            <md-select class="export-select" placeholder="Part number" ng-change="onChangePartNumber(partNumber)"
+                       ng-model="partNumber" ng-required>
+                <md-option ng-repeat="partNumber in partNumbers | orderBy"
+                           value="{{partNumber}}">{{partNumber}}</md-option>
+            </md-select>
+            <div class="exportsmall">From - To Date</div>
+            <div layout="row">
+                <md-datepicker ng-model="dateFrom" md-placeholder="From date"></md-datepicker>
+                <md-datepicker ng-model="dateTo" md-placeholder="To date"></md-datepicker>
+            </div>
+            <br/>
+            <div class="exportsmall">Test type</div>
+            <md-select class="export-select" placeholder="Test type" ng-model="testType" ng-required>
+                <md-option ng-repeat="tt in testTypes" value="{{tt}}">{{tt}}</md-option>
+            </md-select>
+            <div class="exportsmall">Error Status</div>
+            <md-select class="export-select" placeholder="Error status" ng-change="onChangeErrorStatus(errorStatus)"
+                       ng-model="errorStatus" ng-required>
+                <md-option ng-repeat="errorStatus in errorStatuses | orderBy"
+                           value="{{errorStatus}}">{{errorStatus}}</md-option>
+            </md-select>
+            <md-checkbox ng-model="exportDetails" aria-label="Export details"
+                         ng-change="exportDetailsClicked(exportDetails)">
+                Export details
+            </md-checkbox>
+            <a target="_self" id="dataexportlink" download="{{filename}}" ng-href="{{url}}" ng-show="false">Export</a>
+            <md-button class="md-primary md-raised" aria-label="button" ng-click="exportClicked()">Export</md-button>
+            <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
+        </md-card-content>
+    </md-card>
+</div>

@@ -65,5 +65,7 @@ button, select, html, textarea, input {
 @import "{}/imports/ui/components/authentication/_authentication.module.scss";
 @import "{}/imports/ui/components/authentication/login/_login.tmpl.scss";
 @import "{}/imports/ui/components/authentication/profile/_profile.tmpl.scss";
-// Authentication module scss imports
+// Application modules scss imports
 @import "{}/imports/ui/components/charts/charts.module.scss";
+@import "{}/imports/ui/components/export-data/export-data.module.scss";
+@import "{}/imports/ui/components/transceiver-view/transceiver-view.scss";
