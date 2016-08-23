@@ -1,49 +1,82 @@
-<div class="" layout="column">
-    <div layout="row" layout-margin flex="100">
-        <div flex="100">
-            <div layout-sm="column" layout="row" layout-align-sm="start start" layout-align="space-between center" flex="1">
-                <md-select layout-padding placeholder="Device" ng-model="device" ng-change="changeDevice(device)">
+<div class="spc-container" layout-padding layout="column">
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout-align="start end">
+            <md-input-container>
+                <label>device</label>
+                <md-select ng-model="device" ng-change="changeDevice(device)">
                     <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
                 </md-select>
-                <md-select layout-padding placeholder="{{'LOSS_CHART_TYPE' | translate}}" ng-model="lossChartType" ng-change="changeLossChartType(lossChartType)">
-                    <md-option ng-repeat="lossChartType in lossChartTypes" value="{{lossChartType}}">{{lossChartType}}</md-option>
+            </md-input-container>
+            <md-input-container>
+                <label>loss type</label>
+                <md-select ng-model="lossChartType"
+                           ng-change="changeLossChartType(lossChartType)">
+                    <md-option ng-repeat="lossChartType in lossChartTypes"
+                               value="{{lossChartType}}">{{lossChartType}}</md-option>
                 </md-select>
-                <md-select ng-show="lossChartType === 'Fail trends'" layout-padding placeholder="{{'LOSS_TREND_VALUE' | translate}}" ng-model="lossTrendValue" ng-change="changeLossTrendValue(lossTrendValue)">
+            </md-input-container>
+            <md-input-container ng-show="lossChartType === 'Fail trends'">
+                <label>y type</label>
+                <md-select ng-model="lossTrendValue"
+                           ng-change="changeLossTrendValue(lossTrendValue)">
                     <md-option ng-repeat="ltv in ['Fail qty', 'Fail %']" value="{{ltv}}">{{ltv}}</md-option>
                 </md-select>
-                <md-select layout-padding placeholder="{{'TIMETREND_OPTIONS_PARTNUMBER' | translate}}" ng-model="partNumber" ng-change="changePartNumber(partNumber)">
-                    <md-option ng-repeat="partNumber in partNumbers | orderBy" value="{{partNumber}}">{{partNumber}}</md-option>
+            </md-input-container>
+            <md-input-container>
+                <label>part number</label>
+                <md-select ng-model="partNumber" ng-change="changePartNumber(partNumber)" style="width:130px">
+                    <md-option ng-repeat="partNumber in partNumbers | orderBy"
+                               value="{{partNumber}}">{{partNumber}}</md-option>
                 </md-select>
-                <md-select layout-padding placeholder="{{'TIMETREND_OPTIONS_INTERVAL' | translate}}" ng-model="interval" ng-change="changeInterval(interval)">
-                    <md-option ng-repeat="interval in intervals" value="{{interval}}">{{interval | translate}}</md-option>
+            </md-input-container>
+            <md-input-container>
+                <label>{{'TIMETREND_OPTIONS_INTERVAL' | translate}}</label>
+                <md-select ng-model="interval"
+                           ng-change="changeInterval(interval)">
+                    <md-option ng-repeat="interval in intervals"
+                               value="{{interval}}">{{interval | translate}}</md-option>
                 </md-select>
-                <md-select layout-padding placeholder="{{'OPTIONS_MANUFACTURERS' | translate}}" ng-model="manufacturer" ng-change="changeManufacturer(manufacturer)">
-                    <md-option ng-repeat="manufacturer in manufacturers | orderBy" value="{{manufacturer}}">{{manufacturer}}</md-option>
+            </md-input-container>
+            <md-input-container>
+                <label>{{'OPTIONS_MANUFACTURERS' | translate}}</label>
+                <md-select ng-model="manufacturer" style="width:120px"
+                           ng-change="changeManufacturer(manufacturer)">
+                    <md-option ng-repeat="manufacturer in manufacturers | orderBy"
+                               value="{{manufacturer}}">{{manufacturer}}</md-option>
                 </md-select>
+            </md-input-container>
+            <md-input-container class="hide-error-msg" style="padding-left:20px;width:110px">
                 <md-checkbox ng-model="reworkOnly" aria-label="Rework" ng-change="reworkOnlyClicked(reworkOnly)">
-                    Rework
+                    rework
                 </md-checkbox>
+            </md-input-container>
+            <md-input-container class="hide-error-msg" style="width:120px">
                 <md-checkbox ng-model="groupRack" aria-label="Group by rack" ng-change="groupRackClicked(groupRack)">
-                    By-rack
+                    by rack
                 </md-checkbox>
-                <md-checkbox ng-model="paramsFail" aria-label="With failed params" ng-change="paramsFailClicked(paramsFail)">
-                    Details
+            </md-input-container>
+            <md-input-container class="hide-error-msg" style="width:110px">
+                <md-checkbox ng-model="paramsFail" aria-label="With failed params"
+                             ng-change="paramsFailClicked(paramsFail)">
+                    details
                 </md-checkbox>
-                <span flex></span>
-                <md-button ng-click="exportClick()">
-                    <md-icon md-font-icon="icon-more"></md-icon>
-                    {{'SPC_OPTIONS_EXPORT' | translate}}
-                </md-button>
-                <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
-            </div>
-            <div id="lossChartAll_racks" class="chartPackaoutContainer" flex="100" ng-show="!groupRack"></div>
-            <a target="_self" id="lossdataexportlink" download="{{filename}}" ng-href="{{url}}" ng-show="false">Export</a>
-            <md-grid-list ng-show="groupRack" md-cols="3" md-row-height="300px" md-gutter="12px">
-                <md-grid-tile data-ng-repeat="rack in racks">
-                    <div id="lossChart{{rack}}" class="chartContainer"></div>
-                </md-grid-tile>
-            </md-grid-list>
-            <div style="height:30px;"> </div>
+            </md-input-container>
+            <span flex></span>
+            <md-button ng-click="exportClick()" class="md-raised" aria-label="Export data">
+                <ng-md-icon icon="get_app" size="22"></ng-md-icon>
+                {{'SPC_OPTIONS_EXPORT' | translate}}
+            </md-button>
+            <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
         </div>
-    </div>
+    </md-toolbar>
+    <tri-widget widget-chart flex="100">
+        <div id="lossChartAll_racks"  flex="100" ng-show="!groupRack"></div>
+        <md-grid-list ng-show="groupRack" md-cols="3" md-row-height="300px" md-gutter="12px">
+            <md-grid-tile data-ng-repeat="rack in racks">
+                <div id="lossChart{{rack}}" class="chartContainer"></div>
+            </md-grid-tile>
+        </md-grid-list>
+    </tri-widget>
+    <a target="_self" id="lossdataexportlink" download="{{filename}}" ng-href="{{url}}"
+       ng-show="false">Export</a>
 </div>

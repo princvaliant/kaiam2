@@ -3,14 +3,13 @@
         <div class="md-toolbar-tools" layout-align="start end">
             <md-input-container>
                 <label>device</label>
-                <md-select  placeholder="Device" ng-model="device" ng-change="changeDevice(device)"
-                           style="width:120px">
-                    <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
+                <md-select ng-model="device" ng-change="changeDevice(device)" style="width:100px">
+                    <md-option ng-repeat="i in ['100GB']" value="{{i}}">{{i}}</md-option>
                 </md-select>
             </md-input-container>
         </div>
     </md-toolbar>
     <tri-widget widget-chart flex="100">
-        <div id="testSpeedChart" flex="100"></div>
+        <div id="testInsertionsChart" flex="100"></div>
     </tri-widget>
 </div>

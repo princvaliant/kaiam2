@@ -1,28 +1,43 @@
-<div class="" layout="column">
-    <div layout="row" layout-margin flex="100">
-        <div flex="100" >
-            <div layout-sm="column" layout="row" layout-align-sm="start start" layout-align="start center" flex="1">
-                <md-select layout-padding placeholder="Device" ng-model="device" ng-change="changeDevice(device)">
+<div class="spc-container" layout-padding layout="column">
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout-align="start end">
+            <md-input-container>
+                <label>device</label>
+                <md-select ng-model="device" ng-change="changeDevice(device)">
                     <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
                 </md-select>
-                <md-select layout-padding placeholder="{{'TIMETREND_OPTIONS_INTERVAL' | translate}}" ng-model="interval" ng-change="changeInterval(interval)">
+            </md-input-container>
+            <md-input-container>
+                <label>{{'TIMETREND_OPTIONS_INTERVAL' | translate}}</label>
+                <md-select  ng-model="interval"
+                           ng-change="changeInterval(interval)">
                     <md-option ng-repeat="i in ['Daily', 'Weekly', 'Rework']" value="{{i}}">{{i}}</md-option>
                 </md-select>
-                <div layout-padding>{{'YIELD_OPTIONS_MIN_TOTAL' | translate}}</div>
-                <md-select layout-padding  placeholder="{{'YIELD_OPTIONS_MIN_TOTAL' | translate}}" ng-model="minTotal" ng-change="changeMinTotal(minTotal)">
+            </md-input-container>
+            <md-input-container>
+                <label>{{'YIELD_OPTIONS_MIN_TOTAL' | translate}}</label>
+                <md-select  ng-model="minTotal" style="width:100px"
+                           ng-change="changeMinTotal(minTotal)">
                     <md-option ng-repeat="minTotal in minTotals" value="{{minTotal}}">{{minTotal}}</md-option>
                 </md-select>
-                <md-select layout-padding placeholder="{{'OPTIONS_MANUFACTURERS' | translate}}" ng-model="manufacturer" ng-change="changeManufacturer(manufacturer)">
-                    <md-option ng-repeat="manufacturer in manufacturers | orderBy" value="{{manufacturer}}">{{manufacturer}}</md-option>
+            </md-input-container>
+            <md-input-container>
+                <label>{{'OPTIONS_MANUFACTURERS' | translate}}</label>
+                <md-select  ng-model="manufacturer" style="width:120px"
+                           ng-change="changeManufacturer(manufacturer)">
+                    <md-option ng-repeat="manufacturer in manufacturers | orderBy"
+                               value="{{manufacturer}}">{{manufacturer}}</md-option>
                 </md-select>
-                <span flex></span>
-                <md-button ng-click="exportClick()">
-                    <md-icon md-font-icon="icon-more"></md-icon>
-                    {{'SPC_OPTIONS_EXPORT' | translate}}
-                </md-button>
-            </div>
-            <div id="yieldChartParametric" class="chartPackaoutContainer" flex="grow"></div>
-            <div style="height:30px;"> </div>
+            </md-input-container>
+            <span flex></span>
+            <md-button ng-click="exportClick()" class="md-raised" aria-label="Export data">
+                <ng-md-icon icon="get_app" size="22"></ng-md-icon>
+                {{'SPC_OPTIONS_EXPORT' | translate}}
+            </md-button>
         </div>
-    </div>
+    </md-toolbar>
+    <tri-widget widget-chart flex="100">
+        <div id="yieldChartParametric" flex="100"></div>
+    </tri-widget>
 </div>
+

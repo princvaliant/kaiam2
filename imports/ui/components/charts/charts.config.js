@@ -14,6 +14,8 @@ import './powercal-beforetx.controller';
 import './powercal-beforetx.tmpl.html';
 import './packout-charts.controller';
 import './packout-charts.tmpl.html';
+import './test-insertions.controller';
+import './test-insertions.tmpl.html';
 import './loss-check.controller';
 import './loss-check.tmpl.html';
 
@@ -45,6 +47,11 @@ angular.module('kaiamCharts')
                     url: '/packout',
                     templateUrl: 'imports/ui/components/charts/packout-charts.tmpl.html',
                     controller: 'PackoutChartsController'
+                })
+                .state('triangular.testinsertions', {
+                    url: '/testinsertions',
+                    templateUrl: 'imports/ui/components/charts/test-insertions.tmpl.html',
+                    controller: 'TestInsertionsController'
                 })
                 .state('triangular.powercalbeforetx', {
                     url: '/powercalbeforetx',

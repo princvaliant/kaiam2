@@ -1,6 +1,6 @@
-<div class="spc-container overlay-10" layout="column">
+<div class="spc-container overlay-10" layout="column" >
     <div layout="row" layout-margin flex="grow">
-        <tri-widget widget-chart flex="grow" title="Standard deviation of DCA Avg Power Cal" style="min-height:1200px">
+        <tri-widget widget-chart flex="grow" title="Standard deviation of DCA Avg Power Cal" style="min-height:1400px">
             <div layout-sm="column" layout="row" layout-padding >
                 <div layout="column">
                     <md-datepicker ng-model="dateFrom" md-placeholder="From date" ng-change="dateFromChanged(dateFrom)"></md-datepicker>
@@ -41,7 +41,7 @@
                         <th>2</th>
                         <th>3</th>
                     </tr>
-                    <tr data-ng-repeat="row in data">
+                    <tr data-ng-repeat="row in powerCalBeforeTx">
                         <td ng-if="$index % 6 === 0" rowspan="6">{{row.r}}</td>
                         <td>{{row.d}}</td>
                         <td ng-class="getColor(row['0'])">{{row['0']}}</td>

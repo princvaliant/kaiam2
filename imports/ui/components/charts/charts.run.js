@@ -19,13 +19,27 @@ angular.module('kaiamCharts')
                 }
                 user = Meteor.users.findOne(Meteor.userId());
                 if (user && !user.profile.isClient && _.contains(user.profile.roles, 'DASHBOARD_ACCESS')) {
-                    triMenu.addMenu({
+                    let thruputmenu = {
+                        name: 'MENU.CHARTS.THRUPUT',
+                        icon: 'fast_forward',
+                        type: 'dropdown',
+                        priority: 1.1,
+                        children: []
+                    };
+                    thruputmenu.children.push({
                         name: 'MENU.CHARTS.PACKOUT',
-                        icon: 'archive',
                         type: 'link',
                         state: 'triangular.packout',
                         priority: 1.1
                     });
+                    thruputmenu.children.push({
+                        name: 'MENU.CHARTS.TESTINSERTIONS',
+                        type: 'link',
+                        state: 'triangular.testinsertions',
+                        priority: 1.2
+                    });
+                    triMenu.addMenu(thruputmenu);
+
                     let analysismenu = {
                         name: 'MENU.CHARTS.ANALYSIS',
                         icon: 'assessment',

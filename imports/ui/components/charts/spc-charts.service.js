@@ -12,9 +12,8 @@ angular.module('kaiamCharts')
   .service('SpcChartsService', ['$translate', '$meteor', '$mdDialog',
     function($translate, $meteor, $mdDialog) {
       let _charts;
-      let exclude;
 
-      function create(doc, field, g1cap, g1, g2, rack, showAll, renderCallback) {
+      function create(doc, field, g1cap, g1, g2, rack, showAll, exclude, renderCallback) {
         if (_charts[field][g1] === undefined) {
           _charts[field][g1] = {
             zoomEnabled: true,
@@ -78,7 +77,7 @@ angular.module('kaiamCharts')
           series = {
             'type': 'line',
             'name': g2,
-            showInLegend: rack !== '',
+            showInLegend: rack !== '-all-',
             xValueType: 'dateTime',
             markerSize: 4,
             toolTipContent: "<span style='\"'color: {color};'\"'><strong>{sn}</strong></span><br/>Time: {time} <br/>Rack: {rack} <br/>{name}</span><br/>Value: </strong></span> {y}",
@@ -114,40 +113,23 @@ angular.module('kaiamCharts')
       }
 
       return {
-        construct: function(doc, field, grouping, rack, showAll, charts, renderCallback) {
+        construct: function(doc, field, grouping, rack, showAll, charts, exclude, renderCallback) {
           _charts = charts;
+          if (_charts === undefined) {
+            _charts = {};
+          }
           if (_charts[field] === undefined) {
             _charts[field] = {};
           }
           if (grouping === 'slot') {
             create(doc, field, 'slot', doc.meta.DUT,
-              rack === '' ? doc.meta.Rack + ' ' + doc.meta.Channel : 'chan ' + doc.meta.Channel, rack, showAll, renderCallback);
+              rack === '-all-' ? doc.meta.Rack + ' ' + doc.meta.Channel : 'chan ' + doc.meta.Channel, rack, showAll, exclude, renderCallback);
           } else {
             create(doc, field, 'chan', doc.meta.Channel,
-              rack === '' ? doc.meta.Rack + ' ' + doc.meta.DUT : 'slot ' + doc.meta.DUT, rack, showAll, renderCallback);
+              rack === '-all-' ? doc.meta.Rack + ' ' + doc.meta.DUT : 'slot ' + doc.meta.DUT, rack, showAll, exclude, renderCallback);
           }
           return _charts;
         },
-
-        // Subscribe to type and subtype and preserve state
-        subscribe: function(type, subtype, rack, searchNumbers, device, subscribeCompleted) {
-          $meteor.subscribe('testdataexclude').then(function() {
-            exclude = TestdataExclude.findOne();
-            if (exclude === undefined) {
-              TestdataExclude.insert({
-                sn: []
-              });
-            }
-          });
-          $meteor.subscribe('testdataspcs', type, subtype, rack, searchNumbers, device).then(function(subscriptionHandle) {
-            if (subscriptionHandle.ready()) {
-              $meteor.subscribe('spclimits').then(function() {
-                subscribeCompleted();
-              });
-            }
-          });
-        },
-
         standardDeviation: function(values) {
           let avg = this.average(values);
           let squareDiffs = values.map(function(value) {

@@ -3,6 +3,7 @@
     "CHARTS": {
       "SPCS": "Statistic process control",
       "TIMETREND": "Test trends",
+      "THRUPUT": "Thruput",
       "RXTESTS": {
         "RXTESTS": "Rx tests",
         "SENSITIVITY": "Sensitivity",
@@ -76,7 +77,8 @@
       "LOSS":  "Loss distribution",
       "ANALYSIS": "Analysis",
       "LOSSTREND": "Loss trends",
-      "TESTSPEED": "Test speed"
+      "TESTSPEED": "Test speed",
+      "TESTINSERTIONS": "Test insertions"
     }
   },
 
@@ -126,20 +128,21 @@
   "PowerConsumptionDelta_W": "Power consumption delta [W]",
 
   "SerialNumber": "Serial number",
-  "SEARCH-SERIAL": "Search by serial#",
+  "SEARCH-SERIAL": "search by serial#",
   "timestamp": "Date",
   "SPC_OPTIONS_EXPORT": "Export",
   "SPC_OPTIONS_SLOT": "Slot",
   "SPC_OPTIONS_CHANNEL": "Channel",
-  "SPC_OPTIONS_RACK": "Choose Rack",
-  "SPC_OPTIONS_DUT": "Choose DUT",
-  "SPC_OPTIONS_SERIALNUMBER": "Control part",
+  "SPC_OPTIONS_RACK": "choose rack",
+  "SPC_OPTIONS_DUT": "choose dut",
+  "SPC_OPTIONS_SERIALNUMBER": "control part",
   "LOSS_TREND_VALUE": "Y type",
-  "TIMETREND_OPTIONS_INTERVAL" : "Choose interval",
+  "TIMETREND_OPTIONS_INTERVAL" : "interval",
   "TIMETREND_OPTIONS_PARTFAMILY": "Part Family",
-  "TIMETREND_OPTIONS_PARTNUMBER": "Part Number",
-  "OPTIONS_MANUFACTURERS":  "Contract manufacturers",
-  "YIELD_OPTIONS_MIN_TOTAL": "Min total",
+  "TIMETREND_OPTIONS_PARTNUMBER": "part number",
+  "TIMETREND_VARIABLE": "parameter",
+  "OPTIONS_MANUFACTURERS":  "manufacturer",
+  "YIELD_OPTIONS_MIN_TOTAL": "min total",
   "INTERVAL_TODAY" : "Today",
   "INTERVAL_YESTERDAY" : "Yesterday",
   "INTERVAL_BEFORE_YESTERDAY" : "Before yesterday",

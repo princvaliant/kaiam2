@@ -1,7 +1,9 @@
 'use strict';
 
 import angular from 'angular';
+import {Meteor} from 'meteor/meteor';
 import './yield-check.service';
+
 /**
  * @ngdoc controller
  * @name ChartsController
@@ -13,14 +15,13 @@ import './yield-check.service';
 
 
 angular.module('kaiamCharts').controller('YieldCheckController', [
-    '$scope', '$state', '$mdToast', '$cookies', '$translate', '$mdDialog', '$meteor', '$stateParams', '$location', 'YieldCheckService',
-    ($scope, $state, $mdToast, $cookies, $translate, $mdDialog, $meteor, $stateParams, $location, YieldCheckService) => {
+    '$scope', '$state', '$mdToast', '$cookies', '$translate', '$mdDialog', '$stateParams', '$location', 'YieldCheckService',
+    ($scope, $state, $mdToast, $cookies, $translate, $mdDialog, $stateParams, $location, YieldCheckService) => {
         $scope.minTotals = [0, 10, 25, 50, 100];
         $scope.minTotal = $cookies.get('yieldMinTotal') || 10;
-        $scope.manufacturer = '';
-        $scope.manufacturers = _.union([''], Settings.manufacturers);
+        $scope.manufacturer = '-all-';
+        $scope.manufacturers = _.union(['-all-'], Settings.manufacturers);
         $scope.device = $cookies.get('yieldDevice') || '40GB';
-        let processRowsDebounce = _.debounce(processRows, 200, true);
         let charts = null;
         let chartsObjs = null;
 
@@ -28,17 +29,17 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         $scope.changeInterval = (interval) => {
             $scope.interval = interval;
             $cookies.put('yieldInterval', interval);
-            processRowsDebounce();
+            processRows();
         };
         // Event handler when manufacturer changed
         $scope.changeManufacturer = (manufacturer) => {
             $scope.manufacturer = manufacturer;
-            processRowsDebounce();
+            processRows();
         };
         $scope.changeMinTotal = (minTotal) => {
             $cookies.put('yieldMinTotal', minTotal);
             $scope.minTotal = minTotal;
-            processRowsDebounce();
+            processRows();
         };
         $scope.exportPointClick = (lab, pn) => {
             console.log(pn + lab);
@@ -46,23 +47,32 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         $scope.changeDevice = (device) => {
             $scope.device = device;
             $cookies.put('yieldDevice', device);
-            processRowsDebounce();
+            processRows();
         };
 
-        processRowsDebounce();
+        processRows();
 
         function processRows() {
             charts = undefined;
             chartsObjs = undefined;
-            $meteor.call('yields', $scope.minTotal,
-                $scope.manufacturer, $scope.interval, $scope.device).then(
-                function (yields) {
-                    $scope.yields = yields;
-                    _.each(yields, (yld) => {
-                        processRow(yld);
-                    });
-                    if (yields.length > 0) {
-                        initData();
+            Meteor.call('yields', $scope.minTotal,
+                $scope.manufacturer,
+                $scope.interval,
+                $scope.device, (err, yields) => {
+                    if (err) {
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .content(err)
+                                .position('bottom right')
+                                .hideDelay(3000));
+                    } else {
+                        $scope.yields = yields;
+                        _.each(yields, (yld) => {
+                            processRow(yld);
+                        });
+                        if (yields.length > 0) {
+                            initData();
+                        }
                     }
                 });
         }
@@ -74,7 +84,7 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
                         chartsObjs.render();
                     }
                 }, (pnum, week) => {
-                    $state.go('admin-panel.default.losscheck', {
+                    $state.go('triangular.losscheck', {
                         pnum: pnum,
                         week: week,
                         rework: $scope.interval === 'Rework',
@@ -93,6 +103,7 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
                         chartsObjs.render();
                     }
                 }
+                $scope.widgetCtrl.setLoading(false);
             }, 20);
         }
 
@@ -127,20 +138,26 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
                     .ariaLabel('export by status')
                     .ok('Passes only')
                     .cancel('Fails only');
-                $mdDialog.show(confirm).then(function() {
-                    exportSummary($meteor, 'P');
-                }, function() {
-                    exportSummary($meteor, 'F');
+                $mdDialog.show(confirm).then(function () {
+                    exportSummary('P');
+                }, function () {
+                    exportSummary('F');
                 });
             }
         };
     }
 ]);
 
-function exportSummary($meteor, status) {
+function exportSummary(status) {
     let ret = '';
-    $meteor.call('getTestSummaries', status).then(
-        function (testSummaries) {
+    Meteor.call('getTestSummaries', status, (err, testSummaries) => {
+        if (err) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .content(err)
+                    .position('bottom right')
+                    .hideDelay(3000));
+        } else {
             _.each(testSummaries, (item) => {
                 let row = '';
                 let head = '';
@@ -157,9 +174,9 @@ function exportSummary($meteor, status) {
                 head += 'cm,';
                 row += item.cm + ',';
                 head += 'rack,';
-                row += item.rack.toString().replace(/,/g, '|')  + ',';
+                row += item.rack.toString().replace(/,/g, '|') + ',';
                 head += 'dut,';
-                row += item.dut.toString().replace(/,/g, '|')  + ',';
+                row += item.dut.toString().replace(/,/g, '|') + ',';
                 head += 'status,';
                 row += item.status + ',';
                 head += 'tsts,';
@@ -172,7 +189,8 @@ function exportSummary($meteor, status) {
                 ret += row + '\n';
             });
             doExport('test_summaries', ret);
-        });
+        }
+    });
 }
 
 function doExport(name, list) {

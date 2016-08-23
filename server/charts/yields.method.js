@@ -30,7 +30,7 @@ Meteor.methods({
         };
       }
     }
-    if (manufacturer !== '') {
+    if (manufacturer !== '-all-') {
       match.cm = manufacturer;
     }
     let group = {

@@ -1,8 +1,8 @@
 'use strict';
 /**
  * @ngdoc service
- * @name SpcChartsService
- * @module KaiamApp
+ * @name PackoutChartsService
+ * @module kaiamCharts
  * @kind function
  * @description
  *
@@ -33,7 +33,7 @@ angular.module('kaiamCharts')
               axisX: {
                 valueFormatString: '-',
                 interval: 2,
-                labelAngle: -10,
+                labelAngle: -15,
                 labelFontSize: 10
               },
               axisY: {
@@ -57,7 +57,7 @@ angular.module('kaiamCharts')
               }
             };
             _charts.data = [];
-            _charts.manufacturers = [''];
+            _charts.manufacturers = ['-all-'];
             isfd = doc.id.n;
             isfw = doc.id.wk;
           }
@@ -66,7 +66,7 @@ angular.module('kaiamCharts')
             return _charts;
           }
 
-          if (manufacturer === '' || manufacturer === doc.id.cm) {
+          if (manufacturer === '-all-' || manufacturer === doc.id.cm) {
             // Create series
             let series = _.find(_charts.data, function(item) {
               return item.legendText === doc.id.pnum;
