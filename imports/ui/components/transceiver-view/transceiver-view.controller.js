@@ -1,6 +1,9 @@
 'use strict';
 
 import angular from 'angular';
+import './gallery-dialog.controller';
+import './gallery-dialog.tmpl.html';
+
 
 /**
  * @ngdoc function
@@ -212,6 +215,19 @@ angular.module('kaiamTransceiverView').controller('TransceiverViewController', [
                 }
                 $scope.tr = '';
             }
+        };
+
+        $scope.openImage = function(eye, $event) {
+            $mdDialog.show({
+                controller: 'GalleryDialogController',
+                templateUrl: 'imports/ui/components/transceiver-view/gallery-dialog.tmpl.html',
+                clickOutsideToClose: true,
+                focusOnOpen: false,
+                targetEvent: $event,
+                locals: {
+                    eye: eye
+                }
+            });
         };
     }
 ]);

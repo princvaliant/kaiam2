@@ -17,3 +17,39 @@
     text-align:right;
     padding: 0px;
 }
+
+.extras-image-dialog {
+  img {
+    max-width: 100%;
+    max-height: 600px;
+  }
+}
+
+.image-footer {
+  font-size:9px;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+.btn-view-data {
+  font-size:10px;
+  padding:-10px;
+  margin:-10px
+}
+
+.meas_status_E {
+  color: #918D03;
+  font-weight:800;
+}
+.meas_status_F {
+  color: #FF0000;
+  font-weight:800;
+}
+.meas_status_P {
+  color: #00FF00;
+  font-weight:800;
+}
+.meas_status_X {
+  color: #0000FF;
+  font-weight:800;
+}

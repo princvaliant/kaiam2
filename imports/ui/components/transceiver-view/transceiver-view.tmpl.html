@@ -1,4 +1,4 @@
-<div layout="column" class="overlay-10">
+<div layout="column" class="overlay-10" flex="100">
     <md-card>
         <md-card-content layout="column">
             <md-progress-linear class="scesPadding" md-mode="indeterminate"></md-progress-linear>
@@ -22,16 +22,19 @@
         <div layout="row">
             <md-card style="background:#EEEEEE;" flex="80">
                 <md-card-header>
-                    <md-card-header-text style="padding-left:15px;font-size:16px;font-weight:700;"><a
-                            href="/sces/transceiver?id={{scan.data[0].sn || scan.c}}">{{scan.data[0].sn || scan.c}}</a>
-                        <span class="trans_status">{{scan.pnum}}</span>
+                    <md-card-header-text style="padding-left:0px;font-size:16px;font-weight:700;">
+                        <md-whiteframe><a
+                                href="/sces/transceiver?id={{scan.data[0].sn || scan.c}}">{{scan.data
+                                [0].sn || scan.c}}</a>
+                            <span class="trans_status">{{scan.pnum}}</span>
+                        </md-whiteframe>
                     </md-card-header-text>
                 </md-card-header>
-                <md-card-content ng-if="scan.msg" style="padding:-10px;margin-top:-15px;margin-bottom:-15px;">
+                <md-card-content ng-if="scan.msg" style="padding-top:3px;margin-top:-15px;margin-bottom:-5px;">
                     <span class="meas_status_{{scan.s}}">{{scan.msg}}</span>
                 </md-card-content>
                 <md-card-content ng-if="!scan.msg" ng-repeat="test in scan.data"
-                                 style="padding:-10px;margin-top:-15px;margin-bottom:-15px;">
+                                 style="padding:-10px;margin-top:-15px;margin-bottom:-5px;">
                     <span class="meas_status_{{test.s}}">{{test.t}} {{test.st}} {{test.param || ''}}</span> <span
                         class="trans_status">{{test.d | date:'MM/dd/yyyy hh:mm:ss'}} Meas: {{test.s}}
                     Ind: {{test.r}}</span>
@@ -41,48 +44,49 @@
             </div>
         </div>
     </div>
-    <md-subheader class="md-no-sticky" ng-show="grouping === 'eyeImages'">Eye images for {{code}}</md-subheader>
-    <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
-    <md-grid-list flex="" md_cols-gt-lg="2" md_cols-gt-md="2" md-cols-gt-sm="1" cols-xs="1" md-gutter="35px"
-                  md-row-height="550px" ng-show="grouping === 'eyeImages'">
-        <md-grid-tile data-ng-repeat="eye in eyeImages">
-            <div layout="column">
-                <div style="text-align:left;font-size:11px;font-weight:500;padding-left:20px;">
-                    {{eye.fileName.replace('TxEye_', '')}}
-                </div>
-                <div>
-                    <img alt="{{eye.fileName}}" src="{{eye.content}}"/>
-                </div>
-            </div>
-        </md-grid-tile>
-    </md-grid-list>
+    <md-content ng-show="grouping === 'eyeImages'">
+        <md-subheader class="md-no-sticky">Eye images for {{code}}</md-subheader>
+        <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
+        <md-grid-list flex md-cols="3" md-cols-xs="2" md-row-height="5:4" md-gutter="6px">
+            <md-grid-tile ng-click="openImage(eye, $event)" md-rowspan="1"
+                          md-colspan="1" ng-repeat="eye in eyeImages"
+                          ng-style="::{ 'background-image': 'url(' + image.url + ')', 'background-size' : 'cover' }">
+                <img alt="{{eye.fileName}}" src="{{eye.content}}"/>
+                <md-grid-tile-footer>
+                    <div class="image-footer">{{eye.fileName.replace('TxEye_', '')}}</div>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </md-content>
     <md-subheader class="md-no-sticky" ng-show="grouping === 'testData'">Test data for {{code}}</md-subheader>
-    <md-content layout="row" ng-show="grouping === 'testData'" style="height:800px;">
+    <md-content layout="row" ng-show="grouping === 'testData'" style="height:800px">
         <div flex="60" style="overflow:scroll">
             <md-card ng-repeat="(key, data) in testdata">
-                <md-card-header-text layout-padding>
-                    <span style="font-size:14px;">Meas ID '{{key}}'</span>
-                </md-card-header-text>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span style="font-size:14px;">Meas ID '{{key}}'</span>
+                    </md-card-title-text>
+                </md-card-title>
                 <md-card-content>
-                    <div ng-repeat="obj in data" style="font-size:11px;padding-left:25px;">
+                    <div ng-repeat="obj in data" style="font-size:11px;padding-left:15px;">
                         <span class="meas_status_{{obj.status}}">Status: {{obj.status}}  Meas: {{obj.measstatus}}
                             Ind: {{obj.result}}</span>
                         {{obj.timestamp | date:'MM/dd/yyyy HH:mm:ss'}} {{obj.type}} {{obj.subtype}} -
-                        <md-button md-no-ink="" class="md-primary btn-view-data" ng-click="select(obj)">view data
+                        <md-button class="md-primary btn-view-data" ng-click="select(obj)">view data
                         </md-button>
                     </div>
                 </md-card-content>
             </md-card>
         </div>
-        <div flex="40">
-            <md-card style="height:800px;">
-                <md-card-title layout-padding>
+        <div flex="40" style="height:800px;">
+            <md-card style="overflow:scroll">
+                <md-card-title>
                     <md-card-title-text>
                         <span style="font-size:14px;">{{selected._id}}</span>
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content ng-repeat="(key, value) in selected"
-                                 style="font-size:11px;padding-left:25px;margin-top:-15px;margin-bottom:-15px;">
+                                 style="font-size:11px;padding-left:25px;margin-top:-1px;margin-bottom:-25px;">
                   <span ng-if="['data','meta','device'].indexOf(key) >= 0">
                       <b>{{key}}</b><br/>
                       <span ng-repeat="(key2, value2) in value">
@@ -99,7 +103,7 @@
     </md-content>
     <md-subheader class="md-no-sticky" ng-show="grouping === 'sensitivityCharts'">Sensitivity charts for {{code}}
     </md-subheader>
-    <md-content layout="row" ng-show="grouping === 'sensitivityCharts'" style="height:800px;">
+    <md-content ng-show="grouping === 'sensitivityCharts'" flex="100">
         <md-grid-list flex md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4" md-row-height="300px" md-gutter="5px">
             <md-grid-tile md-colspan="1" data-ng-repeat="sensChart in sensCharts">
                 <div id="sens{{sensChart._id}}" class="chartContainer"></div>
