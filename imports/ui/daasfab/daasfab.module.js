@@ -32,8 +32,8 @@ import './permission/permission.module';
 
 // Application modules
 import '../components/authentication/authentication.run';
-//import '../components/dashboard/dashboard.run';
-//import '../components/settings/settings.config';
+import '../components/dashboard/dashboard.run';
+import '../components/settings/settings.config';
 import '../components/charts/charts.run';
 
 const name = 'daasfab';
@@ -74,8 +74,8 @@ export default angular.module(name, [
 
      // Kaiam modules
     'kaiamAuthentication',
-  //  'kaiamDashboard',
-  //  'kaiamSettings',
+    'kaiamDashboard',
+    'kaiamSettings',
     'kaiamCharts'
 ]);
 

@@ -18,7 +18,7 @@
             <md-input-container>
                 <label>{{'SPC_OPTIONS_RACK' | translate}}</label>
                 <md-select ng-model="rack"
-                           ng-change="changeRack(rack)" style="width:130px">
+                           ng-change="changeRack(rack)" style="width:80px">
                     <md-option ng-repeat="rack in racks" value="{{rack}}">{{rack}}</md-option>
                 </md-select>
             </md-input-container>
@@ -26,7 +26,7 @@
                 <label>{{'SPC_OPTIONS_SERIALNUMBER' | translate}}</label>
                 <md-select
                         ng-model="serialNumber"
-                        ng-change="changeSerialNumber(serialNumber)" style="width:220px">
+                        ng-change="changeSerialNumber(serialNumber)" style="width:140px">
                     <md-option ng-repeat="serialNumber in serialNumbers | orderBy"
                                value="{{serialNumber}}">{{serialNumber}}</md-option>
                 </md-select>
