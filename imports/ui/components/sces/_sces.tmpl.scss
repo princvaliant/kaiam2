@@ -1,0 +1,334 @@
+.shipout {
+    .status {
+        padding: 8px 14px;
+        border-radius: 6px;
+        min-width: 60px;
+        display: inline-block;
+        text-align: center;
+        color: #fff;
+    }
+    .status-CREATED {
+        background-color: #26C6DA;
+    }
+    .status-OPEN {
+        background-color: #FF9800;
+    }
+    .status-SHIPPED {
+        background-color: #8BC34A;
+    }
+    .status-CANCELED {
+        background-color: #FF1111;
+    }
+}
+
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
+
+.my-drop-zone { border: dotted 3px lightgray; }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+
+.sces-select {
+    width:230px;
+}
+
+.green-remain {
+    color: #00FF00;
+    opacity: .7;
+}
+
+.meas_status_E {
+    color: #918D03;
+    font-weight:800;
+}
+.meas_status_F {
+    color: #FF0000;
+    font-weight:800;
+}
+.meas_status_P {
+    color: #00FF00;
+    font-weight:800;
+}
+.meas_status_X {
+    color: #0000FF;
+    font-weight:800;
+}
+
+.red-remain {
+    color: #FF0000;
+    opacity: .7;
+}
+
+.ordlistpart {
+    font-size: 1.1rem;
+    margin: 2px;
+    padding: 2px;
+}
+
+.ordlistitem {
+    font-size: 0.9rem;
+    margin: 2px;
+    padding: 2px;
+}
+
+.scesRadioButton {
+    font-size: 1.2rem;
+    font-weight:500;
+    margin-left:12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
+}
+
+.scesPadding {
+    font-size: 1.3rem;
+    font-weight:300;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    padding: 0px;
+}
+
+.paddingreduce {
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+.md-grid-tile-c.ng-enter,
+.md-grid-tile-c.ng-leave {
+    -webkit-transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
+    -moz-transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
+    -ms-transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
+    -o-transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
+    transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
+    display: block;
+}
+
+.md-grid-tile-c.ng-leave.ng-leave-active,
+.md-grid-tile-c.ng-enter {
+    -webkit-transform: scaleY(3.44) scaleX(3.55);
+    -moz-transform: scaleY(3.44) scaleX(3.55);
+    -ms-transform: scaleY(3.44) scaleX(3.55);
+    -o-transform: scaleY(3.44) scaleX(3.55);
+    transform: scaleY(3.44) scaleX(3.55);
+    height: 0px;
+    opacity: 0;
+}
+
+.md-grid-tile-c.ng-enter.ng-enter-active,
+.md-grid-tile-c.ng-leave {
+    -webkit-transform: scaleY(1) scaleX(1);
+    -moz-transform: scaleY(1) scaleX(1);
+    -ms-transform: scaleY(1) scaleX(1);
+    -o-transform: scaleY(1) scaleX(1);
+    transform: scaleY(1) scaleX(1);
+    height: 0px;
+    opacity: 1;
+}
+.md-list-item-anim
+{
+    height:60px;
+    padding:0px;
+}
+
+.md-list-item-anim.ng-enter,
+.md-list-item-anim.ng-leave
+{
+    -webkit-transition: 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space:nowrap;
+}
+
+.md-list-item-anim.ng-enter.ng-enter-active,
+.md-list-item-anim.ng-leave {
+    opacity: 1;
+    width: 150px;
+    height: 30px;
+}
+
+.md-list-item-anim.ng-leave.ng-leave-active,
+.md-list-item-anim.ng-enter {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+}
+
+
+.intro-feature-row {
+    .md-whiteframe-z1 {
+        background-color: #26C6DA;
+    }
+    .md-font {
+        color: white;
+    }
+}
+
+table.md-data-table {
+    td {
+        vertical-align: middle;
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-sizing: content-box;
+            margin-top: 4px;
+        }
+    }
+    th {
+        vertical-align: middle;
+    }
+}
+
+table.md-data-table-view > tbody > tr {
+    height: 30px;
+    border: 0px solid black;
+}
+
+table.md-data-table-view > thead > tr {
+    height: 30px;
+    border: 0px solid black;
+}
+
+table.md-data-table-view {
+    td {
+        vertical-align: middle;
+    }
+    th {
+        vertical-align: middle;
+    }
+}
+
+#ui-bprun-view {
+    &.ng-enter {
+        @include slideInRight();
+    }
+    &.ng-leave {
+        @include slideOutRight();
+    }
+}
+
+// - No process selected
+.process-no-selected {
+    text-align: center;
+    opacity: 0.5;
+    h2 {
+        font-weight: lighter;
+    }
+}
+
+.order-dialog {
+    box-shadow: none;
+}
+
+.btn-view-data {
+    font-size:10px;
+    padding:-10px;
+    margin:-10px
+}
+
+.no-padding {
+    margin-top:-7px;
+    margin-bottom:-6px;
+}
+
+@media print {
+    .md-dialog-container,
+    .order-dialog {
+        top: 0px;
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        min-height: 100%;
+        top: 0;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        box-shadow: none;
+        border: none;
+    }
+    .order-dialog .md-icon-button,
+    .order-dialog .md-actions {
+        display: none;
+    }
+}
+
+.sces-subcontent.ng-show {
+    animation: fadeInLeft 0.5s;
+    z-index: 8888;
+    display: block;
+}
+
+.sces-content-tables.ng-enter,
+.sces-content-tables.ng-leave
+{
+    -webkit-transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    -moz-transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    -ms-transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    -o-transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    position: relative;
+    display: block;
+}
+
+.sces-content-tables.ng-enter.ng-enter-active,
+.sces-content-tables.ng-leave {
+    opacity: 1;
+    right: 0;
+    height: 30px;
+}
+
+.sces-content-tables.ng-leave.ng-leave-active,
+.sces-content-tables.ng-enter {
+    opacity: 0;
+    right: -50px;
+    height: 0px;
+}
+
+
+.sces-content.ng-enter,
+.sces-content.ng-leave {
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+}
+
+.sces-content.ng-leave.ng-leave-active,
+.sces-content.ng-enter {
+      -webkit-transform: rotateX(-180deg) translatez(30px);
+    -moz-transform: rotateX(-180deg) translatez(30px);
+    -ms-transform: rotateX(-180deg) translatez(30px);
+    -o-transform: rotateX(-180deg) translatez(30px);
+    transform: rotateX(-180deg) translatez(30px);
+    opacity: 0;
+    height: 000px;
+}
+
+.sces-content.ng-enter.ng-enter-active,
+.sces-content.ng-leave {
+     -webkit-transform: rotateX(0deg) translatez(30px);
+    -moz-transform: rotateX(0deg) translatez(30px);
+    -ms-transform: rotateX(0deg) translatez(30px);
+    -o-transform: rotateX(0deg) translatez(30px);
+    transform: rotateX(0deg) translatez(30px);
+    opacity: 1;
+    height: 200px;
+}

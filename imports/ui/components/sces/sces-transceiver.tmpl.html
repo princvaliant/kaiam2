@@ -1,0 +1,100 @@
+<md-card>
+  <div layout="row" flex>
+    <div layout="column" style="width:305px;">
+      <div palette-background="deep-orange:200" content-layout="column" content-layout-align="space-between">
+        <h2 class="md-display-1 font-weight-400 margin-0" flex layout-padding>{{'SCES.TRANSCEIVER'| translate}}</h2>
+        <md-divider></md-divider>
+        <div layout="row" layout-align="space-between center" class="scesPadding">
+          <span>{{'SCES.STATUS' | translate}}</span>
+          <b>{{unit.state.id}}</b>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" layout-align="space-between center" class="scesPadding">
+          <span>{{'SCES.SERIAL-NUMBER' | translate}}</span>
+          <b>{{unit._id}}</b>
+        </div>
+        <div layout="row" layout-align="space-between center" class="scesPadding">
+          <span>{{'SCES.PART-NUMBER' | translate}}</span>
+          <b>{{unit.dc.PartNumber}}</b>
+        </div>
+      </div>
+      <md-card>
+        <md-subheader>{{'SCES.ASSIGNED-SHIPMENT' | translate}}</md-subheader>
+        <md-card-content>
+          <md-list>
+            <md-list-item ng-repeat="ship in shipments" class="paddingreduce" layout="row" layout-align="start center">
+              <div class="text-ellipsis scesPadding" nowrap am-time-ago="ship.state.when"></div>
+              <p><a href="/sces/shipment?id={{ship._id}}" class="text-ellipsis scesPadding">{{ship._id}}</a></p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-subheader>{{'SCES.ASSIGNED-TRAYS' | translate}}</md-subheader>
+        <md-card-content>
+          <md-list>
+            <md-list-item ng-repeat="tray in trays" class="paddingreduce" layout="row" layout-align="start center">
+              <div class="text-ellipsis scesPadding" nowrap am-time-ago="tray.state.when"></div>
+              <p><a href="/sces/tray?id={{tray._id}}" class="text-ellipsis scesPadding">{{tray._id}} - {{tray.dc.pnum}}</a></p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-subheader>{{'SCES.ASSIGNED-SALESORDERS' | translate}}</md-subheader>
+        <md-card-content>
+          <md-list>
+            <md-list-item ng-repeat="order in salesOrders" class="paddingreduce" layout="row" layout-align="start center">
+              <div class="text-ellipsis scesPadding" nowrap am-time-ago="order.state.when"></div>
+              <p><a href="/sces/salesOrder?id={{order._id}}" class="text-ellipsis scesPadding">{{order.dc.Order}} - {{order.dc.Line}} {{order.dc['Name (Sold-To)']}}</a> </p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-subheader>{{'Return requests' | translate}}</md-subheader>
+        <md-card-content>
+          <md-list>
+            <md-list-item ng-repeat="rma in rmas" class="paddingreduce" layout="row" layout-align="start center">
+              <div class="text-ellipsis scesPadding" nowrap am-time-ago="rma.state.when"></div>
+              <p><a href="/sces/rma?id={{rma._id}}" class="text-ellipsis scesPadding">{{rma._id}}</a> </p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </div>
+    <md-content flex="60" style="height:800px;">
+      <md-card ng-repeat="(key, data) in testdata">
+        <md-card-title layout-padding>
+          <md-card-title-text>
+            <span style="font-size:14px;">Meas ID '{{key}}'</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content ng-repeat="obj in data" style="font-size:11px;padding-left:25px;margin-top:-15px;margin-bottom:-15px;">
+          <span class="meas_status_{{obj.status}}">Meas: {{obj.status}} Ind: {{obj.result}}</span> {{obj.timestamp | date:'MM/dd/yyyy hh:mm:ss'}} {{obj.type}} {{obj.subtype}} -
+          <md-button md-no-ink="" class="md-primary btn-view-data" ng-click="select(obj)">view data</md-button>
+        </md-card-content>
+      </md-card>
+    </md-content>
+    <div layout="column" flex="40">
+      <md-card style="height:800px;">
+        <md-card-title layout-padding>
+          <md-card-title-text>
+            <span style="font-size:14px;">{{selected._id}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content ng-repeat="(key, value) in selected" style="font-size:11px;padding-left:25px;margin-top:-15px;margin-bottom:-15px;">
+          <span ng-if="['data','meta','device'].indexOf(key) >= 0">
+              <b>{{key}}</b><br/>
+              <span ng-repeat="(key2, value2) in value">
+                 <span style="font-size:11px;padding-left:65px;margin-top:-15px;margin-bottom:-15px;">{{key2}}: {{value2}}</span><br/>
+              </span>
+          </span>
+          <span ng-if="['data','meta','device'].indexOf(key) === -1">
+            <span>{{key}}</span>: {{value}}
+          </span>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</md-card>

@@ -1,0 +1,12 @@
+<md-card>
+    <div layout="column" flex>
+        <div>
+            <md-progress-linear class="scesPadding" md-mode="indeterminate"></md-progress-linear>
+        </div>
+        <md-subheader>{{'SCES.SCAN-BAR-CODE' | translate}}</md-subheader>
+        <p style="padding:20px;color:red"><b>{{message}}</b></p>
+        <md-input-container class="md-icon-float" flex="1" layout-padding>
+            <input type="text" id="allScanOptions" ng-keypress="onKeyPressed($event)" ng-model="code">
+        </md-input-container>
+    </div>
+</md-card>

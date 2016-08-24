@@ -1,0 +1,153 @@
+<md-card>
+    <div layout="row" flex>
+        <a target="_self" id="rmaexportlink" download="{{filename}}" ng-href="{{url}}" ng-show="false">Export</a>
+        <div layout="column" style="width:265px;">
+            <div layout="column" palette-background="light-green:300" layout-align="space-between">
+                <h2 class="font-weight-400 margin-10" flex layout-padding>Return request</h2>
+                <md-divider></md-divider>
+                <div layout="row" layout-align="space-between center" class="scesPadding">
+                    <span>{{'SCES.STATUS' | translate}}</span>
+                    <b>{{domain.state.id}}</b>
+                </div>
+                <div layout="row" layout-align="space-between center" class="scesPadding"
+                     ng-repeat="dpar in domainParents">
+                    <span>in {{dpar.type | translate}}</span>
+                    <a href="/sces/{{dpar.type}}?id={{dpar._id}}">{{dpar._id}}</a>
+                </div>
+                <md-divider></md-divider>
+                <div layout="row" layout-align="space-between top">
+                    <div style="margin-top:13px;margin-left:30px;width:200px;height:80px;">
+                        <div id="rmaPrintId" style="width:100%;height:100%;">
+                            <img src="{{barcodeimg}}" style="width:100%;height:100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div layout="column" layout-align="space-between">
+                <md-button flex="90" class="md-raised" aria-label="button"
+                           ng-click="printDiv('rmaPrintId')">{{'SCES.BAR-CODE-PRINTLABEL-BTN' | translate}}
+                </md-button>
+                <md-input-container flex="90">
+                    <label class="scesPadding">{{'Enter comment' | translate}}</label>
+                    <textarea ng-disabled="!domain.canEdit()" class="scesPadding" rows="6"
+                              ng-model="actionComment"></textarea>
+                </md-input-container>
+                <md-button flex="90" class="md-primary md-raised" aria-label="delete"
+                           ng-show="domain.canEdit() && domain.state.id === 'Submitted'"
+                           ng-click="approveRma()">{{'RMA.APPROVE-BTN' | translate}}
+                </md-button>
+                <md-button flex="90" class="md-warn md-raised" aria-label="submit"
+                           ng-show="domain.canEdit() && domain.state.id === 'Submitted'"
+                           ng-click="declineRma()">{{'RMA.DECLINE-BTN' | translate}}
+                </md-button>
+                <md-button flex="90" class="md-primary md-raised" aria-label="Received"
+                           ng-show="domain.canEdit() && domain.state.id === 'Approved'"
+                           ng-click="receiveRma()">{{'RMA.RECEIVED-BTN' | translate}}
+                </md-button>
+                <md-button flex="90" class="md-primary md-raised" aria-label="Ship"
+                           ng-show="domain.canEdit() && domain.state.id === 'Processing'"
+                           ng-click="shipRma()">{{'RMA.SHIP-BTN' | translate}}
+                </md-button>
+
+            </div>
+        </div>
+        <div layout="column" flex>
+            <div ng-show="domain.canEdit()" style="height:7px;">
+                <md-progress-linear ng-show="showProgress==true" class="scesPadding"
+                                    md-mode="indeterminate"></md-progress-linear>
+            </div>
+            <div layout="column" layout-align="space-between"
+                 ng-show="domain.canEdit() && domain.state.id === 'Processing'">
+                <div layout="row" layout-align="start center" class="scesPadding">
+                    <md-button class="md-raised"
+                               ngf-select="uploadFiles($files)" ngf-multiple="true"
+                               aria-label=" {{'RMA.ATTACH-FA-REPORT' | translate}}">
+                        {{'RMA.ATTACH-FA-REPORT' | translate}}
+                    </md-button>
+                </div>
+            </div>
+            <div layout="row" layout-align="start center" class="scesPadding">
+                <md-tabs md-selected="0" md-dynamic-height md-border-bottom flex="grow">
+                    <md-tab label="{{tab1Label}} [ {{domainKids.length}} ]">
+                        <table class="table" ng-show="!['Processing','Shipped'].includes(domain.state.id)">
+                            <thead>
+                            <tr>
+                                <th width="15%">Serial#</th>
+                                <th width="55%">Customer note</th>
+                                <th width="15%">Shipped</th>
+                                <th width="15%">Ship date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in domainKids">
+                                <td><a href="/sces/transceiver?id={{item._id}}">{{item._id}}</a></td>
+                                <td>{{item.dc.returnNote}}</td>
+                                <td>
+                                    <div class="text-ellipsis" nowrap am-time-ago="getShipDate(item)"></div>
+                                </td>
+                                <td>{{getShipDate(item) | date : 'MM/dd/yyyy'}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="table" ng-show="['Processing','Shipped'].includes(domain.state.id)">
+                            <thead>
+                            <tr>
+                                <th width="15%">Serial#</th>
+                                <th width="20%">Disposition</th>
+                                <th width="15%">Replacement</th>
+                                <th width="50%">Customer note</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in domainKids">
+                                <td>
+                                    <a href="/sces/transceiver?id={{item._id}}">{{item._id}}</a>
+                                </td>
+                                <td>
+                                    <md-select placeholder="Pick" ng-model="item.dc.returnDisposition"
+                                               class="no-padding" ng-show="'Processing' === domain.state.id">
+                                        <md-option value="Scrapped">Scrapped - need replacement</md-option>
+                                        <md-option value="Reworked">Reworked</md-option>
+                                        <md-option value="NoProblem">No Problem Found</md-option>
+                                    </md-select>
+                                    <div ng-show="'Shipped' === domain.state.id">{{item.dc.returnDisposition}}</div>
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="item.dc.returnReplacement" ng-show="'Processing' === domain.state.id"
+                                           aria-label="{{'SEARCH-SERIAL' | translate}}" style="width:300px !important;">
+                                    <div ng-show="'Shipped' === domain.state.id">{{item.dc.returnReplacement}}</div>
+                                </td>
+                                <td>{{item.dc.returnNote}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </md-tab>
+                    <md-tab label="{{tab2Label}} [ {{domainEvents.length}} ]">
+                        <md-list class="margin-10">
+                            <md-list-item ng-repeat="de in domainEvents" class="paddingreduce" layout="row"
+                                          layout-align="start center">
+                                <md-icon
+                                        md-font-icon="zmdi zmdi-{{de.status === 'error' ? 'alert-triangle' : (de.status=== 'add') ? 'collection-plus' : 'minus-circle-outline'}}"
+                                        ng-class="de.success ? 'md-primary' : 'md-warn'"></md-icon>
+                                <div class="text-ellipsis scesPadding" nowrap am-time-ago="de.when"></div>
+                                <p class="text-ellipsis scesPadding">{{de.message | translate}} - {{de.code}}</p>
+                            </md-list-item>
+                        </md-list>
+                    </md-tab>
+                    <md-tab label="{{tab3Label}} [ {{domainFiles.length}} ]">
+                        <md-list class="margin-10">
+                            <md-list-item ng-repeat="df in domainFiles" class="paddingreduce" layout="row"
+                                          layout-align="start center">
+                                <md-icon md-font-icon="zmdi zmdi-file"
+                                         ng-class="'md-primary'" ng-click="downloadFile(df)"></md-icon>
+                                <div class="text-ellipsis scesPadding" nowrap am-time-ago="df.when"></div>
+                                <p class="text-ellipsis scesPadding"><b>{{df.fileName}}</b> ({{df.length}})</p>
+                            </md-list-item>
+                        </md-list>
+                    </md-tab>
+                </md-tabs>
+            </div>
+        </div>
+    </div>
+</md-card>
+

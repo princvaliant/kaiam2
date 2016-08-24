@@ -1,0 +1,37 @@
+<md-input-container style="padding-left:25px;width:300px;margin-top:-0px;margin-bottom:-40px;">
+    <label for="search">{{'SCES.SEARCH-TEXT' | translate}}</label>
+    <input type="text" name="search" ng-model="search" aria-label="{{'SCES.SEARCH-TEXT' | translate}}">
+</md-input-container>
+<md-table-container layout-padding>
+    <table md-table class="md-data-table shipout full-height overflow-hidden" md-progress="promise">
+        <thead md-head md-order="tableProps.qsort" md-on-reorder="onOrderChange">
+            <tr md-row>
+                <th md-column ng-repeat="column in columns" md-order-by="{{column.orderBy}}" md-numeric="column.numeric" md-attr-unit="{{column.unit}}" md-attr-descend-first="{{column.descendFirst}}">{{column.title || column.name}}</th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row ng-repeat="domain in domains" ng-click="rowselected(domain)">
+                <td md-cell ng-repeat="column in columns">
+                    <div ng-if="column.orderBy == ''" layout="row">
+                        <md-button class="md-icon-button md-primary" aria-label="{{'VIEW-DOMAIN' | translate}}" href="/sces/{{domain.type}}?id={{domain._id}}">
+                            <md-icon md-font-icon="zmdi zmdi-eye"></md-icon>
+                        </md-button>
+                        <md-button class="md-icon-button md-primary" ng-repeat="action in actions(domain.type)" aria-label="{{action.name}}" href="/sces/{{action.link}}{{domain._id}}">
+                            <md-icon md-font-icon="zmdi zmdi-{{action.icon}}"></md-icon>
+                        </md-button>
+                    </div>
+                    <div ng-if="column.orderBy == 'state.when'">
+                        <div nowrap am-time-ago="domain.state.when"></div>
+                    </div>
+                     <div ng-if="column.orderBy == 'parents'">
+                         <a href="{{getValue(domain.type, column.orderBy, domain)}}">{{domain.parents[0]}}</a>
+                    </div>
+                    <div ng-if="['','state.when','parents'].indexOf(column.orderBy) === -1">
+                        {{getValue(domain.type, column.orderBy, domain)}}
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</md-table-container>
+<md-table-pagination md-page="tableProps.page" md-limit="tableProps.limit" md-total="{{domainsCount}}"></md-table-pagination>
