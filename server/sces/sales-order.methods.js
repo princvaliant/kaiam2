@@ -1,5 +1,8 @@
 'use strict';
 
+import { check } from 'meteor/check';
+
+
 Meteor.methods({
 
   getOpenSalesOrders: function(search) {

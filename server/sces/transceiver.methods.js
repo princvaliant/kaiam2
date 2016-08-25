@@ -1,13 +1,13 @@
 'use strict';
 
-import { check } from 'meteor/check'
+import { check } from 'meteor/check';
+
 
 Meteor.methods({
 
     'addTransceiverToTray': function (snum, tray, adminOverride) {
         check(snum, String);
         ScesDomains.getUser(this.userId);
-
         // Check if this serial number is already assigned
         let domain = ScesDomains.getDomain(snum);
         if (domain && tray.dc.isRma !== true) {
@@ -28,11 +28,11 @@ Meteor.methods({
             });
         if (testsumm) {
             // New 100GB products have all the test status info in testsummary collection
-            if (testsumm.f === 1 && !adminOverride) {
+            if (testsumm.p !== 1 && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
             }
             // Check if successfuly passed through packout
-            let td = Testdata.findOne({
+            let packout = Testdata.findOne({
                 'device.SerialNumber': {
                     $regex: regsnum
                 },
@@ -47,17 +47,54 @@ Meteor.methods({
                     timestamp: -1
                 }
             });
-            if (!td) {
+            if (!packout) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
             }
+            // Custom check for script names
+            let td = Testdata.findOne({
+                'device.SerialNumber': {
+                    $regex: regsnum
+                },
+                type: 'txtests',
+                subtype: 'channeldata',
+                result: {$in: ['OK', 'P']}
+            }, {
+                fields: {
+                    'device.PartNumber': 1,
+                    'meta.ScriptName': 1,
+                    'meta.ScriptVer': 1
+                },
+                sort: {
+                    timestamp: -1
+                }
+            });
+            let tdpf = td.device.PartNumber.substring(0, td.device.PartNumber.length - 2);
+            if (tdpf === 'XQX40') {
+                if ((td.meta.ScriptName.toUpperCase() === 'TESTTUNE' && td.meta.ScriptVer === '10') ||
+                    (td.meta.ScriptName.toUpperCase() === 'FULL' && _.contains(['21', '22', '23'], td.meta.ScriptVer))) {
+                    return ScesDomains.addEvent(tray._id, 'error', 'XQX40** Script name TESTTUNE:10 or FULL:21,22,23 not allowed for shipout', snum);
+                }
+            }
+            if (tdpf === 'XQX41' ) {
+                if (td.meta.ScriptName.toUpperCase() === 'FULL' && td.meta.ScriptVer === '7') {
+                    return ScesDomains.addEvent(tray._id, 'error', 'XQX41** Script name FULL:7 not allowed for shipout', snum);
+                }
+            }
+
             // Check if tranceiver serial number is les than 3000 (< Q3000)
             let num = parseInt(snum.match(/\d+/)[0]);
             if (num < 3000) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-SERIAL-NUMBER-NOT-ALLOWED', snum);
             }
-            // Check if tray part number matches transceiver
-            if (testsumm.pnum !== tray.dc.pnum) {
-                return ScesDomains.addEvent(tray._id, 'error', 'SCES.PART-NUMBER-NO-MATCH', snum);
+            // Check if tray family number matches test family number
+            let s1 = testsumm.pnum.substring(0, testsumm.pnum.length - 2);
+            let s2 = tray.dc.pnum.substring(0, tray.dc.pnum.length - 2);
+            if (s1 !== s2) {
+                return ScesDomains.addEvent(tray._id, 'error', 'Test part family does not match tray part family', snum);
+            }
+            // Check packout partnumber with tray part number
+            if (packout.device.PartNumber !== tray.dc.pnum) {
+                return ScesDomains.addEvent(tray._id, 'error', 'Packout part number does not match tray part number', snum);
             }
             // Check if tray is already full
             let tot = tray.dc.type.split('x');

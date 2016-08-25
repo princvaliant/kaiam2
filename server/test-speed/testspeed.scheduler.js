@@ -3,15 +3,15 @@
  * @type {meteor.startup}
  */
 
-Meteor.startup(function () {
-    SyncedCron.add({
+Meteor.startup (function () {
+    SyncedCron.add ({
         name: 'Calculate test speed for 100GB',
         schedule: function (parser) {
             // parser is a later.parse object
-            return parser.text('every 2 hours');
+            return parser.text ('every 2 hours');
         },
         job: function () {
-            execSpeed();
+            execSpeed ();
             return true;
         }
     });
@@ -19,24 +19,24 @@ Meteor.startup(function () {
 
 
 // For testing in development
-Meteor.methods({
+Meteor.methods ({
     'speedcalc': function () {
         ScesDomains.getUser(this.userId);
-        execSpeed();
+        execSpeed ();
         return true;
     }
 });
 
-function execSpeed() {
+function execSpeed () {
     // Get list of serials that are changed from last compilation
     let serials = getPartsAddedFromLastDate();
     // Get all testdata for pnum from certain date and aggregate by serial number and mid
     processLastTestData(serials);
 }
 
-function processLastTestData(serials) {
+function processLastTestData (serials) {
     // Loop through the test aggregation by serial number and check fail conditions
-    let offset = Math.abs(moment().utcOffset() * 60000);
+    let offset = Math.abs (moment ().utcOffset () * 60000);
     let lastTestAggregation =
         [{
             // Just serials that match
@@ -47,7 +47,7 @@ function processLastTestData(serials) {
                 status: 'P'
             }
         }, {
-            $project: Scheduler.getYieldProject()
+            $project: Scheduler.getYieldProject ()
         }, {
             // First sort by serial, mid and date
             $sort: {
@@ -70,6 +70,9 @@ function processLastTestData(serials) {
                 },
                 rack: {
                     $last: '$rack'
+                },
+                script: {
+                    $last: '$script'
                 }
             }
         }, {
@@ -81,6 +84,7 @@ function processLastTestData(serials) {
             $project: {
                 sn: '$_id.sn',
                 rack: '$rack',
+                script: '$script',
                 day: {
                     $dateToString: {
                         format: '%Y-%m-%d', date: {
@@ -101,6 +105,7 @@ function processLastTestData(serials) {
             $group: {
                 _id: {
                     rack: '$rack',
+                    script: '$script',
                     day: '$day'
                 },
                 time: {
@@ -108,57 +113,55 @@ function processLastTestData(serials) {
                 }
             }
         }];
-    let testSpeed =  Testdata.aggregate(lastTestAggregation);
-
-    insertTestSpeed(testSpeed);
-   
-    console.log('finish latest');
+    let testSpeed = Testdata.aggregate (lastTestAggregation);
+    insertTestSpeed (testSpeed);
+    console.log ('finish testspeed');
 }
 
 
-function insertTestSpeed(data) {
-    _.each(data, (row) => {
-        TestSpeed.upsert({
+function insertTestSpeed (data) {
+    _.each (data, (row) => {
+        TestSpeed.upsert ({
             Rack: row._id.rack,
-            Day: new Date(row._id.day + ' 08:00:00')
+            Day: new Date (row._id.day + ' 08:00:00')
         }, {
             $set: {
                 Time: row.time,
                 Result: 'PASS',
-                Script: '',
+                Script: row._id.script,
                 DUT: ''
             }
         });
     });
 }
 
-function getLastSyncDate(domain) {
-    let syncstart = Syncstart.findOne({domain: domain});
+function getLastSyncDate (domain) {
+    let syncstart = Syncstart.findOne ({domain: domain});
     if (!syncstart) {
-        let date = moment('2016-04-29').toDate();
-        Syncstart.insert({
+        let date = moment ('2016-04-29').toDate ();
+        Syncstart.insert ({
             domain: domain,
             start: date
         });
         return date;
     } else {
-        Syncstart.update({
+        Syncstart.update ({
             domain: domain
         }, {
             $set: {
-                start: moment().toDate()
+                start: moment ().toDate ()
             }
         });
         return syncstart.start;
     }
 }
 
-function getPartsAddedFromLastDate() {
+function getPartsAddedFromLastDate () {
     // Retrieve last sync datetime
-    let lastDate = getLastSyncDate('SPEED_100GB');
+    let lastDate = getLastSyncDate ('SPEED_100GB');
     //let lastDate = moment('2016-05-28').toDate();
     // First return list of serials that are changed from last sync date
-    let list = Testdata.aggregate([{
+    let list = Testdata.aggregate ([{
         $match: {
             'device.PartNumber': 'XQX4000',
             timestamp: {
@@ -171,5 +174,5 @@ function getPartsAddedFromLastDate() {
             cnt: {$sum: 1}
         }
     }]);
-    return _.pluck(list, '_id');
+    return _.pluck (list, '_id');
 }

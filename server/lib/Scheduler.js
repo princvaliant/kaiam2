@@ -109,6 +109,7 @@ Scheduler = {
             rack: '$meta.Rack',
             dut: '$meta.DUT',
             usr: '$meta.User',
+            script: '$meta.ScriptName',
             diff: {
                 $subtract: ['$meta.StartDateTime', '$device.brDate']
             },

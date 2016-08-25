@@ -177,8 +177,8 @@ function themesConfig($mdThemingProvider, triThemingProvider, triSkinsProvider) 
 
     // INDIGO ISLAND SKIN
     triThemingProvider.theme('indigo')
-        .primaryPalette('indigo', {
-            'default': '600'
+        .primaryPalette('blue', {
+            'default': '900'
         })
         .accentPalette('red')
         .warnPalette('lime');
@@ -187,7 +187,7 @@ function themesConfig($mdThemingProvider, triThemingProvider, triSkinsProvider) 
         .sidebarTheme('indigo')
         .toolbarTheme('indigo')
         .logoTheme('indigo')
-        .contentTheme('indigo');
+        .contentTheme('orange');
 
     // KERMIT GREEN SKIN
     triThemingProvider.theme('light-green')
@@ -221,6 +221,6 @@ function themesConfig($mdThemingProvider, triThemingProvider, triSkinsProvider) 
     /**
      *  SET DEFAULT SKIN
      */
-    triSkinsProvider.setSkin('kermit-green');
+    triSkinsProvider.setSkin('indigo-island');
 }
 

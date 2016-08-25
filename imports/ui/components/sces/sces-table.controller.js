@@ -12,78 +12,125 @@ import './sces.service';
  *
  */
 angular.module('kaiamSces').controller('ScesTableController', [
-    '$rootScope', '$q', '$scope', '$meteor', '$cookies', '$mdSidenav', '$location', '$stateParams',
-    '$translate', '$translatePartialLoader', 'ScesService', ($rootScope, $q, $scope, $meteor, $cookies, $mdSidenav, $location, $stateParams,
-                                                             $translate, $translatePartialLoader, ScesService) => {
+    '$q', '$scope', '$meteor', '$cookies', '$mdSidenav', '$location', '$stateParams',
+    '$translate', '$translatePartialLoader', 'ScesService',
+    ($q, $scope, $meteor, $cookies, $mdSidenav, $location, $stateParams,
+     $translate, $translatePartialLoader, ScesService) => {
         // Refresh translator
         $translatePartialLoader.addPart('sces');
         $translate.refresh();
-        let _subscriptionHandle;
+
+        let user = Meteor.user();
+
         let domain = $stateParams.domain;
         let columns = ScesSettings.columnsCommon.concat(ScesSettings.columns[domain]);
         $scope.columns = [{
             name: '',
             orderBy: ''
         }].concat(columns);
-        $scope.fields = _.object(_.pluck(columns, 'orderBy'), [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+        $scope.fields = _.object(_.pluck(columns, 'orderBy'), [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
-        let tabs = ScesService.domainFilters($rootScope.currentUser);
+        let columnDefs = [{
+            name: 'Date',
+            field: 'state.when'
+        }, {
+            name: 'Domain',
+            field: 'type'
+        }, {
+            name: 'State',
+            field: 'state.id'
+        }];
+
+        $scope.gridOptions = {
+            enableFiltering: false,
+            flatEntityAccess: false,
+            showGridFooter: true,
+            fastWatch: true,
+            columnDefs: columnDefs,
+            data: []
+        };
+
+        let tabs = ScesService.domainFilters(user);
         $scope.$parent.selectedTab = tabs.indexOf(domain);
 
         $scope.search = $cookies.get(domain + 'Search');
         // Get list of create actions for current user
-        $scope.createList = ScesService.createList(Meteor.user());
+        $scope.createList = ScesService.createList(user);
         // Default settings for list table
         $scope.tableProps = ScesService.getTableProps(domain);
 
-        $meteor.autorun($scope, function () {
-            $cookies.put(domain + 'Search', $scope.getReactively('search'));
-            if (domain === 'transceiver') {
-                $scope.domainsCount = 100000;
-            } else {
-                $meteor.call('getDomainsCount', $scope.search, domain).then(
-                    (count) => {
-                        $scope.domainsCount = count;
-                        if (count < $scope.tableProps.page * $scope.tableProps.limit) {
-                            $scope.tableProps.page = 1;
-                        }
-                    }
-                );
-            }
-        });
 
-        // Reactive data retrieval (subscription) from server
-        $meteor.autorun($scope, function () {
-            if (_subscriptionHandle) {
-                _subscriptionHandle.stop();
-            }
-            $cookies.put(domain + 'Search', $scope.getReactively('search'));
-            $cookies.put(domain + 'Limit', $scope.getReactively('tableProps.limit'));
-            $cookies.put(domain + 'Page', $scope.getReactively('tableProps.page'));
-            $cookies.putObject(domain + 'Sort', $scope.getReactively('tableProps.sort'));
-
-            $scope.$meteorSubscribe('domains', {
+        $scope.subscribe('domains', () => {
+            return [{
                 fields: $scope.getReactively('fields'),
-                limit: parseInt($scope.getReactively('tableProps.limit'), 10),
-                skip: parseInt(($scope.getReactively('tableProps.page') - 1) * $scope.getReactively('tableProps.limit'), 10),
+                limit: 500,
+                skip: 0,
                 sort: $scope.getReactively('tableProps.sort')
-            }, $scope.getReactively('search'), domain).then(function (subscriptionHandle) {
-                _subscriptionHandle = subscriptionHandle;
-                $scope.domains = Domains.find({}, {
-                    sort: $scope.getReactively('tableProps.sort')
-                }).fetch();
-                if (domain === 'salesOrder') {
-                    _.each($scope.domains, function(so) {
-                        $meteor.call('getShippedQty', so._id, so.state.when).then(
-                            function(count) {
-                                //   so.dc['Quantity Open'] = so.dc['Quantity Open'] - count;
-                                so.dc['Quantity Open'] = so.dc['Qty Ordered'] - count;
-
-                            });
-                    });
-                }
-            });
+            },
+                $scope.getReactively('search'),
+                domain];
         });
+        $scope.helpers({
+            domainlist: () => {
+                return Domains.find({type: domain}, {
+                    sort: $scope.getReactively('tableProps.sort')
+                });
+            }
+        });
+        $scope.autorun(() => {
+            let s = $scope.getReactively('domainlist');
+            $scope.gridOptions.data = s;
+        });
+
+
+        // $meteor.autorun($scope, function () {
+        //     $cookies.put(domain + 'Search', $scope.getReactively('search'));
+        //     if (domain === 'transceiver') {
+        //         $scope.domainsCount = 100000;
+        //     } else {
+        //         $meteor.call('getDomainsCount', $scope.search, domain).then(
+        //             (count) => {
+        //                 $scope.domainsCount = count;
+        //                 if (count < $scope.tableProps.page * $scope.tableProps.limit) {
+        //                     $scope.tableProps.page = 1;
+        //                 }
+        //             }
+        //         );
+        //     }
+        // });
+        //
+        // // Reactive data retrieval (subscription) from server
+        // $meteor.autorun($scope, function () {
+        //     if (_subscriptionHandle) {
+        //         _subscriptionHandle.stop();
+        //     }
+        //     $cookies.put(domain + 'Search', $scope.getReactively('search'));
+        //     $cookies.put(domain + 'Limit', $scope.getReactively('tableProps.limit'));
+        //     $cookies.put(domain + 'Page', $scope.getReactively('tableProps.page'));
+        //     $cookies.putObject(domain + 'Sort', $scope.getReactively('tableProps.sort'));
+        //
+        //     $scope.$meteorSubscribe('domains', {
+        //         fields: $scope.getReactively('fields'),
+        //         limit: parseInt($scope.getReactively('tableProps.limit'), 10),
+        //         skip: parseInt(($scope.getReactively('tableProps.page') - 1) * $scope.getReactively('tableProps.limit'), 10),
+        //         sort: $scope.getReactively('tableProps.sort')
+        //     }, $scope.getReactively('search'), domain).then(function (subscriptionHandle) {
+        //         _subscriptionHandle = subscriptionHandle;
+        //         $scope.domains = Domains.find({}, {
+        //             sort: $scope.getReactively('tableProps.sort')
+        //         }).fetch();
+        //         if (domain === 'salesOrder') {
+        //             _.each($scope.domains, function (so) {
+        //                 $meteor.call('getShippedQty', so._id, so.state.when).then(
+        //                     function (count) {
+        //                         //   so.dc['Quantity Open'] = so.dc['Quantity Open'] - count;
+        //                         so.dc['Quantity Open'] = so.dc['Qty Ordered'] - count;
+        //
+        //                     });
+        //             });
+        //         }
+        //     });
+        // });
 
         $scope.actions = function (domainType) {
             return ScesSettings.actions[domainType];

@@ -59,6 +59,6 @@ angular.module('kaiamAuthentication')
     // controller to handle login check
     $scope.updateSettingsClick = function() {
         // TODO:probably display a toast here.
-        $state.go('admin-panel.default.profile');
+        $state.go('triangular.profile');
     };
 }]);

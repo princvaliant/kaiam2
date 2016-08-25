@@ -1,3 +1,5 @@
+import { check } from 'meteor/check';
+
 ScesDomains = {
 
   // Create domain object

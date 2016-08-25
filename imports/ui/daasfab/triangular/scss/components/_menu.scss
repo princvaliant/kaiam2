@@ -15,12 +15,12 @@ ng-md-icon {
 .os-windows side-menu, .os-windows md-content {
   &::-webkit-scrollbar {
     width: 8px;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     transition: all .2s
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 0px;
-    background: rgba(0,0,0,0.15);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     transition: all .2s
   }
@@ -49,9 +49,9 @@ ng-md-icon {
   position: relative;
   z-index: 2;
   box-shadow: none !important;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   &:hover, &:focus {
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
   .uppercase-all & {
     text-transform: uppercase;
@@ -60,17 +60,24 @@ ng-md-icon {
     text-transform: uppercase;
   }
   .uppercase-top-level .drop-down-list & {
-      text-transform: none;
+    text-transform: none;
   }
 }
+
 .side-menu-icon[md-font-icon], .menu-toggle-icon[md-font-icon] {
   height: 100%;
   line-height: inherit;
   font-size: 1.5rem;
 }
+
 .side-menu-icon[md-font-icon] {
   width: 24px;
 }
+
+.side-menu-icon {
+  fill: #fff;
+}
+
 .menu-toggle-icon {
   text-align: center;
   float: right;
@@ -80,7 +87,6 @@ ng-md-icon {
   }
 }
 
-
 // Side menu Badges
 .side-menu-badge {
   border-radius: 8px;
@@ -89,7 +95,6 @@ ng-md-icon {
   line-height: 1.2;
   margin-top: 11px;
 }
-
 
 // Side menu levels
 .drop-down-list {
@@ -113,11 +118,11 @@ ng-md-icon {
   }
   &:before {
     top: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
   }
   &:after {
     bottom: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
   }
   .drop-down-list &:before, .drop-down-list &:after {
     display: none;
@@ -144,7 +149,6 @@ ng-md-icon {
     }
   }
 }
-
 
 // Multiple levels
 $submenu-overlay: #999999;
@@ -216,7 +220,7 @@ $submenu-overlay: #999999;
 
 // Logo
 .sidebar-left-toolbar {
-  box-shadow: 0px 1px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.12);
   z-index: 10;
 }
 

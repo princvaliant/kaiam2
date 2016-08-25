@@ -1,13 +1,15 @@
-<div layout="row">
-    <div layout-padding>
-        {{'MENU.SETTINGS.MANAGE-REWORK-CODES' | translate}}
+<div class="spc-container" layout-padding>
+    <div layout="row">
+        <div layout-padding>
+            {{'MENU.SETTINGS.MANAGE-REWORK-CODES' | translate}}
+        </div>
+        <span flex></span>
+        <md-button ng-click="addClick()">
+            <md-icon md-font-icon="icon-add"></md-icon>
+            Add
+        </md-button>
     </div>
-    <span flex></span>
-    <md-button ng-click="addClick()">
-        <md-icon md-font-icon="icon-add"></md-icon>
-        Add
-    </md-button>
+    <div ui-grid="gridOptions" ui-grid-edit ui-grid-importer ui-grid-resize-columns ui-grid-move-columns
+         ui-grid-save-state ui-grid-auto-resize
+         style="position:absolute;height:auto;top:0;left:0;right:0;bottom:0"></div>
 </div>
-<div ui-grid="gridOptions" ui-grid-edit ui-grid-importer ui-grid-resize-columns ui-grid-move-columns
-     ui-grid-save-state ui-grid-auto-resize
-     style="position:absolute;height:auto;top:0;left:0;right:0;bottom:0"></div>

@@ -43,7 +43,7 @@ angular.module('kaiamTransceiverView')
             if (user && !user.profile.isClient && _.contains(user.profile.roles, 'DASHBOARD_ACCESS')) {
                 triMenu.addMenu({
                     type: 'link',
-                    name: 'MENU.TRANSCEIVER-VIEW.TRANSCEIVER-VIEW',
+                    name: 'MENU.TRANSCEIVERVIEW.TRANSCEIVERVIEW',
                     state: 'triangular.transceiverview',
                     icon: 'perm_device_information',
                     priority: 6.1

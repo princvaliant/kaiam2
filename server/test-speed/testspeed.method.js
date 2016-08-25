@@ -67,6 +67,7 @@ Meteor.methods({
             }
         }];
         if (device === '100GB') {
+            aggr[0].$match.$and.push({Script: 'Full'});
             return TestSpeed.aggregate(aggr);
         } else {
             return TestSpeedV.aggregate(aggr);

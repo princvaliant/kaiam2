@@ -37,6 +37,7 @@ import '../components/settings/settings.config';
 import '../components/charts/charts.run';
 import '../components/export-data/export-data.config';
 import '../components/transceiver-view/transceiver-view.config';
+import '../components/sces/sces.run';
 
 const name = 'daasfab';
 
@@ -74,17 +75,18 @@ export default angular.module(name, [
     'app.translate',
     'app.permission',
 
-     // Kaiam modules
+    // Kaiam modules
     'kaiamAuthentication',
     'kaiamDashboard',
     'kaiamSettings',
     'kaiamCharts',
     'kaiamExportData',
-    'kaiamTransceiverView'
+    'kaiamTransceiverView',
+    'kaiamSces'
 ]);
-
 angular.module(name)
     .constant('API_CONFIG', {
         'url': 'http://daasfab/'
     });
+
 
