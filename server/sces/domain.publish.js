@@ -1,8 +1,9 @@
 'use strict';
 
-Meteor.publish('domains', function (options, search, filter) {
+Meteor.publish('domains', function (options, search, domain) {
     ScesDomains.isLoggedIn(this.userId);
-    let query = ScesDomains.constructQuery(this.userId, search, filter);
+    console.log(domain);
+    let query = ScesSettings.constructQuery(Meteor.users.findOne(this.userId), search, domain);
     let ret = Domains.find(
         query,
         options);

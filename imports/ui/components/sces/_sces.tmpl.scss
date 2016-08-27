@@ -1,3 +1,13 @@
+.full-container {
+    position: absolute;
+    overflow:none !important;
+    height:98% !important;
+    width: 100% !important;
+    [layout-margin] {
+        margin: 0px;
+    }
+}
+
 .shipout {
     .status {
         padding: 8px 14px;
@@ -273,32 +283,22 @@ table.md-data-table-view {
     display: block;
 }
 
-.sces-content-tables.ng-enter,
-.sces-content-tables.ng-leave
-{
-    -webkit-transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-    -moz-transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-    -ms-transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-    -o-transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-    transition: 750ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-    position: relative;
-    display: block;
-}
-
-.sces-content-tables.ng-enter.ng-enter-active,
-.sces-content-tables.ng-leave {
-    opacity: 1;
-    right: 0;
-    height: 30px;
-}
-
-.sces-content-tables.ng-leave.ng-leave-active,
 .sces-content-tables.ng-enter {
-    opacity: 0;
-    right: -50px;
-    height: 0px;
+    transition:1.0s linear all;
+    opacity:0;
 }
 
+/* The finishing CSS styles for the enter animation */
+.sces-content-tables.ng-enter.ng-enter-active {
+    opacity:1;
+}
+.sces-content-tables.ng-leave {
+    transition:1.0s linear all;
+    opacity:1;
+}
+.sces-content-tables.ng-leave.ng-leave-active {
+    opacity:0;
+}
 
 .sces-content.ng-enter,
 .sces-content.ng-leave {
@@ -330,5 +330,4 @@ table.md-data-table-view {
     -o-transform: rotateX(0deg) translatez(30px);
     transform: rotateX(0deg) translatez(30px);
     opacity: 1;
-    height: 200px;
 }

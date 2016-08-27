@@ -12,7 +12,7 @@ function config(triSettingsProvider, triRouteProvider) {
     // set app name & logo (used in loader, sidemenu, footer, login pages, etc)
     triSettingsProvider.setName('');
     triSettingsProvider.setCopyright('&copy;' + now.getFullYear() + ' daasfab.com');
-    triSettingsProvider.setLogo('assets/images/logo.png');
+    triSettingsProvider.setLogo('/assets/images/logo.png');
     // set current version of app (shown in footer)
     triSettingsProvider.setVersion('2.7.1');
     // set the document title that appears on the browser tab

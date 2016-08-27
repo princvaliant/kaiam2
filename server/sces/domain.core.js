@@ -112,29 +112,6 @@ ScesDomains = {
     return user;
   },
 
-  // Get role query for view based on logged in user
-  getRoleQuery: function(uid) {
-    check(uid, String);
-    let ret = {
-      '$or': []
-    };
-    let user = this.isLoggedIn(uid);
-    _.each(ScesSettings.domains, (domain) => {
-      for (let step in domain) {
-        if (step !== '_start' && domain[step].hasOwnProperty('roles')) {
-          let roles = domain[step].roles.v;
-          if (_.intersection(user.profile.roles, roles).length > 0) {
-            ret.$or.push({
-              type: domain.type,
-              'state.id': step
-            });
-          }
-        }
-      }
-    });
-    return ret;
-  },
-
   // Get domain object based on _id
   getDomain: function(id) {
     check(id, String);
@@ -166,30 +143,5 @@ ScesDomains = {
       code: code
     });
     return message;
-  },
-
-  constructQuery: function(userId, search, domainFilter) {
-    let rq = this.getRoleQuery(userId);
-    let query = {
-      '$and': [rq]
-    };
-    if (domainFilter !== null && domainFilter.trim() !== '') {
-      query.$and.push({
-        type: domainFilter
-      });
-    }
-    let regexp = new RegExp('^' + search, 'i');
-    if (search !== null && search.trim() !== '') {
-      query.$and.push({
-        $or: [{
-          '_id': regexp
-        }, {
-          'tags': regexp
-        }, {
-          'state.movedBy': regexp
-        }]
-      });
-    }
-    return query;
   }
 };

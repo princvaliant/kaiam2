@@ -17,11 +17,5 @@ angular.module('kaiamSces').controller('ScesTabController', [
         $translatePartialLoader.addPart('sces');
         $translate.refresh();
         // Get list of tabs
-        $scope.$watch('selectedTab', function (current) {
-            $cookies.put('scesSelectedTab', current);
-            $state.go('triangular.sces.tab.' + $scope.tabs[current]);
-        });
-        $scope.selectedTab = $cookies.get('scesSelectedTab') || '0';
-        $scope.tabs = ScesService.domainFilters(Meteor.user());
     }
 ]);

@@ -1,17 +1,9 @@
-<div class="spc-container" layout-padding>
+<div layout-padding class="full-container" layout="column">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <md-button class="md-primary md-raised" aria-label="button" href="/sces/scan">
                 <md-icon md-font-icon="zmdi zmdi-remote-control-alt"></md-icon>
                 <span>{{'SCES.SCAN-FIND' | translate}}</span>
-            </md-button>
-            <md-button class="md-primary md-raised" aria-label="button" ng-click="browseClicked()">
-                <md-icon md-font-icon="zmdi zmdi-search-in-page"></md-icon>
-                <span>{{'SCES.BROWSE-TEXT' | translate}}</span>
-            </md-button>
-            <md-button class="md-primary md-raised" aria-label="button" href="/sces/salesOrder?id=">
-                <md-icon md-font-icon="zmdi zmdi-money-box"></md-icon>
-                <span>{{'SCES.UPLOAD-SALES-ORDERS' | translate}}</span>
             </md-button>
             <md-button class="md-primary md-raised" aria-label="button" href="/sces/tray?id=">
                 <md-icon md-font-icon="zmdi zmdi-inbox"></md-icon>
@@ -28,5 +20,5 @@
             <span flex></span>
         </div>
     </md-toolbar>
-    <div ui-view="contentsces" class="sces-content" flex></div>
+    <div ui-view="contentsces" class="sces-content" flex="100"></div>
 </div>

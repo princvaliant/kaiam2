@@ -2,46 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/charts/spcs.method.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/charts/trend.method.js" afterPath="$PROJECT_DIR$/server/charts/trend.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/images/backgrounds/material-backgrounds/mb-bg-09.jpg" afterPath="$PROJECT_DIR$/public/assets/images/backgrounds/material-backgrounds/mb-bg-09.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/sces/view-button.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/packages/count-up/count-up.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/packages/count-up/package.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/packages/data-table/data-table.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/packages/data-table/data-table.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/packages/data-table/package.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/kaiam2.iml" afterPath="$PROJECT_DIR$/.idea/kaiam2.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles.scss" afterPath="$PROJECT_DIR$/client/styles.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/authentication/login/login.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/authentication/login/login.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/authentication/profile/profile.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/authentication/profile/profile.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss" afterPath="$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/packout-charts.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/charts/packout-charts.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/spc-charts.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/charts/spc-charts.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/yield-check.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/charts/yield-check.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/release" afterPath="$PROJECT_DIR$/.meteor/release" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" afterPath="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.tmpl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.config.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.run.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.run.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/settings/companies.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/settings/companies.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/settings/edit-button.html" afterPath="$PROJECT_DIR$/imports/ui/components/settings/edit-button.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/settings/rework-codes.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/settings/rework-codes.tmpl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/settings/users.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/settings/users.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.config.js" afterPath="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/config.triangular.settings.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/config.triangular.settings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/config.triangular.themes.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/config.triangular.themes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/layouts/footer/footer.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/daasfab/layouts/footer/footer.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/triangular/scss/components/_menu.scss" afterPath="$PROJECT_DIR$/imports/ui/daasfab/triangular/scss/components/_menu.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/triangular/components/widget/widget.directive.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/triangular/components/widget/widget.directive.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/triangular/triangular.config.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/triangular/triangular.config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/sces-settings.js" afterPath="$PROJECT_DIR$/lib/sces-settings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/ui-grid/custom.css" afterPath="$PROJECT_DIR$/packages/ui-grid/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/i18n/transceiver/en.json" afterPath="$PROJECT_DIR$/public/i18n/transceiver/en.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/loss.method.js" afterPath="$PROJECT_DIR$/server/charts/loss.method.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/spcs.publish.js" afterPath="$PROJECT_DIR$/server/charts/spcs.publish.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/yields.method.js" afterPath="$PROJECT_DIR$/server/charts/yields.method.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/lib/Scheduler.js" afterPath="$PROJECT_DIR$/server/lib/Scheduler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/i18n/sces/en.json" afterPath="$PROJECT_DIR$/public/i18n/sces/en.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/custtrans/custtrans.publish.js" afterPath="$PROJECT_DIR$/server/custtrans/custtrans.publish.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/domain.core.js" afterPath="$PROJECT_DIR$/server/sces/domain.core.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/domain.methods.js" afterPath="$PROJECT_DIR$/server/sces/domain.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/sales-order.methods.js" afterPath="$PROJECT_DIR$/server/sces/sales-order.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/shipment.methods.js" afterPath="$PROJECT_DIR$/server/sces/shipment.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/transceiver.methods.js" afterPath="$PROJECT_DIR$/server/sces/transceiver.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/test-speed/testspeed.method.js" afterPath="$PROJECT_DIR$/server/test-speed/testspeed.method.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/test-speed/testspeed.scheduler.js" afterPath="$PROJECT_DIR$/server/test-speed/testspeed.scheduler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/domain.publish.js" afterPath="$PROJECT_DIR$/server/sces/domain.publish.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
@@ -56,14 +56,121 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="dashboard.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sces-table.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="97" column="30" selection-start-line="93" selection-start-column="22" selection-end-line="97" selection-end-column="30" />
+              <folding>
+                <element signature="e#15#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="domain.methods.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/sces/domain.methods.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="22" column="38" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sces-settings.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/sces-settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="77">
+              <caret line="404" column="53" selection-start-line="404" selection-start-column="53" selection-end-line="404" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="release" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.meteor/release">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="versions" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.meteor/versions">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sces.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="910">
+              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit-button.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/edit-button.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#md-button#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view-button.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/view-button.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#md-button#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sces.tmpl.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="24" selection-start-line="7" selection-start-column="10" selection-end-line="10" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -79,28 +186,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver.module.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver.config.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/transceiver-view/gallery-dialog.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/transceiver-view/gallery-dialog.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.scss" />
-        <option value="$PROJECT_DIR$/../kaiamd_dev/mup.json" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.module.js" />
-        <option value="$PROJECT_DIR$/client/styles.scss" />
-        <option value="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.config.js" />
-        <option value="$PROJECT_DIR$/public/i18n/transceiver/en.json" />
-        <option value="$PROJECT_DIR$/imports/ui/daasfab/triangular/scss/components/_menu.scss" />
-        <option value="$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/packout-charts.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/spc-charts.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/yield-check.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/daasfab/config.triangular.themes.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.config.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-order.controller.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-rma.controller.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-transceiver.controller.js" />
@@ -109,27 +198,45 @@
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.controller.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-ship.controller.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js" />
         <option value="$PROJECT_DIR$/server/sces/transceiver.methods.js" />
-        <option value="$PROJECT_DIR$/server/sces/domain.core.js" />
         <option value="$PROJECT_DIR$/server/sces/sales-order.methods.js" />
         <option value="$PROJECT_DIR$/server/sces/shipment.methods.js" />
-        <option value="$PROJECT_DIR$/server/sces/domain.methods.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html" />
-        <option value="$PROJECT_DIR$/packages/ui-grid/custom.css" />
-        <option value="$PROJECT_DIR$/imports/ui/components/settings/companies.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/settings/users.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/settings/rework-codes.tmpl.html" />
-        <option value="$PROJECT_DIR$/lib/sces-settings.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/authentication/login/login.controller.js" />
         <option value="$PROJECT_DIR$/imports/ui/daasfab/layouts/footer/footer.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/daasfab/config.triangular.settings.js" />
+        <option value="$PROJECT_DIR$/imports/ui/daasfab/triangular/triangular.config.js" />
+        <option value="$PROJECT_DIR$/imports/ui/daasfab/config.triangular.themes.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss" />
+        <option value="$PROJECT_DIR$/imports/ui/daasfab/triangular/components/widget/widget.directive.js" />
         <option value="$PROJECT_DIR$/.meteor/packages" />
         <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.tmpl.html" />
+        <option value="$PROJECT_DIR$/packages/ui-grid/custom.css" />
+        <option value="chrome-extension://djcfdncoelnlbldjfhinnjlhdjlikmph/highcontrast.js" />
+        <option value="$PROJECT_DIR$/public/i18n/sces/en.json" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.config.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.run.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/settings/rework-codes.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" />
+        <option value="$PROJECT_DIR$/imports/ui/components/settings/companies.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/settings/users.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.tmpl.html" />
+        <option value="$PROJECT_DIR$/server/sces/domain.core.js" />
+        <option value="$PROJECT_DIR$/.meteor/local/build/programs/server/app/app.js" />
+        <option value="$PROJECT_DIR$/server/custtrans/custtrans.publish.js" />
+        <option value="localhost:3000/app/app.js?hash=99995295a4a7b253299728c21008f1cf541a5e69" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html" />
+        <option value="$PROJECT_DIR$/server/sces/domain.publish.js" />
+        <option value="$PROJECT_DIR$/server/sces/domain.methods.js" />
+        <option value="chrome-extension://bmnlcjabgnpnenekpadlanbbkooimhnj/h1.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/view-button.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/settings/edit-button.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/daasfab/triangular/triangular.config.js" />
+        <option value="$PROJECT_DIR$/lib/sces-settings.js" />
       </list>
     </option>
   </component>
@@ -149,10 +256,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-980" />
-    <option name="y" value="-1408" />
-    <option name="width" value="1492" />
-    <option name="height" value="1353" />
+    <option name="x" value="1580" />
+    <option name="y" value="-837" />
+    <option name="width" value="1416" />
+    <option name="height" value="1325" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -180,6 +287,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -226,7 +334,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test-speed" />
+              <option name="myItemId" value="sces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -240,11 +348,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec-actions" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -258,11 +362,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="settings" />
+              <option name="myItemId" value="i18n" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -276,7 +380,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="i18n" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -294,10 +402,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -312,233 +416,115 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daasfab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="settings" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dashboard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daasfab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daasfab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="triangular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daasfab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daasfab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toolbar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daasfab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="footer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="settings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -578,17 +564,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value=".meteor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/imports/ui/components/sces" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/web templates/themeforest/source/src/app/examples/dashboards/analytics/dashboard-analytics.controller.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="enabled" />
     <property name="js.meteor.project" value="true" />
@@ -624,19 +623,19 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/imports/ui/components/sces" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/transceiver-view" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/export-data" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/charts" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/settings" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/imports/ui/components/sces" />
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/imports/ui/components" />
       <recent name="$PROJECT_DIR$/imports/ui/components/transceiver-view" />
       <recent name="$PROJECT_DIR$/imports/ui/components/export-data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/imports/ui/components/sces" />
+      <recent name="$PROJECT_DIR$/imports/ui/components/transceiver-view" />
+      <recent name="$PROJECT_DIR$/imports/ui/components/export-data" />
+      <recent name="$PROJECT_DIR$/imports/ui/components/charts" />
+      <recent name="$PROJECT_DIR$/imports/ui/components/settings" />
     </key>
   </component>
   <component name="RunManager" selected="Meteor.Meteor Dev Debug">
@@ -878,7 +877,11 @@
       <workItem from="1471988548803" duration="6069000" />
       <workItem from="1472009819598" duration="1593000" />
       <workItem from="1472062316712" duration="3367000" />
-      <workItem from="1472065751696" duration="16898000" />
+      <workItem from="1472065751696" duration="16917000" />
+      <workItem from="1472095796435" duration="1984000" />
+      <workItem from="1472145663062" duration="1948000" />
+      <workItem from="1472174713685" duration="8739000" />
+      <workItem from="1472246053634" duration="22433000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1465419582807</created>
@@ -971,27 +974,41 @@
       <option name="project" value="LOCAL" />
       <updated>1472074908211</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="- Moving to new meteor 1.4.1  (supply chain module improvement)">
+      <created>1472086526214</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1472086526214</updated>
+    </task>
+    <task id="LOCAL-00015" summary="- Moving to new meteor 1.4.1  (supply chain module improvement)">
+      <created>1472279546037</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1472279546037</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246045000" />
+    <option name="totallyTimeSpent" value="281168000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-980" y="-1408" width="1492" height="1353" extended-state="0" />
+    <frame x="1580" y="-837" width="1416" height="1325" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22705643" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25878137" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30610627" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3138686" sideWeight="0.50537634" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3049473" sideWeight="0.49462366" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.51544404" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858416" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884097" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24583663" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24528302" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29421094" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3138686" sideWeight="0.49462366" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1058,354 +1075,57 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="325" />
+      <option name="time" value="371" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.methods.js">
+    <entry file="file://$USER_HOME$/Documents/web templates/themeforest/source/src/app/examples/dashboards/analytics/dashboard-analytics.tmpl.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        <state relative-caret-position="915">
+          <caret line="61" column="21" selection-start-line="48" selection-start-column="7" selection-end-line="61" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/count-up/package.js" />
+    <entry file="file://$PROJECT_DIR$/packages/count-up/count-up.js" />
+    <entry file="file://$PROJECT_DIR$/.meteor/packages">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/sales-order.methods.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+        <state relative-caret-position="480">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/shipment.methods.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/countup-angularjs-directive/dist/countup-angularjs-directive.min.js" />
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+        <state relative-caret-position="345">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/domain.methods.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.tmpl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/packout-charts.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/images/backgrounds/material-backgrounds/images.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/images/backgrounds/material-backgrounds/mb-bg-09.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/..js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding>
-            <element signature="e#16#46#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/packages/ui-grid/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="356" column="39" selection-start-line="356" selection-start-column="39" selection-end-line="356" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/data-table/data-table.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19493">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/data-table/data-table.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4485">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/users.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/sces-settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="321" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/packout-charts.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="40" column="0" selection-start-line="31" selection-start-column="7" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/authentication/resetpassword/resetpassword.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/authentication/login/login.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="33" column="55" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/footer/footer.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/footer/footer.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/users.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-630">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/companies.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/companies.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="49" column="41" selection-start-line="48" selection-start-column="12" selection-end-line="49" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/rework-codes.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="76" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="76" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/domain.publish.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/domain.core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="177" column="26" selection-start-line="177" selection-start-column="7" selection-end-line="177" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="30" column="51" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tab.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2640">
-          <caret line="176" column="21" selection-start-line="176" selection-start-column="21" selection-end-line="176" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-batchrequest.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
-          <folding>
-            <element signature="e#15#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/packages">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/users.publish.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/test-summary.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="997">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#30#0" expanded="false" />
-            <element signature="e#1126#1183#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/spc-charts.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/settings.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/settings.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/charts.run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="128" selection-end-column="15" />
+          <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1418,10 +1138,170 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.service.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/charts.run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="61" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/charts.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/i18n/sces/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="676">
+          <caret line="85" column="27" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+          <folding>
+            <element signature="e#15#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/settings.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/companies.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/user.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/rework-codes.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="58" selection-start-line="0" selection-start-column="58" selection-end-line="0" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/packout-charts.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-transceiver.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+          <folding>
+            <element signature="e#15#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tray.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tab.tmpl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="135" column="38" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="45" />
           <folding>
             <marker date="1460583133000" expanded="true" signature="2592:2783" ph="..." />
             <marker date="1460583133000" expanded="true" signature="2814:3004" ph="..." />
@@ -1430,57 +1310,935 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js">
+    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/server/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+        <state relative-caret-position="276">
+          <caret line="5731" column="0" selection-start-line="5731" selection-start-column="0" selection-end-line="5731" selection-end-column="0" />
+          <folding>
+            <marker date="1472274481000" expanded="true" signature="1064:26748" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="1165:1290" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="1409:1534" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="1899:2022" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="3019:3142" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="4665:4788" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="4874:5057" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="5244:5425" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="5534:5657" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="5793:6073" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="6182:6305" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="6425:6688" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="6797:6920" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="7054:7335" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="7444:7567" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="7708:8005" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="8114:8237" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="8378:8675" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="8784:8907" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="9048:9345" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="9454:9577" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="9703:9856" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="10242:24655" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="10369:24051" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="10573:10699" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="10739:23447" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="11115:23330" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="11225:12203" ph="{&quot;device.SerialNumber&quot;: sn...}" />
+            <marker date="1472274481000" expanded="true" signature="12802:13073" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="13170:13293" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="13436:13709" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="13806:13929" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="14374:16414" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="14419:16297" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="15050:15293" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="15299:15551" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="16769:17042" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="17139:17262" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="17416:17684" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="17781:17904" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="18045:18313" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="18410:18533" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="18688:18961" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="19058:19181" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="19336:19609" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="19706:19829" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="19984:20257" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="20354:20477" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="20579:22358" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="20640:22241" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="21050:21624" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="21177:21507" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="22986:23213" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="23728:23934" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="24328:24538" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="24973:26631" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="25076:25276" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="25451:25647" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="25756:25879" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="26023:26389" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="27017:57371" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="27020:27745" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="27758:57128" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="27864:27989" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="28020:28975" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="28259:28858" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="28403:28618" ph="{&quot;services.email.verificationTokens.token&quot;: userToken...}" />
+            <marker date="1472274481000" expanded="true" signature="29252:31065" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="29479:29717" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="29972:30210" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="30463:30703" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="30709:30948" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="31345:46244" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="31449:42652" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="31450:31683" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="31685:32545" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="31816:32428" ph="{&quot;from&quot;: 'saractions'...}" />
+            <marker date="1472274481000" expanded="true" signature="32547:32790" ph="{&quot;$unwind&quot;: '$actions'...}" />
+            <marker date="1472274481000" expanded="true" signature="32792:33280" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="32921:33163" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="33282:34638" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="33414:34521" ph="{&quot;name&quot;: '$name'...}" />
+            <marker date="1472274481000" expanded="true" signature="34640:35500" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="34771:35383" ph="{&quot;from&quot;: 'saractionparams'...}" />
+            <marker date="1472274481000" expanded="true" signature="35502:36114" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="35633:35997" ph="{&quot;path&quot;: '$actionparams'...}" />
+            <marker date="1472274481000" expanded="true" signature="36116:36604" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="36245:36487" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="36606:38945" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="36736:38828" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="36861:37105" ph="{&quot;action&quot;: '$actionId'...}" />
+            <marker date="1472274481000" expanded="true" signature="38101:38711" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="38228:38594" ph="{&quot;name&quot;: '$actionparams.name'...}" />
+            <marker date="1472274481000" expanded="true" signature="38947:39435" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="39076:39318" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="39437:41413" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="39567:41296" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="39692:40312" ph="{&quot;name&quot;: '$name'...}" />
+            <marker date="1472274481000" expanded="true" signature="40440:41179" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="40568:41062" ph="{&quot;action&quot;: '$action'...}" />
+            <marker date="1472274481000" expanded="true" signature="41415:42651" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="41547:42534" ph="{&quot;name&quot;: '$_id.name'...}" />
+            <marker date="1472274481000" expanded="true" signature="43048:46002" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="43813:45885" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="44189:45393" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="44305:45276" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="44587:44788" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="44811:45034" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="46357:46480" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="46520:57011" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="46629:56770" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="46630:46865" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="46867:47732" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="46998:47615" ph="{&quot;from&quot;: 'sarspecs'...}" />
+            <marker date="1472274481000" expanded="true" signature="47734:47978" ph="{&quot;$unwind&quot;: '$specs'...}" />
+            <marker date="1472274481000" expanded="true" signature="47980:49220" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="48112:49103" ph="{&quot;name&quot;: '$name'...}" />
+            <marker date="1472274481000" expanded="true" signature="49222:50087" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="49353:49970" ph="{&quot;from&quot;: 'sarspecranges'...}" />
+            <marker date="1472274481000" expanded="true" signature="50089:50333" ph="{&quot;$unwind&quot;: '$specranges'...}" />
+            <marker date="1472274481000" expanded="true" signature="50335:51071" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="50465:50954" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="50606:50837" ph="{&quot;$ne&quot;: ''...}" />
+            <marker date="1472274481000" expanded="true" signature="51073:53426" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="51203:53309" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="51329:51825" ph="{&quot;type&quot;: '$type'...}" />
+            <marker date="1472274481000" expanded="true" signature="52453:53192" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="52581:53075" ph="{&quot;name&quot;: '$specranges.param'...}" />
+            <marker date="1472274481000" expanded="true" signature="53428:55531" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="53558:55414" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="53684:54305" ph="{&quot;name&quot;: '$name'...}" />
+            <marker date="1472274481000" expanded="true" signature="54432:55297" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="54561:55180" ph="{&quot;type&quot;: '$_id.type'...}" />
+            <marker date="1472274481000" expanded="true" signature="55533:56769" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="55665:56652" ph="{&quot;name&quot;: '$_id.name'...}" />
+            <marker date="1472274481000" expanded="true" signature="57404:75694" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="57407:58132" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="58251:58497" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="58510:75451" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="58616:58741" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="58800:61126" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="59410:59755" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="59761:60027" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="60435:61009" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="60663:60892" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="61433:63626" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="62035:62259" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="62265:62523" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="62935:63509" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="63163:63392" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="63915:68036" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="64002:67919" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="64129:67803" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="64130:65352" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="64256:65236" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="64257:64745" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="64400:64628" ph="{&quot;$regex&quot;: '^XQX2'...}" />
+            <marker date="1472274481000" expanded="true" signature="64747:65235" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="64890:65118" ph="{&quot;$regex&quot;: '^XQX3'...}" />
+            <marker date="1472274481000" expanded="true" signature="65354:65842" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="65487:65725" ph="{&quot;$gt&quot;: 'DATEFILTER'...}" />
+            <marker date="1472274481000" expanded="true" signature="65844:66332" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="65974:66215" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="66334:66822" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="66476:66705" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="66824:67312" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="66969:67195" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="67314:67802" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="67449:67685" ph="{&quot;$ne&quot;: 'Rack_6'...}" />
+            <marker date="1472274481000" expanded="true" signature="68321:75334" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="68536:75217" ph="{&quot;__id&quot;: '$_id'...}" />
+            <marker date="1472274481000" expanded="true" signature="69282:69527" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="71028:71273" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="71396:72261" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="71537:72144" ph="{&quot;format&quot;: '%Y-%m-%d'...}" />
+            <marker date="1472274481000" expanded="true" signature="71782:72027" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="72385:73249" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="72525:73132" ph="{&quot;format&quot;: '%Y%j'...}" />
+            <marker date="1472274481000" expanded="true" signature="72770:73015" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="73372:74112" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="73504:73999" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="73505:73995" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="73634:73878" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="74236:75100" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="74376:74983" ph="{&quot;format&quot;: '%Y%U'...}" />
+            <marker date="1472274481000" expanded="true" signature="74621:74866" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="75704:89784" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="75735:89783" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="75738:76463" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="76587:76953" ph="/**  OAuth Service Configs                                                                                             // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="77068:77191" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="77241:77807" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="77394:77564" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="77924:78047" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="78075:88802" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="78185:78795" ph="{&quot;username&quot;: 'opssupport@kaiam.com'...}" />
+            <marker date="1472274481000" expanded="true" signature="79203:79326" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="79351:79702" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="79844:80691" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="80833:81060" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="81175:88800" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="88919:89042" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="89058:89540" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="89212:89421" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="89794:258374" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="89829:102104" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="89832:90557" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="90558:90924" ph="/** Scheduled jobs forlink test data processing                                                                        // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="91039:91162" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="91190:92512" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="91305:92395" ph="{&quot;name&quot;: 'Process linktest data'...}" />
+            <marker date="1472274481000" expanded="true" signature="91576:91909" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="92049:92278" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="92889:93368" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="93034:93251" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="93633:101861" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="93727:93853" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="93994:101744" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="94243:101627" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="94509:101386" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="94781:101269" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="95134:96467" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="95510:96226" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="95656:95864" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="95870:96109" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="96737:101152" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="97607:98195" ph="{&quot;device.SerialNumber&quot;: obj.data.transceiverSN...}" />
+            <marker date="1472274481000" expanded="true" signature="98331:98688" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="98704:99181" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="99274:99397" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="102132:117222" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="102135:102860" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="102984:103592" ph="/** Loss publish functions                                                                                             // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="103707:103830" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="103846:116979" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="104069:116860" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="104593:104825" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="105209:105442" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="105580:105811" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="105990:106180" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="106208:106425" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="106452:106915" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="106557:106796" ph="{&quot;$gte&quot;: drange...}" />
+            <marker date="1472274481000" expanded="true" signature="106921:107160" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="107273:107517" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="107669:107895" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="108039:108388" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="108501:108624" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="108655:108878" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="109112:109238" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="109516:109740" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="109746:109985" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="110170:110844" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="110247:110480" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="110486:110725" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="111118:111334" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="111467:111703" ph="{&quot;$sum&quot;: '$f'...}" />
+            <marker date="1472274481000" expanded="true" signature="111835:112072" ph="{&quot;$push&quot;: '$sn'...}" />
+            <marker date="1472274481000" expanded="true" signature="112185:112308" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="112324:112563" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="112325:112562" ph="{&quot;$match&quot;: match...}" />
+            <marker date="1472274481000" expanded="true" signature="112694:112931" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="113165:113412" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="113450:114280" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="113553:114161" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="113676:114042" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="114286:115015" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="114412:114896" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="114535:114777" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="115404:115632" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="115776:116003" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="116116:116239" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="116284:116495" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="116608:116731" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="117254:120182" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="117257:117982" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="118106:118714" ph="/** Packout publish functions                                                                                          // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="118829:118952" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="118991:119325" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="119442:119565" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="119616:119939" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="120056:120179" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="120216:150019" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="120219:120944" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="121068:121434" ph="/** Scheduled jobs for mongo aggregation                                                                               // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="121549:121672" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="121700:124251" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="121813:122904" ph="{&quot;name&quot;: 'Prepare collections for packout page'...}" />
+            <marker date="1472274481000" expanded="true" signature="122082:122416" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="122160:122286" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="122556:122785" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="123039:124132" ph="{&quot;name&quot;: 'Prepare collections for packout export page'...}" />
+            <marker date="1472274481000" expanded="true" signature="123310:123644" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="123784:124013" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="124628:125355" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="124775:125236" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="125619:138162" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="125861:137306" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="125862:127326" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="125980:127207" ph="{&quot;type&quot;: 'packout'...}" />
+            <marker date="1472274481000" expanded="true" signature="126492:126719" ph="{&quot;$gt&quot;: 'DATEFILTER'...}" />
+            <marker date="1472274481000" expanded="true" signature="126860:127088" ph="{&quot;$nin&quot;: Settings.controlPartNumbers...}" />
+            <marker date="1472274481000" expanded="true" signature="127328:131261" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="127458:131142" ph="{&quot;__id&quot;: '$_id'...}" />
+            <marker date="1472274481000" expanded="true" signature="128198:129057" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="128335:128938" ph="{&quot;format&quot;: '%Y-%m-%d'...}" />
+            <marker date="1472274481000" expanded="true" signature="128576:128819" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="129181:130040" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="129318:129921" ph="{&quot;format&quot;: '%Y%U'...}" />
+            <marker date="1472274481000" expanded="true" signature="129559:129802" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="130163:131023" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="130301:130904" ph="{&quot;format&quot;: '%Y%j'...}" />
+            <marker date="1472274481000" expanded="true" signature="130542:130785" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="131263:131751" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="131390:131632" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="131753:134091" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="131881:133972" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="132004:132372" ph="{&quot;pnum&quot;: '$pnum'...}" />
+            <marker date="1472274481000" expanded="true" signature="132496:132741" ph="{&quot;$last&quot;: '$cm'...}" />
+            <marker date="1472274481000" expanded="true" signature="132865:133111" ph="{&quot;$last&quot;: '$ts'...}" />
+            <marker date="1472274481000" expanded="true" signature="133234:133482" ph="{&quot;$last&quot;: '$n'...}" />
+            <marker date="1472274481000" expanded="true" signature="133606:133853" ph="{&quot;$last&quot;: '$wk'...}" />
+            <marker date="1472274481000" expanded="true" signature="134093:135700" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="134221:135581" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="134345:135091" ph="{&quot;pnum&quot;: '$_id.pnum'...}" />
+            <marker date="1472274481000" expanded="true" signature="135216:135462" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="135702:136442" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="135832:136323" ph="{&quot;id&quot;: '$_id'...}" />
+            <marker date="1472274481000" expanded="true" signature="136444:137059" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="136571:136940" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="137061:137305" ph="{&quot;$out&quot;: 'packout'...}" />
+            <marker date="1472274481000" expanded="true" signature="137420:137543" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="137662:137789" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="137908:138035" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="138279:138402" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="138432:149776" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="138670:148920" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="138671:140144" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="138790:140025" ph="{&quot;type&quot;: 'packout'...}" />
+            <marker date="1472274481000" expanded="true" signature="139306:139535" ph="{&quot;$gt&quot;: 'DATEFILTER'...}" />
+            <marker date="1472274481000" expanded="true" signature="139676:139906" ph="{&quot;$nin&quot;: Settings.controlPartNumbers...}" />
+            <marker date="1472274481000" expanded="true" signature="140146:144100" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="140276:143981" ph="{&quot;__id&quot;: '$_id'...}" />
+            <marker date="1472274481000" expanded="true" signature="141022:141886" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="141160:141767" ph="{&quot;format&quot;: '%Y-%m-%d'...}" />
+            <marker date="1472274481000" expanded="true" signature="141403:141648" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="142010:142874" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="142148:142755" ph="{&quot;format&quot;: '%Y%U'...}" />
+            <marker date="1472274481000" expanded="true" signature="142391:142636" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="142997:143862" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="143136:143743" ph="{&quot;format&quot;: '%Y%j'...}" />
+            <marker date="1472274481000" expanded="true" signature="143379:143624" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="144102:144592" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="144229:144473" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="144594:146939" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="144722:146820" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="144846:145217" ph="{&quot;pnum&quot;: '$pnum'...}" />
+            <marker date="1472274481000" expanded="true" signature="145341:145588" ph="{&quot;$last&quot;: '$cm'...}" />
+            <marker date="1472274481000" expanded="true" signature="145712:145959" ph="{&quot;$last&quot;: '$ts'...}" />
+            <marker date="1472274481000" expanded="true" signature="146082:146330" ph="{&quot;$last&quot;: '$n'...}" />
+            <marker date="1472274481000" expanded="true" signature="146454:146701" ph="{&quot;$last&quot;: '$wk'...}" />
+            <marker date="1472274481000" expanded="true" signature="146941:148056" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="147071:147937" ph="{&quot;id&quot;: '$_id'...}" />
+            <marker date="1472274481000" expanded="true" signature="148058:148673" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="148185:148554" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="148675:148919" ph="{&quot;$out&quot;: 'packoutexport'...}" />
+            <marker date="1472274481000" expanded="true" signature="149034:149157" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="149276:149403" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="149522:149649" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="149893:150016" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="150060:152383" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="150063:150788" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="150854:152140" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="151295:151897" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="151416:151778" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="152257:152380" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="152426:165052" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="152429:153154" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="153278:153644" ph="/** Scheduled jobs for mongo aggregation                                                                               // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="153759:153882" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="153910:155233" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="154023:155114" ph="{&quot;name&quot;: 'Prepare collections for powercalbeforetx page'...}" />
+            <marker date="1472274481000" expanded="true" signature="154292:154626" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="154370:154496" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="154766:154995" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="155610:156213" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="155765:156094" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="156477:164809" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="156719:163956" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="156720:159527" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="156838:159408" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="156962:159290" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="156963:157205" ph="{&quot;type&quot;: 'powercalbeforetx'...}" />
+            <marker date="1472274481000" expanded="true" signature="157207:157450" ph="{&quot;subtype&quot;: 'beforetx'...}" />
+            <marker date="1472274481000" expanded="true" signature="157452:157695" ph="{&quot;status&quot;: 'P'...}" />
+            <marker date="1472274481000" expanded="true" signature="157697:158185" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="157830:158066" ph="{&quot;$gt&quot;: 'DATEFILTER'...}" />
+            <marker date="1472274481000" expanded="true" signature="158187:158675" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="158320:158556" ph="{&quot;$in&quot;: Settings.racks...}" />
+            <marker date="1472274481000" expanded="true" signature="158677:159289" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="158818:159170" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="159529:161496" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="159659:161377" ph="{&quot;__id&quot;: '$_id'...}" />
+            <marker date="1472274481000" expanded="true" signature="159902:160762" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="160040:160643" ph="{&quot;format&quot;: '%Y-%m-%d'...}" />
+            <marker date="1472274481000" expanded="true" signature="160281:160524" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="161498:162972" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="161626:162853" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="161749:162365" ph="{&quot;t&quot;: '$t'...}" />
+            <marker date="1472274481000" expanded="true" signature="162488:162734" ph="{&quot;$push&quot;: '$v'...}" />
+            <marker date="1472274481000" expanded="true" signature="162974:163710" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="163104:163591" ph="{&quot;id&quot;: '$_id'...}" />
+            <marker date="1472274481000" expanded="true" signature="163712:163955" ph="{&quot;$out&quot;: 'powercalbeforetx'...}" />
+            <marker date="1472274481000" expanded="true" signature="164070:164193" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="164312:164438" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="164557:164683" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="164926:165049" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="165081:177237" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="165084:165809" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="165933:166541" ph="/** SPCs publish functions                                                                                             // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="166656:166779" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="166826:167152" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="167269:167392" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="167433:167766" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="167883:168006" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="168100:176994" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="170032:170483" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="170142:170366" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="171235:171466" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="171633:172080" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="171745:171963" ph="{&quot;$in&quot;: searchSerials...}" />
+            <marker date="1472274481000" expanded="true" signature="172086:172939" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="172227:172453" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="172627:172822" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="173076:173308" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="173951:174911" ph="{&quot;fields&quot;: fields...}" />
+            <marker date="1472274481000" expanded="true" signature="174179:174794" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="175062:176263" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="175186:175408" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="175559:175777" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="175928:176146" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="176497:176623" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="176660:176877" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="177276:185382" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="177279:178004" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="178128:178373" ph="/** Test Insertions publish functions                                                                                  // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="178488:178611" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="178627:185139" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="178781:185022" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="179097:179223" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="179244:180833" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="179381:179609" ph="{&quot;$regex&quot;: '^XQX4'...}" />
+            <marker date="1472274481000" expanded="true" signature="179742:179978" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="180106:180347" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="180480:180716" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="181088:182315" ph="{&quot;timestamp&quot;: '$timestamp'...}" />
+            <marker date="1472274481000" expanded="true" signature="182424:182547" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="182569:183794" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="182689:183677" ph="{&quot;date&quot;: '$date'...}" />
+            <marker date="1472274481000" expanded="true" signature="184145:184271" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="184306:184912" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="184389:184542" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="184401:184540" ph="{&quot;date&quot;: '$_id.date'...}" />
+            <marker date="1472274481000" expanded="true" signature="184544:184911" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="184553:184909" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="185412:195456" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="185415:186140" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="186264:186993" ph="/** Timetrends publish function                                                                                        // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="187126:195213" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="187332:195094" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="188238:188475" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="188588:188711" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="188756:189579" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="188858:189460" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="188979:189341" ph="{&quot;$gte&quot;: df...}" />
+            <marker date="1472274481000" expanded="true" signature="189605:190438" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="189717:190319" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="189838:190200" ph="{&quot;$gte&quot;: wf...}" />
+            <marker date="1472274481000" expanded="true" signature="190465:191173" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="190576:191054" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="190697:190935" ph="{&quot;$gte&quot;: df...}" />
+            <marker date="1472274481000" expanded="true" signature="191423:191663" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="191776:192020" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="192037:192274" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="192404:192643" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="192774:193012" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="193125:193248" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="193266:193998" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="194111:194355" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="194692:194851" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="195488:208416" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="195491:196216" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="196340:196706" ph="/** Scheduled jobs for mongo aggregation                                                                               // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="196821:196944" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="196972:199278" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="197085:199159" ph="{&quot;name&quot;: 'Prepare collection for trends'...}" />
+            <marker date="1472274481000" expanded="true" signature="197354:197688" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="197432:197558" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="197828:199040" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="198075:198307" ph="{&quot;domain&quot;: 'trendsync'...}" />
+            <marker date="1472274481000" expanded="true" signature="198309:198797" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="198435:198678" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="199544:202112" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="199670:201500" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="199776:200764" ph="{&quot;p&quot;: i...}" />
+            <marker date="1472274481000" expanded="true" signature="200766:201381" ph="{&quot;i&quot;: counter...}" />
+            <marker date="1472274481000" expanded="true" signature="201764:201993" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="202394:202602" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="202719:202842" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="202857:206289" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="202974:203218" ph="{&quot;reduce&quot;: &quot;trends&quot;...}" />
+            <marker date="1472274481000" expanded="true" signature="203345:205922" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="203596:203837" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="203978:204206" ph="{&quot;$nin&quot;: Settings.controlPartNumbers...}" />
+            <marker date="1472274481000" expanded="true" signature="204333:205435" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="204334:204944" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="204477:204825" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="204946:205434" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="205091:205315" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="205567:205803" ph="{&quot;$in&quot;: Settings.racks...}" />
+            <marker date="1472274481000" expanded="true" signature="206406:206529" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="206554:207189" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="206670:207070" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="207566:208173" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="207716:208054" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="208446:219970" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="208449:209174" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="209298:209906" ph="/** Yield publish functions                                                                                            // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="210021:210144" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="210160:219727" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="210336:219608" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="210671:210893" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="210899:212977" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="211023:212244" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="211146:212126" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="211147:211635" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="211274:211516" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="211637:212125" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="211760:212006" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="212390:212858" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="212500:212739" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="213122:213346" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="213478:213715" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="214110:214580" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="214586:215073" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="215206:215442" ph="{&quot;$sum&quot;: '$f'...}" />
+            <marker date="1472274481000" expanded="true" signature="215575:215811" ph="{&quot;$sum&quot;: '$p'...}" />
+            <marker date="1472274481000" expanded="true" signature="215943:216180" ph="{&quot;$sum&quot;: '$e'...}" />
+            <marker date="1472274481000" expanded="true" signature="216293:216416" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="216432:217161" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="216433:216670" ph="{&quot;$match&quot;: match...}" />
+            <marker date="1472274481000" expanded="true" signature="216672:216915" ph="{&quot;$group&quot;: group...}" />
+            <marker date="1472274481000" expanded="true" signature="216917:217160" ph="{&quot;$sort&quot;: sort...}" />
+            <marker date="1472274481000" expanded="true" signature="217273:217638" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="217790:218016" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="218160:218385" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="218498:218621" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="218763:219244" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="218917:219125" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="220003:258373" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="220006:220852" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="220853:221219" ph="/** Scheduled jobs for mongo aggregation                                                                               // ...*/" />
+            <marker date="1472274481000" expanded="true" signature="221334:221457" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="221485:222808" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="221598:222689" ph="{&quot;name&quot;: 'Prepare collections for yields and losses'...}" />
+            <marker date="1472274481000" expanded="true" signature="221867:222201" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="221945:222071" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="222341:222570" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="223185:224281" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="223330:223669" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="223823:224162" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="224546:225019" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="225136:225259" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="225283:258130" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="225393:258012" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="225394:225635" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="225637:225880" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="225882:226615" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="225995:226118" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="226130:226496" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="226617:230066" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="226866:229947" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="226989:227481" ph="{&quot;sn&quot;: '$sn'...}" />
+            <marker date="1472274481000" expanded="true" signature="227608:229459" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="227734:229340" ph="{&quot;mid&quot;: '$mid'...}" />
+            <marker date="1472274481000" expanded="true" signature="229588:229828" ph="{&quot;$last&quot;: '$mid'...}" />
+            <marker date="1472274481000" expanded="true" signature="230068:231784" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="230319:231665" ph="{&quot;_id&quot;: '$_id'...}" />
+            <marker date="1472274481000" expanded="true" signature="230566:231546" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="230694:231427" ph="{&quot;input&quot;: '$items'...}" />
+            <marker date="1472274481000" expanded="true" signature="231065:231308" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="231786:232150" ph="{&quot;$unwind&quot;: '$items'...}" />
+            <marker date="1472274481000" expanded="true" signature="232152:239199" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="232282:239080" ph="{&quot;sn&quot;: '$_id.sn'...}" />
+            <marker date="1472274481000" expanded="true" signature="233900:234282" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="234029:234280" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="234030:234273" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="234395:236364" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="234525:236252" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="234526:236245" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="234650:236127" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="234651:235388" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="234778:235270" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="234779:235023" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="235025:235269" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="235390:236126" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="235516:236008" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="235517:235761" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="235763:236007" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="236488:236981" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="236618:236869" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="236619:236862" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="237104:237488" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="237235:237486" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="237236:237479" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="237600:237984" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="237731:237982" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="237732:237975" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="238098:238972" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="238227:238970" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="238228:238963" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="238353:238845" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="238354:238598" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="238600:238844" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="239201:244155" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="239450:244036" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="239574:239945" ph="{&quot;sn&quot;: '$sn'...}" />
+            <marker date="1472274481000" expanded="true" signature="240069:240316" ph="{&quot;$max&quot;: '$fm'...}" />
+            <marker date="1472274481000" expanded="true" signature="240440:240687" ph="{&quot;$max&quot;: '$pm'...}" />
+            <marker date="1472274481000" expanded="true" signature="240810:241058" ph="{&quot;$sum&quot;: '$f'...}" />
+            <marker date="1472274481000" expanded="true" signature="241181:241429" ph="{&quot;$sum&quot;: '$p'...}" />
+            <marker date="1472274481000" expanded="true" signature="241554:241800" ph="{&quot;$sum&quot;: '$unk'...}" />
+            <marker date="1472274481000" expanded="true" signature="241926:243917" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="242054:243798" ph="{&quot;w&quot;: '$w'...}" />
+            <marker date="1472274481000" expanded="true" signature="244157:244522" ph="{&quot;$unwind&quot;: '$tsts'...}" />
+            <marker date="1472274481000" expanded="true" signature="244524:248115" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="244637:244760" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="244775:247996" ph="{&quot;sn&quot;: '$_id.sn'...}" />
+            <marker date="1472274481000" expanded="true" signature="245397:246627" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="245526:246509" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="245527:246016" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="245653:245906" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="245654:245897" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="246029:246508" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="246145:246418" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="246146:246389" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="248117:248978" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="248365:248859" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="248980:252325" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="249229:252206" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="249353:249724" ph="{&quot;sn&quot;: '$sn'...}" />
+            <marker date="1472274481000" expanded="true" signature="249850:251716" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="249978:251597" ph="{&quot;w&quot;: '$w'...}" />
+            <marker date="1472274481000" expanded="true" signature="251842:252087" ph="{&quot;$addToSet&quot;: '$tst'...}" />
+            <marker date="1472274481000" expanded="true" signature="252327:256168" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="252578:256049" ph="{&quot;_id&quot;: '$__id'...}" />
+            <marker date="1472274481000" expanded="true" signature="254451:255930" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="254581:255811" ph="{&quot;input&quot;: '$tsts'...}" />
+            <marker date="1472274481000" expanded="true" signature="254955:255692" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="255082:255574" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="255083:255327" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="255329:255573" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="256170:257765" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="256419:257646" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="256543:257528" ph="[...]" />
+            <marker date="1472274481000" expanded="true" signature="256544:257035" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="256670:256916" ph="{&quot;$ne&quot;: 'Download'...}" />
+            <marker date="1472274481000" expanded="true" signature="257037:257527" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="257160:257408" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="257767:258011" ph="{&quot;$out&quot;: 'yields'...}" />
+            <marker date="1472274481000" expanded="true" signature="258387:259686" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="258421:259686" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="258424:259149" ph="//..." />
+            <marker date="1472274481000" expanded="true" signature="259288:259686" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="259460:259686" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="708256:708379" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="708256:709832" ph="{...}" />
+            <marker date="1472274481000" expanded="true" signature="708256:754866" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/custtrans/custtrans.publish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://localhost:3000/app/app.js?hash=99995295a4a7b253299728c21008f1cf541a5e69">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain.core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1116">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain.publish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/ui-grid/ui-grid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+          <folding>
+            <marker date="1471467981000" expanded="true" signature="164872:165051" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="164901:165050" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="164927:165039" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="165131:165185" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="499514:499710" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="499565:499710" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="499653:499710" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="499854:500056" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="533671:533763" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="693853:694103" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="693882:694103" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="693904:694008" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="694037:694094" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="694182:694276" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="703907:703913" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="737277:737571" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="737306:737571" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="737328:737432" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="737461:737562" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="737650:737741" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="874817:875237" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="874846:875237" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="874868:874972" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="875002:875228" ph="{&quot;data&quot;: $scope.data...}" />
+            <marker date="1471467981000" expanded="true" signature="875086:875193" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="875316:875384" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="937801:938177" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="937830:938177" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="937852:937956" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="937985:938086" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="938256:938324" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1003901:1004137" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1003930:1004137" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="1003952:1004044" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1004073:1004128" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1004216:1004323" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1016387:1016757" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1016416:1016756" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="1016440:1016629" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1016659:1016747" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1016812:1016853" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="1016937:1017049" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1050204:1050976" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1050233:1050976" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="1050255:1050751" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1050781:1050968" ph="{&quot;data&quot;: 'data'...}" />
+            <marker date="1471467981000" expanded="true" signature="1050898:1050959" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1051055:1051125" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1164614:1164946" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1164643:1164946" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="1164665:1164765" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1164795:1164937" ph="{&quot;data&quot;: $scope.data...}" />
+            <marker date="1471467981000" expanded="true" signature="1164817:1164902" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1165025:1165095" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1198158:1198452" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1198187:1198452" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="1198209:1198313" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1198342:1198443" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1198531:1198627" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1302637:1303013" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1302666:1303013" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="1302688:1302792" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1302821:1302922" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1303092:1303161" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1329246:1329700" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1329275:1329700" ph="{...}" />
+            <marker date="1471467981000" expanded="true" signature="1329297:1329401" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1329430:1329691" ph="[...]" />
+            <marker date="1471467981000" expanded="true" signature="1329779:1329887" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1331598:1331604" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="1332403:1332409" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="1334953:1334959" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="1336803:1336811" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1337224:1337232" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1340540:1340546" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="1341682:1341688" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="1343801:1343848" ph="..." />
+            <marker date="1471467981000" expanded="true" signature="1348506:1348512" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="1348675:1348681" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="1350331:1350337" ph=" " />
+            <marker date="1471467981000" expanded="true" signature="1352167:1352173" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="91" selection-start-line="1" selection-start-column="91" selection-end-line="1" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/user.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/users.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/users.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="74" column="10" selection-start-line="66" selection-start-column="7" selection-end-line="74" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/yield-check.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="91" column="21" selection-start-line="86" selection-start-column="52" selection-end-line="91" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="97" column="46" selection-start-line="97" selection-start-column="46" selection-end-line="97" selection-end-column="46" />
+        <state relative-caret-position="910">
+          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/triangular/triangular.config.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="24" selection-start-line="7" selection-start-column="10" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/view-button.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#md-button#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/edit-button.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#md-button#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+        <state relative-caret-position="233">
+          <caret line="97" column="30" selection-start-line="93" selection-start-column="22" selection-end-line="97" selection-end-column="30" />
           <folding>
             <element signature="e#15#45#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/sces-settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="404" column="53" selection-start-line="404" selection-start-column="53" selection-end-line="404" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/release">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/versions">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

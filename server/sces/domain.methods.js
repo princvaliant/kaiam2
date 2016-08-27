@@ -18,10 +18,19 @@ Meteor.methods({
         });
     },
 
+    getDomains: function (options, search, domain) {
+        ScesDomains.isLoggedIn(this.userId);
+        let query = ScesSettings.constructQuery(Meteor.users.findOne(this.userId), search, domain);
+        let ret = Domains.find(
+            query,
+            options).fetch();
+        return ret;
+    },
+
     getDomainsCount: function (search, filter) {
         ScesDomains.isLoggedIn(this.userId);
         return Domains.find(
-            ScesDomains.constructQuery(this.userId, search, filter)).count();
+            ScesSettings.constructQuery(Meteor.users.findOne(this.userId), search, filter)).count();
     },
 
     getDomainKidsCount: function (domainType, domainId, notDomainId) {

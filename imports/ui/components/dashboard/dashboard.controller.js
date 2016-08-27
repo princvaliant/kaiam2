@@ -13,6 +13,7 @@ angular.module('kaiamDashboard').controller('DashboardController', ['$scope', '$
         // $reactive(this).attach($scope);
         $scope.summaries = [];
         $scope.total = {};
+
         $scope.subscribe('dashboard');
         $scope.helpers({
             dashboards: () => {

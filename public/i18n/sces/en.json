@@ -86,8 +86,10 @@
     "BROWSE-TEXT": "Browse"
   },
 
-  "tray": "Tray",
-  "shipment": "Shipment",
-  "transceiver": "Transceiver",
-  "salesOrder": "Sales order"
+  "tray": "Trays",
+  "shipment": "Shipments",
+  "transceiver": "Transceivers",
+  "salesOrder": "Sales orders",
+  "rma": "RMAs",
+  "batchRequest": "Batch requests"
 }

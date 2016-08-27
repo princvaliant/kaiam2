@@ -3,6 +3,7 @@
 import angular from 'angular';
 import {Meteor} from 'meteor/meteor';
 import './sces.service';
+import './view-button.html';
 /**
  * @ngdoc function
  * @name IntroductionController
@@ -12,125 +13,99 @@ import './sces.service';
  *
  */
 angular.module('kaiamSces').controller('ScesTableController', [
-    '$q', '$scope', '$meteor', '$cookies', '$mdSidenav', '$location', '$stateParams',
+    '$q', '$scope', '$state', '$cookies', '$mdSidenav', '$location', '$stateParams',
     '$translate', '$translatePartialLoader', 'ScesService',
-    ($q, $scope, $meteor, $cookies, $mdSidenav, $location, $stateParams,
+    ($q, $scope, $state, $cookies, $mdSidenav, $location, $stateParams,
      $translate, $translatePartialLoader, ScesService) => {
         // Refresh translator
         $translatePartialLoader.addPart('sces');
         $translate.refresh();
 
         let user = Meteor.user();
+        $scope.domain = $stateParams.domain;
+        $scope.search = $cookies.get($scope.domain + 'search') || '';
+        $scope.sort = $cookies.getObject($scope.domain + 'sort') || {'state.when': -1};
 
-        let domain = $stateParams.domain;
-        let columns = ScesSettings.columnsCommon.concat(ScesSettings.columns[domain]);
-        $scope.columns = [{
+        // Retrieve column definitions from settings
+        let columnDefs = ScesSettings.columnsCommon.concat(ScesSettings.columns[$scope.domain]);
+        _.each(columnDefs, (elem) => {
+            _.extend(elem, {sortDirectionCycle: ['asc', 'desc']});
+        });
+        columnDefs = [{
+            field: 'id',
             name: '',
-            orderBy: ''
-        }].concat(columns);
-        $scope.fields = _.object(_.pluck(columns, 'orderBy'), [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
-
-        let columnDefs = [{
-            name: 'Date',
-            field: 'state.when'
-        }, {
-            name: 'Domain',
-            field: 'type'
-        }, {
-            name: 'State',
-            field: 'state.id'
-        }];
+            enableFiltering: false,
+            cellTemplate: 'imports/ui/components/sces/view-button.html',
+            width: 35
+        }].concat(columnDefs);
+        let fields = _.object(_.pluck(columnDefs, 'field'), [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
         $scope.gridOptions = {
             enableFiltering: false,
-            flatEntityAccess: false,
-            showGridFooter: true,
-            fastWatch: true,
+            showGridFooter: false,
+            fastWatch: false,
             columnDefs: columnDefs,
-            data: []
+            data: [],
+            onRegisterApi: function (gridApi) {
+                $scope.gridApi = gridApi;
+                $scope.gridApi.core.on.sortChanged($scope, $scope.sortChanged);
+            },
         };
 
-        let tabs = ScesService.domainFilters(user);
-        $scope.$parent.selectedTab = tabs.indexOf(domain);
+        $scope.$watch('search', _.debounce(function (search) {
+            // This code will be invoked after 1 second from the last time 'id' has changed.
+            $scope.$apply(function () {
+                $scope.searchDebounce = search;
+            });
+        }, 300));
 
-        $scope.search = $cookies.get(domain + 'Search');
+        $scope.sortChanged = function (grid, sortColumns) {
+            let dir = 1;
+            if (sortColumns.length === 0) {
+                $scope.sort = {};
+                return;
+            } else if (sortColumns[0].sort.direction === 'desc') {
+                dir = -1;
+            } else if (sortColumns[0].sort.direction === 'asc') {
+                dir = 1;
+            }
+            let s = {};
+            s[sortColumns[0].field] = dir;
+            $scope.sort = s;
+        };
+
         // Get list of create actions for current user
         $scope.createList = ScesService.createList(user);
-        // Default settings for list table
-        $scope.tableProps = ScesService.getTableProps(domain);
 
-
-        $scope.subscribe('domains', () => {
-            return [{
-                fields: $scope.getReactively('fields'),
-                limit: 500,
-                skip: 0,
-                sort: $scope.getReactively('tableProps.sort')
-            },
-                $scope.getReactively('search'),
-                domain];
-        });
-        $scope.helpers({
-            domainlist: () => {
-                return Domains.find({type: domain}, {
-                    sort: $scope.getReactively('tableProps.sort')
-                });
-            }
-        });
         $scope.autorun(() => {
-            let s = $scope.getReactively('domainlist');
-            $scope.gridOptions.data = s;
+            // console.log($scope.sort + ' ' + $scope.searchDebounce + ' ' + $scope.domain);
+            Meteor.call('getDomains', {
+                    fields: fields,
+                    limit: 200,
+                    sort: $scope.getReactively('sort')
+                },
+                $scope.getReactively('searchDebounce'),
+                $scope.getReactively('domain'), (err, list) => {
+                    $cookies.put($scope.domain + 'search', $scope.searchDebounce);
+                    $cookies.putObject($scope.domain + 'sort', $scope.sort);
+                    $scope.gridOptions.data = list;
+                    $scope.gridApi.grid.refresh();
+                    if ($scope.domain === 'salesOrder') {
+                        // _.each($scope.gridOptions.data, function (so) {
+                        //     Meteor.call('getShippedQty', so._id, so.state.when, (err, count) => {
+                        //         so.dc['Quantity Open'] = so.dc['Qty Ordered'] - count;
+                        //     });
+                        // });
+                    }
+                }
+            );
         });
 
-
-        // $meteor.autorun($scope, function () {
-        //     $cookies.put(domain + 'Search', $scope.getReactively('search'));
-        //     if (domain === 'transceiver') {
-        //         $scope.domainsCount = 100000;
-        //     } else {
-        //         $meteor.call('getDomainsCount', $scope.search, domain).then(
-        //             (count) => {
-        //                 $scope.domainsCount = count;
-        //                 if (count < $scope.tableProps.page * $scope.tableProps.limit) {
-        //                     $scope.tableProps.page = 1;
-        //                 }
-        //             }
-        //         );
-        //     }
-        // });
-        //
-        // // Reactive data retrieval (subscription) from server
-        // $meteor.autorun($scope, function () {
-        //     if (_subscriptionHandle) {
-        //         _subscriptionHandle.stop();
-        //     }
-        //     $cookies.put(domain + 'Search', $scope.getReactively('search'));
-        //     $cookies.put(domain + 'Limit', $scope.getReactively('tableProps.limit'));
-        //     $cookies.put(domain + 'Page', $scope.getReactively('tableProps.page'));
-        //     $cookies.putObject(domain + 'Sort', $scope.getReactively('tableProps.sort'));
-        //
-        //     $scope.$meteorSubscribe('domains', {
-        //         fields: $scope.getReactively('fields'),
-        //         limit: parseInt($scope.getReactively('tableProps.limit'), 10),
-        //         skip: parseInt(($scope.getReactively('tableProps.page') - 1) * $scope.getReactively('tableProps.limit'), 10),
-        //         sort: $scope.getReactively('tableProps.sort')
-        //     }, $scope.getReactively('search'), domain).then(function (subscriptionHandle) {
-        //         _subscriptionHandle = subscriptionHandle;
-        //         $scope.domains = Domains.find({}, {
-        //             sort: $scope.getReactively('tableProps.sort')
-        //         }).fetch();
-        //         if (domain === 'salesOrder') {
-        //             _.each($scope.domains, function (so) {
-        //                 $meteor.call('getShippedQty', so._id, so.state.when).then(
-        //                     function (count) {
-        //                         //   so.dc['Quantity Open'] = so.dc['Quantity Open'] - count;
-        //                         so.dc['Quantity Open'] = so.dc['Qty Ordered'] - count;
-        //
-        //                     });
-        //             });
-        //         }
-        //     });
-        // });
+        $scope.viewRow = function (grid, row) {
+            $state.go('triangular.sces.' + $scope.domain, {
+                id: row.entity._id
+            });
+        };
 
         $scope.actions = function (domainType) {
             return ScesSettings.actions[domainType];
@@ -150,20 +125,6 @@ angular.module('kaiamSces').controller('ScesTableController', [
                 }
             }
             return ret;
-        };
-
-
-        $scope.onOrderChange = function (order) {
-            let dir = 1;
-            let _order = order;
-            if (_order.substring(0, 1) === '-') {
-                dir = -1;
-                _order = order.substring(1);
-            }
-            let s = {};
-            s[_order] = dir;
-            $scope.tableProps.page = 1;
-            $scope.tableProps.sort = s;
         };
     }
 ]);

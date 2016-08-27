@@ -74,7 +74,7 @@ function widget ($mdTheming) {
 function Controller() {
     let vm = this;
     vm.menu = null;
-    vm.loading = true;
+    vm.loading = false;
 
     this.setMenu = function (menu) {
         vm.menu = menu;

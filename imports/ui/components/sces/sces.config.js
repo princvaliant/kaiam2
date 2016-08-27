@@ -91,9 +91,9 @@ angular.module ('kaiamSces')
                     }
                 }
             });
-            _.each (_.keys (ScesSettings.columns), (o) => {
-                $stateProvider.state ('triangular.sces.tab.' + o, {
-                    url: '/' + o,
+            _.each (_.keys(ScesSettings.columns), (o) => {
+                $stateProvider.state ('triangular.sces.tab.' + o.toLowerCase(), {
+                    url: '/' + o.toLowerCase(),
                     views: {
                         'contentscestables': {
                             templateUrl: 'imports/ui/components/sces/sces-table.tmpl.html',

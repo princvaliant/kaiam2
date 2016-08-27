@@ -25,7 +25,7 @@ function routeConfig ($stateProvider) {
                             } else {
                                 defer.reject();
                             }
-                        }, 300);
+                        }, 500);
                         return defer.promise;
                     }],
                     'auth': ['$q',

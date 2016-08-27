@@ -52,7 +52,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.14/web.browser/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.14/web.browser/server.js" />
         <item url="file://$USER_HOME$/.meteor/packages/cfs_http-methods/0.0.32/web.browser/http.methods.client.api.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/aldeed_schema-deny/1.0.1/web.browser/lib/deny.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/string-humanize.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/string-polyfills.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/simple-schema.js" />
@@ -74,11 +73,9 @@
         <item url="file://$USER_HOME$/.meteor/packages/webapp/1.3.11/web.browser/webapp_cordova.js" />
         <item url="file://$USER_HOME$/.meteor/packages/webapp/1.3.11/web.browser/webapp_client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/webapp/1.3.11/web.browser/webapp_server.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/aldeed_schema-index/1.0.1/web.browser/lib/indexing.js" />
         <item url="file://$USER_HOME$/.meteor/packages/harrison_papa-parse/1.1.1/web.browser/papa-parse.js" />
         <item url="file://$USER_HOME$/.meteor/packages/autoupdate/1.3.11/web.browser/autoupdate_client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules-runtime/0.7.6/web.browser/modules-runtime.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/aldeed_collection2-core/1.1.1/web.browser/lib/collection2.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules-runtime/0.7.6/web.browser/.npm/package/node_modules/install/install.js" />
         <item url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.10/web.browser/charref.js" />
         <item url="file://$USER_HOME$/.meteor/packages/spacebars-compiler/1.0.12/web.browser/optimizer.js" />
@@ -98,6 +95,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.12/web.browser/fastclick.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.12/web.browser/pre.js" />
         <item url="file://$USER_HOME$/.meteor/packages/mongo-id/1.0.5/web.browser/id.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/aldeed_schema-index/1.1.0/web.browser/lib/indexing.js" />
         <item url="file://$USER_HOME$/.meteor/packages/accounts-ui-unstyled/1.1.12/web.browser/login_buttons_dropdown.js" />
         <item url="file://$USER_HOME$/.meteor/packages/url/1.0.10/web.browser/url_client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/accounts-ui-unstyled/1.1.12/web.browser/login_buttons_session.js" />
@@ -114,6 +112,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.8/web.browser/reactive-dict-tests.js" />
         <item url="file://$USER_HOME$/.meteor/packages/id-map/1.0.8/web.browser/id-map.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.8/web.browser/reactive-dict.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/aldeed_schema-deny/1.1.0/web.browser/lib/deny.js" />
         <item url="file://$USER_HOME$/.meteor/packages/percolate_synced-cron/1.3.2/web.browser/example/example.css" />
         <item url="file://$USER_HOME$/.meteor/packages/jquery/1.11.9/web.browser/jquery.js" />
         <item url="file://$USER_HOME$/.meteor/packages/jquery/1.11.9/web.browser/main.js" />
@@ -167,6 +166,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/session/1.1.6/web.browser/session.js" />
         <item url="file://$USER_HOME$/.meteor/packages/allow-deny/1.0.5/web.browser/allow-deny.js" />
         <item url="file://$USER_HOME$/.meteor/packages/service-configuration/1.0.10/web.browser/service_configuration_common.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/aldeed_collection2-core/1.2.0/web.browser/lib/collection2.js" />
         <item url="file://$USER_HOME$/.meteor/packages/random/1.0.10/web.browser/deprecated.js" />
         <item url="file://$USER_HOME$/.meteor/packages/allow-deny/1.0.5/web.browser/allow-deny-tests.js" />
         <item url="file://$USER_HOME$/.meteor/packages/simple_highlight.js/1.2.0/web.browser/detect-ie8.js" />
@@ -280,7 +280,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.14/web.browser/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.14/web.browser/server.js" />
       <root url="file://$USER_HOME$/.meteor/packages/cfs_http-methods/0.0.32/web.browser/http.methods.client.api.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/aldeed_schema-deny/1.0.1/web.browser/lib/deny.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/string-humanize.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/string-polyfills.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/simple-schema.js" />
@@ -302,11 +301,9 @@
       <root url="file://$USER_HOME$/.meteor/packages/webapp/1.3.11/web.browser/webapp_cordova.js" />
       <root url="file://$USER_HOME$/.meteor/packages/webapp/1.3.11/web.browser/webapp_client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/webapp/1.3.11/web.browser/webapp_server.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/aldeed_schema-index/1.0.1/web.browser/lib/indexing.js" />
       <root url="file://$USER_HOME$/.meteor/packages/harrison_papa-parse/1.1.1/web.browser/papa-parse.js" />
       <root url="file://$USER_HOME$/.meteor/packages/autoupdate/1.3.11/web.browser/autoupdate_client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules-runtime/0.7.6/web.browser/modules-runtime.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/aldeed_collection2-core/1.1.1/web.browser/lib/collection2.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules-runtime/0.7.6/web.browser/.npm/package/node_modules/install/install.js" />
       <root url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.10/web.browser/charref.js" />
       <root url="file://$USER_HOME$/.meteor/packages/spacebars-compiler/1.0.12/web.browser/optimizer.js" />
@@ -326,6 +323,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.12/web.browser/fastclick.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.12/web.browser/pre.js" />
       <root url="file://$USER_HOME$/.meteor/packages/mongo-id/1.0.5/web.browser/id.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/aldeed_schema-index/1.1.0/web.browser/lib/indexing.js" />
       <root url="file://$USER_HOME$/.meteor/packages/accounts-ui-unstyled/1.1.12/web.browser/login_buttons_dropdown.js" />
       <root url="file://$USER_HOME$/.meteor/packages/url/1.0.10/web.browser/url_client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/accounts-ui-unstyled/1.1.12/web.browser/login_buttons_session.js" />
@@ -342,6 +340,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.8/web.browser/reactive-dict-tests.js" />
       <root url="file://$USER_HOME$/.meteor/packages/id-map/1.0.8/web.browser/id-map.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.8/web.browser/reactive-dict.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/aldeed_schema-deny/1.1.0/web.browser/lib/deny.js" />
       <root url="file://$USER_HOME$/.meteor/packages/percolate_synced-cron/1.3.2/web.browser/example/example.css" />
       <root url="file://$USER_HOME$/.meteor/packages/jquery/1.11.9/web.browser/jquery.js" />
       <root url="file://$USER_HOME$/.meteor/packages/jquery/1.11.9/web.browser/main.js" />
@@ -395,6 +394,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/session/1.1.6/web.browser/session.js" />
       <root url="file://$USER_HOME$/.meteor/packages/allow-deny/1.0.5/web.browser/allow-deny.js" />
       <root url="file://$USER_HOME$/.meteor/packages/service-configuration/1.0.10/web.browser/service_configuration_common.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/aldeed_collection2-core/1.2.0/web.browser/lib/collection2.js" />
       <root url="file://$USER_HOME$/.meteor/packages/random/1.0.10/web.browser/deprecated.js" />
       <root url="file://$USER_HOME$/.meteor/packages/allow-deny/1.0.5/web.browser/allow-deny-tests.js" />
       <root url="file://$USER_HOME$/.meteor/packages/simple_highlight.js/1.2.0/web.browser/detect-ie8.js" />

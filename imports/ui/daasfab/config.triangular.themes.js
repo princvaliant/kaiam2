@@ -187,7 +187,7 @@ function themesConfig($mdThemingProvider, triThemingProvider, triSkinsProvider) 
         .sidebarTheme('indigo')
         .toolbarTheme('indigo')
         .logoTheme('indigo')
-        .contentTheme('orange');
+        .contentTheme('cyan');
 
     // KERMIT GREEN SKIN
     triThemingProvider.theme('light-green')

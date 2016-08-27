@@ -5,6 +5,7 @@ import {Meteor} from 'meteor/meteor';
 import './sces.module';
 import './sces.config';
 import '/imports/ui/daasfab/triangular/components/menu/menu.provider';
+import './sces.service';
 
 
 /**
@@ -13,7 +14,7 @@ import '/imports/ui/daasfab/triangular/components/menu/menu.provider';
  * @description Supply Chain Execution System
  */
 angular.module('kaiamSces')
-    .run(['$rootScope', 'triMenu', '$meteor', function ($rootScope, triMenu, $meteor) {
+    .run(['$rootScope', 'triMenu', '$meteor', 'ScesService',  function ($rootScope, triMenu, $meteor, ScesService) {
         let user;
         $rootScope.$on('event:loginConfirmed', function () {
             initMenu();
@@ -28,13 +29,22 @@ angular.module('kaiamSces')
             }
             user = Meteor.user();
             if (user && !user.profile.isClient && _.intersection(user.profile.roles, ['ORDER_MANAGEMENT', 'INVENTORY_MANAGEMENT']).length > 0) {
-                triMenu.addMenu({
+                let menu = {
                     name: 'MENU.SCES.SCES',
                     icon: 'local_shipping',
-                    type: 'link',
-                    state: 'triangular.sces.tab.salesOrder',
-                    priority: 5.1
+                    type: 'dropdown',
+                    priority: 5.1,
+                    children: []
+                };
+                _.each(_.keys(ScesSettings.columns), (domain) => {
+                    menu.children.push({
+                        name: domain,
+                        type: 'link',
+                        state: 'triangular.sces.tab.' + domain.toLowerCase(),
+                        priority: 1.15
+                    });
                 });
+                triMenu.addMenu(menu);
             }
         }
     }]);

@@ -2,13 +2,13 @@
 Meteor.methods({
   getCusttransCount: function (search, filter) {
     let user = ScesDomains.isLoggedIn(this.userId);
-    let query = ScesDomains.constructQuery(this.userId, search, 'transceiver');
+    let query = ScesSettings.constructQuery(Meteor.users.findOne(this.userId), search, 'transceiver');
     return Domains.find(getOnlyForCompany(user, query)).count();
   }
 });
 Meteor.publish('custtrans', function (options, search) {
   let user = ScesDomains.isLoggedIn(this.userId);
-  let query = ScesDomains.constructQuery(this.userId, search, 'transceiver');
+  let query = ScesSettings.constructQuery(Meteor.users.findOne(this.userId), search, 'transceiver');
   return Domains.find(getOnlyForCompany(user, query), options);
 });
 function getOnlyForCompany(user, query) {
