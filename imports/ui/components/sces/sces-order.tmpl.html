@@ -1,15 +1,18 @@
 <md-card>
     <md-card-content ng-show="showImport">
         <h3>{{'SCES.NEW-ORDER' | translate}}</h3>
-        <div layout="row" layout-align="start center">
-            <input type="file" nv-file-select="" uploader="uploader" />
-        </div>
+
+        <md-button class="md-primary md-raised" ngf-select="upload($file)" ng-model="file" name="file">
+            Select .csv file with new sales orders
+        </md-button>
+
         <h5 style="color:green;">{{importedMessage}}</h5>
     </md-card-content>
     <div layout="row" ng-show="!showImport" flex>
         <div layout="column" style="width:265px;">
             <div palette-background="deep-orange:200" content-layout="column" content-layout-align="space-between">
-                <h2 class="md-display-1 font-weight-400 margin-0" flex layout-padding>{{'SCES.EXISTING-ORDER'| translate}}</h2>
+                <h2 class="md-display-1 font-weight-400 margin-0" flex
+                    layout-padding>{{'SCES.EXISTING-ORDER'| translate}}</h2>
                 <md-divider></md-divider>
                 <div layout="row" layout-align="space-between center" class="scesPadding">
                     <span>{{'SCES.STATUS' | translate}}</span>
@@ -40,43 +43,48 @@
                     <span>Ordered qty (from ERP)</span>
                     <b>{{ordered}}</b>
                 </div>
-                 <div layout="row" layout-align="space-between center" class="scesPadding">
+                <div layout="row" layout-align="space-between center" class="scesPadding">
                     <span>Open qty</span>
                     <b>{{opened}}</b>
                 </div>
                 <md-divider></md-divider>
-                <div layout="row" layout-align="space-between center" class="scesPadding" ng-repeat="tr in trbycm" ng-init="setTotals(tr)">
+                <div layout="row" layout-align="space-between center" class="scesPadding" ng-repeat="tr in trbycm"
+                     ng-init="setTotals(tr)">
                     <span>{{tr._id}} {{'SCES.ASSIGNED-TRANSCEIVERS' | translate}}</span>
                     <b>{{tr.cnt}}</b>
                 </div>
-                 <md-divider></md-divider>
+                <md-divider></md-divider>
                 <div ng-click="content='list'" layout="row" layout-align="space-between center" class="scesPadding">
                     <span>Total shipped in this system</span>
                     <b>{{trbycmtotal}}</b>
                 </div>
             </div>
         </div>
-        <div layout="column" flex>
-            <md-card>
+        <div layout="row" flex>
+            <md-card flex="50">
                 <md-subheader style="margin-left:15px">{{'SCES.ASSIGNED-SHIPMENT' | translate}}</md-subheader>
                 <md-card-content>
                     <md-list>
-                        <md-list-item ng-repeat="ship in shipments" class="paddingreduce" layout="row" layout-align="start center">
+                        <md-list-item ng-repeat="ship in shipments" class="paddingreduce" layout="row"
+                                      layout-align="start center">
                             <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"></md-icon>
                             <div class="text-ellipsis scesPadding" nowrap am-time-ago="ship.state.when"></div>
-                            <p><a href="/sces/shipment?id={{ship._id}}" class="text-ellipsis scesPadding">{{ship._id}}</a></p>
+                            <p><a href="/sces/shipment?id={{ship._id}}"
+                                  class="text-ellipsis scesPadding">{{ship._id}}</a></p>
                         </md-list-item>
                     </md-list>
                 </md-card-content>
             </md-card>
-            <md-card>
+            <md-card flex="50">
                 <md-subheader style="margin-left:15px">{{'SCES.ASSIGNED-TRAYS' | translate}}</md-subheader>
                 <md-card-content>
                     <md-list>
-                        <md-list-item ng-repeat="tray in trays" class="paddingreduce" layout="row" layout-align="start center">
+                        <md-list-item ng-repeat="tray in trays" class="paddingreduce" layout="row"
+                                      layout-align="start center">
                             <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"></md-icon>
                             <div class="text-ellipsis scesPadding" nowrap am-time-ago="tray.state.when"></div>
-                            <p><a href="/sces/tray?id={{tray._id}}" class="text-ellipsis scesPadding">{{tray._id}} - {{tray.dc.pnum}}</a></p>
+                            <p><a href="/sces/tray?id={{tray._id}}" class="text-ellipsis scesPadding">{{tray._id}}
+                                - {{tray.dc.pnum}}</a></p>
                         </md-list-item>
                     </md-list>
                 </md-card-content>

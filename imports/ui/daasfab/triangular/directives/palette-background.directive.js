@@ -5,7 +5,7 @@ angular.module('triangular.directives').directive('paletteBackground', paletteBa
 paletteBackground.$inject = ['triTheming'];
 
 /* @ngInject */
-function paletteBackground(triTheming) {
+function paletteBackground (triTheming) {
     // Usage:
     // ```html
     // <div palette-background="green:500">Coloured content</div>
@@ -19,7 +19,7 @@ function paletteBackground(triTheming) {
     };
     return directive;
 
-    function link($scope, $element, attrs) {
+    function link ($scope, $element, attrs) {
         let splitColor = attrs.paletteBackground.split(':');
         let color = triTheming.getPaletteColor(splitColor[0], splitColor[1]);
 

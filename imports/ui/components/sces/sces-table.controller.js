@@ -79,7 +79,11 @@ angular.module('kaiamSces').controller('ScesTableController', [
 
         $scope.autorun(() => {
             // console.log($scope.sort + ' ' + $scope.searchDebounce + ' ' + $scope.domain);
-            Meteor.call('getDomains', {
+            let method = 'getDomains';
+            if ($scope.domain === 'salesOrder') {
+                method = 'getOpenSalesOrders';
+            }
+            Meteor.call(method, {
                     fields: fields,
                     limit: 200,
                     sort: $scope.getReactively('sort')
@@ -90,13 +94,6 @@ angular.module('kaiamSces').controller('ScesTableController', [
                     $cookies.putObject($scope.domain + 'sort', $scope.sort);
                     $scope.gridOptions.data = list;
                     $scope.gridApi.grid.refresh();
-                    if ($scope.domain === 'salesOrder') {
-                        // _.each($scope.gridOptions.data, function (so) {
-                        //     Meteor.call('getShippedQty', so._id, so.state.when, (err, count) => {
-                        //         so.dc['Quantity Open'] = so.dc['Qty Ordered'] - count;
-                        //     });
-                        // });
-                    }
                 }
             );
         });

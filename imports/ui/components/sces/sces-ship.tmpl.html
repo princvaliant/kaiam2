@@ -1,12 +1,19 @@
 <md-card>
-    <md-card-content layout="column" ng-show="isNewShipment">
-        <md-header class="md-no-sticky">{{'SCES.NEW-SHIPMENT-CONFIRM' | translate}} {{salesOrder.dc.Order}} - {{salesOrder.dc.Line}}, {{salesOrder.dc['Item Number']}}, {{salesOrder.dc['Name (Sold-To)']}}</md-header>
+    <md-card-content layout="column" ng-show="!shipId">
+        <div layout="row">
+            <md-input-container style="width:300px;">
+                <label for="search">Find sales order for shipment</label>
+                <input type="text" name="search" ng-model="search" aria-label="{{'SCES.SEARCH-TEXT' | translate}}">
+            </md-input-container>
+        </div>
+        <div ui-grid="gridOptions" ui-grid-selection
+             ui-grid-auto-resize style="height:300px" flex></div>
         <div layout="row" layout-padding>
-            <md-button class="md-primary md-raised" flex="20" aria-label="button" ng-click="confirmClicked()">{{'SCES.CONFIRM' | translate}}</md-button>
-            <md-button class="md-raised" flex="20" aria-label="button" ng-click="cancelClicked()">{{'SCES.CANCEL' | translate}}</md-button>
+            <md-button class="md-primary" aria-label="button" ng-click="confirmClicked()">{{'SCES.CONFIRM' | translate}}</md-button>
+            <md-button class="md-primary" aria-label="button" ng-click="cancelClicked()">{{'SCES.CANCEL' | translate}}</md-button>
         </div>
     </md-card-content>
-    <div layout="row" ng-show="!isNewShipment" ng-keypress="onKeyPressed($event)" flex>
+    <div layout="row" ng-show="shipId" ng-keypress="onKeyPressed($event)" flex>
         <div layout="column" style="width:265px;">
             <div palette-background="deep-orange:200" layout="column" layout-align="space-between">
                 <h2 class="md-display-1 font-weight-400 margin-0" flex layout-padding>Shipment</h2>
