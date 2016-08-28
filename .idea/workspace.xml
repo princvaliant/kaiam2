@@ -3,18 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" afterPath="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-order.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-order.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-order.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-order.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-ship.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-ship.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-ship.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-ship.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.module.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.module.js" afterPath="$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/triangular/directives/palette-background.directive.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/triangular/directives/palette-background.directive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/sces-settings.js" afterPath="$PROJECT_DIR$/lib/sces-settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/sales-order.methods.js" afterPath="$PROJECT_DIR$/server/sces/sales-order.methods.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
@@ -729,7 +717,7 @@
       <workItem from="1472145663062" duration="1948000" />
       <workItem from="1472174713685" duration="8739000" />
       <workItem from="1472246053634" duration="28990000" />
-      <workItem from="1472404897577" duration="10735000" />
+      <workItem from="1472404897577" duration="10763000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1465419582807</created>
@@ -843,11 +831,18 @@
       <option name="project" value="LOCAL" />
       <updated>1472279592191</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="- Moving to new meteor 1.4.1  (supply chain module improvement)">
+      <created>1472417513257</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1472417513257</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298460000" />
+    <option name="totallyTimeSpent" value="298488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1496" y="-833" width="1427" height="1387" extended-state="0" />
