@@ -46,7 +46,7 @@ function execSar(pnum) {
         if (specs.length > 0) {
             // Get list of serials that are changed from last compilation
             let serials = getPartsChangedFromLastDate(pnum);
-            // serials = ['Q4391'];  // testing
+            // serials = ['Q3226'];  // testing
             for (let i = 0; i < serials.length; i += 10) {
                 let array = serials.slice(i, i + 10);
                 // Get all testdata for pnum from certain date and aggregate by serial number and mid
@@ -717,8 +717,6 @@ function getPartsForDatesAndSerials(pnum, fromDate, toDate, snList) {
     }]);
     return _.pluck(list, '_id');
 }
-
-
 
 HTTP.methods({
     '/calculateSpec': {

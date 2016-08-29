@@ -99,7 +99,7 @@ angular.module('kaiamSces').controller('ScesOrderController', [
             });
             $scope.ordered = $scope.selectedOrder.dc['Qty Ordered'];
             if ($scope.selectedOrder) {
-                Meteor.call('getShippedQty', $scope.selectedOrder._id, $scope.selectedOrder.state.when, (err, count) => {
+                Meteor.call('getShippedQty', $scope.selectedOrder._id, (err, count) => {
                     $scope.opened = $scope.selectedOrder.dc['Qty Ordered'] - count;
                 });
             }

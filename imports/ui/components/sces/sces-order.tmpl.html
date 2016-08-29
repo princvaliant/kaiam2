@@ -67,7 +67,7 @@
                     <md-list>
                         <md-list-item ng-repeat="ship in shipments" class="paddingreduce" layout="row"
                                       layout-align="start center">
-                            <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"></md-icon>
+                            <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary" style="margin-right:-5px;"> </md-icon>
                             <div class="text-ellipsis scesPadding" nowrap am-time-ago="ship.state.when"></div>
                             <p><a href="/sces/shipment?id={{ship._id}}"
                                   class="text-ellipsis scesPadding">{{ship._id}}</a></p>
@@ -81,7 +81,7 @@
                     <md-list>
                         <md-list-item ng-repeat="tray in trays" class="paddingreduce" layout="row"
                                       layout-align="start center">
-                            <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"></md-icon>
+                            <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary" style="margin-right:-5px;"></md-icon>
                             <div class="text-ellipsis scesPadding" nowrap am-time-ago="tray.state.when"></div>
                             <p><a href="/sces/tray?id={{tray._id}}" class="text-ellipsis scesPadding">{{tray._id}}
                                 - {{tray.dc.pnum}}</a></p>

@@ -2,7 +2,6 @@
 
 import { check } from 'meteor/check';
 
-
 Meteor.methods({
 
     'addTransceiverToTray': function (snum, tray, adminOverride) {

@@ -36,6 +36,42 @@ SarCalculation = {
         if (row.data.Idc && row.t === 'txsetups' && row.s === 'apctarget') {
             this.prepare(row.sn, row.mid, 'idc', row.data.Idc, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
         }
+        // IdacDelta
+        if (row.data.I_DC_DAC_Set && row.t === 'txtests' && row.s === 'channeldata') {
+            this.prepare(row.sn, row.mid, 'idc1set', row.data.I_DC_DAC_Set, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        if (row.data.Idc && row.t === 'txsetups' && row.s === 'apctarget') {
+            this.prepare(row.sn, row.mid, 'idc1', row.data.Idc, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        // ImodDelta
+        if (row.data.MOD_Bias_DAC_Set && row.t === 'txtests' && row.s === 'channeldata') {
+            this.prepare(row.sn, row.mid, 'imodset', row.data.MOD_Bias_DAC_Set, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        if (row.data.Imod && row.t === 'txsetups' && row.s === 'apctarget') {
+            this.prepare(row.sn, row.mid, 'imod', row.data.Imod, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        // PavgDelta
+        if (row.data.Pavg_in_dBm && row.t === 'txtests' && row.s === 'channeldata') {
+            this.prepare(row.sn, row.mid, 'pavgset', row.data.Pavg_in_dBm, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        if (row.data.Pavg_in_dBm && row.t === 'txsetups' && row.s === 'channeldata') {
+            this.prepare(row.sn, row.mid, 'pavg', row.data.Pavg_in_dBm, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        // OMADelta
+        if (row.data.OMA_in_dBm && row.t === 'txtests' && row.s === 'channeldata') {
+            this.prepare(row.sn, row.mid, 'omaset', row.data.OMA_in_dBm, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        if (row.data.OMA_in_dBm && row.t === 'txsetups' && row.s === 'channeldata') {
+            this.prepare(row.sn, row.mid, 'oma', row.data.OMA_in_dBm, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        // MaskMarginDelta
+        if (row.data.CwdmMaskMargin && row.t === 'txtests' && row.s === 'channeldata') {
+            this.prepare(row.sn, row.mid, 'mmset', row.data.CwdmMaskMargin, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+        if (row.data.MaskMargin && row.t === 'txsetups' && row.s === 'channeldata') {
+            this.prepare(row.sn, row.mid, 'mm', row.data.MaskMargin, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
+        }
+
         // Temp_delta_in_C
         if (row.data.DeviceTemperature_in_C !== undefined && row.tmpr !== undefined && row.t === 'txtests' && row.s === 'channeldata') {
             this.prepare(row.sn, row.mid, 'devtemp', row.data.DeviceTemperature_in_C, row.tmpr, row.channel, row.volt, 'txtests', 'channeldata');
@@ -100,6 +136,42 @@ SarCalculation = {
                         set.$set['data.IdacDelta_inPercentage'] = 100 * (proc.idc - proc.idcset) / proc.idc;
                         hasUpdate = true;
                     }
+
+                    // IdacDelta_inPercentage
+                    if (proc.idc !== undefined && proc.idcset !== undefined && !_.isNaN(proc.idc) && !_.isNaN(proc.idcset) && proc.idc !== 0) {
+                        set.$set['data.IdacDelta_inPercentage'] = 100 * (proc.idc - proc.idcset) / proc.idc;
+                        hasUpdate = true;
+                    }
+
+                    // IdacDelta
+                    if (proc.idc1 !== undefined && proc.idc1set !== undefined && !_.isNaN(proc.idc1) && !_.isNaN(proc.idc1set) && proc.idc1 !== 0) {
+                        set.$set['data.IdacDelta'] = proc.idc1 - proc.idc1set;
+                        hasUpdate = true;
+                    }
+                    // ImodDelta
+                    if (proc.imod !== undefined && proc.imodset !== undefined && !_.isNaN(proc.imod) && !_.isNaN(proc.imodset) && proc.imod !== 0) {
+                        set.$set['data.ImodDelta'] = proc.imod - proc.imodset;
+                        hasUpdate = true;
+                    }
+
+                    // PavgDelta
+                    if (proc.pavg !== undefined && proc.pavgset !== undefined && !_.isNaN(proc.pavg) && !_.isNaN(proc.pavgset) && proc.pavg !== 0) {
+                        set.$set['data.PavgDelta'] = proc.pavg - proc.pavgset;
+                        hasUpdate = true;
+                    }
+
+                    // OMADelta
+                    if (proc.oma !== undefined && proc.omaset !== undefined && !_.isNaN(proc.oma) && !_.isNaN(proc.omaset) && proc.oma !== 0) {
+                        set.$set['data.OMADelta'] = proc.oma - proc.omaset;
+                        hasUpdate = true;
+                    }
+
+                    // MaskMarginDelta
+                    if (proc.mm !== undefined && proc.mmset !== undefined && !_.isNaN(proc.mm) && !_.isNaN(proc.mmset) && proc.mm !== 0) {
+                        set.$set['data.MaskMarginDelta'] = proc.mm - proc.mmset;
+                        hasUpdate = true;
+                    }
+
                     // CalculatedAPCSetpoint
                     let obj = _.where(objs, {channel: proc.channel})[0];
                     if (obj && obj.mpd0 !== undefined && obj.mpd40 !== undefined && obj.mpd70 !== undefined && obj.dt0 !== undefined &&
