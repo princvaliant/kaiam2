@@ -1,3 +1,5 @@
+import {check} from 'meteor/check';
+
 
 Meteor.methods({
     removeSar: function (sarId) {
@@ -22,6 +24,7 @@ Meteor.methods({
             active: 'N',
             lock: 'N',
             type: sar.type,
+            class: sar.class,
             fileName: sar.fileName,
             fileContent: sar.fileContent
         });

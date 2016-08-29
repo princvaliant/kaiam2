@@ -20,7 +20,7 @@ Meteor.methods({
                 $nin: ['calibration', 'functionaltest', 'packout']
             },
             'meta.Rack': {
-                $nin: ['TestStation1', '', null]
+                $nin: ['TestStation1', '', null, 'Packout']
             }
         };
 

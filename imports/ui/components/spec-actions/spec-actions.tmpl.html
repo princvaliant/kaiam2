@@ -1,0 +1,218 @@
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle class="tree-node tree-node-content">
+        <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag
+           ng-click="toggle(this)"><span
+                class="glyphicon"
+                ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span></a>
+        {{node.title}}
+        <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)">
+            <md-icon md-font-icon="zmdi zmdi-minus-circle-outline"></md-icon>
+        </a>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+        </li>
+    </ol>
+</script>
+
+<md-content layout="row" flex="100" style="position:absolute;height:100%;width:100%;" layout-fill>
+    <md-content layout="column" flex="30" layout-fill>
+        <md-select style="padding-left:10px;padding-right:18px;margin-top:10px;margin-bottom:10px;font-weight:500"
+                   placeholder="{{'TIMETREND_OPTIONS_PARTNUMBER' | translate}}" ng-model="partNumber"
+                   ng-change="changePartNumber(partNumber)">
+            <md-option ng-repeat="partNumber in partNumbers" value="{{partNumber}}">{{partNumber}}</md-option>
+        </md-select>
+        <md-content flex="100">
+            <div layout="row">
+                <div layout-padding>
+                    Revisions
+                </div>
+                <span flex></span>
+                <md-button class="md-icon-button tool-btn" ng-click="lockSarClick()" ng-show="selectedSarLock !== 'Y'">
+                    <md-icon md-font-icon="zmdi zmdi-lock"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button tool-btn" ng-click="copySarClick()">
+                    <md-icon md-font-icon="zmdi zmdi-copy"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button tool-btn" ng-click="pasteSarClick()">
+                    <md-icon md-font-icon="zmdi zmdi-paste"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button tool-btn" ng-click="addSarClick()">
+                    <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button tool-btn" ng-click="removeSarClick()"
+                           ng-show="selectedSarLock !== 'Y'">
+                    <md-icon md-font-icon="zmdi zmdi-minus"></md-icon>
+                </md-button>
+            </div>
+            <div ui-grid="gridSars" ui-grid-edit ui-grid-row-edit ui-grid-cellnav
+                 ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-save-state
+                 style="position:absolute;height:auto;top:40px;left:5px;right:5px;bottom:10px;">
+            </div>
+        </md-content>
+    </md-content>
+    <md-content layout-align="top center" flex="70" layout-fill>
+        <md-tabs md-selected="selectedTab" md-border-bottom flex="grow" layout-fill>
+            <md-tab md-on-select="tabSelected(0, 'actionEdit')" label="Edit actions" ng-if="class == 'ACTION'">
+                <md-tab-content layout="row" layout-fill>
+                    <md-content layout-align="top center" flex="40">
+                        <div layout="row">
+                            <div layout-padding>
+                                Actions
+                            </div>
+                            <span flex></span>
+                            <md-button class="md-icon-button tool-btn" ng-click="copySarActionClick()">
+                                <md-icon md-font-icon="zmdi zmdi-copy"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button tool-btn" ng-click="pasteSarActionClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-paste"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="addSarActionClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="removeSarActionClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-minus"></md-icon>
+                            </md-button>
+                        </div>
+                        <div ui-grid="gridSarActions" ui-grid-selection ui-grid-edit
+                             ui-grid-draggable-rows
+                             style="position:absolute;height: auto;top:40px;left:5px;right:5px;bottom:10px;"></div>
+                    </md-content>
+                    <md-content layout-align="top center" flex="60">
+                        <div layout="row">
+                            <div layout-padding>
+                                Parameters
+                            </div>
+                            <span flex></span>
+                            <md-button class="md-icon-button" ng-click="addSarActionParamClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="removeSarActionParamClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-minus"></md-icon>
+                            </md-button>
+                        </div>
+                        <div ui-grid="gridSarActionParams" ui-grid-selection ui-grid-edit ui-grid-cellnav
+                             ui-grid-resize-columns ui-grid-move-columns ui-grid-save-state
+                             style="position:absolute;height: auto;top:40px;left:5px;right:5px;bottom:10px;"></div>
+                    </md-content>
+                    <!--<md-content layout-align="top center" flex="35">-->
+                    <!--<div layout="column">-->
+                    <!--<div layout="row">-->
+                    <!--<div layout-padding>-->
+                    <!--Order of execution-->
+                    <!--</div>-->
+                    <!--<span flex></span>-->
+                    <!--<md-button class="md-icon-button" ng-click="addNodeClick()" ng-show="selectedSarLock !== 'Y'">-->
+                    <!--<md-icon md-font-icon="icon-add"></md-icon>-->
+                    <!--</md-button>-->
+                    <!--</div>-->
+                    <!--<div ui-tree id="tree-root"  style="position:absolute;height:auto;top:40px;left:5px;right:5px;bottom:10px;">-->
+                    <!--<ol ui-tree-nodes ng-model="selectedExecution">-->
+                    <!--<li ng-repeat="node in selectedExecution" ui-tree-node ng-include="'nodes_renderer.html'"></li>-->
+                    <!--</ol>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</md-content>-->
+                </md-tab-content>
+            </md-tab>
+            <md-tab md-on-select="tabSelected(1, 'specEdit')" label="Edit specs" ng-if="class == 'SPEC'">
+                <md-tab-content layout="row" layout-fill>
+                    <md-content layout-align="top center" flex="40">
+                        <div layout="row">
+                            <div layout-padding>
+                                Specs
+                            </div>
+                            <span flex></span>
+                            <md-button class="md-icon-button tool-btn" ng-click="copySarSpecClick()">
+                                <md-icon md-font-icon="zmdi zmdi-copy"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button tool-btn" ng-click="pasteSarSpecClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-paste"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="addSarSpecClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="removeSarSpecClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-minus"></md-icon>
+                            </md-button>
+                        </div>
+                        <div ui-grid="gridSarSpecs" ui-grid-selection ui-grid-edit ui-grid-cellnav
+                             ui-grid-resize-columns ui-grid-move-columns ui-grid-save-state
+                             style="position:absolute;height: auto;top:40px;left:5px;right:5px;bottom:10px;"></div>
+                    </md-content>
+                    <md-content layout-align="top center" flex="60">
+                        <div layout="row">
+                            <div layout-padding>
+                                Ranges
+                            </div>
+                            <span flex></span>
+                            <md-button class="md-icon-button" ng-click="addSarSpecRangeClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="removeSarSpecRangeClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-minus"></md-icon>
+                            </md-button>
+                        </div>
+                        <div ui-grid="gridSarSpecRanges" ui-grid-selection ui-grid-edit ui-grid-cellnav
+                             ui-grid-resize-columns ui-grid-move-columns ui-grid-save-state
+                             style="position:absolute;height: auto;top:40px;left:5px;right:5px;bottom:10px;"></div>
+                    </md-content>
+                </md-tab-content>
+            </md-tab>
+            <md-tab md-on-select="tabSelected(2, 'actionView')" label="View actions" ng-if="class == 'ACTION'">
+                <div layout="row" layout-fill>
+                    <pre class="code">{{ actions | json }}</pre>
+                </div>
+            </md-tab>
+            <md-tab md-on-select="tabSelected(3, 'specView')" label="View specs" ng-if="class == 'SPEC'">
+                <div layout="row" layout-fill>
+                    <pre class="code">{{ specs | json }}</pre>
+                </div>
+            </md-tab>
+            <md-tab md-on-select="tabSelected(4, 'specCalc')" label="Calculate specs" ng-if="class == 'SPEC'">
+                <div layout="column">
+                    <div layout-padding>Calculate spec</div>
+                    <div layout="row">
+                        <md-datepicker ng-model="recalcFromDate" md-placeholder="From date"></md-datepicker>
+                        <md-datepicker ng-model="recalcToDate" md-placeholder="To date"></md-datepicker>
+                    </div>
+                    <md-input-container class="md-block">
+                        <label>Comma delimited list of transceiver serial numbers</label>
+                        <textarea ng-model="recalcSnList" rows="5" md-select-on-focus=""></textarea>
+                    </md-input-container>
+                    <md-button class="md-primary md-raised" style="width:200px;" aria-label="button"
+                               ng-click="calcSpecClicked()">Calculate spec
+                    </md-button>
+                    <md-progress-circular md-mode="indeterminate" ng-show="recalcShowProgress"></md-progress-circular>
+                </div>
+            </md-tab>
+            <md-tab md-on-select="tabSelected(5, 'upload')" label="Upload file" ng-if="class == 'FILE'">
+                <div layout="column" flex="100">
+                    <div layout-align="start start" layout-padding ng-show="selectedSarLock !== 'Y'" flex layout="row">
+                        <md-button class="md-primary md-raised" ngf-select="upload($file)" ng-model="file" name="file">
+                            Select file to upload
+                        </md-button>
+                    </div>
+                    <div layout-fill>
+                        <div layout-padding>{{selectedFileName}}</div>
+                        <pre class="code" layout-padding>{{ selectedFileContent }}</pre>
+                    </div>
+                </div>
+            </md-tab>
+
+        </md-tabs>
+    </md-content>
+</md-content>

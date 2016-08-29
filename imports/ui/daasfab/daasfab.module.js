@@ -34,6 +34,7 @@ import './permission/permission.module';
 import '../components/authentication/authentication.run';
 import '../components/dashboard/dashboard.run';
 import '../components/settings/settings.config';
+import '../components/spec-actions/spec-actions.run';
 // import '../components/charts/charts.run';
 // import '../components/export-data/export-data.config';
 // import '../components/transceiver-view/transceiver-view.config';
@@ -78,6 +79,7 @@ export default angular.module(name, [
     'kaiamAuthentication',
     'kaiamDashboard',
     'kaiamSettings',
+    'kaiamSpecActions',
    // 'kaiamCharts',
    // 'kaiamExportData',
    // 'kaiamTransceiverView',

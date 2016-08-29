@@ -4,7 +4,8 @@
       "SPECACTIONS": "Specs, Actions, Files ",
       "ACTION": "Actions",
       "SPEC": "Specs",
-      "FILE": "Files"
+      "FILE": "Files",
+      "OBSOLETE": "Obsolete"
     }
   }
 }
