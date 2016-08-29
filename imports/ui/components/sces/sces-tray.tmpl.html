@@ -129,9 +129,9 @@
                                 <div class="text-ellipsis" nowrap am-time-ago="item.state.when"></div>
                                 <p><a href="/sces/transceiver?id={{item._id}}"
                                       class="text-ellipsis scesPadding">{{item._id}}</a></p>
-                                <md-button class="md-icon-button" aria-label="Remove" ng-show="domain.canEdit()"
+                                <md-button class="md-icon-button" aria-label="Remove"
                                            ng-click="onRemoveChild(item._id)">
-                                    <ng-md-icon icon="remove_circle_outline" size="22"></ng-md-icon>
+                                    <ng-md-icon icon="remove_circle_outline" style="fill:red" size="18" ng-show="domain.canEdit()"></ng-md-icon>
                                 </md-button>
                             </md-list-item>
                         </md-list>

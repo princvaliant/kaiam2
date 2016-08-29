@@ -24,7 +24,7 @@ angular.module('kaiamSces').controller('ScesTableController', [
         let user = Meteor.user();
         $scope.domain = $stateParams.domain;
         $scope.search = $cookies.get($scope.domain + 'search') || '';
-        $scope.sort = $cookies.getObject($scope.domain + 'sort') || {'state.when': -1};
+        $scope.sort = $cookies.getObject($scope.domain + 'sort');
 
         // Retrieve column definitions from settings
         let columnDefs = ScesSettings.columnsCommon.concat(ScesSettings.columns[$scope.domain]);
@@ -78,7 +78,6 @@ angular.module('kaiamSces').controller('ScesTableController', [
         $scope.createList = ScesService.createList(user);
 
         $scope.autorun(() => {
-            // console.log($scope.sort + ' ' + $scope.searchDebounce + ' ' + $scope.domain);
             let method = 'getDomains';
             if ($scope.domain === 'salesOrder') {
                 method = 'getOpenSalesOrders';
@@ -86,7 +85,7 @@ angular.module('kaiamSces').controller('ScesTableController', [
             Meteor.call(method, {
                     fields: fields,
                     limit: 200,
-                    sort: $scope.getReactively('sort')
+                    sort: $scope.getReactively('sort') || {'state.when': -1}
                 },
                 $scope.getReactively('searchDebounce'),
                 $scope.getReactively('domain'), (err, list) => {

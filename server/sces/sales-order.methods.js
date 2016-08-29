@@ -17,6 +17,8 @@ Meteor.methods({
                     {'dc.Item Number': {$regex: '^' + search}}]
             }
         }, {
+            $sort: options.sort || {'state.when': -1}
+        },{
             $limit: 20
         }], {
             allowDiskUse: true
