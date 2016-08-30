@@ -1,5 +1,5 @@
 <md-card ng-keypress="onKeyPressed($event)">
-    <md-card-content ng-show="!trayId">
+    <md-card-content ng-show="!trayId && canAdd">
         <md-header class="md-no-sticky">{{'SCES.NEW-TRAY' | translate}}</md-header>
         <md-select class="sces-select" placeholder="{{'SCES.NEW-TRAY-TYPE' | translate}}" ng-model="trayType"
                    ng-change="onChangeTrayType(trayType)" ng-required>
@@ -17,7 +17,7 @@
             <md-button class="md-primary" aria-label="button"
                        ng-click="confirmClicked()">{{'SCES.CONFIRM' | translate}}</md-button>
             <md-button class="md-primary" aria-label="button"
-                       href="/sces/tabs/tray">{{'SCES.CANCEL' | translate}}</md-button>
+                       href="/sces/tab/tray">{{'SCES.CANCEL' | translate}}</md-button>
         </div>
     </md-card-content>
     <div layout="row" ng-show="trayId" flex>

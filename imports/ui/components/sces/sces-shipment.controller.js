@@ -12,7 +12,7 @@ import './sces.service';
  *
  *
  */
-angular.module('kaiamSces').controller('ScesShipController', [
+angular.module('kaiamSces').controller('ScesShipmentController', [
     '$scope', '$state', '$log', '$timeout', '$window', '$mdToast', '$reactive', '$mdDialog', '$location', '$translate',
     '$translatePartialLoader', 'ScesService', ($scope, $state, $log, $timeout, $window, $mdToast, $reactive, $mdDialog, $location, $translate,
                                                $translatePartialLoader, ScesService) => {
@@ -21,6 +21,11 @@ angular.module('kaiamSces').controller('ScesShipController', [
         $translate.refresh();
         let keys = '';
         $scope.shipId = $location.search().id;
+        let domDef = ScesSettings.getDomainFlowDef('shipment');
+        if (domDef) {
+            $scope.canAdd = ScesSettings.isInternalMember(Meteor.user(), domDef._start.roles);
+        }
+
         $scope.selectedOrders = [];
         $scope.openOrders = [];
         $scope.searchText = '';

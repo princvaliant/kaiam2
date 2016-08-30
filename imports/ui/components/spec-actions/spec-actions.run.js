@@ -32,6 +32,7 @@ angular.module('kaiamSpecActions')
                 menu.children.push({
                     name: 'MENU.SPECACTIONS.ACTION',
                     type: 'link',
+                    icon: 'offline_pin',
                     state: 'triangular.specactions',
                     priority: 1.1,
                     params: {
@@ -41,6 +42,7 @@ angular.module('kaiamSpecActions')
                 menu.children.push({
                     name: 'MENU.SPECACTIONS.SPEC',
                     type: 'link',
+                    icon: 'swap_vert',
                     state: 'triangular.specactions',
                     priority: 1.2,
                     params: {
@@ -50,6 +52,7 @@ angular.module('kaiamSpecActions')
                 menu.children.push({
                     name: 'MENU.SPECACTIONS.FILE',
                     type: 'link',
+                    icon: 'attach_file',
                     state: 'triangular.specactions',
                     priority: 1.3,
                     params: {
@@ -59,6 +62,7 @@ angular.module('kaiamSpecActions')
                 menu.children.push({
                     name: 'MENU.SPECACTIONS.OBSOLETE',
                     type: 'link',
+                    icon: 'delete_sweep',
                     state: 'triangular.specactions',
                     priority: 1.4,
                     params: {

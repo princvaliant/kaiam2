@@ -8,7 +8,7 @@
  *
  */
 angular.module('kaiamSces').
-controller('ScesBatchRequestController', [
+controller('ScesBatchrequestController', [
   '$scope', '$rootScope', '$log', '$state', '$mdToast', '$cookies', '$meteor', '$mdDialog', '$location', '$window',
   '$translate', '$translatePartialLoader', '$timeout', 'ScesService', ($scope, $rootScope, $log, $state, $mdToast, $cookies, $meteor, $mdDialog, $location, $window,
     $translate, $translatePartialLoader, $timeout, ScesService) => {

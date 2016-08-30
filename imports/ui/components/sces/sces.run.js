@@ -14,7 +14,7 @@ import './sces.service';
  * @description Supply Chain Execution System
  */
 angular.module('kaiamSces')
-    .run(['$rootScope', 'triMenu', '$meteor', 'ScesService',  function ($rootScope, triMenu, $meteor, ScesService) {
+    .run(['$rootScope', 'triMenu', '$meteor', 'ScesService', function ($rootScope, triMenu, $meteor, ScesService) {
         let user;
         $rootScope.$on('event:loginConfirmed', function () {
             initMenu();
@@ -28,20 +28,30 @@ angular.module('kaiamSces')
                 return;
             }
             user = Meteor.user();
-            if (user && !user.profile.isClient && _.intersection(user.profile.roles, ['ORDER_MANAGEMENT', 'INVENTORY_MANAGEMENT']).length > 0) {
+            if (ScesSettings.isInternalMember(user, ScesSettings.internalRoles)) {
                 let menu = {
                     name: 'MENU.SCES.SCES',
-                    icon: 'local_shipping',
+                    icon: 'subscriptions',
                     type: 'dropdown',
-                    priority: 5.1,
+                    priority: 7.1,
                     children: []
                 };
+                let priority = 1;
+                menu.children.push({
+                    name: 'SCES.SCAN-FIND',
+                    type: 'link',
+                    icon: 'cast',
+                    state: 'triangular.sces.scan',
+                    priority: priority
+                });
                 _.each(_.keys(ScesSettings.columns), (domain) => {
+                    priority += 1;
                     menu.children.push({
                         name: domain,
                         type: 'link',
+                        icon: 'list',
                         state: 'triangular.sces.tab.' + domain.toLowerCase(),
-                        priority: 1.15
+                        priority: priority
                     });
                 });
                 triMenu.addMenu(menu);

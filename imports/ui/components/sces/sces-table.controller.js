@@ -23,6 +23,14 @@ angular.module('kaiamSces').controller('ScesTableController', [
 
         let user = Meteor.user();
         $scope.domain = $stateParams.domain;
+
+        // Set domain and allowed to add flag to parent scope (tab controller)
+        $scope.$parent.domain = $scope.domain;
+        let domDef = ScesSettings.getDomainFlowDef($scope.domain);
+        if (domDef) {
+            $scope.$parent.canAdd = ScesSettings.isInternalMember(user, domDef._start.roles);
+        }
+        // Retrieve search and sort order from cookies
         $scope.search = $cookies.get($scope.domain + 'search') || '';
         $scope.sort = $cookies.getObject($scope.domain + 'sort');
 
@@ -38,7 +46,7 @@ angular.module('kaiamSces').controller('ScesTableController', [
             cellTemplate: 'imports/ui/components/sces/view-button.html',
             width: 35
         }].concat(columnDefs);
-        let fields = _.object(_.pluck(columnDefs, 'field'), [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+        let fields = _.object(_.pluck(columnDefs, 'field'), [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
         $scope.gridOptions = {
             enableFiltering: false,
@@ -98,7 +106,7 @@ angular.module('kaiamSces').controller('ScesTableController', [
         });
 
         $scope.viewRow = function (grid, row) {
-            $state.go('triangular.sces.' + $scope.domain, {
+            $state.go('triangular.sces.' + $scope.domain.toLowerCase(), {
                 id: row.entity._id
             });
         };

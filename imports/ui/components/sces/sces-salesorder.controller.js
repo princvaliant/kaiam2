@@ -7,13 +7,13 @@ import './sces.service';
 
 /**
  * @ngdoc function
- * @name IntroductionController
- * @module triAngularDashboards
+ * @name ScesSalesorderController
+ * @module kaiamSces
  * @kind function
  *
  *
  */
-angular.module('kaiamSces').controller('ScesOrderController', [
+angular.module('kaiamSces').controller('ScesSalesorderController', [
     '$rootScope', '$scope', '$log', '$mdToast', '$location', '$translate', '$translatePartialLoader',
     'Upload', 'ScesService', ($rootScope, $scope, $log, $mdToast, $location, $translate, $translatePartialLoader,
                               Upload, ScesService) => {

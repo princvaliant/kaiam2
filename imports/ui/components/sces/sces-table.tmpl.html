@@ -1,17 +1,14 @@
+
 <div layout="row">
-    <md-input-container style="width:300px;position:absolute;height:120px !important;top:95px;left:8px;right:8px;bottom:0px;">
+    <md-input-container style="width:300px;position:absolute;height:120px !important;top:75px;left:8px;right:8px;bottom:0px;">
         <label for="search">{{'SCES.SEARCH-TEXT' | translate}}</label>
         <input type="text" name="search" ng-model="search" aria-label="{{'SCES.SEARCH-TEXT' | translate}}">
     </md-input-container>
     <span flex></span>
-    <md-button class="md-primary" aria-label="button" href="/sces/salesOrder?id=" ng-show="{{domain == 'salesOrder'}}">
-        <md-icon md-font-icon="zmdi zmdi-money-box"></md-icon>
-        <span>{{'SCES.UPLOAD-SALES-ORDERS' | translate}}</span>
-    </md-button>
 </div>
 <div ui-grid="gridOptions" ui-grid-resize-columns ui-grid-move-columns
      ui-grid-save-state
-     ui-grid-auto-resize style="position:absolute;height:calc(100% - 140px) !important;top:140px;left:8px;right:8px;bottom:0px;"></div>
+     ui-grid-auto-resize style="position:absolute;height:calc(100% - 120px) !important;top:120px;left:8px;right:8px;bottom:0px;"></div>
 
 
 

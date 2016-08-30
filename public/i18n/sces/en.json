@@ -1,7 +1,7 @@
 {
   "MENU": {
     "SCES": {
-      "SCES": "Supply Chain"
+      "SCES": "MES"
     }
   },
 
@@ -10,7 +10,7 @@
     "SCAN-FIND": "SCAN",
     "BAR-CODE-PRINT": "To print bar code label select unit type and press PRINT",
     "BAR-CODE-PRINTLABEL-BTN": "PRINT LABEL",
-
+    "NEW": "New",
     "NEW-TRAY-LABEL": "Select tray type and part number, then click confirm to create new tray",
     "NEW-TRAY-TYPE": "Select tray type",
     "NEW-TRAY-PARTNUMBER": "Select part number",
@@ -83,7 +83,15 @@
     "UPLOAD-SALES-ORDERS": "Upload sales orders",
     "NEW-TRAY": "New tray",
     "NEW-SHIPMENT": "New shipment",
-    "BROWSE-TEXT": "Browse"
+    "BROWSE-TEXT": "Browse",
+
+    "tray": "Tray",
+    "shipment": "Shipment",
+    "transceiver": "Transceiver",
+    "salesOrder": "Sales orders",
+    "rma": "RMA",
+    "batchRequest": "Batch request",
+    "location": "Location"
   },
 
   "tray": "Trays",
@@ -91,5 +99,6 @@
   "transceiver": "Transceivers",
   "salesOrder": "Sales orders",
   "rma": "RMAs",
-  "batchRequest": "Batch requests"
+  "batchRequest": "Batch requests",
+  "location": "Locations"
 }

@@ -35,9 +35,9 @@ import '../components/authentication/authentication.run';
 import '../components/dashboard/dashboard.run';
 import '../components/settings/settings.config';
 import '../components/spec-actions/spec-actions.run';
-// import '../components/charts/charts.run';
-// import '../components/export-data/export-data.config';
-// import '../components/transceiver-view/transceiver-view.config';
+import '../components/charts/charts.run';
+import '../components/export-data/export-data.config';
+import '../components/transceiver-view/transceiver-view.config';
 import '../components/sces/sces.run';
 
 const name = 'daasfab';
@@ -80,9 +80,9 @@ export default angular.module(name, [
     'kaiamDashboard',
     'kaiamSettings',
     'kaiamSpecActions',
-   // 'kaiamCharts',
-   // 'kaiamExportData',
-   // 'kaiamTransceiverView',
+    'kaiamCharts',
+    'kaiamExportData',
+    'kaiamTransceiverView',
     'kaiamSces'
 ]);
 angular.module(name)

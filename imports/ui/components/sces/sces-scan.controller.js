@@ -24,7 +24,7 @@ angular.module('kaiamSces').controller('ScesScanController', [
                 if (element) {
                     element.focus();
                 }
-            }, 200);
+            }, 1200);
         }
 
         function jumpTo (code) {

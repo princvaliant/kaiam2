@@ -21,6 +21,9 @@ Meteor.methods({
             },
             'meta.Rack': {
                 $nin: ['TestStation1', '', null, 'Packout']
+            },
+            'meta.ScriptName': {
+                $nin: ['Control']
             }
         };
 

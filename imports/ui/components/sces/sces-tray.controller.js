@@ -25,14 +25,15 @@ angular.module('kaiamSces').controller('ScesTrayController', [
         $scope.trayShip = '';
         $scope.scanAction = 'scanadd';
         let keys = '';
+        let user = Meteor.users.findOne(Meteor.userId());
         $scope.trayId = $location.search().id;
+        let domDef = ScesSettings.getDomainFlowDef('tray');
+        if (domDef) {
+            $scope.canAdd = ScesSettings.isInternalMember(user, domDef._start.roles);
+        }
         $scope.content = 'log';
 
-        let user = Meteor.users.findOne(Meteor.userId());
-        $scope.isAdmin = false;
-        if (user && !user.profile.isClient && _.intersection(user.profile.roles, ['ADMIN', 'INVENTORY_SUPERVISOR']).length > 0) {
-            $scope.isAdmin = true;
-        }
+        $scope.isAdmin = ScesSettings.isAdmin(user);
 
         // This part provides order select functionality for new tray ////////////////////
         $scope.confirmClicked = function () {

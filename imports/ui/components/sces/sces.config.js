@@ -3,10 +3,10 @@
 import angular from 'angular';
 import './sces.controller';
 import './sces.tmpl.html';
-import './sces-ship.controller';
-import './sces-ship.tmpl.html';
-import './sces-order.controller';
-import './sces-order.tmpl.html';
+import './sces-shipment.controller';
+import './sces-shipment.tmpl.html';
+import './sces-salesorder.controller';
+import './sces-salesorder.tmpl.html';
 import './sces-tray.controller';
 import './sces-tray.tmpl.html';
 import './sces-transceiver.controller';
@@ -37,53 +37,8 @@ angular.module ('kaiamSces')
                 templateUrl: 'imports/ui/components/sces/sces.tmpl.html',
                 controller: 'ScesController'
             });
-            $stateProvider.state ('triangular.sces.shipment', {
-                url: '/shipment?id=',
-                views: {
-                    'contentsces': {
-                        templateUrl: 'imports/ui/components/sces/sces-ship.tmpl.html',
-                        controller: 'ScesShipController'
-                    }
-                }
-            });
-            $stateProvider.state ('triangular.sces.salesOrder', {
-                url: '/salesOrder?id=',
-                views: {
-                    'contentsces': {
-                        templateUrl: 'imports/ui/components/sces/sces-order.tmpl.html',
-                        controller: 'ScesOrderController'
-                    }
-                }
-            });
-            $stateProvider.state ('triangular.sces.tray', {
-                url: '/tray?id=',
-                views: {
-                    'contentsces': {
-                        templateUrl: 'imports/ui/components/sces/sces-tray.tmpl.html',
-                        controller: 'ScesTrayController'
-                    }
-                }
-            });
-            $stateProvider.state ('triangular.sces.batchrequest', {
-                url: '/batchrequest?id=',
-                views: {
-                    'contentsces': {
-                        templateUrl: 'imports/ui/components/sces/sces-batchrequest.tmpl.html',
-                        controller: 'ScesBatchRequestController'
-                    }
-                }
-            });
-            $stateProvider.state ('triangular.sces.rma', {
-                url: '/rma?id=',
-                views: {
-                    'contentsces': {
-                        templateUrl: 'imports/ui/components/sces/sces-rma.tmpl.html',
-                        controller: 'ScesRmaController'
-                    }
-                }
-            });
             $stateProvider.state ('triangular.sces.tab', {
-                url: '/tabs',
+                url: '/tab',
                 views: {
                     'contentsces': {
                         templateUrl: 'imports/ui/components/sces/sces-tab.tmpl.html',
@@ -91,6 +46,30 @@ angular.module ('kaiamSces')
                     }
                 }
             });
+
+            $stateProvider.state ('triangular.sces.scan', {
+                url: '/scan?id=',
+                views: {
+                    'contentsces': {
+                        templateUrl: 'imports/ui/components/sces/sces-scan.tmpl.html',
+                        controller: 'ScesScanController'
+                    }
+                }
+            });
+
+            _.each (_.keys(ScesSettings.columns), (o) => {
+                let cname = o.toLowerCase().charAt(0).toUpperCase() + o.toLowerCase().slice(1);
+                $stateProvider.state ('triangular.sces.' + o.toLowerCase(), {
+                    url: '/' + o.toLowerCase() + '?id=',
+                    views: {
+                        'contentsces': {
+                            templateUrl: 'imports/ui/components/sces/sces-' +  o.toLowerCase() + '.tmpl.html',
+                            controller: 'Sces' + cname + 'Controller'
+                        }
+                    }
+                });
+            });
+
             _.each (_.keys(ScesSettings.columns), (o) => {
                 $stateProvider.state ('triangular.sces.tab.' + o.toLowerCase(), {
                     url: '/' + o.toLowerCase(),
@@ -104,25 +83,6 @@ angular.module ('kaiamSces')
                         'domain': o
                     }
                 });
-            });
-
-            $stateProvider.state ('triangular.sces.transceiver', {
-                url: '/transceiver?id=',
-                views: {
-                    'contentsces': {
-                        templateUrl: 'imports/ui/components/sces/sces-transceiver.tmpl.html',
-                        controller: 'ScesTransceiverController'
-                    }
-                }
-            });
-            $stateProvider.state ('triangular.sces.scan', {
-                url: '/scan',
-                views: {
-                    'contentsces': {
-                        templateUrl: 'imports/ui/components/sces/sces-scan.tmpl.html',
-                        controller: 'ScesScanController'
-                    }
-                }
             });
         }
     ]);

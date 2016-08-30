@@ -1,1 +1,10 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button ng-show="canAdd" class="md-primary md-raised" aria-label="button" href="/sces/{{domain.toLowerCase()}}?id=">
+            <md-icon md-font-icon="zmdi zmdi-inbox"></md-icon>
+            <span>{{'SCES.NEW' | translate}} {{('SCES.' + domain) | translate}}</span>
+        </md-button>
+        <span flex></span>
+    </div>
+</md-toolbar>
 <div ui-view="contentscestables" class="sces-content-tables" flex="100"></div>

@@ -108,23 +108,19 @@ function DefaultToolbarController($scope, $state, $injector, $rootScope, $mdMedi
         });
     };
 
-    this.openUsers = function() {
+    this.openUsers = function () {
         $state.go('triangular.settings-users');
     };
 
-    this.openCompanies = function() {
+    this.openCompanies = function () {
         $state.go('triangular.settings-companies');
     };
 
-    this.openReworkCodes = function() {
+    this.openReworkCodes = function () {
         $state.go('triangular.settings-rework-codes');
     };
 
-    this.isAdmin = function() {
-        let user = Meteor.users.findOne(Meteor.userId());
-        if (user && _.intersection(user.profile.roles, ['ADMIN']).length > 0) {
-            return true;
-        }
-        return false;
+    this.isAdmin = function () {
+        return ScesSettings.isAdmin(Meteor.users.findOne(Meteor.userId()));
     };
 }
