@@ -53,10 +53,10 @@ Meteor.methods({
     if (serial) {
       match.$and.push({ 'value.srch': serial });
     }
-    if (pnum) {
+    if (pnum !== '-all-') {
       match.$and.push({ 'value.srch': pnum });
     }
-    if (manuf) {
+    if (manuf !== '-all-') {
       match.$and.push({ 'value.srch': manuf });
     }
 

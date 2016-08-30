@@ -16,8 +16,8 @@ import '../export-data/export-data.service';
  */
 
 angular.module('kaiamCharts').controller('LossCheckController', [
-    '$scope', '$mdToast', '$cookies', '$translate', '$stateParams', '$location', 'LossCheckService', 'ExportDataService',
-    ($scope, $mdToast, $cookies, $translate, $stateParams, $location, LossCheckService, ExportDataService) => {
+    '$scope', '$mdToast', '$cookies', '$translate', '$stateParams', '$timeout', '$location', 'LossCheckService', 'ExportDataService',
+    ($scope, $mdToast, $cookies, $translate, $stateParams, $timeout, $location, LossCheckService, ExportDataService) => {
         $scope.partNumbers = ['-all-'].concat(_.keys(Settings.partNumbers));
         $scope.intervals = _.keys(Settings.lossintervals);
         $scope.partNumber = $stateParams.pnum || '-all-';
@@ -207,11 +207,11 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                         let blob = new Blob([ret.substring(1)], {type: 'data:text/csv'});
                         $scope.url = (window.URL || window.webkitURL).createObjectURL(blob);
                         $scope.filename = 'losses-' + (tt || 'all') + '.csv';
-                        setTimeout(() => {
+                        $timeout(() => {
                             let a = document.getElementById('lossdataexportlink');
                             $scope.showProgress = false;
                             a.click();
-                        }, 1000);
+                        }, 100);
                     }
                 });
         }

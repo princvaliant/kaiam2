@@ -18,10 +18,10 @@ Meteor.methods({
     }
     let match = {};
     match.rwr = rework ? 1 : 0;
-    if (partNumber) {
+    if (partNumber !== '-all-') {
       match.pnum = partNumber;
     }
-    if (manufacturer) {
+    if (manufacturer !== '-all-') {
       match.cm =  manufacturer;
     }
     if ((interval > 999 && interval <= 1002) || range === 'day') {
@@ -99,7 +99,6 @@ Meteor.methods({
         }
       });
     }
-    
     let result = [];
     if (device === '40GB') {
       result = Yields.aggregate(aggr);
