@@ -1,11 +1,6 @@
 $sidenav-mobile-width: 260px;
 $sidenav-desktop-width: 280px;
 
-// import angular material scss
-@import "{}/node_modules/angular-material/angular-material.scss";
-@import "{}/node_modules/angular-material/modules/scss/angular-material.layouts.scss";
-@import "{}/node_modules/angular-material/modules/scss/angular-material.layout-attributes.scss";
-
 body {
   color: #212121;
 }
@@ -14,6 +9,11 @@ body {
 button, select, html, textarea, input {
   font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
 }
+
+// import angular material scss
+@import "{}/node_modules/angular-material/angular-material.scss";
+@import "{}/node_modules/angular-material/modules/scss/angular-material.layouts.scss";
+@import "{}/node_modules/angular-material/modules/scss/angular-material.layout-attributes.scss";
 
 // import animate scss
 @import "{}/imports/ui/daasfab/scss/animate.css-scss/_properties.scss";

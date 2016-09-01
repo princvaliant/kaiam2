@@ -1,6 +1,6 @@
 import angular from 'angular';
 import {Meteor} from 'meteor/meteor';
-import {name as Daasfab} from '../imports/ui/daasfab/daasfab.module';
+import {name as KaiamCloud} from '../imports/ui/daasfab/daasfab.module';
 
 import '../imports/ui/daasfab/translate.filter';
 import '../imports/ui/daasfab/error-page.controller';
@@ -12,7 +12,7 @@ import '../imports/ui/daasfab/daasfab.run';
 
 function onReady () {
     angular.bootstrap(document, [
-        Daasfab
+        KaiamCloud
     ], {
         strictDi: true
     });
