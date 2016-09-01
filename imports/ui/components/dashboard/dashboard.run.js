@@ -26,7 +26,7 @@ angular.module('kaiamDashboard').run(['$rootScope', 'triMenu', '$meteor',
                     state: 'triangular.dashboard',
                     icon: 'dashboard',
 //                    badge: 1,
-                    priority: 1.1
+                    priority: 1.0
                 });
             }
         }

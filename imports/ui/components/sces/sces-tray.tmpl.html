@@ -1,6 +1,6 @@
 <md-card ng-keypress="onKeyPressed($event)">
     <md-card-content ng-show="!trayId && canAdd">
-        <md-header class="md-no-sticky">{{'SCES.NEW-TRAY' | translate}}</md-header>
+        <md-subheader class="md-no-sticky md-caption">{{'SCES.NEW-TRAY' | translate}}</md-subheader>
         <md-select class="sces-select" placeholder="{{'SCES.NEW-TRAY-TYPE' | translate}}" ng-model="trayType"
                    ng-change="onChangeTrayType(trayType)" ng-required>
             <md-option ng-repeat="trayt in trayTypes" value="{{trayt}}">{{trayt}}</md-option>
@@ -83,7 +83,7 @@
                 <md-progress-linear ng-show="showProgress==true" class="scesPadding"
                                     md-mode="indeterminate"></md-progress-linear>
             </div>
-            <div ng-show="domain.canEdit()" layout="row">
+            <div ng-show="domain.canEdit()" layout="row" class="scesPadding">
                 <md-switch class="md-primary" ng-model="scanadd" ng-focus="showProgress=true"
                            ng-blur="showProgress = false;" aria-label=" {{'SCES.SCAN-ADD' | translate}}"
                            ng-init="scanadd=true" ng-change="onScanAdd(scanadd)" id="trayScanOptions">

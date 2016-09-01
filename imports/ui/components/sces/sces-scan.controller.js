@@ -5,8 +5,8 @@ import {Meteor} from 'meteor/meteor';
 import './sces.service';
 /**
  * @ngdoc function
- * @name IntroductionController
- * @module triAngularDashboards
+ * @name ScesScanController
+ * @module kaiamSces
  * @kind function
  *
  *
@@ -17,6 +17,7 @@ angular.module('kaiamSces').controller('ScesScanController', [
         $translatePartialLoader.addPart('sces');
         $translate.refresh();
         let keys = '';
+        $scope.errorMessage = '';
 
         function focus () {
             $timeout(function () {
@@ -29,16 +30,21 @@ angular.module('kaiamSces').controller('ScesScanController', [
 
         function jumpTo (code) {
             let c = code || $scope.code;
+            $scope.errorMessage = '';
             Meteor.call('getDomain', c, (err, domain) => {
                 if (err) {
-                    $scope.message = err;
+                    $scope.$apply(function () {
+                        $scope.errorMessage = err;
+                    });
                 } else {
                     if (domain) {
                         $state.transitionTo('triangular.sces.' + domain.type.toLowerCase(), {
                             id: domain._id
                         });
                     } else {
-                        $scope.message = c + ' not found in database';
+                        $scope.$apply(function () {
+                            $scope.errorMessage = c + ' not found in database';
+                        });
                     }
                 }
             });

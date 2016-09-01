@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name ScesService
+ * @module kaiamSces
+ * @kind function
+ *
+ *
+ */
+
 angular.module('kaiamSces')
   .service('ScesService', ['$translate', '$q', '$cookies',
     function($translate, $q, $cookies) {

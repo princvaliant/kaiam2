@@ -1,14 +1,18 @@
 <md-card>
-    <md-card-content layout="column" ng-show="!shipId && canAdd">
-        <md-subheader class="md-no-sticky">New shipment</md-subheader>
-        <div layout="row">
-            <md-input-container style="width:300px;">
-                <label for="search">Find sales order for shipment</label>
-                <input type="text" name="search" ng-model="search" aria-label="{{'SCES.SEARCH-TEXT' | translate}}">
-            </md-input-container>
-        </div>
-        <div ui-grid="gridOptions" ui-grid-selection
-             ui-grid-auto-resize style="height:300px" flex></div>
+    <md-card-content layout="column" ng-show="!locationId && canAdd">
+        <md-subheader class="md-no-sticky">New location</md-subheader>
+        <md-input-container style="width:300px;">
+            <label for="name">{{'SCES.LOCATION-NAME' | translate}}</label>
+            <input type="text" name="name" ng-model="name" aria-label="{{'SCES.LOCATION-NAME' | translate}}" reguired="true">
+        </md-input-container>
+        <md-input-container style="width:300px;">
+            <label for="subLocation">{{'SCES.SUB-LOCATION' | translate}}</label>
+            <input type="text" name="subLocation" ng-model="subLocation" aria-label="{{'SCES.SUB-LOCATION' | translate}}">
+        </md-input-container>
+        <md-input-container style="width:300px;">
+            <label for="description">{{'SCES.LOCATION-DESCRIPTION' | translate}}</label>
+            <input type="text" name="description" ng-model="description" aria-label="{{'SCES.LOCATION-DESCRIPTION' | translate}}">
+        </md-input-container>
         <div layout="row" layout-padding>
             <md-button class="md-primary" aria-label="button"
                        ng-click="confirmClicked()">{{'SCES.CONFIRM' | translate}}</md-button>
@@ -16,48 +20,44 @@
                        ng-click="cancelClicked()">{{'SCES.CANCEL' | translate}}</md-button>
         </div>
     </md-card-content>
-    <div layout="row" ng-show="shipId" ng-keypress="onKeyPressed($event)" flex>
+    <div layout="row" ng-show="locationId" ng-keypress="onKeyPressed($event)" flex>
         <div layout="column" style="width:265px;">
-            <div palette-background="deep-orange:200" layout="column" layout-align="space-between">
-                <h2 class="md-display-1 font-weight-400 margin-0" flex layout-padding>Shipment</h2>
+            <div palette-background="purple:100" layout="column" layout-align="space-between">
+                <h2 class="md-display-1 font-weight-400 margin-0" flex layout-padding>Location</h2>
                 <md-divider></md-divider>
                 <div layout="row" layout-align="space-between center" class="scesPadding">
                     <span>{{'SCES.STATUS' | translate}}</span>
                     <b>{{domain.state.id}}</b>
                 </div>
-                <div layout="row" layout-align="space-between center" class="scesPadding">
-                    <span>in {{'SCES.ORDER' | translate}}</span>
-                    <a href="/sces/salesOrder?id={{selectedOrder._id}}">{{selectedOrder._id}}</a>
-                </div>
                 <md-divider></md-divider>
                 <div layout="row" layout-align="space-between top">
                     <div style="margin-top:13px;margin-left:30px;width:200px;height:80px;">
-                        <div id="shipPrintId" style="width:100%;height:100%;">
+                        <div id="locationPrintId" style="width:100%;height:100%;">
                             <img src="{{barcodeimg}}" style="width:100%;height:100%;"/>
                         </div>
                     </div>
                 </div>
                 <div layout="row" layout-align="space-between center" class="scesPadding">
-                    <span>{{'SCES.ORDER-CUSTOMER' | translate}}</span>
-                    <b>{{selectedOrder.dc["Name (Sold-To)"]}}</b>
+                    <span>{{'SCES.LOCATION-NAME' | translate}}</span>
+                    <b>{{domain.dc.name}}</b>
                 </div>
                 <div layout="row" layout-align="space-between center" class="scesPadding">
-                    <span>{{'SCES.ORDER-CUSTOMER-PO' | translate}}</span>
-                    <b>{{selectedOrder.dc["Purchase Order"]}}</b>
+                    <span>in {{'SCES.SUB-LOCATION' | translate}}</span>
+                    <b>{{domain.dc.subLocation}}</b>
                 </div>
-                <div layout="row" layout-align="space-between center" class="scesPadding">
-                    <span>{{'SCES.ORDER-ITEMS' | translate}}</span>
-                    <b>{{selectedOrder.dc["Item Number"]}}</b>
-                </div>
-                <div layout="row" layout-align="space-between center" class="scesPadding">
-                    <span>{{'SCES.ORDERED-REMAIN-COUNT' | translate}}</span>
-                    <b>{{remainingOnOrder}}</b>
+                <div layout="column" layout-align="start start" class="scesPadding">
+                    <span>{{'SCES.LOCATION-DESCRIPTION' | translate}}</span>
+                    <b>{{domain.dc.description}}</b>
                 </div>
                 <md-divider></md-divider>
                 <div layout="row" layout-align="space-between center" class="scesPadding"
                      ng-repeat="(cm, items) in transceivers">
                     <span>{{cm}} {{'SCES.ASSIGNED-TRANSCEIVERS' | translate}}</span>
                     <b>{{items.length}}</b>
+                </div>
+                <div ng-click="content='list'" layout="row" layout-align="space-between center" class="scesPadding">
+                    <span>{{'SCES.ASSIGNED-TRAYS-TOTAL' | translate}}</span>
+                    <a href=""><b>{{domainKids.length}}</b></a>
                 </div>
                 <div ng-click="content='list'" layout="row" layout-align="space-between center" class="scesPadding">
                     <span>{{'SCES.ASSIGNED-TRANSCEIVERS-TOTAL' | translate}}</span>
@@ -70,19 +70,19 @@
             </div>
             <div ng-show="domain.canEdit()" layout="column">
                 <div layout="row" layout-align="start center" style="margin-top:15px;margin-bottom:15px;">
-                    <md-input-container style="width:150px;" class="hide-error-msg">
-                        <label for="serial">{{'SCES.SERIAL-NUMBER' | translate}}</label>
+                    <md-input-container style="width:180px;" class="hide-error-msg">
+                        <label for="serial">{{'SCES.LOCATION-CHILD' | translate}}</label>
                         <input type="text" name="serial" ng-required="true" ng-model="serial">
                     </md-input-container>
                     <md-button class="md-raised" aria-label="button"
                                ng-click="onManualAdd()">{{'SCES.MANUAL' | translate}}</md-button>
                 </div>
             </div>
-            <div layout="row" layout-align="space-between">
-                <md-button flex="40" class="md-primary md-raised" aria-label="button"
-                           ng-click="printDiv('shipPrintId')">{{'SCES.BAR-CODE-PRINTLABEL-BTN' | translate}}</md-button>
-                <md-button ng-show="domain.canEdit()" flex="40" class="md-primary md-raised" aria-label="button"
-                           ng-click="submitShipment()">{{'SCES.SEND-SHIPMENT' | translate}}</md-button>
+            <div layout="column" layout-align="space-between">
+                <md-button  class="md-primary md-raised" aria-label="button"
+                           ng-click="printDiv('locationPrintId')">{{'SCES.BAR-CODE-PRINTLABEL-BTN' | translate}}</md-button>
+                <md-button ng-show="domain.canEdit()"  class="md-primary" aria-label="{{'SCES.LOCATION-DELETE' | translate}}"
+                           ng-click="deleteLocation()">{{'SCES.LOCATION-DELETE' | translate}}</md-button>
             </div>
         </div>
         <div layout="column" flex>
@@ -90,20 +90,20 @@
                 <md-progress-linear ng-show="showProgress==true" class="scesPadding"
                                     md-mode="indeterminate"></md-progress-linear>
             </div>
-            <div ng-show="domain.canEdit()" layout="row"  class="scesPadding">
+            <div ng-show="domain.canEdit()" layout="row" class="scesPadding">
                 <md-switch class="md-primary" ng-model="scanadd" ng-focus="showProgress=true"
                            ng-blur="showProgress = false;" aria-label=" {{'SCES.SCAN-ADD' | translate}}"
-                           ng-init="scanadd=true" ng-change="onScanAdd(scanadd)" id="shipScanOptions">
+                           ng-init="scanadd=true" ng-change="onScanAdd(scanadd)" id="locationScanOptions">
                     {{'SCES.SCAN-ADD' | translate}}
                 </md-switch>
-                <md-switch class="md-warn" ng-focus="showProgress=true" ng-blur="showProgress = false;"
-                           ng-model="scanremove" aria-label=" {{'SCES.SCAN-REMOVE' | translate}}"
-                           ng-init="scanremove=false" ng-change="onScanRemove(scanremove)">
-                    {{'SCES.SCAN-REMOVE' | translate}}
-                </md-switch>
+                <!--<md-switch class="md-warn" ng-focus="showProgress=true" ng-blur="showProgress = false;"-->
+                           <!--ng-model="scanremove" aria-label=" {{'SCES.SCAN-REMOVE' | translate}}"-->
+                           <!--ng-init="scanremove=false" ng-change="onScanRemove(scanremove)">-->
+                    <!--{{'SCES.SCAN-REMOVE' | translate}}-->
+                <!--</md-switch>-->
             </div>
             <div layout="row" flex>
-                <md-card  flex="80">
+                <md-card flex="80">
                     <md-subheader>{{'SCES.SHIP-ACTION-LOG' | translate}}</md-subheader>
                     <md-card-content>
                         <md-list>
@@ -111,7 +111,8 @@
                                           layout-align="start center">
                                 <md-icon
                                         md-font-icon="zmdi zmdi-{{de.status === 'error' ? 'alert-triangle' : (de.status=== 'add') ? 'collection-plus' : 'minus-circle-outline'}}"
-                                        ng-class="de.success ? 'md-primary' : 'md-warn'" style="margin-right:-5px;"></md-icon>
+                                        ng-class="de.success ? 'md-primary' : 'md-warn'"
+                                        style="margin-right:-5px;"></md-icon>
                                 <div class="text-ellipsis scesPadding" nowrap am-time-ago="de.when"></div>
                                 <p class="text-ellipsis scesPadding">{{de.code}} - {{de.message | translate}} - <a
                                         href="/sces/tray?id={{de.code}}"> view {{de.code}}</a></p>
@@ -125,9 +126,11 @@
                         <md-list>
                             <md-list-item ng-repeat="item in domainKids" class="paddingreduce" layout="row"
                                           layout-align="start center">
-                                <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary" style="margin-right:-5px;"></md-icon>
+                                <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"
+                                         style="margin-right:-5px;"></md-icon>
                                 <div class="text-ellipsis" nowrap am-time-ago="item.state.when"></div>
-                                <p><a href="/sces/transceiver?id={{item._id}}" class="text-ellipsis scesPadding">{{item._id}}</a></p>
+                                <p><a href="/sces/transceiver?id={{item._id}}"
+                                      class="text-ellipsis scesPadding">{{item._id}}</a></p>
                             </md-list-item>
                         </md-list>
                     </md-card-content>

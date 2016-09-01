@@ -11,6 +11,11 @@
         </span>
     </h2>
 
+    <md-button class="toolbar-button" ng-click="vm.openScan()" aria-label="scan">
+        <ng-md-icon class="side-menu-icon scan-icon" icon="cast" size="26" ></ng-md-icon>
+        {{'SCES.SCAN-FIND' | translate}}
+    </md-button>
+
     <md-button class="md-icon-button toolbar-button" ng-click="vm.toggleFullScreen()" aria-label="toggle fullscreen">
         <md-icon md-font-icon ng-class="vm.fullScreenIcon"></md-icon>
     </md-button>

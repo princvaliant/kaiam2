@@ -1,5 +1,5 @@
 'use strict';
-import { check } from 'meteor/check';
+import {check} from 'meteor/check';
 
 
 Meteor.methods({
@@ -20,7 +20,23 @@ Meteor.methods({
 
     getDomains: function (options, search, domain) {
         ScesDomains.isLoggedIn(this.userId);
-        let query = ScesSettings.constructQuery(Meteor.users.findOne(this.userId), search, domain);
+        let query = {};
+        if (search) {
+            query = {
+                '$or': [
+                    {
+                        type: domain,
+                        tags: search
+                    },
+                    {
+                        _id: {$regex: '^' + search},
+                        type: domain
+                    }
+                ]
+            };
+        } else {
+            query = ScesSettings.constructQuery(Meteor.users.findOne(this.userId), '', domain);
+        }
         let ret = Domains.find(
             query,
             options).fetch();

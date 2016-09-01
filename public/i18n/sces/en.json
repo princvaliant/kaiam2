@@ -53,6 +53,7 @@
     "ERROR-SERIAL-NUMBER-NOT-ALLOWED": "Serial number not allowed to be shipped (less than 3000)",
     "ASSIGNED-TRANSCEIVERS": "Transceivers",
     "ASSIGNED-TRANSCEIVERS-TOTAL": "Total transceivers",
+    "ASSIGNED-TRAYS-TOTAL": "Total trays",
     "ASSIGNED-SHIPMENT": "Shipments",
     "ASSIGNED-TRAYS": "Trays",
     "ASSIGNED-SALESORDERS": "Sales order",
@@ -85,6 +86,13 @@
     "NEW-SHIPMENT": "New shipment",
     "BROWSE-TEXT": "Browse",
 
+
+    "LOCATION-NAME": "Location name",
+    "SUB-LOCATION": "Sub-location",
+    "LOCATION-DESCRIPTION": "Description of the location",
+    "LOCATION-CHILD": "tray# or transceiver#",
+    "LOCATION-DELETE": "Delete if empty",
+
     "tray": "Tray",
     "shipment": "Shipment",
     "transceiver": "Transceiver",
@@ -92,6 +100,8 @@
     "rma": "RMA",
     "batchRequest": "Batch request",
     "location": "Location"
+
+
   },
 
   "tray": "Trays",

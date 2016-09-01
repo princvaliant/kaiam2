@@ -6,8 +6,8 @@ import './sces.service';
 import './view-button.html';
 /**
  * @ngdoc function
- * @name IntroductionController
- * @module triAngularDashboards
+ * @name ScesTableController
+ * @module kaiamSces
  * @kind function
  *
  *

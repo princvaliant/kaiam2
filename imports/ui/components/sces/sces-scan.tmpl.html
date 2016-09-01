@@ -1,14 +1,14 @@
 <md-card>
-    <div layout="column" flex>
+    <md-card-content layout="column" flex>
         <div>
             <md-progress-linear class="scesPadding" md-mode="indeterminate"></md-progress-linear>
         </div>
         <md-subheader>{{'SCES.SCAN-BAR-CODE' | translate}}</md-subheader>
-        <p style="padding:20px;color:red"><b>{{message}}</b></p>
         <md-input-container class="md-icon-float" flex="1" layout-padding>
             <input type="text" id="allScanOptions" ng-keypress="onKeyPressed($event)" ng-model="code"
                    aria-label="Scan bar code">
         </md-input-container>
-    </div>
+        <p style="padding:10px;color:red"><b>{{errorMessage}}</b></p>
+    </md-card-content>
 </md-card>
 

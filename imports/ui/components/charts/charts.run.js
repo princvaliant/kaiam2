@@ -23,7 +23,7 @@ angular.module('kaiamCharts')
                         name: 'MENU.CHARTS.THRUPUT',
                         icon: 'fast_forward',
                         type: 'dropdown',
-                        priority: 1.1,
+                        priority: 1.2,
                         children: []
                     };
                     thruputmenu.children.push({
@@ -44,7 +44,7 @@ angular.module('kaiamCharts')
                         name: 'MENU.CHARTS.ANALYSIS',
                         icon: 'assessment',
                         type: 'dropdown',
-                        priority: 1.15,
+                        priority: 1.3,
                         children: []
                     };
                     analysismenu.children.push({
@@ -64,7 +64,7 @@ angular.module('kaiamCharts')
                         name: 'MENU.CHARTS.YIELD',
                         icon: 'thumb_up',
                         type: 'dropdown',
-                        priority: 1.2,
+                        priority: 1.4,
                         children: []
                     };
 

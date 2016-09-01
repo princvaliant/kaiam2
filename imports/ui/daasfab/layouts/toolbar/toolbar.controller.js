@@ -11,9 +11,9 @@ DefaultToolbarController.$inject = ['$scope', '$state', '$injector', '$rootScope
     'UserService'];
 
 /* @ngInject */
-function DefaultToolbarController($scope, $state, $injector, $rootScope, $mdMedia, $filter,
-                                  $mdUtil, $mdSidenav, $mdToast, $document, triBreadcrumbsService,
-                                  triSettings, triLayout, UserService) {
+function DefaultToolbarController ($scope, $state, $injector, $rootScope, $mdMedia, $filter,
+                                   $mdUtil, $mdSidenav, $mdToast, $document, triBreadcrumbsService,
+                                   triSettings, triLayout, UserService) {
     let vm = this;
     vm.breadcrumbs = triBreadcrumbsService.breadcrumbs;
     vm.emailNew = false;
@@ -106,6 +106,10 @@ function DefaultToolbarController($scope, $state, $injector, $rootScope, $mdMedi
         Meteor.logout(() => {
             $state.go('authentication.login');
         });
+    };
+
+    this.openScan = function () {
+        $state.go('triangular.sces.scan');
     };
 
     this.openUsers = function () {

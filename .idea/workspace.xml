@@ -2,15 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/charts/spcs.method.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-location.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-location.tmpl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/loss.method.js" afterPath="$PROJECT_DIR$/server/charts/loss.method.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/spcs.publish.js" afterPath="$PROJECT_DIR$/server/charts/spcs.publish.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/trend.methods.js" afterPath="$PROJECT_DIR$/server/charts/trend.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/yields.method.js" afterPath="$PROJECT_DIR$/server/charts/yields.method.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss" afterPath="$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/charts.run.js" afterPath="$PROJECT_DIR$/imports/ui/components/charts/charts.run.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.run.js" afterPath="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.run.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-batchrequest.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-batchrequest.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-transceiver.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-transceiver.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.config.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.run.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.run.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/sces.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/sces/sces.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/_toolbar.scss" afterPath="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/_toolbar.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.controller.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/sces-settings.js" afterPath="$PROJECT_DIR$/lib/sces-settings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/ui-grid/custom.css" afterPath="$PROJECT_DIR$/packages/ui-grid/custom.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/i18n/sces/en.json" afterPath="$PROJECT_DIR$/public/i18n/sces/en.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/domain.methods.js" afterPath="$PROJECT_DIR$/server/sces/domain.methods.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
@@ -32,7 +51,7 @@
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,35 +67,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/sces/sales-order.methods.js" />
-        <option value="$PROJECT_DIR$/client/styles.scss" />
-        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.module.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.config.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js" />
-        <option value="$PROJECT_DIR$/public/i18n/spec-actions/en.json" />
-        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" />
-        <option value="$PROJECT_DIR$/server/spec-actions/sar.methods.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.run.js" />
-        <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.run.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-batchrequest.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-order.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js" />
-        <option value="$PROJECT_DIR$/public/i18n/sces/en.json" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.config.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.controller.js" />
         <option value="$PROJECT_DIR$/server/charts/test-insertions.method.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.controller.js" />
         <option value="$PROJECT_DIR$/lib/location.js" />
         <option value="$PROJECT_DIR$/lib/domain-location.js" />
         <option value="$PROJECT_DIR$/lib/domain-tray.js" />
@@ -85,12 +78,9 @@
         <option value="$PROJECT_DIR$/lib/domain-batchrequest.js" />
         <option value="$PROJECT_DIR$/lib/domain-rma.js" />
         <option value="$PROJECT_DIR$/lib/domain-shipment.js" />
-        <option value="$PROJECT_DIR$/lib/sces-settings.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-batchrequest.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js" />
         <option value="$PROJECT_DIR$/public/i18n/transceiver/en.json" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.run.js" />
         <option value="$PROJECT_DIR$/server/charts/yields.method.js" />
         <option value="$PROJECT_DIR$/server/charts/loss.method.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/loss-check.service.js" />
@@ -99,6 +89,35 @@
         <option value="$PROJECT_DIR$/server/charts/trend.methods.js" />
         <option value="$PROJECT_DIR$/server/charts/spcs.publish.js" />
         <option value="$PROJECT_DIR$/server/charts/spcs.method.js" />
+        <option value="$PROJECT_DIR$/packages/ui-grid/custom.css" />
+        <option value="$PROJECT_DIR$/../kaiamd_dev/mup.json" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-transceiver.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-batchrequest.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.service.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/_toolbar.scss" />
+        <option value="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.config.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss" />
+        <option value="$PROJECT_DIR$/imports/ui/components/charts/charts.run.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces.run.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.run.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-location.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-tray.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-scan.tmpl.html" />
+        <option value="$PROJECT_DIR$/public/i18n/sces/en.json" />
+        <option value="$PROJECT_DIR$/lib/sces-settings.js" />
+        <option value="$PROJECT_DIR$/server/sces/domain.methods.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/sces-location.tmpl.html" />
       </list>
     </option>
   </component>
@@ -118,10 +137,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1878" />
-    <option name="y" value="-826" />
-    <option name="width" value="1379" />
-    <option name="height" value="1249" />
+    <option name="x" value="-967" />
+    <option name="y" value="-1405" />
+    <option name="width" value="1459" />
+    <option name="height" value="1401" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -149,6 +168,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,7 +215,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="charts" />
+              <option name="myItemId" value="sces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -214,10 +248,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daasfab" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -265,17 +295,82 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="sces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="charts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/web templates/themeforest/source/src/app/examples/dashboards/analytics/dashboard-analytics.controller.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kaiamd_dev/mup.json" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="enabled" />
     <property name="js.meteor.project" value="true" />
@@ -311,6 +406,13 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/imports/ui/components/sces" />
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/imports/ui/components/spec-actions" />
+      <recent name="$PROJECT_DIR$/imports/ui/components" />
+      <recent name="$PROJECT_DIR$/server/lib" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/imports/ui/components/spec-actions" />
       <recent name="$PROJECT_DIR$/imports/ui/components/sces" />
@@ -318,15 +420,8 @@
       <recent name="$PROJECT_DIR$/imports/ui/components/export-data" />
       <recent name="$PROJECT_DIR$/imports/ui/components/charts" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/spec-actions" />
-      <recent name="$PROJECT_DIR$/imports/ui/components" />
-      <recent name="$PROJECT_DIR$/server/lib" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/sces" />
-    </key>
   </component>
-  <component name="RunManager" selected="Meteor.Meteor Prod debug">
+  <component name="RunManager" selected="Meteor.Meteor Dev Debug">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -576,7 +671,11 @@
       <workItem from="1472498836194" duration="13797000" />
       <workItem from="1472516381314" duration="2446000" />
       <workItem from="1472519023310" duration="28000" />
-      <workItem from="1472527766939" duration="6860000" />
+      <workItem from="1472527766939" duration="6878000" />
+      <workItem from="1472589942197" duration="26000" />
+      <workItem from="1472589981698" duration="750000" />
+      <workItem from="1472660151879" duration="10052000" />
+      <workItem from="1472684796913" duration="5457000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1465419582807</created>
@@ -732,33 +831,40 @@
       <option name="project" value="LOCAL" />
       <updated>1472532032649</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="- Moving to new meteor 1.4.1  (MES module improvement)">
+      <created>1472534650117</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1472534650117</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="338505000" />
+    <option name="totallyTimeSpent" value="354808000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1878" y="-826" width="1379" height="1249" extended-state="0" />
+    <frame x="-967" y="-1405" width="1459" height="1401" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2658321" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2510431" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20224719" sideWeight="0.49189985" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2977273" sideWeight="0.44919" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17876242" sideWeight="0.50625867" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.51544404" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858416" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884097" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24478765" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20224719" sideWeight="0.50810015" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17876242" sideWeight="0.4937413" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2967033" sideWeight="0.4437322" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -814,299 +920,15 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="446" />
+      <option name="time" value="455" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/packout-charts.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="26" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="265" column="25" selection-start-line="265" selection-start-column="25" selection-end-line="265" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/spc-charts.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-salesorder.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/i18n/sces/en.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="87" column="19" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-salesorder.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="20" selection-start-line="4" selection-start-column="6" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-scan.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-scan.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/test-insertions.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/view-button.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tab.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="63" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-          <folding>
-            <element signature="e#15#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-transceiver.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-transceiver.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/triangular/components/toolbars/toolbar.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-352">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="85" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="102" column="7" selection-start-line="102" selection-start-column="7" selection-end-line="102" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/domain-tray.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/domain-transceiver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/domain-salesorder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/domain-location.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/domain-batchrequest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/domain-rma.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/domain-shipment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/sces-settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tray.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-batchrequest.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="77" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#30#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="44" column="35" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#30#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1114,7 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="45" column="63" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,7 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1130,15 +950,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1146,7 +957,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
           <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1154,7 +964,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
           <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1162,7 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1170,7 +978,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
           <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1178,7 +985,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1708">
           <caret line="169" column="26" selection-start-line="169" selection-start-column="16" selection-end-line="169" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1186,9 +992,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#md-progress-circular#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1196,7 +999,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
           <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1204,7 +1006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1212,7 +1013,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2085">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1220,6 +1020,285 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
           <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/ui-grid/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="354" column="27" selection-start-line="354" selection-start-column="27" selection-end-line="354" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kaiamd/mup.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kaiamd_dev/mup.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="2" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-transceiver.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tab.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#15#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-salesorder.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-batchrequest.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="180" column="46" selection-start-line="180" selection-start-column="46" selection-end-line="180" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/test-insertions.method.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/triangular/components/menu/menu-item-link.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="108" column="6" selection-start-line="108" selection-start-column="6" selection-end-line="108" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/_toolbar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/config.triangular.themes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-369">
+          <caret line="66" column="22" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/charts.run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tray.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285">
+          <caret line="53" column="13" selection-start-line="39" selection-start-column="11" selection-end-line="53" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/domain-location.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="102" column="17" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tray.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="85" column="57" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-scan.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-scan.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#md-card-content#0;n#md-card#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-shipment.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="22" selection-start-line="22" selection-start-column="16" selection-end-line="26" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/i18n/sces/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-location.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-903">
+          <caret line="123" column="19" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/sces-settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="223" column="51" selection-start-line="223" selection-start-column="7" selection-end-line="223" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-495">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-location.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
           <folding />
         </state>
       </provider>

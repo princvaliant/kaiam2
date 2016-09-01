@@ -33,7 +33,7 @@ angular.module('kaiamSces')
                     name: 'MENU.SCES.SCES',
                     icon: 'subscriptions',
                     type: 'dropdown',
-                    priority: 7.1,
+                    priority: 1.1,
                     children: []
                 };
                 let priority = 1;

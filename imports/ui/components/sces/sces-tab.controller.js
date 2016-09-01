@@ -5,8 +5,8 @@ import {Meteor} from 'meteor/meteor';
 import './sces.service';
 /**
  * @ngdoc function
- * @name IntroductionController
- * @module triAngularDashboards
+ * @name ScesTabController
+ * @module kaiamSces
  * @kind function
  *
  *

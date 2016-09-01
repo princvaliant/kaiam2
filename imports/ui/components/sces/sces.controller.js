@@ -4,8 +4,8 @@ import angular from 'angular';
 
 /**
  * @ngdoc function
- * @name IntroductionController
- * @module triAngularDashboards
+ * @name ScesController
+ * @module kaiamSces
  * @kind function
  *
  *

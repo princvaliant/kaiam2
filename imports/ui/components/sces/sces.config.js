@@ -21,6 +21,8 @@ import './sces-table.controller';
 import './sces-table.tmpl.html';
 import './sces-scan.controller';
 import './sces-scan.tmpl.html';
+import './sces-location.controller';
+import './sces-location.tmpl.html';
 
 /**
  * @ngdoc module

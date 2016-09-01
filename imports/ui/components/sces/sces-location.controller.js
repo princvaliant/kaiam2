@@ -6,108 +6,43 @@ import './sces.service';
 
 /**
  * @ngdoc function
- * @name ScesShipmentController
+ * @name ScesLocationController
  * @module kaiamSces
  * @kind function
  *
  *
  */
-angular.module('kaiamSces').controller('ScesShipmentController', [
+angular.module('kaiamSces').controller('ScesLocationController', [
     '$scope', '$state', '$log', '$timeout', '$window', '$mdToast', '$reactive', '$mdDialog', '$location', '$translate',
-    '$translatePartialLoader', 'ScesService', ($scope, $state, $log, $timeout, $window, $mdToast, $reactive, $mdDialog, $location, $translate,
-                                               $translatePartialLoader, ScesService) => {
+    '$translatePartialLoader', 'ScesService',
+    ($scope, $state, $log, $timeout, $window, $mdToast, $reactive, $mdDialog, $location, $translate,
+     $translatePartialLoader, ScesService) => {
         $reactive(this).attach($scope);
-        $translatePartialLoader.addPart('sces');
+        $translatePartialLoader.addPart('location');
         $translate.refresh();
         let keys = '';
-        $scope.shipId = $location.search().id;
-        let domDef = ScesSettings.getDomainFlowDef('shipment');
+        $scope.locationId = $location.search().id;
+        let domDef = ScesSettings.getDomainFlowDef('location');
         if (domDef) {
             $scope.canAdd = ScesSettings.isInternalMember(Meteor.user(), domDef._start.roles);
         }
-
-        $scope.selectedOrders = [];
-        $scope.openOrders = [];
         $scope.searchText = '';
         $scope.selectedIndex = 0;
         $scope.domainKids = [];
         $scope.content = 'log';
 
-        // Initialize sales order grid
-        let columnDefs = ScesSettings.columnsCommon.concat(ScesSettings.columns['salesOrder']);
-        _.each(columnDefs, (elem) => {
-            _.extend(elem, {sortDirectionCycle: ['asc', 'desc']});
-        });
-        let fields = _.object(_.pluck(columnDefs, 'field'), [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
-        $scope.gridOptions = {
-            enableRowSelection: true,
-            multiSelect: false,
-            columnDefs: columnDefs,
-            data: [],
-            onRegisterApi: function (gridApi) {
-                $scope.gridApi = gridApi;
-                gridApi.selection.on.rowSelectionChanged($scope, (row) => {
-                    $scope.so = row.isSelected ? row.entity : null;
-                });
-                $scope.gridApi.core.on.sortChanged($scope, (grid, sortColumns) => {
-                    let dir = 1;
-                    $scope.so = null;
-                    if (sortColumns.length === 0) {
-                        $scope.sort = {};
-                        return;
-                    } else if (sortColumns[0].sort.direction === 'desc') {
-                        dir = -1;
-                    } else if (sortColumns[0].sort.direction === 'asc') {
-                        dir = 1;
-                    }
-                    let s = {};
-                    s[sortColumns[0].field] = dir;
-                    $scope.sort = s;
-                });
-            }
-        };
-
         // This part provides order select functionality for new shipment ////////////////////
-        if (!$scope.shipId) {
-            $scope.$watch('search', _.debounce(function (search) {
-                // This code will be invoked after 1 second from the last time 'id' has changed.
-                $scope.$apply(function () {
-                    $scope.so = null;
-                    $scope.searchDebounce = search;
-                });
-            }, 300));
-
-            $scope.autorun(() => {
-                Meteor.call('getOpenSalesOrders', {
-                        fields: fields,
-                        limit: 20,
-                        sort: $scope.getReactively('sort')
-                    },
-                    $scope.getReactively('searchDebounce') || '',
-                    'salesOrder', (err, list) => {
-                        if ($scope.gridOptions) {
-                            $scope.gridOptions.data = list;
-                            $scope.gridApi.grid.refresh();
-                        }
-                    }
-                );
-            });
-        }
-
         $scope.confirmClicked = function () {
-            if (!$scope.so) {
-                $mdToast.show(
-                    $mdToast.simple()
-                        .content('Please select sales order.')
-                        .position('top right')
-                        .hideDelay(5000));
-            } else {
-                Meteor.call('createDomain', 'shipment', null, [$scope.so._id], null, [$scope.so.dc['Name (Sold-To)']], (err, domainId) => {
+            if ($scope.name) {
+                Meteor.call('createDomain', 'location', null, null, {
+                    name: $scope.name,
+                    subLocation: $scope.subLocation,
+                    description: $scope.description
+                }, [$scope.name, $scope.subLocation], (err, domainId) => {
                     if (err) {
                         showError(err.error);
                     } else {
-                        $scope.shipId = domainId;
-                        $state.transitionTo('triangular.sces.shipment', {
+                        $state.go('triangular.sces.location', {
                             id: domainId
                         });
                     }
@@ -116,25 +51,25 @@ angular.module('kaiamSces').controller('ScesShipmentController', [
         };
 
         $scope.cancelClicked = function () {
-            $state.go('triangular.sces.tab.shipment');
+            $state.go('triangular.sces.tab.location');
         };
         /////////////////////////////////////////////////////////////////////////////////////
 
         // This part provides functionality for existing shipment ///////////////////////////
         $scope.autorun(function () {
             // If shipId changes subscribe to all data related to this shipment
-            if ($scope.getReactively('shipId')) {
+            if ($scope.getReactively('locationId')) {
                 $scope.subscribe('domainById', () => {
-                    return [$scope.shipId];
+                    return [$scope.locationId];
                 });
                 $scope.subscribe('domainParents', () => {
-                    return [$scope.shipId];
+                    return [$scope.locationId];
                 });
                 $scope.subscribe('domainEvents', () => {
-                    return [$scope.shipId];
+                    return [$scope.locationId];
                 });
                 $scope.subscribe('domainKids', () => {
-                    return ['transceiver', $scope.shipId, {
+                    return ['transceiver', $scope.locationId, {
                         fields: {
                             _id: 1,
                             type: 1,
@@ -143,10 +78,10 @@ angular.module('kaiamSces').controller('ScesShipmentController', [
                         }
                     }];
                 });
-                $scope.barcodeimg = JsBarcode($scope.shipId);
+                $scope.barcodeimg = JsBarcode($scope.locationId);
                 //Set focus on radio group so scanner will work immidiatelly
                 $timeout(function () {
-                    let element = $window.document.getElementById('shipScanOptions');
+                    let element = $window.document.getElementById('locationScanOptions');
                     if (element) {
                         element.focus();
                     }
@@ -163,8 +98,6 @@ angular.module('kaiamSces').controller('ScesShipmentController', [
                         $in: domains[0].parents
                     }
                 }).fetch();
-                $scope.selectedOrder = $scope.domainParents[0];
-                updateRemaining($scope.selectedOrder);
             }
         });
 
@@ -174,14 +107,13 @@ angular.module('kaiamSces').controller('ScesShipmentController', [
                 $scope.transceivers = _.groupBy(domainKids, (o) => {
                     return o.dc.ContractManufacturer;
                 });
-                updateRemaining($scope.selectedOrder);
             }
         });
 
         $scope.helpers({
             domains: () => {
                 return Domains.find({
-                    _id: $scope.getReactively('shipId')
+                    _id: $scope.getReactively('locationId')
                 });
             },
             domainEvents: () => {
@@ -193,8 +125,8 @@ angular.module('kaiamSces').controller('ScesShipmentController', [
             },
             domainKids: () => {
                 return Domains.find({
-                    type: 'transceiver',
-                    parents: $scope.getReactively('shipId')
+                    type: {$in: ['transceiver', 'tray']},
+                    parents: $scope.getReactively('locationId')
                 }, {
                     sort: {
                         when: -1
@@ -279,7 +211,7 @@ angular.module('kaiamSces').controller('ScesShipmentController', [
 
         $scope.printDiv = function (divName) {
             if ($scope.domainKids) {
-                ScesService.printBarcode(window, document, divName, 'shipment', $scope.domainKids.length);
+                ScesService.printBarcode(window, document, divName, 'location', $scope.domainKids.length);
             }
         };
 
