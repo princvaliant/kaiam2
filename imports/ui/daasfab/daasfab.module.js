@@ -87,7 +87,7 @@ export default angular.module(name, [
 ]);
 angular.module(name)
     .constant('API_CONFIG', {
-        'url': 'http://daasfab/'
+        'url': 'http://my.kaiamcorp.com/'
     });
 
 

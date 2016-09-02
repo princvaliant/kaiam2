@@ -4,6 +4,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import ngFileUpload from 'ng-file-upload';
+import ngMessages from 'angular-messages';
 import '../../daasfab/triangular/directives/palette-background.directive';
 
 
@@ -17,5 +18,6 @@ import '../../daasfab/triangular/directives/palette-background.directive';
 angular.module('kaiamSces', [
   angularMeteor,
   uiRouter,
-  ngFileUpload
+  ngFileUpload,
+  ngMessages
 ]);

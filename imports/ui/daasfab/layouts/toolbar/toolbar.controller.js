@@ -127,4 +127,8 @@ function DefaultToolbarController ($scope, $state, $injector, $rootScope, $mdMed
     this.isAdmin = function () {
         return ScesSettings.isAdmin(Meteor.users.findOne(Meteor.userId()));
     };
+
+    this.isInventoryUser = function () {
+        return ScesSettings.isInternalMember(Meteor.user(), ['INVENTORY_MANAGEMENT', 'INVENTORY_SUPERVISOR']);
+    };
 }

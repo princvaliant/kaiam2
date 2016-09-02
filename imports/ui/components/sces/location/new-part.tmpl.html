@@ -1,0 +1,40 @@
+<md-dialog class="mobile-fullwidth-dialog" tabindex="0">
+    <form name="locationForm">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 flex>
+                    <span>{{'SCES.LOCATION-EDIT' | translate}} {{entity.dc.name}}</span>
+                </h2>
+                <md-button class="md-icon-button" ng-click="closeClick()" aria-label="cancel">
+                    <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column"  class="md-padding">
+            <md-input-container style="width:300px;" md-is-error="locationForm.name.$invalid">
+                <label for="name">{{'SCES.LOCATION-NAME' | translate}}</label>
+                <input name="name" ng-model="entity.name" aria-label="{{'SCES.LOCATION-NAME' | translate}}" ng-required="true" />
+                <div ng-messages="locationForm.name.$error" md-auto-hide="false" ng-if="locationForm.name.$touched">
+                    <div ng-message="required">{{'SCES.LOCATION-NAME-REQUIRED' | translate}}</div>
+                </div>
+            </md-input-container>
+            <md-input-container style="width:300px;">
+                <label for="subLocation">{{'SCES.SUB-LOCATION' | translate}}</label>
+                <input type="text" name="subLocation" ng-model="entity.subLocation"
+                       aria-label="{{'SCES.SUB-LOCATION' | translate}}">
+            </md-input-container>
+            <md-input-container style="width:300px;">
+                <label for="description">{{'SCES.LOCATION-DESCRIPTION' | translate}}</label>
+                <input type="text" name="description" ng-model="entity.description"
+                       aria-label="{{'SCES.LOCATION-DESCRIPTION' | translate}}">
+            </md-input-container>
+        </md-dialog-content>
+        <md-dialog-actions>
+            <span flex></span>
+            <md-button aria-label="{{'SETTINGS.SUBMIT' | translate}}" class="md-primary" ng-click="submit()" ng-disabled="locationForm.$invalid">
+                <md-icon md-font-icon="zmdi zmdi-save"></md-icon>
+                {{'SETTINGS.SUBMIT' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

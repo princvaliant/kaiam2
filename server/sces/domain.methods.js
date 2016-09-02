@@ -22,18 +22,19 @@ Meteor.methods({
         ScesDomains.isLoggedIn(this.userId);
         let query = {};
         if (search) {
-            query = {
-                '$or': [
-                    {
-                        type: domain,
-                        tags: search
-                    },
-                    {
-                        _id: {$regex: '^' + search},
-                        type: domain
+            let sp = search.split(' ');
+            query.$and = [{type: domain}];
+            if (sp.length > 1) {
+                let res = '';
+                _.each(sp, (s) => {
+                    if (s.trim()) {
+                        res = '"' + s.trim() + '" ';
                     }
-                ]
-            };
+                });
+                query.$text = {$search: res};
+            } else {
+                query.$text = {$search: search.trim()};
+            }
         } else {
             query = ScesSettings.constructQuery(Meteor.users.findOne(this.userId), '', domain);
         }

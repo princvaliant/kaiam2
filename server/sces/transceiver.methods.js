@@ -2,6 +2,27 @@
 
 import { check } from 'meteor/check';
 
+HTTP.methods({
+    '/getVendorSequence': {
+        auth: SarHelper.myAuth,
+        get: function () {
+            let pnum = this.query.pnum;
+            if (!pnum) {
+                return 'ERROR - parameter missing: pnum';
+            }
+            let vs = VendorSequence.findOne({_id: pnum});
+            if (!vs) {
+                VendorSequence.insert({_id: pnum, seq: 1});
+                return 1;
+            } else {
+                vs.seq += 1;
+                VendorSequence.update(pnum, vs);
+                return vs.seq;
+            }
+        }
+    }
+});
+
 Meteor.methods({
 
     'addTransceiverToTray': function (snum, tray, adminOverride) {

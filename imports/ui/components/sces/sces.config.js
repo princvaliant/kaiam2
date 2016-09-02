@@ -3,26 +3,26 @@
 import angular from 'angular';
 import './sces.controller';
 import './sces.tmpl.html';
-import './sces-shipment.controller';
-import './sces-shipment.tmpl.html';
-import './sces-salesorder.controller';
-import './sces-salesorder.tmpl.html';
-import './sces-tray.controller';
-import './sces-tray.tmpl.html';
-import './sces-transceiver.controller';
-import './sces-transceiver.tmpl.html';
-import './sces-batchrequest.controller';
-import './sces-batchrequest.tmpl.html';
-import './sces-rma.controller';
-import './sces-rma.tmpl.html';
 import './sces-tab.controller';
 import './sces-tab.tmpl.html';
 import './sces-table.controller';
 import './sces-table.tmpl.html';
 import './sces-scan.controller';
 import './sces-scan.tmpl.html';
-import './sces-location.controller';
-import './sces-location.tmpl.html';
+import './shipment/shipment.controller';
+import './shipment/shipment.tmpl.html';
+import './salesorder/salesorder.controller';
+import './salesorder/salesorder.tmpl.html';
+import './tray/tray.controller';
+import './tray/tray.tmpl.html';
+import './transceiver/transceiver.controller';
+import './transceiver/transceiver.tmpl.html';
+import './batchrequest/batchrequest.controller';
+import './batchrequest/batchrequest.tmpl.html';
+import './rma/rma.controller';
+import './rma/rma.tmpl.html';
+import './location/location.controller';
+import './location/location.tmpl.html';
 
 /**
  * @ngdoc module
@@ -65,7 +65,7 @@ angular.module ('kaiamSces')
                     url: '/' + o.toLowerCase() + '?id=',
                     views: {
                         'contentsces': {
-                            templateUrl: 'imports/ui/components/sces/sces-' +  o.toLowerCase() + '.tmpl.html',
+                            templateUrl: 'imports/ui/components/sces/' + o.toLowerCase() + '/' + o.toLowerCase() + '.tmpl.html',
                             controller: 'Sces' + cname + 'Controller'
                         }
                     }

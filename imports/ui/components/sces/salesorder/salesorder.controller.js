@@ -2,7 +2,7 @@
 
 import angular from 'angular';
 import {Meteor} from 'meteor/meteor';
-import './sces.service';
+import '../sces.service';
 
 
 /**
