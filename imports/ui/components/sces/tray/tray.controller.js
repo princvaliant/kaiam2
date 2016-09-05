@@ -33,7 +33,7 @@ angular.module('kaiamSces').controller('ScesTrayController', [
         }
         $scope.content = 'log';
 
-        $scope.isAdmin = ScesSettings.isAdmin(user);
+        $scope.isAdmin = ScesSettings.isInternalMember(user, ['ADMIN', 'INVENTORY_SUPERVISOR']);
 
         // This part provides order select functionality for new tray ////////////////////
         $scope.confirmClicked = function () {
