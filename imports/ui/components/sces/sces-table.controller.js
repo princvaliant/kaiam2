@@ -13,9 +13,9 @@ import './view-button.html';
  *
  */
 angular.module('kaiamSces').controller('ScesTableController', [
-    '$q', '$scope', '$state', '$cookies', '$mdSidenav', '$location', '$stateParams',
+    '$q', '$scope', '$state', '$cookies', '$mdSidenav', '$location', '$stateParams', '$timeout',
     '$translate', '$translatePartialLoader', 'ScesService',
-    ($q, $scope, $state, $cookies, $mdSidenav, $location, $stateParams,
+    ($q, $scope, $state, $cookies, $mdSidenav, $location, $stateParams, $timeout,
      $translate, $translatePartialLoader, ScesService) => {
         // Refresh translator
         $translatePartialLoader.addPart('sces');

@@ -101,6 +101,6 @@ function exec (dateFrom) {
 Meteor.methods({
     'formattrend': function () {
         ScesDomains.getUser(this.userId);
-        return exec(new Date('08/01/2016'));
+        return exec(new Date('09/01/2016'));
     }
 });
