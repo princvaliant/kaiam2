@@ -33,7 +33,7 @@
                 <div layout="row" layout-align="space-between center" class="scesPadding"
                      ng-repeat="dpar in domainParents">
                     <span>in {{dpar.type | translate}}</span>
-                    <a href="/sces/{{dpar.type}}?id={{dpar._id}}">{{dpar._id}}</a>
+                    <a href="/sces/{{dpar.type.toLowerCase()}}?id={{dpar._id}}">{{dpar._id}}</a>
                 </div>
                 <md-divider></md-divider>
                 <div layout="row" layout-align="space-between top">

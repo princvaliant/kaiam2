@@ -20,16 +20,28 @@ angular.module('kaiamSces').controller('ScesTransceiverController', [
 
         if (unitId) {
             $scope.showImport = false;
-            $meteor.call('getDomain', unitId).then(
-                (data) => {
+            Meteor.call('getDomain', unitId, (err, data) => {
+                if (err) {
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .content(err)
+                            .position('bottom right')
+                            .hideDelay(5000));
+                } else {
                     initData(data);
                 }
-            );
-            $meteor.call('getTestdata', unitId).then(
-                (data) => {
+            });
+            Meteor.call('getTestdata', unitId, (err, data) => {
+                if (err) {
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .content(err)
+                            .position('bottom right')
+                            .hideDelay(5000));
+                } else {
                     initTestData(data);
                 }
-            );
+            });
         }
 
         $scope.select = function (obj) {
@@ -38,42 +50,46 @@ angular.module('kaiamSces').controller('ScesTransceiverController', [
 
         function initData (domain) {
             $scope.unit = domain;
-            $scope.$meteorSubscribe('domainParents', domain._id);
-            $scope.shipments = $scope.$meteorCollection(function () {
-                return Domains.find({
-                    type: 'shipment'
-                }, {
-                    sort: {
-                        'state.when': -1
-                    }
-                });
+            $scope.subscribe('domainParents', () => {
+                return [domain._id];
             });
-            $scope.salesOrders = $scope.$meteorCollection(function () {
-                return Domains.find({
-                    type: 'salesOrder'
-                }, {
-                    sort: {
-                        'state.when': -1
-                    }
-                });
-            });
-            $scope.trays = $scope.$meteorCollection(function () {
-                return Domains.find({
-                    type: 'tray'
-                }, {
-                    sort: {
-                        'state.when': -1
-                    }
-                });
-            });
-            $scope.rmas = $scope.$meteorCollection(function () {
-                return Domains.find({
-                    type: 'rma'
-                }, {
-                    sort: {
-                        'state.when': -1
-                    }
-                });
+            $scope.helpers({
+                shipments: () => {
+                    return Domains.find({
+                        type: 'shipment'
+                    }, {
+                        sort: {
+                            'state.when': -1
+                        }
+                    });
+                },
+                salesOrders: () => {
+                    return Domains.find({
+                        type: 'salesOrder'
+                    }, {
+                        sort: {
+                            'state.when': -1
+                        }
+                    });
+                },
+                trays: () => {
+                    return Domains.find({
+                        type: 'tray'
+                    }, {
+                        sort: {
+                            'state.when': -1
+                        }
+                    });
+                },
+                rmas: () => {
+                    return Domains.find({
+                        type: 'rma'
+                    }, {
+                        sort: {
+                            'state.when': -1
+                        }
+                    });
+                }
             });
         }
 

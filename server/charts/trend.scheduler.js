@@ -91,8 +91,8 @@ function exec (dateFrom) {
     if (dateFrom) {
         let df = 'new Date("' + moment(dateFrom).format('MM/DD/YYYY hh:mm:ss') + '")';
         Scheduler.executeMapReduce(
-            map.toString().replace('map(', '('),
-            reduce.toString().replace('reduce(', '('),
+            map,
+            reduce,
             JSON.stringify(options).replace('"DATEFILTER"', df));
     }
 };

@@ -30,6 +30,9 @@ Scheduler = {
     executeMapReduce: function (map, reduce, options) {
         let ret = '';
         let res = '';
+        let regex = /\/\/\s\d+|\/\//g;
+        let maps = (map + '').replace('map(', '(').replace(regex, '');
+        let reduces = (reduce + '').replace('reduce(', '(').replace(regex, '');
         let conn = process.env.MONGO_URL.replace('db://', ' ');
         conn = conn.split((/[\s,?@$:]+/));
         if (process.env.NODE_ENV === 'development') {
@@ -39,7 +42,7 @@ Scheduler = {
                 ' --ssl --sslAllowInvalidCertificates ';
         }
         let aggr = res +
-            ' --eval \'db.testdata.mapReduce(' + map + ', ' + reduce + ', ' + options + ')\'';
+            ' --eval \'db.testdata.mapReduce(' + maps + ', ' + reduces + ', ' + options + ')\'';
         aggr = aggr.replace(/(\r\n|\n|\r)/gm, '');
         exec(aggr, function (error, stdout, stderr) {
             ret = 'stdout: ' + stdout + ' stderr: ' + stderr;

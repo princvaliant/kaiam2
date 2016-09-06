@@ -20,47 +20,39 @@
       </div>
       <md-card>
         <md-subheader>{{'SCES.ASSIGNED-SHIPMENT' | translate}}</md-subheader>
-        <md-card-content>
           <md-list>
-            <md-list-item ng-repeat="ship in shipments" class="paddingreduce" layout="row" layout-align="start center">
+            <md-list-item ng-repeat="ship in shipments" layout="row" layout-align="start start">
               <div class="text-ellipsis scesPadding" nowrap am-time-ago="ship.state.when"></div>
               <p><a href="/sces/shipment?id={{ship._id}}" class="text-ellipsis scesPadding">{{ship._id}}</a></p>
             </md-list-item>
           </md-list>
-        </md-card-content>
       </md-card>
       <md-card>
         <md-subheader>{{'SCES.ASSIGNED-TRAYS' | translate}}</md-subheader>
-        <md-card-content>
           <md-list>
-            <md-list-item ng-repeat="tray in trays" class="paddingreduce" layout="row" layout-align="start center">
+            <md-list-item ng-repeat="tray in trays"  layout="row" layout-align="start start">
               <div class="text-ellipsis scesPadding" nowrap am-time-ago="tray.state.when"></div>
               <p><a href="/sces/tray?id={{tray._id}}" class="text-ellipsis scesPadding">{{tray._id}} - {{tray.dc.pnum}}</a></p>
             </md-list-item>
           </md-list>
-        </md-card-content>
       </md-card>
       <md-card>
         <md-subheader>{{'SCES.ASSIGNED-SALESORDERS' | translate}}</md-subheader>
-        <md-card-content>
           <md-list>
-            <md-list-item ng-repeat="order in salesOrders" class="paddingreduce" layout="row" layout-align="start center">
+            <md-list-item ng-repeat="order in salesOrders"  layout="row" layout-align="start start">
               <div class="text-ellipsis scesPadding" nowrap am-time-ago="order.state.when"></div>
-              <p><a href="/sces/salesOrder?id={{order._id}}" class="text-ellipsis scesPadding">{{order.dc.Order}} - {{order.dc.Line}} {{order.dc['Name (Sold-To)']}}</a> </p>
+              <p><a href="/sces/salesorder?id={{order._id}}" class="text-ellipsis scesPadding">{{order.dc.Order}} - {{order.dc.Line}} {{order.dc['Name (Sold-To)']}}</a> </p>
             </md-list-item>
           </md-list>
-        </md-card-content>
       </md-card>
       <md-card>
         <md-subheader>{{'Return requests' | translate}}</md-subheader>
-        <md-card-content>
           <md-list>
-            <md-list-item ng-repeat="rma in rmas" class="paddingreduce" layout="row" layout-align="start center">
+            <md-list-item ng-repeat="rma in rmas" layout="row" layout-align="start start">
               <div class="text-ellipsis scesPadding" nowrap am-time-ago="rma.state.when"></div>
               <p><a href="/sces/rma?id={{rma._id}}" class="text-ellipsis scesPadding">{{rma._id}}</a> </p>
             </md-list-item>
           </md-list>
-        </md-card-content>
       </md-card>
     </div>
     <md-content flex="60" style="height:800px;">

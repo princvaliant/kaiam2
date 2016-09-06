@@ -90,19 +90,21 @@ angular.module('kaiamSces').controller('ScesTableController', [
             if ($scope.domain === 'salesOrder') {
                 method = 'getOpenSalesOrders';
             }
-            Meteor.call(method, {
-                    fields: fields,
-                    limit: 200,
-                    sort: $scope.getReactively('sort') || {'state.when': -1}
-                },
-                $scope.getReactively('searchDebounce'),
-                $scope.getReactively('domain'), (err, list) => {
-                    $cookies.put($scope.domain + 'search', $scope.searchDebounce);
-                    $cookies.putObject($scope.domain + 'sort', $scope.sort);
-                    $scope.gridOptions.data = list;
-                    $scope.gridApi.grid.refresh();
-                }
-            );
+            $timeout( () => {
+                Meteor.call(method, {
+                        fields: fields,
+                        limit: 200,
+                        sort: $scope.getReactively('sort') || {'state.when': -1}
+                    },
+                    $scope.getReactively('searchDebounce'),
+                    $scope.getReactively('domain'), (err, list) => {
+                        $cookies.put($scope.domain + 'search', $scope.searchDebounce);
+                        $cookies.putObject($scope.domain + 'sort', $scope.sort);
+                        $scope.gridOptions.data = list;
+                        $scope.gridApi.grid.refresh();
+                    }
+                );
+            });
         });
 
         $scope.viewRow = function (grid, row) {
