@@ -100,9 +100,7 @@ angular.module('kaiamSpecActions')
                                 cntrl.selectedSar = row.entity;
                                 cntrl.cacheSar = _.clone(row.entity);
                                 scope.selectedExecution = angular.copy(row.entity.execution) || [];
-                                if (scope.sarActionApi) {
-                                    scope.sarActionApi.dragndrop.setDragDisabled(!scope.canEdit());
-                                }
+                                scope.sarActionApi.dragndrop.setDragDisabled(!scope.canEdit());
                             });
                         }
                     };
@@ -131,7 +129,10 @@ angular.module('kaiamSpecActions')
                         enableRowSelection: true,
                         enableCellEditOnFocus: true,
                         columnDefs: coldef,
-                        rowTemplate: '<div grid="grid" class="ui-grid-draggable-row" draggable="true"><div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader, \'custom\': true }" ui-grid-cell></div></div>',
+                        rowTemplate: '<div grid="grid" class="ui-grid-draggable-row" draggable="true">' +
+                        '<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" ' +
+                        'class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader, \'custom\': true }" ' +
+                        'ui-grid-cell></div></div>',
                         onRegisterApi: function (gridApi) {
                             scope.sarActionApi = gridApi;
                             gridApi.edit.on.beginCellEdit(scope, function (row) {

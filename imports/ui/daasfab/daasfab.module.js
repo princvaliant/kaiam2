@@ -14,6 +14,7 @@ import hljs from 'angular-highlightjs';
 import ngFileUpload from 'ng-file-upload';
 import 'angular-mocks/angular-mocks';
 import 'angular-translate';
+import 'ui-grid-draggable-rows';
 
 import './triangular/translate/translate.module';
 import './triangular/translate/translate.config';
@@ -70,6 +71,7 @@ export default angular.module(name, [
     'ui.grid.selection',
     'ui.grid.importer',
     'ui.grid.cellNav',
+    'ui.grid.draggable-rows',
 
     'triangular',
     'app.translate',
