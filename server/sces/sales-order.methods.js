@@ -12,9 +12,9 @@ Meteor.methods({
                 type: 'salesOrder',
                 _id: {$ne: 'SO--NaN-undefined'},
                 $or: [
-                    {'dc.Purchase Order': {$regex: '^' + search}},
-                    {'dc.Order': {$regex: '^' + search}},
-                    {'dc.Item Number': {$regex: '^' + search}}]
+                    {'dc.Purchase Order': {$regex: '^' + (search || '')}},
+                    {'dc.Order': {$regex: '^' + (search || '')}},
+                    {'dc.Item Number': {$regex: '^' + (search || '')}}]
             }
         }, {
             $sort: options.sort || {'state.when': -1}

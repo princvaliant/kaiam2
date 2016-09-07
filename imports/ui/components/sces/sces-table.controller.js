@@ -50,6 +50,7 @@ angular.module('kaiamSces').controller('ScesTableController', [
 
         $scope.gridOptions = {
             enableFiltering: false,
+            useExternalSorting: true,
             showGridFooter: false,
             fastWatch: false,
             columnDefs: columnDefs,
@@ -61,11 +62,11 @@ angular.module('kaiamSces').controller('ScesTableController', [
         };
 
         $scope.$watch('search', _.debounce(function (search) {
-            // This code will be invoked after 1 second from the last time 'id' has changed.
+            // This code will be invoked after 300 milliseconds from the last time 'id' has changed.
             $scope.$apply(function () {
                 $scope.searchDebounce = search;
             });
-        }, 300));
+        }, 300), true);
 
         $scope.sortChanged = function (grid, sortColumns) {
             let dir = 1;
@@ -87,24 +88,22 @@ angular.module('kaiamSces').controller('ScesTableController', [
 
         $scope.autorun(() => {
             let method = 'getDomains';
-            if ($scope.domain === 'salesOrder') {
+            if ($scope.getReactively('domain') === 'salesOrder') {
                 method = 'getOpenSalesOrders';
             }
-            $timeout( () => {
-                Meteor.call(method, {
-                        fields: fields,
-                        limit: 200,
-                        sort: $scope.getReactively('sort') || {'state.when': -1}
-                    },
-                    $scope.getReactively('searchDebounce'),
-                    $scope.getReactively('domain'), (err, list) => {
-                        $cookies.put($scope.domain + 'search', $scope.searchDebounce);
-                        $cookies.putObject($scope.domain + 'sort', $scope.sort);
-                        $scope.gridOptions.data = list;
-                        $scope.gridApi.grid.refresh();
-                    }
-                );
-            });
+            Meteor.call(method, {
+                    fields: fields,
+                    limit: 200,
+                    sort: $scope.getReactively('sort') || {'state.when': -1}
+                },
+                $scope.getReactively('searchDebounce'),
+                $scope.domain, (err, list) => {
+                    $cookies.put($scope.domain + 'search', $scope.searchDebounce);
+                    $cookies.putObject($scope.domain + 'sort', $scope.sort);
+                    $scope.gridOptions.data = list;
+                    $scope.gridApi.grid.refresh();
+                }
+            );
         });
 
         $scope.viewRow = function (grid, row) {

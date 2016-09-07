@@ -104,7 +104,7 @@ Meteor.methods({
       result = Yields.aggregate(aggr);
     }
     if (device === '100GB') {
-      result = Testsummary.aggregate(aggr);
+      result = TestsummaryWeek.aggregate(aggr);
     }
 
     for (let j = 0; j < result.length; j++) {
