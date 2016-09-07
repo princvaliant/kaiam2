@@ -127,10 +127,10 @@
                             <md-list-item ng-repeat="item in domainKids" class="paddingreduce" layout="row"
                                           layout-align="start center">
                                 <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"
-                                         style="margin-right:-5px;"></md-icon>
-                                <div class="text-ellipsis" nowrap am-time-ago="item.state.when"></div>
-                                <p><a href="/sces/transceiver?id={{item._id}}"
-                                      class="text-ellipsis scesPadding">{{item._id}}</a></p>
+                                         style="margin-right:0px;"></md-icon>
+                                <div class="scesPadding text-ellipsis" nowrap am-time-ago="item.state.when"></div>
+                                <p class="scesPadding text-ellipsis">{{item.type}} <a href="/sces/transceiver?id={{item._id}}"
+                                      class="text-ellipsis scesPadding">{{item._id}}</a> - {{item.dc.pnum}} </p>
                             </md-list-item>
                         </md-list>
                     </md-card-content>
@@ -145,8 +145,9 @@
                                     ng-class="de.success ? 'md-primary' : 'md-warn'"
                                     style="margin-right:-5px;"></md-icon>
                             <div class="text-ellipsis scesPadding" nowrap am-time-ago="de.when"></div>
-                            <p class="text-ellipsis scesPadding">{{de.code}} - {{de.message | translate}} - <a
-                                    href="/sces/tray?id={{de.code}}">{{'SCES.VIEW' | translate}} {{de.code}}</a></p>
+                            <p class="text-ellipsis scesPadding">{{de.code}} - {{de.message | translate}}
+
+                            </p>
                         </md-list-item>
                     </md-list>
                 </md-sidenav>

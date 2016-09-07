@@ -10,17 +10,20 @@ import {Meteor} from 'meteor/meteor';
  *
  */
 angular.module('kaiamSces').controller('ScesNewPartController', ['$timeout', '$translate', '$rootScope', '$scope',
-    '$mdToast', '$window', '$mdDialog', 'entity',
+    '$mdToast', '$window', '$mdDialog', 'locationId', 'transceiverId',
     function ($timeout, $translate, $rootScope, $scope,
-              $mdToast, $window, $mdDialog, entity) {
-        $scope.location = entity;
-        $scope.part = {};
+              $mdToast, $window, $mdDialog, locationId, transceiverId) {
+        $scope.partNumbers = _.keys(Settings.partNumbers);
+        $scope.locationId = locationId;
+        $scope.transceiver = {};
+        $scope.transceiver._id = transceiverId;
+
         $scope.submit = function () {
-            Meteor.call('createPartAndAddToLocation', location, part, (err) => {
+            Meteor.call('createPartAndAddToLocation', locationId, $scope.transceiver, (err, retId) => {
                 if (!err) {
                     $mdToast.show(
                         $mdToast.simple()
-                            .content($translate.instant('SCES.LOCATION-UPDATED'))
+                            .content('Tranceiver ' + retId + ' created and added to location')
                             .position('top right')
                             .hideDelay(3000));
                     $mdDialog.cancel();

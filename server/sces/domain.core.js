@@ -23,7 +23,8 @@ ScesDomains = {
       movedBy: user.username,
       when: moment().toDate(),
       prev: '_start',
-      next: ''
+      next: '',
+      parentId: parents ? parents[0] : ''
     };
     pi.dc = dc;
     pi.tags = tags || [];

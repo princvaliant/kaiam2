@@ -1,39 +1,54 @@
 <md-dialog class="mobile-fullwidth-dialog" tabindex="0">
-    <form name="locationForm">
+    <form name="form">
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2 flex>
-                    <span>{{'SCES.LOCATION-EDIT' | translate}} {{entity.dc.name}}</span>
+                    <span>{{'SCES.CREATE-TRANSCEIVER' | translate}} {{entity.dc.name}}</span>
                 </h2>
                 <md-button class="md-icon-button" ng-click="closeClick()" aria-label="cancel">
                     <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
                 </md-button>
             </div>
         </md-toolbar>
-        <md-dialog-content layout="column"  class="md-padding">
-            <md-input-container style="width:300px;" md-is-error="locationForm.name.$invalid">
-                <label for="name">{{'SCES.LOCATION-NAME' | translate}}</label>
-                <input name="name" ng-model="entity.name" aria-label="{{'SCES.LOCATION-NAME' | translate}}" ng-required="true" />
-                <div ng-messages="locationForm.name.$error" md-auto-hide="false" ng-if="locationForm.name.$touched">
-                    <div ng-message="required">{{'SCES.LOCATION-NAME-REQUIRED' | translate}}</div>
+        <md-dialog-content layout="column" class="md-padding">
+            <md-input-container style="width:300px;" md-is-error="form.pnum.$invalid">
+                <label for="pnum">Part number</label>
+                <md-select name="pnum" ng-model="transceiver.pnum"  ng-required="true" style="margin-bottom:15px;">
+                    <md-option ng-repeat="partNumber in partNumbers | orderBy"
+                               value="{{partNumber}}">{{partNumber}}</md-option>
+                </md-select>
+                <div ng-messages="form.pnum.$error" md-auto-hide="false" ng-if="form.pnum.$touched">
+                    <div ng-message="required">Part number required</div>
                 </div>
             </md-input-container>
-            <md-input-container style="width:300px;">
-                <label for="subLocation">{{'SCES.SUB-LOCATION' | translate}}</label>
-                <input type="text" name="subLocation" ng-model="entity.subLocation"
-                       aria-label="{{'SCES.SUB-LOCATION' | translate}}">
+            <md-input-container style="width:300px;" md-is-error="form.tosa.$invalid">
+                <label for="tosa">TOSA</label>
+                <input name="tosa" ng-model="transceiver.TOSA" aria-label="TOSA" ng-required="true"/>
+                <div ng-messages="form.tosa.$error" md-auto-hide="false" ng-if="form.tosa.$touched">
+                    <div ng-message="required">TOSA required</div>
+                </div>
             </md-input-container>
-            <md-input-container style="width:300px;">
-                <label for="description">{{'SCES.LOCATION-DESCRIPTION' | translate}}</label>
-                <input type="text" name="description" ng-model="entity.description"
-                       aria-label="{{'SCES.LOCATION-DESCRIPTION' | translate}}">
+            <md-input-container style="width:300px;" md-is-error="form.rosa.$invalid">
+                <label for="rosa">ROSA</label>
+                <input name="rosa" ng-model="transceiver.ROSA" aria-label="ROSA" ng-required="true"/>
+                <div ng-messages="form.rosa.$error" md-auto-hide="false" ng-if="form.rosa.$touched">
+                    <div ng-message="required">ROSA required</div>
+                </div>
+            </md-input-container>
+            <md-input-container style="width:300px;" md-is-error="form.pcba.$invalid">
+                <label for="pcba">PCBA</label>
+                <input name="pcba" ng-model="transceiver.PCBA" aria-label="PCBA" ng-required="true"/>
+                <div ng-messages="form.pcba.$error" md-auto-hide="false" ng-if="form.pcba.$touched">
+                    <div ng-message="required">PCBA required</div>
+                </div>
             </md-input-container>
         </md-dialog-content>
         <md-dialog-actions>
             <span flex></span>
-            <md-button aria-label="{{'SETTINGS.SUBMIT' | translate}}" class="md-primary" ng-click="submit()" ng-disabled="locationForm.$invalid">
+            <md-button aria-label="{{'SETTINGS.SUBMIT' | translate}}" class="md-primary" ng-click="submit()"
+                       ng-disabled="form.$invalid">
                 <md-icon md-font-icon="zmdi zmdi-save"></md-icon>
-                {{'SETTINGS.SUBMIT' | translate}}
+                Register and add to location
             </md-button>
         </md-dialog-actions>
     </form>

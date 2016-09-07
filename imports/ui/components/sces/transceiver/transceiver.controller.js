@@ -89,6 +89,15 @@ angular.module('kaiamSces').controller('ScesTransceiverController', [
                             'state.when': -1
                         }
                     });
+                },
+                locations: () => {
+                    return Domains.find({
+                        type: 'location'
+                    }, {
+                        sort: {
+                            'state.when': -1
+                        }
+                    });
                 }
             });
         }

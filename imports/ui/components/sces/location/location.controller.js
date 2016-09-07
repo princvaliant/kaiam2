@@ -73,14 +73,15 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                     return [$scope.locationId];
                 });
                 $scope.subscribe('domainKids', () => {
-                    return ['transceiver', $scope.locationId, {
+                    return [['transceiver', 'tray'], $scope.locationId, {
                         fields: {
                             _id: 1,
                             type: 1,
-                            'dc.ContractManufacturer': 1,
+                            dc: 1,
+                            state: 1,
                             parents: 1
                         }
-                    }];
+                    }, true];
                 });
                 $scope.barcodeimg = JsBarcode($scope.locationId);
                 //Set focus on radio group so scanner will work immidiatelly
@@ -115,13 +116,14 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                 return DomainEvents.find({}, {
                     sort: {
                         when: -1
-                    }
+                    },
+                    limit: 300
                 });
             },
             domainKids: () => {
                 return Domains.find({
-                    type: {$in: ['transceiver', 'tray']},
-                    parents: $scope.getReactively('locationId')
+                    'state.parentId': $scope.getReactively('locationId'),
+                    type: {$in: ['transceiver', 'tray']}
                 }, {
                     sort: {
                         when: -1
@@ -180,7 +182,8 @@ angular.module('kaiamSces').controller('ScesLocationController', [
 
         $scope.deleteLocation = function () {
             if ($scope.domainKids.length > 0) {
-                showError($translate.instant('SCES.LOCATION-NOT-EMPTY'));
+                showError('LOCATION-NOT-EMPTY');
+                return;
             }
             $mdDialog.show(
                 $mdDialog.confirm()
@@ -199,7 +202,7 @@ angular.module('kaiamSces').controller('ScesLocationController', [
             });
         };
 
-        $scope.toggle = function(navID) {
+        $scope.toggle = function (navID) {
             $mdSidenav(navID)
                 .toggle()
                 .then(function () {
@@ -208,22 +211,51 @@ angular.module('kaiamSces').controller('ScesLocationController', [
 
         };
 
+        function showAddDialog (value) {
+            $mdDialog.show({
+                controller: 'ScesNewPartController as ctrl',
+                templateUrl: 'imports/ui/components/sces/location/new-part.tmpl.html',
+                locals: {
+                    locationId: $scope.locationId,
+                    transceiverId: value
+                }
+            });
+        };
+
+        function add (value) {
+            // If 'scan to add' radio button or manual add
+            Meteor.call('addToLocation', $scope.locationId, value, (err) => {
+                if (err) {
+                    showError(err.error);
+                }
+            });
+        };
 
         // Add or remove tray from this shipmentV2O7VNDXY
         function addOrRemove (newValue) {
             if ($scope.domain && $scope.domain.canEdit()) {
                 if (newValue) {
                     if ($scope.scanadd) {
-                        // If 'scan to add' radio button or manual add
-                        Meteor.call('addToLocation', newValue, $scope.domain, (err) => {
+                        Meteor.call('getDomain', newValue, (err, data) => {
                             if (err) {
-                                showError(err.error);
+                                $mdToast.show(
+                                    $mdToast.simple()
+                                        .content(err)
+                                        .position('bottom right')
+                                        .hideDelay(5000));
+                            } else {
+                                if (!data) {
+                                    // If this transceiver does not exist
+                                    showAddDialog(newValue);
+                                } else {
+                                    add(newValue);
+                                }
                             }
                         });
                     }
                     if ($scope.scanremove) {
                         // If 'scan to remove' radio button
-                        Meteor.call('removeFromLocation', newValue, $scope.domain, (err) => {
+                        Meteor.call('removeFromLocation', $scope.locationId, newValue, (err) => {
                             if (err) {
                                 showError(err.error);
                             }

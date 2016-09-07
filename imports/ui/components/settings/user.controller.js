@@ -14,7 +14,7 @@ angular.module('kaiamSettings').controller('SettingsUserController', ['$timeout'
     function ($timeout, $translate, $rootScope, $scope,
               $mdToast, $window, $mdDialog, entity) {
         $scope.entity = _.clone(entity);
-        $scope.roles = ScesSettings.roles.sort();
+        $scope.roles = ScesSettings.internalRoles.sort();
         $scope.selected = _.clone($scope.entity.profile.roles);
         $scope.entity.profile = {};
         $scope.entity.profile.company = entity.profile.company;

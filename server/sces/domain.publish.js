@@ -17,12 +17,16 @@ Meteor.publish('domainById', function (domainId) {
     });
 });
 
-Meteor.publish('domainKids', function (domainType, domainId, options) {
+Meteor.publish('domainKids', function (domainType, domainId, options, isCurrent) {
     ScesDomains.isLoggedIn(this.userId);
-    let q = {
+    let q = isCurrent ? {
+        'state.parentId': domainId
+    } : {
         parents: domainId
     };
-    if (domainType) {
+    if (_.isArray(domainType)) {
+        q.type = {'$in': domainType};
+    } else if (domainType) {
         q.type = domainType;
     }
     let o = options || {};

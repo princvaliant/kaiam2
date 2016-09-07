@@ -18,6 +18,15 @@
           <b>{{unit.dc.PartNumber}}</b>
         </div>
       </div>
+        <md-card>
+            <md-subheader>{{'location' | translate}}</md-subheader>
+            <md-list>
+                <md-list-item ng-repeat="location in locations" layout="row" layout-align="start start">
+                    <div class="scesPadding" nowrap am-time-ago="location.state.when"></div>
+                    <p><a href="/sces/location?id={{location._id}}" class="text-ellipsis scesPadding">{{location.dc.name}}</a> </p>
+                </md-list-item>
+            </md-list>
+        </md-card>
       <md-card>
         <md-subheader>{{'SCES.ASSIGNED-SHIPMENT' | translate}}</md-subheader>
           <md-list>
