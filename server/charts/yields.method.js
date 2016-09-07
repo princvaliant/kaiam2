@@ -72,7 +72,7 @@ Meteor.methods({
             result = Yields.aggregate(aggr);
         }
         if (device === '100GB') {
-            result = Testsummary.aggregate(aggr);
+            result = TestsummaryWeek.aggregate(aggr);
         }
 
         let min = parseInt(minTotal);

@@ -43,7 +43,7 @@ Meteor.methods({
     }
     if (device === '100GB') {
       match.status = {$in: ['P', 'F']};
-      totalPasses = Testsummary.aggregate([{$match: match}]).length;
+      totalPasses = TestsummaryWeek.aggregate([{$match: match}]).length;
     }
 
     if (rack !== 'All_racks') {

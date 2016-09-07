@@ -407,31 +407,38 @@ function insertTestSummary(serial, pnum, date, racks, duts, revname, revnum, fai
     let nd = moment(date).format('YYYYDDD');
     let w = parseInt(moment(date).format('WW'));
     let nw = moment(date).format('YYYYWW');
+    let set = {
+        sn: serial,
+        w: w,
+        nw: nw,
+        d: d,
+        nd: nd,
+        rwr: 0,
+        pnum: pnum,
+        cm: 'Kaiam',
+        rack: [...racks].sort(),
+        dut: [...duts].sort(),
+        usr: '',
+        f: status === 'F' ? 1 : 0,
+        p: status === 'P' ? 1 : 0,
+        e: status === 'E' ? 1 : 0,
+        tsts: tsts,
+        tstparams: [...failTestsWithCodes].sort(),
+        status: status,
+        timestamp: date,
+        spec: revname + ' ' + revnum
+    };
 
     Testsummary.upsert({
         _id: serial + pnum
     }, {
-        $set: {
-            sn: serial,
-            w: w,
-            nw: nw,
-            d: d,
-            nd: nd,
-            rwr: 0,
-            pnum: pnum,
-            cm: 'Kaiam',
-            rack: [...racks].sort(),
-            dut: [...duts].sort(),
-            usr: '',
-            f: status === 'F' ? 1 : 0,
-            p: status === 'P' ? 1 : 0,
-            e: status === 'E' ? 1 : 0,
-            tsts: tsts,
-            tstparams: [...failTestsWithCodes].sort(),
-            status: status,
-            timestamp: date,
-            spec: revname + ' ' + revnum
-        }
+        $set: set
+    });
+
+    TestsummaryWeek.upsert({
+        _id: serial + pnum + nw
+    }, {
+        $set: set
     });
 }
 
