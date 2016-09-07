@@ -33,7 +33,8 @@ angular.module('kaiamSpecActions')
                         lock: lock,
                         type: type,
                         class: clss,
-                        execution: []
+                        execution: [],
+                        created: moment().toDate()
                     });
                 },
                 removeSar: function (selection) {
@@ -55,7 +56,9 @@ angular.module('kaiamSpecActions')
                             lock: sar.lock,
                             active: sar.active,
                             type: sar.type,
-                            class: sar.class
+                            class: sar.class,
+                            activated: sar.active === 'Y' ? moment().toDate() : null,
+                            locked: sar.lock === 'Y' ? moment().toDate() : null
                         }
                     });
                 },
@@ -66,7 +69,8 @@ angular.module('kaiamSpecActions')
                             _id: s._id
                         }, {
                             $set: {
-                                lock: 'Y'
+                                lock: 'Y',
+                                locked: moment().toDate()
                             }
                         });
                     }

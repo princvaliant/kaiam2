@@ -36,8 +36,7 @@ Meteor.methods({
 });
 
 
-
-function execSar(pnum) {
+function execSar (pnum) {
     // Get latest spec revision for the pnum
     let sar = Sar.findOne({pnum: pnum, name: 'Test', active: 'Y'}, {sort: {rev: -1}});
     if (sar) {
@@ -78,10 +77,9 @@ function execSar(pnum) {
     });
 }
 
-function processAllTestData(testData, specs) {
+function processAllTestData (testData, specs) {
     // Loop through the test aggregation by serial number and check fail conditions
     _.each(testData, (testDataGroupBySn) => {
-        let serial = testDataGroupBySn._id.sn;
         let items = testDataGroupBySn.items;
         // Loop through each test item for this serial number
         let measstatus = 'P';
@@ -152,7 +150,7 @@ function processAllTestData(testData, specs) {
     console.log('finish all');
 }
 
-function processCustomVars(testData) {
+function processCustomVars (testData) {
     // Prepare custom calculation
     SarCalculation.init();
     _.each(testData, (testDataGroupBySn) => {
@@ -166,7 +164,7 @@ function processCustomVars(testData) {
     SarCalculation.execute();
 }
 
-function processLastTestData(pnum, testData, specs, specTestSorted, sar) {
+function processLastTestData (pnum, testData, specs, specTestSorted, sar) {
     // Loop through the test aggregation by serial number and check fail conditions
 
     // Retrieve order number from the spec to determine which tests have the same order number as txtests
@@ -399,7 +397,7 @@ function processLastTestData(pnum, testData, specs, specTestSorted, sar) {
 }
 
 
-function insertTestSummary(serial, pnum, date, racks, duts, revname, revnum, failTests, failTestsWithCodes, status) {
+function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, failTests, failTestsWithCodes, status) {
     let tsts = _.uniq(_.map([...failTests], function (ft) {
         return ft.replace('-', ' - ');
     })).sort();
@@ -442,7 +440,7 @@ function insertTestSummary(serial, pnum, date, racks, duts, revname, revnum, fai
     });
 }
 
-function getLastSyncDate(domain) {
+function getLastSyncDate (domain) {
     let syncstart = Syncstart.findOne({domain: domain});
     if (!syncstart) {
         let date = moment('2016-04-29').toDate();
@@ -463,7 +461,7 @@ function getLastSyncDate(domain) {
     }
 }
 
-function getSpecOrder(sar) {
+function getSpecOrder (sar) {
     return SarSpec.aggregate([{
         $match: {
             sarId: sar._id
@@ -483,7 +481,7 @@ function getSpecOrder(sar) {
     }]);
 }
 
-function commonAggregation(pnum, serials) {
+function commonAggregation (pnum, serials) {
     return [{
         $match: {
             'device.SerialNumber': {
@@ -517,7 +515,7 @@ function commonAggregation(pnum, serials) {
     }];
 }
 
-function getAllTestData(pnum, serials) {
+function getAllTestData (pnum, serials) {
     // Construct aggregation pipeline to get all test data grouped by measurements
     let allAggregation = commonAggregation(pnum, serials).concat([{
         // Group by serial and tests to prepare for finding last tests
@@ -556,7 +554,7 @@ function getAllTestData(pnum, serials) {
     return Testdata.aggregate(allAggregation, {allowDiskUse: true});
 }
 
-function getLastTestData(pnum, serials) {
+function getLastTestData (pnum, serials) {
     let lastTestAggregation = commonAggregation(pnum, serials).concat([{
         // Group by serial and tests to prepare for finding last tests
         $group: {
@@ -636,7 +634,7 @@ function getLastTestData(pnum, serials) {
     return Testdata.aggregate(lastTestAggregation, {allowDiskUse: true});
 }
 
-function getSpecRanges(sar) {
+function getSpecRanges (sar) {
     // Get active specs for this part number and group them by type, subtype and temperature
     return SarSpec.aggregate([{
         $match: {
@@ -673,7 +671,7 @@ function getSpecRanges(sar) {
 }
 
 
-function getPartsChangedFromLastDate(pnum) {
+function getPartsChangedFromLastDate (pnum) {
     // Retrieve last sync datetime
     let lastDate = getLastSyncDate('SPEC_' + pnum);
     //   let lastDate = moment('2016-06-23').toDate();
@@ -695,7 +693,7 @@ function getPartsChangedFromLastDate(pnum) {
     return _.pluck(list, '_id');
 }
 
-function getPartsForDatesAndSerials(pnum, fromDate, toDate, snList) {
+function getPartsForDatesAndSerials (pnum, fromDate, toDate, snList) {
     let match = {
         'device.PartNumber': pnum
     };

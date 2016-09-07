@@ -100,7 +100,9 @@ angular.module('kaiamSpecActions')
                                 cntrl.selectedSar = row.entity;
                                 cntrl.cacheSar = _.clone(row.entity);
                                 scope.selectedExecution = angular.copy(row.entity.execution) || [];
-                                scope.sarActionApi.dragndrop.setDragDisabled(!scope.canEdit());
+                                if (scope.sarActionApi) {
+                                    scope.sarActionApi.dragndrop.setDragDisabled(!scope.canEdit());
+                                }
                             });
                         }
                     };

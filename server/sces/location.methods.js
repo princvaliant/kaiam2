@@ -16,7 +16,7 @@ Meteor.methods({
             PCBA: transceiver.PCBA,
             state: 'AddedToLocation',
             SerialNumber: transceiver._id
-        }, [transceiver.TOSA, transceiver.ROSA, trasceiver.PCBA]);
+        }, [transceiver.TOSA, transceiver.ROSA, transceiver.PCBA]);
         ScesDomains.addEvent(locationId, 'add',
             'Transceiver ' + transceiver._id + ' added to location.', transceiver._id);
         return retId;

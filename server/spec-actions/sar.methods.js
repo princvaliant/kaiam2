@@ -26,7 +26,8 @@ Meteor.methods({
             type: sar.type,
             class: sar.class,
             fileName: sar.fileName,
-            fileContent: sar.fileContent
+            fileContent: sar.fileContent,
+            created: moment().toDate()
         });
         let sarActions = SarAction.find({sarId: sar._id}).fetch();
         _.each(sarActions, (sa) => {
