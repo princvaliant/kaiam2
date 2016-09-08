@@ -21,7 +21,7 @@ angular.module('kaiamSpecActions')
                 return;
             }
             user = Meteor.users.findOne(Meteor.userId());
-            if (user && !user.profile.isClient && _.intersection(user.profile.roles, ['ADMIN']).length > 0) {
+            if (user && !user.profile.isClient && _.intersection(user.profile.roles, ['ADMIN', 'MANAGER']).length > 0) {
                 let menu = {
                     name: 'MENU.SPECACTIONS.SPECACTIONS',
                     icon: 'tune',

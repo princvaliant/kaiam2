@@ -1,6 +1,26 @@
 'use strict';
 
-import { check } from 'meteor/check';
+import {check} from 'meteor/check';
+
+// Contains config based on vendor requirements
+let sequenceConfig = {
+    XQX4008: {
+        seq: 'SEQ1',
+        reset: 'isoWeek' // Monday
+    },
+    XQX4009: {
+        seq: 'SEQ1',
+        reset: 'isoWeek' // Monday
+    },
+    XQX4007: {
+        seq: 'SEQ2',
+        reset: 'week' // Sunday
+    },
+    DEFAULT: {
+        seq: 'SEQ',
+        reset: 'week'  //Sunday
+    }
+};
 
 HTTP.methods({
     '/getVendorSequence': {
@@ -10,15 +30,21 @@ HTTP.methods({
             if (!pnum) {
                 return 'ERROR - parameter missing: pnum';
             }
-            let vs = VendorSequence.findOne({_id: pnum});
-            if (!vs) {
-                VendorSequence.insert({_id: pnum, seq: 1});
-                return 1;
-            } else {
-                vs.seq += 1;
-                VendorSequence.update(pnum, vs);
-                return vs.seq;
+            let config = sequenceConfig[pnum] || sequenceConfig.DEFAULT;
+            let startDayOfWeek = 'NORESET';
+            if (config.reset) {
+                startDayOfWeek = moment().startOf(config.reset).format('YYYY-MM-DD');
             }
+            let vendorSequence = VendorSequence.findOne({name: config.seq, weekStart: startDayOfWeek});
+
+            if (!vendorSequence) {
+                VendorSequence.insert({name: config.seq, weekStart: startDayOfWeek, cnt: 1});
+                return 1;
+            }
+            vendorSequence.cnt += 1;
+            VendorSequence.update(vendorSequence._id, vendorSequence);
+            return vendorSequence.cnt;
+
         }
     }
 });
@@ -95,7 +121,7 @@ Meteor.methods({
                     return ScesDomains.addEvent(tray._id, 'error', 'XQX40** Script name TESTTUNE:10 or FULL:21,22,23 not allowed for shipout', snum);
                 }
             }
-            if (tdpf === 'XQX41' ) {
+            if (tdpf === 'XQX41') {
                 if (td.meta.ScriptName.toUpperCase() === 'FULL' && td.meta.ScriptVer === '7') {
                     return ScesDomains.addEvent(tray._id, 'error', 'XQX41** Script name FULL:7 not allowed for shipout', snum);
                 }
@@ -357,7 +383,7 @@ Meteor.publish('reworkCodes', function (options, search, filter) {
     return ReworkCode.find();
 });
 
-function _returnSummary(summ) {
+function _returnSummary (summ) {
     let ret = [];
     let fts = summ.tstparams.length > 0 ? summ.tstparams : summ.tsts;
     _.each(fts, (tstparam) => {
@@ -376,7 +402,7 @@ function _returnSummary(summ) {
     return ret;
 }
 
-function getTosas() {
+function getTosas () {
     let tosas = [
         '15412195',
         '15485226',
@@ -899,7 +925,7 @@ function getTosas() {
     return tosas;
 }
 
-function getRosas() {
+function getRosas () {
     let rosas = [
         'BD01381',
         'BD17080',
@@ -1422,7 +1448,7 @@ function getRosas() {
     return rosas;
 }
 
-function noShip() {
+function noShip () {
     let sns = [
         'kd60401005',
         'kd60525082',

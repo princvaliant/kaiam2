@@ -8,7 +8,7 @@ Meteor.startup(function () {
         name: 'Calculate specs',
         schedule: function (parser) {
             // parser is a later.parse object
-            return parser.text('every 3 hours');
+            return parser.text('every 1 hour');
         },
         job: function () {
             let pnums = _.keys(Settings.partNumbers);
@@ -38,7 +38,7 @@ Meteor.methods({
 
 function execSar (pnum) {
     // Get latest spec revision for the pnum
-    let sar = Sar.findOne({pnum: pnum, name: 'Test', active: 'Y'}, {sort: {rev: -1}});
+    let sar = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
     if (sar) {
         // Get valid spec ranges for sar named 'Test'
         let specs = getSpecRanges(sar);
@@ -624,7 +624,7 @@ HTTP.methods({
             let sn = this.query.sn;
             let pnum = this.query.pnum;
             // Get latest spec revision for the pnum
-            let sar = Sar.findOne({pnum: pnum, name: 'Test', active: 'Y'}, {sort: {rev: -1}});
+            let sar = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
             if (sar) {
                 // Get valid spec ranges for sar named 'Test'
                 let specs = getSpecRanges(sar);

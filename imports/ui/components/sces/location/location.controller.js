@@ -246,7 +246,23 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                             } else {
                                 if (!data) {
                                     // If this transceiver does not exist
-                                    showAddDialog(newValue);
+                                    Meteor.call('createPartAndAddToLocation', $scope.locationId, {_id: newValue}, (err2, retId) => {
+                                        if (!err2) {
+                                            $mdToast.show(
+                                                $mdToast.simple()
+                                                    .content('Transceiver ' + retId + ' created and added to location')
+                                                    .position('top right')
+                                                    .hideDelay(3000));
+                                            $mdDialog.cancel();
+                                        } else {
+                                            $mdToast.show(
+                                                $mdToast.simple()
+                                                    .content(err2)
+                                                    .position('bottom right')
+                                                    .hideDelay(3000));
+                                        }
+                                    });
+                                    // showAddDialog(newValue);
                                 } else {
                                     add(newValue);
                                 }
