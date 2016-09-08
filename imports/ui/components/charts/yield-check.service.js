@@ -83,7 +83,7 @@ angular.module('kaiamCharts')
               reversed: true,
               color: color,
               toolTipContent: "<span style='\"'color: {color};'\"'><strong>{pn}</strong><br/><br/>" +
-                "X value: {label}<br/>Yield: {y}</strong><hr/>Pass: {pass}</strong><br/>Fail: {fail}</strong>" +
+                "X value: {label}<br/>Yield: {y}</strong><hr/>Pass: {pass}</strong><br/>Fail: {fail}</strong><br/>Error: {err}</strong>" +
                 "<br/>Total: {total}</strong></span><br/>",
               dataPoints: []
             };
@@ -108,7 +108,8 @@ angular.module('kaiamCharts')
               pn: doc._id.pnum,
               pass: doc.pass,
               fail: doc.fail,
-              total: doc.pass + doc.fail,
+              err: doc.err,
+              total: doc.pass + doc.fail + doc.err,
               click: function(e) {
                 pointClicked(e.dataPoint.pn, e.dataPoint.label1);
               }

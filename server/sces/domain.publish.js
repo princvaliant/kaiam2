@@ -47,6 +47,11 @@ Meteor.publish('domainEvents', function (domainId) {
     ScesDomains.isLoggedIn(this.userId);
     return DomainEvents.find({
         domainId: domainId
+    }, {
+        sort: {
+            when: -1
+        },
+        limit: 200
     });
 });
 

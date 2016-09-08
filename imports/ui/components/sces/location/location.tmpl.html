@@ -1,10 +1,11 @@
 <md-card>
     <md-card-content layout="column" ng-show="!locationId && canAdd">
-        <form name="locationForm" layout="column"  novalidate>
+        <form name="locationForm" layout="column" novalidate>
             <md-subheader class="md-no-sticky">{{'SCES.NEW' | translate}} {{'SCES.location' | translate}}</md-subheader>
             <md-input-container style="width:300px;" md-is-error="locationForm.name.$invalid">
                 <label for="name">{{'SCES.LOCATION-NAME' | translate}}</label>
-                <input name="name" ng-model="name" aria-label="{{'SCES.LOCATION-NAME' | translate}}" ng-required="true" />
+                <input name="name" ng-model="name" aria-label="{{'SCES.LOCATION-NAME' | translate}}"
+                       ng-required="true"/>
                 <div ng-messages="locationForm.name.$error" md-auto-hide="false" ng-if="locationForm.name.$touched">
                     <div ng-message="required">{{'SCES.LOCATION-NAME-REQUIRED' | translate}}</div>
                 </div>
@@ -30,7 +31,8 @@
     <div layout="row" ng-show="locationId" ng-keypress="onKeyPressed($event)" flex>
         <div layout="column" style="width:265px;">
             <div palette-background="purple:100" layout="column" layout-align="space-between">
-                <h2 class="md-display-1 font-weight-400 margin-0" flex layout-padding>{{'SCES.location' | translate}}</h2>
+                <h2 class="md-display-1 font-weight-400 margin-0" flex
+                    layout-padding>{{'SCES.location' | translate}}</h2>
                 <md-divider></md-divider>
                 <div layout="row" layout-align="space-between center" class="scesPadding">
                     <span>{{'SCES.STATUS' | translate}}</span>
@@ -64,18 +66,18 @@
                 </div>
                 <div ng-click="content='list'" layout="row" layout-align="space-between center" class="scesPadding">
                     <span>{{'SCES.ASSIGNED-TRAYS-TOTAL' | translate}}</span>
-                    <a href=""><b>{{domainKids.length}}</b></a>
+                    <a href=""><b>{{totalTrays}}</b></a>
                 </div>
                 <div ng-click="content='list'" layout="row" layout-align="space-between center" class="scesPadding">
                     <span>{{'SCES.ASSIGNED-TRANSCEIVERS-TOTAL' | translate}}</span>
-                    <a href=""><b>{{domainKids.length}}</b></a>
+                    <a href=""><b>{{totalTransceivers}}</b></a>
                 </div>
                 <div ng-click="content='log'" layout="row" layout-align="space-between center" class="scesPadding">
                     <span>{{'SCES.SHIP-ACTION-LOG' | translate}}</span>
                     <a href=""><b>{{domainEvents.length}}</b></a>
                 </div>
             </div>
-            <div ng-show="domain.canEdit()" layout="column">
+            <div ng-show="domain.canEdit() && isAdmin" layout="column">
                 <div layout="row" layout-align="start center" style="margin-top:15px;margin-bottom:15px;">
                     <md-input-container style="width:180px;" class="hide-error-msg">
                         <label for="serial">{{'SCES.LOCATION-CHILD' | translate}}</label>
@@ -124,13 +126,14 @@
                     <md-subheader>{{'SCES.LOCATION-ASSIGNED' | translate}}</md-subheader>
                     <md-card-content>
                         <md-list>
-                            <md-list-item ng-repeat="item in domainKids" class="paddingreduce" layout="row"
+                            <md-list-item ng-repeat="item in domainKids" class="md-grid-tile-c" layout="row"
                                           layout-align="start center">
-                                <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"
-                                         style="margin-right:0px;"></md-icon>
-                                <div class="scesPadding text-ellipsis" nowrap am-time-ago="item.state.when"></div>
-                                <p class="scesPadding text-ellipsis">{{item.type}} <a href="/sces/transceiver?id={{item._id}}"
-                                      class="text-ellipsis scesPadding">{{item._id}}</a> - {{item.dc.pnum}} </p>
+                                    <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"
+                                             style="margin-right:0px;"></md-icon>
+                                    <div class="scesPadding text-ellipsis" nowrap am-time-ago="item.state.when"></div>
+                                    <p class="scesPadding text-ellipsis">{{item.type}} <a
+                                            href="/sces/transceiver?id={{item._id}}"
+                                            class="text-ellipsis scesPadding">{{item._id}}</a> - {{item.dc.pnum}} </p>
                             </md-list-item>
                         </md-list>
                     </md-card-content>

@@ -34,6 +34,7 @@ angular.module('kaiamSces').controller('ScesLocationController', [
         $scope.selectedIndex = 0;
         $scope.domainKids = [];
         $scope.content = 'log';
+        $scope.isAdmin = ScesSettings.isInternalMember(Meteor.user(), ['ADMIN', 'INVENTORY_SUPERVISOR']);
 
         // This part provides order select functionality for new shipment ////////////////////
         $scope.confirmClicked = function () {
@@ -106,6 +107,14 @@ angular.module('kaiamSces').controller('ScesLocationController', [
             }
         });
 
+        $scope.autorun(function () {
+            let domainKids = $scope.getReactively('domainKids');
+            if (domainKids) {
+                $scope.totalTrays = _.where(domainKids, {type: 'tray'}).length;
+                $scope.totalTransceivers = _.where(domainKids, {type: 'transceiver'}).length;
+            }
+        });
+
         $scope.helpers({
             domains: () => {
                 return Domains.find({
@@ -126,7 +135,7 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                     type: {$in: ['transceiver', 'tray']}
                 }, {
                     sort: {
-                        when: -1
+                        'state.when': -1
                     }
                 });
             }

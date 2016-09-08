@@ -112,37 +112,10 @@
     margin-bottom: -22px;
 }
 
-.md-grid-tile-c.ng-enter,
-.md-grid-tile-c.ng-leave {
-    -webkit-transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
-    -moz-transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
-    -ms-transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
-    -o-transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
-    transition: 900ms cubic-bezier(0.000, 0.000, 0.580, 1.000) all;
-    display: block;
-}
-
-.md-grid-tile-c.ng-leave.ng-leave-active,
 .md-grid-tile-c.ng-enter {
-    -webkit-transform: scaleY(3.44) scaleX(3.55);
-    -moz-transform: scaleY(3.44) scaleX(3.55);
-    -ms-transform: scaleY(3.44) scaleX(3.55);
-    -o-transform: scaleY(3.44) scaleX(3.55);
-    transform: scaleY(3.44) scaleX(3.55);
-    height: 0px;
-    opacity: 0;
+    animation: 2s appear;
 }
 
-.md-grid-tile-c.ng-enter.ng-enter-active,
-.md-grid-tile-c.ng-leave {
-    -webkit-transform: scaleY(1) scaleX(1);
-    -moz-transform: scaleY(1) scaleX(1);
-    -ms-transform: scaleY(1) scaleX(1);
-    -o-transform: scaleY(1) scaleX(1);
-    transform: scaleY(1) scaleX(1);
-    height: 0px;
-    opacity: 1;
-}
 .md-list-item-anim
 {
     height:60px;

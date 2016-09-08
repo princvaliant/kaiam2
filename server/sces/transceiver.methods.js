@@ -5,11 +5,11 @@ import {check} from 'meteor/check';
 // Contains config based on vendor requirements
 let sequenceConfig = {
     XQX4008: {
-        seq: 'SEQ1',
+        seq: 'SEQ11',
         reset: 'isoWeek' // Monday
     },
     XQX4009: {
-        seq: 'SEQ1',
+        seq: 'SEQ12',
         reset: 'isoWeek' // Monday
     },
     XQX4007: {
@@ -127,7 +127,7 @@ Meteor.methods({
                 }
             }
 
-            // Check if tranceiver serial number is les than 3000 (< Q3000)
+            // Check if tranceiver serial number is less than 3000 (< Q3000)
             let num = parseInt(snum.match(/\d+/)[0]);
             if (num < 3000) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-SERIAL-NUMBER-NOT-ALLOWED', snum);
