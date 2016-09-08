@@ -8,7 +8,7 @@ Meteor.startup(function () {
         name: 'Calculate specs',
         schedule: function (parser) {
             // parser is a later.parse object
-            return parser.text('every 30 minutes');
+            return parser.text('every 3 hours');
         },
         job: function () {
             let pnums = _.keys(Settings.partNumbers);
@@ -44,14 +44,19 @@ function execSar (pnum) {
         let specs = getSpecRanges(sar);
         if (specs.length > 0) {
             // Get list of serials that are changed from last compilation
-            let serials = getPartsChangedFromLastDate(pnum);
-            // serials = ['Q3226'];  // testing
-            for (let i = 0; i < serials.length; i += 10) {
-                let array = serials.slice(i, i + 10);
-                // Get all testdata for pnum from certain date and aggregate by serial number and mid
-                //     processAllTestData(getAllTestData(pnum, array), specs);
-                processCustomVars(getLastTestData(pnum, array));
-                processLastTestData(pnum, getLastTestData(pnum, array), specs, getSpecOrder(sar), sar);
+            let lastDate = getLastSyncDate('SPEC_' + pnum);
+            let mom = moment(lastDate);
+            for (let m = mom; m.isBefore(moment()); m.add(7, 'days')) {
+                let sw = moment(m).startOf('week');
+                let ew = moment(m).endOf('week');
+                let serials = getPartsChangedBetweenDates(pnum, sw, ew);
+                // serials = ['Q4801'];  // testing
+                for (let i = 0; i < serials.length; i += 10) {
+                    let array = serials.slice(i, i + 10);
+                    // Get all testdata for pnum from certain date and aggregate by serial number and mid
+                    processCustomVars(getLastTestData(pnum, array, ew.toDate()));
+                    processLastTestData(pnum, getLastTestData(pnum, array, ew.toDate()), specs, getSpecOrder(sar), sar);
+                }
             }
         }
     } else {
@@ -69,85 +74,12 @@ function execSar (pnum) {
             for (let i = 0; i < serials.length; i += 10) {
                 let array = serials.slice(i, i + 10);
                 // Get all testdata for pnum from certain date and aggregate by serial number and mid
-                processAllTestData(getAllTestData(pnum, array), specs);
-                processLastTestData(pnum, getLastTestData(pnum, array), specs, getSpecOrder(s), s);
+                processCustomVars(getLastTestData(pnum, array, s.recalcToDate));
+                processLastTestData(pnum, getLastTestData(pnum, array, s.recalcToDate), specs, getSpecOrder(s), s);
             }
         }
         Sar.update({_id: s._id}, {$set: {recalcForce: false}});
     });
-}
-
-function processAllTestData (testData, specs) {
-    // Loop through the test aggregation by serial number and check fail conditions
-    _.each(testData, (testDataGroupBySn) => {
-        let items = testDataGroupBySn.items;
-        // Loop through each test item for this serial number
-        let measstatus = 'P';
-        _.each(items, (item) => {
-            // Get list of specs for this test, subtest and temperature
-            let params = _.filter(specs, (spec) => {
-                return spec.type === testDataGroupBySn._id.t &&
-                    spec.subtype === testDataGroupBySn._id.s &&
-                    spec.temperature === item.tmpr;
-            });
-            // Temporary list of fail codes
-            let failCodes = [];
-            // Loop through all params in spec to find if value is within range
-            _.each(params, (param) => {
-                // Get value for the parameter
-                let val = item.data[param.param];
-                if (_.isNumber(val) === true && _.isNumber(param.min) === true) {
-                    if (val < param.min) {
-                        // Append _L explaining that value is under min range
-                        failCodes.push(param.param + '|L');
-                    }
-                }
-                if (_.isNumber(val) === true && _.isNumber(param.max) === true) {
-                    if (val > param.max) {
-                        // Append _H explaining that value is over max range
-                        failCodes.push(param.param + '|H');
-                    }
-                }
-                if (val === undefined) {
-                    // Append _M explaining that parameter is missing in test record
-                    failCodes.push(param.param + '|M');
-                } else if (val + '' === 'NaN') {
-                    failCodes.push(param.param + '|M');
-                }
-            });
-            let result = failCodes.length === 0 ? 'OK' : 'ERR';
-            if (result === 'ERR') {
-                measstatus = 'F';
-            }
-            // Flag testdata record with the proper fail status
-            Testdata.update({
-                '_id': item.id
-            }, {
-                $set: {
-                    failCodes: failCodes,
-                    measstatus: 'P',
-                    result: result
-                }
-            }, {
-                multi: true
-            });
-        });
-        Testdata.update(
-            {
-                'device.SerialNumber': testDataGroupBySn._id.sn,
-                'type': testDataGroupBySn._id.t,
-                'subtype': testDataGroupBySn._id.s,
-                'mid': testDataGroupBySn._id.mid
-            }, {
-                $set: {
-                    measstatus: measstatus
-                }
-            }, {
-                multi: true
-            }
-        );
-    });
-    console.log('finish all');
 }
 
 function processCustomVars (testData) {
@@ -228,9 +160,8 @@ function processLastTestData (pnum, testData, specs, specTestSorted, sar) {
                     let tf = item.tf || [];
                     if (tf.length > 0) {
                         return true;
-                    } else {
-                        return false;
                     }
+                    return false;
                 });
                 if (testsMarkedFailed && testsMarkedFailed.length > 0) {
                     _.each(testsMarkedFailed, (testMarkedFailed) => {
@@ -277,6 +208,9 @@ function processLastTestData (pnum, testData, specs, specTestSorted, sar) {
                 _.each(specs, (spec) => {
                     // Get test that contains test, subtest and temperature from spec
                     let testItems = _.filter(items, (itm) => {
+                        if (_.isDate(itm.sd)) {
+                            date = itm.sd;
+                        }
                         return spec.type === itm.t &&
                             spec.subtype === itm.s &&
                             spec.temperature === itm.tmpr;
@@ -284,7 +218,6 @@ function processLastTestData (pnum, testData, specs, specTestSorted, sar) {
                     if (testItems.length === 0) {
                         // This test is missing, add it to missing tests
                         missingTests.add(spec.type + '-' + spec.subtype);
-                        date = items[0].sd;
                         //console.log(JSON.stringify(testItem));
                     } else {
                         _.each(testItems, (testItem) => {
@@ -428,13 +361,13 @@ function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, fa
     };
 
     Testsummary.upsert({
-        _id: serial + pnum
+        _id: serial
     }, {
         $set: set
     });
 
     TestsummaryWeek.upsert({
-        _id: serial + pnum + nw
+        _id: serial + nw
     }, {
         $set: set
     });
@@ -443,7 +376,7 @@ function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, fa
 function getLastSyncDate (domain) {
     let syncstart = Syncstart.findOne({domain: domain});
     if (!syncstart) {
-        let date = moment('2016-04-29').toDate();
+        let date = moment('2016-06-06').toDate();
         Syncstart.insert({
             domain: domain,
             start: date
@@ -454,7 +387,7 @@ function getLastSyncDate (domain) {
             domain: domain
         }, {
             $set: {
-                start: moment().subtract(2, 'hours').toDate()
+                start: moment().subtract(1, 'hours').toDate()
             }
         });
         return syncstart.start;
@@ -481,7 +414,7 @@ function getSpecOrder (sar) {
     }]);
 }
 
-function commonAggregation (pnum, serials) {
+function commonAggregation (pnum, serials, endWeek) {
     return [{
         $match: {
             'device.SerialNumber': {
@@ -493,6 +426,9 @@ function commonAggregation (pnum, serials) {
             },
             'data.ActionName': {
                 $ne: 'Packout'
+            },
+            'timestamp': {
+                $lte: endWeek
             }
         }
     }, {
@@ -515,47 +451,8 @@ function commonAggregation (pnum, serials) {
     }];
 }
 
-function getAllTestData (pnum, serials) {
-    // Construct aggregation pipeline to get all test data grouped by measurements
-    let allAggregation = commonAggregation(pnum, serials).concat([{
-        // Group by serial and tests to prepare for finding last tests
-        $group: {
-            _id: {
-                sn: '$sn',
-                mid: '$mid',
-                t: '$t',
-                s: '$s'
-            },
-            items: {
-                $push: {
-                    id: '$__id',
-                    mid: '$mid',
-                    sn: '$sn',
-                    tst: '$tst',
-                    t: '$t',
-                    s: '$s',
-                    sd: '$sd',
-                    pnum: '$pnum',
-                    cm: '$cm',
-                    rack: '$rack',
-                    dut: '$dut',
-                    usr: '$usr',
-                    r: '$r',
-                    st: '$st',
-                    tf: '$tf',
-                    data: '$data',
-                    tmpr: '$setTemperature',
-                    channel: '$channel',
-                    volt: '$volt'
-                }
-            }
-        }
-    }]);
-    return Testdata.aggregate(allAggregation, {allowDiskUse: true});
-}
-
-function getLastTestData (pnum, serials) {
-    let lastTestAggregation = commonAggregation(pnum, serials).concat([{
+function getLastTestData (pnum, serials, ew) {
+    let lastTestAggregation = commonAggregation(pnum, serials, ew).concat([{
         // Group by serial and tests to prepare for finding last tests
         $group: {
             _id: {
@@ -671,17 +568,14 @@ function getSpecRanges (sar) {
 }
 
 
-function getPartsChangedFromLastDate (pnum) {
-    // Retrieve last sync datetime
-    let lastDate = getLastSyncDate('SPEC_' + pnum);
-    //   let lastDate = moment('2016-06-23').toDate();
-
+function getPartsChangedBetweenDates (pnum, sw, ew) {
     // First return list of serials that are changed from last sync date
     let list = Testdata.aggregate([{
         $match: {
             'device.PartNumber': pnum,
             timestamp: {
-                $gte: lastDate
+                $gte: sw.toDate(),
+                $lte: ew.toDate()
             }
         }
     }, {
@@ -739,9 +633,8 @@ HTTP.methods({
                     let serials = [sn];
                     for (let i = 0; i < serials.length; i += 10) {
                         let array = serials.slice(i, i + 10);
-                        processCustomVars(getLastTestData(pnum, array));
-                        //       processAllTestData(getAllTestData(pnum, array), specs);
-                        processLastTestData(pnum, getLastTestData(pnum, array), specs, getSpecOrder(sar), sar);
+                        processCustomVars(getLastTestData(pnum, array, moment().toDate()));
+                        processLastTestData(pnum, getLastTestData(pnum, array, moment().toDate()), specs, getSpecOrder(sar), sar);
                     }
                 }
                 return Testsummary.findOne(

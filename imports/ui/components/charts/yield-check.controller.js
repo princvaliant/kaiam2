@@ -22,6 +22,7 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         $scope.manufacturer = '-all-';
         $scope.manufacturers = _.union(['-all-'], Settings.manufacturers);
         $scope.device = $cookies.get('yieldDevice') || '40GB';
+        $scope.yieldType = $cookies.get('yieldType') || 'Per week';
         let charts = null;
         let chartsObjs = null;
 
@@ -29,6 +30,11 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         $scope.changeInterval = (interval) => {
             $scope.interval = interval;
             $cookies.put('yieldInterval', interval);
+            processRows();
+        };
+        $scope.changeYieldType = (yieldType)=> {
+            $scope.yieldType = yieldType;
+            $cookies.put('yieldType', yieldType);
             processRows();
         };
         // Event handler when manufacturer changed
@@ -58,7 +64,8 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
             Meteor.call('yields', $scope.minTotal,
                 $scope.manufacturer,
                 $scope.interval,
-                $scope.device, (err, yields) => {
+                $scope.device,
+                $scope.yieldType, (err, yields) => {
                     if (err) {
                         $mdToast.show(
                             $mdToast.simple()

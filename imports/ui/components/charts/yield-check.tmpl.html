@@ -8,6 +8,12 @@
                 </md-select>
             </md-input-container>
             <md-input-container>
+                <label>type</label>
+                <md-select ng-model="yieldType" ng-change="changeYieldType(yieldType)" ng-show="device === '100GB'">
+                    <md-option ng-repeat="i in ['Per week', 'Last']" value="{{i}}">{{i}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
                 <label>{{'TIMETREND_OPTIONS_INTERVAL' | translate}}</label>
                 <md-select  ng-model="interval"
                            ng-change="changeInterval(interval)">

@@ -7,7 +7,7 @@
  */
 
 Meteor.methods({
-    yields: function (minTotal, manufacturer, interval, device) {
+    yields: function (minTotal, manufacturer, interval, device, yieldType) {
         ScesDomains.getUser(this.userId);
         let match = {};
         if (interval === 'Rework') {
@@ -72,7 +72,11 @@ Meteor.methods({
             result = Yields.aggregate(aggr);
         }
         if (device === '100GB') {
-            result = TestsummaryWeek.aggregate(aggr);
+            if (yieldType === 'Per week') {
+                result = TestsummaryWeek.aggregate(aggr);
+            } else {
+                result = Testsummary.aggregate(aggr);
+            }
         }
 
         let min = parseInt(minTotal);
