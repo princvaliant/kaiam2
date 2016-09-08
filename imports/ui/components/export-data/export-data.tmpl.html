@@ -31,7 +31,6 @@
                          ng-change="exportDetailsClicked(exportDetails)">
                 Export details
             </md-checkbox>
-            <a target="_self" id="dataexportlink" download="{{filename}}" ng-href="{{url}}" ng-show="false">Export</a>
             <md-button class="md-primary md-raised" aria-label="button" ng-click="exportClicked()">Export</md-button>
             <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
         </md-card-content>

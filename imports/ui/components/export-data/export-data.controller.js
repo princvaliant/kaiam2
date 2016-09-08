@@ -11,9 +11,9 @@ import './export-data.service';
  *
  */
 angular.module('kaiamExportData').controller('ExportdataController', [
-    '$scope', '$rootScope', '$log', '$state', '$mdToast', '$cookies', '$mdDialog', '$location', '$window',
+    '$scope', '$rootScope', '$log', '$state', '$mdToast', '$cookies', '$mdDialog', '$location', '$window', '$document',
     '$translate', '$translatePartialLoader', '$timeout', 'ExportDataService',
-    ($scope, $rootScope, $log, $state, $mdToast, $cookies, $mdDialog, $location, $window,
+    ($scope, $rootScope, $log, $state, $mdToast, $cookies, $mdDialog, $location, $window, $document,
      $translate, $translatePartialLoader, $timeout, ExportDataService) => {
         $translatePartialLoader.addPart('exportdata');
         $translate.refresh();
@@ -57,14 +57,23 @@ angular.module('kaiamExportData').controller('ExportdataController', [
                                 data = ExportDataService.convertToRows(data, $scope.partNumber);
                             }
                             let cvsdata = ExportDataService.exportData(data, $scope.exportDetails, $scope.partNumber);
-                            let blob = new Blob([cvsdata.substring(1)], {type: 'data:text/csv'});
-                            $scope.url = (window.URL || window.webkitURL).createObjectURL(blob);
+                            let blob = new Blob([cvsdata.substring(1)], {type: 'data:text/csv;charset=utf-8'});
                             $scope.filename = $scope.partNumber + '_' + $scope.testType + '.csv';
-                            setTimeout(() => {
-                                let a = document.getElementById('dataexportlink');
-                                $scope.showProgress = false;
-                                a.click();
-                            }, 500);
+                            if (window.navigator.msSaveOrOpenBlob) {
+                                navigator.msSaveBlob(blob, $scope.filename);
+                            } else {
+                                let downloadContainer = angular.element('<div data-tap-disabled="true"><a></a></div>');
+                                let downloadLink = angular.element(downloadContainer.children()[0]);
+                                downloadLink.attr('href', (window.URL || window.webkitURL).createObjectURL(blob));
+                                downloadLink.attr('download', $scope.filename);
+                                downloadLink.attr('target', '_blank');
+                                $document.find('body').append(downloadContainer);
+                                $timeout(function () {
+                                    downloadLink[0].click();
+                                    downloadLink.remove();
+                                    $scope.showProgress = false;
+                                }, null);
+                            }
                         }
                     }
                 });

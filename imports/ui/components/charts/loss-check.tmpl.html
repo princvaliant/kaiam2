@@ -76,7 +76,5 @@
             </md-grid-tile>
         </md-grid-list>
     </tri-widget>
-    <md-progress-circular md-mode="indeterminate" ng-show="showProgress" md-diameter="120" style="position:absolute;top:300px;left:400px;"></md-progress-circular>
+    <md-progress-circular md-mode="indeterminate" ng-show="showProgress" md-diameter="120" style="position:absolute;z-index:-1;top:300px;left:400px;"></md-progress-circular>
 </div>
-<a target="_self" id="lossdataexportlink" download="{{filename}}" ng-href="{{url}}"
-   ng-show="false">Export</a>

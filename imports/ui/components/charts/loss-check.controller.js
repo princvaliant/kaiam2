@@ -16,8 +16,8 @@ import '../export-data/export-data.service';
  */
 
 angular.module('kaiamCharts').controller('LossCheckController', [
-    '$scope', '$mdToast', '$cookies', '$translate', '$stateParams', '$timeout', '$location', 'LossCheckService', 'ExportDataService',
-    ($scope, $mdToast, $cookies, $translate, $stateParams, $timeout, $location, LossCheckService, ExportDataService) => {
+    '$scope', '$mdToast', '$cookies', '$translate', '$stateParams', '$timeout', '$location', '$document', 'LossCheckService', 'ExportDataService',
+    ($scope, $mdToast, $cookies, $translate, $stateParams, $timeout, $location, $document, LossCheckService, ExportDataService) => {
         $scope.partNumbers = ['-all-'].concat(_.keys(Settings.partNumbers));
         $scope.intervals = _.keys(Settings.lossintervals);
         $scope.partNumber = $stateParams.pnum || '-all-';
@@ -204,14 +204,23 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                                     .hideDelay(5000));
                     } else {
                         let ret = ExportDataService.exportData(data, 'loss_export_' + (tt || 'alltests'), $scope.partNumber);
-                        let blob = new Blob([ret.substring(1)], {type: 'data:text/csv'});
-                        $scope.url = (window.URL || window.webkitURL).createObjectURL(blob);
+                        let blob = new Blob([ret.substring(1)], {type: 'data:text/csv;charset=utf-8'});
                         $scope.filename = 'losses-' + (tt || 'all') + '.csv';
-                        $timeout(() => {
-                            let a = document.getElementById('lossdataexportlink');
-                            $scope.showProgress = false;
-                            a.click();
-                        }, 100);
+                        if (window.navigator.msSaveOrOpenBlob) {
+                            navigator.msSaveBlob(blob, $scope.filename);
+                        } else {
+                            let downloadContainer = angular.element('<div data-tap-disabled="true"><a></a></div>');
+                            let downloadLink = angular.element(downloadContainer.children()[0]);
+                            downloadLink.attr('href', (window.URL || window.webkitURL).createObjectURL(blob));
+                            downloadLink.attr('download', $scope.filename);
+                            downloadLink.attr('target', '_blank');
+                            $document.find('body').append(downloadContainer);
+                            $timeout(function () {
+                                downloadLink[0].click();
+                                downloadLink.remove();
+                                $scope.showProgress = false;
+                            }, null);
+                        }
                     }
                 });
         }

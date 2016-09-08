@@ -1,58 +1,77 @@
-<div  layout-padding class="full-container" layout="column">
-    <tri-widget widget-chart flex title="Tests and packouts by part number" content-padding>
-        <table class="table">
-            <thead>
-            <tr>
-                <th md-column></th>
-                <th md-column colspan="2"
-                    ng-style="{'background': '#E0FAC0', 'padding-left':'25px', 'padding-top':'15px', 'font-size':'16px'}">
-                    Packouts
-                </th>
-                <th md-column colspan="4"
-                    ng-style="{'background': '#FCFBC2', 'padding-left':'25px', 'padding-top':'15px', 'font-size':'16px'}">
-                    Tests
-                </th>
-            </tr>
-            <tr md-row>
-                <th md-column ng-style="{'background': '#FCE6C2'}">Part number</th>
-                <th md-column md-numeric ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">Today</th>
-                <th md-column md-numeric ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">This
-                    week
-                </th>
-                <th md-column md-numeric ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">Today</th>
-                <th md-column md-numeric ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">This
-                    week
-                </th>
-                <th md-column md-numeric ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">Yield
-                    today %
-                </th>
-                <th md-column md-numeric ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">Yield this
-                    week %
-                </th>
-            </tr>
-            </thead>
-            <tbody class="md-caption">
-            <tr md-row data-ng-repeat="summary in summaries | orderBy: 'name'">
-                <td md-cell ng-style="{'background': '#FCE6C2', 'padding-right': '10px', 'text-align': 'left'}">{{summary.name}}</td>
-                <td md-cell ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">{{summary.packoutdok}}</td>
-                <td md-cell ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">{{summary.packoutwok}}</td>
-                <td md-cell ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testsdok}}</td>
-                <td md-cell ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testswok}}</td>
-                <td md-cell ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testsdy | number: 2}}</td>
-                <td md-cell ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testswy | number: 2}}</td>
-            </tr>
-            <tr md-row>
-                <td md-cell ng-style="{'padding':'15px', 'text-align':'right'}">Total</td>
-                <td md-cell
-                    ng-style="{'background': '#D0F4B3', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.packoutdok}}</td>
-                <td md-cell
-                    ng-style="{'background': '#D0F4B3', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.packoutwok}}</td>
-                <td md-cell ng-style="{'background': '#EEF3B6', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.testsdok}}</td>
-                <td md-cell ng-style="{'background': '#EEF3B6', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.testswok}}</td>
-                <td md-cell ng-style="{'background': '#EEF3B6'}"></td>
-                <td md-cell ng-style="{'background': '#EEF3B6'}"></td>
-            </tr>
-            </tbody>
-        </table>
+<div layout-padding class="full-container" layout="column">
+    <tri-widget widget-chart flex="100" content-padding>
+        <md-content>
+            <table class="table" style="overflow-y:scroll;">
+                <thead>
+                <tr>
+                    <th md-column></th>
+                    <th md-column colspan="2"
+                        ng-style="{'background': '#E0FAC0', 'padding-left':'25px', 'padding-top':'15px', 'font-size':'16px'}">
+                        Packouts
+                    </th>
+                    <th md-column colspan="4"
+                        ng-style="{'background': '#FCFBC2', 'padding-left':'25px', 'padding-top':'15px', 'font-size':'16px'}">
+                        Tests
+                    </th>
+                </tr>
+                <tr md-row>
+                    <th md-column ng-style="{'background': '#FCE6C2'}">Part number</th>
+                    <th md-column md-numeric
+                        ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">Today
+                    </th>
+                    <th md-column md-numeric
+                        ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">This
+                        week
+                    </th>
+                    <th md-column md-numeric
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">Today
+                    </th>
+                    <th md-column md-numeric
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">This
+                        week
+                    </th>
+                    <th md-column md-numeric
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">Yield
+                        today %
+                    </th>
+                    <th md-column md-numeric
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">Yield this
+                        week %
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="md-caption">
+                <tr md-row data-ng-repeat="summary in summaries | orderBy: 'name'">
+                    <td md-cell
+                        ng-style="{'background': '#FCE6C2', 'padding-right': '10px', 'text-align': 'left'}">{{summary.name}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">{{summary.packoutdok}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">{{summary.packoutwok}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testsdok}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testswok}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testsdy | number: 2}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testswy | number: 2}}</td>
+                </tr>
+                <tr md-row>
+                    <td md-cell ng-style="{'padding':'10px', 'text-align':'right'}">Total</td>
+                    <td md-cell
+                        ng-style="{'background': '#D0F4B3', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.packoutdok}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#D0F4B3', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.packoutwok}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#EEF3B6', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.testsdok}}</td>
+                    <td md-cell
+                        ng-style="{'background': '#EEF3B6', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.testswok}}</td>
+                    <td md-cell ng-style="{'background': '#EEF3B6'}"></td>
+                    <td md-cell ng-style="{'background': '#EEF3B6'}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </md-content>
     </tri-widget>
 </div>
