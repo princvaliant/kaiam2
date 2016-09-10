@@ -72,7 +72,7 @@ Meteor.methods({
             result = Yields.aggregate(aggr);
         }
         if (device === '100GB') {
-            if (yieldType === 'Per week') {
+            if (yieldType === 'Fixed week') {
                 result = TestsummaryWeek.aggregate(aggr);
             } else {
                 result = Testsummary.aggregate(aggr);
@@ -83,6 +83,25 @@ Meteor.methods({
         if (min > 0) {
             result = _.filter(result, function (rec) {
                 return rec.pass + rec.fail > min;
+            });
+        }
+        if (device === '100GB') {
+            let grp = _.groupBy(result, (c) => {
+                return 'd' + c._id.d + 'nd' + c._id.nd + 'w' + c._id.w + 'nw' + c._id.nw;
+            });
+            _.each(grp, (val, key) => {
+                let id = _.clone(val[0]._id);
+                id.pnum = 'ALL';
+                let obj = {err: 0, pass: 0, fail: 0, _id: id};
+                _.each(val, (vo) => {
+                    obj.err += vo.err;
+                    obj.fail += vo.fail;
+                    obj.pass += vo.pass;
+                });
+                result.push(obj);
+            });
+            result = _.sortBy(result, (srt) => {
+                return srt._id.nw ? srt._id.nw : srt._id.nd;
             });
         }
 

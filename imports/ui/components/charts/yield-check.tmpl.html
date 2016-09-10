@@ -7,10 +7,10 @@
                     <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
                 </md-select>
             </md-input-container>
-            <md-input-container>
+            <md-input-container ng-show="device === '100GB'">
                 <label>type</label>
-                <md-select ng-model="yieldType" ng-change="changeYieldType(yieldType)" ng-show="device === '100GB'">
-                    <md-option ng-repeat="i in ['Per week', 'Last']" value="{{i}}">{{i}}</md-option>
+                <md-select ng-model="yieldType" ng-change="changeYieldType(yieldType)" >
+                    <md-option ng-repeat="i in ['Fixed week', 'Current']" value="{{i}}">{{i}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>

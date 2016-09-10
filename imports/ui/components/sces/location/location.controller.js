@@ -272,8 +272,14 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                                         }
                                     });
                                     // showAddDialog(newValue);
-                                } else {
+                                } else if (_.contains(['transceiver', 'tray'], data.type))  {
                                     add(newValue);
+                                } else {
+                                    $mdToast.show(
+                                        $mdToast.simple()
+                                            .content('Invalid part type')
+                                            .position('bottom right')
+                                            .hideDelay(3000));
                                 }
                             }
                         });

@@ -22,7 +22,7 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         $scope.manufacturer = '-all-';
         $scope.manufacturers = _.union(['-all-'], Settings.manufacturers);
         $scope.device = $cookies.get('yieldDevice') || '40GB';
-        $scope.yieldType = $cookies.get('yieldType') || 'Per week';
+        $scope.yieldType = $cookies.get('yieldType') || 'Fixed week';
         let charts = null;
         let chartsObjs = null;
 
@@ -95,7 +95,8 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
                         pnum: pnum,
                         week: week,
                         rework: $scope.interval === 'Rework',
-                        device: $scope.device
+                        device: $scope.device,
+                        yieldType: $scope.yieldType
                     });
                 });
         }

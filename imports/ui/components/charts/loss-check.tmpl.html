@@ -1,10 +1,16 @@
-<div class="spc-container" layout-padding layout="column">
+<div class="full-container" layout-padding layout="column">
     <md-toolbar>
         <div class="md-toolbar-tools" layout-align="start end">
             <md-input-container>
                 <label>device</label>
                 <md-select ng-model="device" ng-change="changeDevice(device)">
                     <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container ng-show="device === '100GB'">
+                <label>type</label>
+                <md-select ng-model="yieldType" ng-change="changeYieldType(yieldType)" >
+                    <md-option ng-repeat="i in ['Fixed week', 'Current']" value="{{i}}">{{i}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>
@@ -37,7 +43,7 @@
                                value="{{interval}}">{{interval | translate}}</md-option>
                 </md-select>
             </md-input-container>
-            <md-input-container>
+            <md-input-container ng-show="device === '40GB'">
                 <label>{{'OPTIONS_MANUFACTURERS' | translate}}</label>
                 <md-select ng-model="manufacturer" style="width:120px"
                            ng-change="changeManufacturer(manufacturer)">
@@ -50,15 +56,15 @@
                     rework
                 </md-checkbox>
             </md-input-container>
-            <md-input-container class="hide-error-msg" style="width:120px">
+            <md-input-container class="hide-error-msg" style="width:100px">
                 <md-checkbox ng-model="groupRack" aria-label="Group by rack" ng-change="groupRackClicked(groupRack)">
                     by rack
                 </md-checkbox>
             </md-input-container>
-            <md-input-container class="hide-error-msg" style="width:110px">
+            <md-input-container class="hide-error-msg" style="width:100px" ng-show="device === '100GB'">
                 <md-checkbox ng-model="paramsFail" aria-label="With failed params"
                              ng-change="paramsFailClicked(paramsFail)">
-                    details
+                    errors
                 </md-checkbox>
             </md-input-container>
             <span flex></span>
@@ -66,15 +72,18 @@
                 <ng-md-icon icon="get_app" size="22"></ng-md-icon>
                 {{'SPC_OPTIONS_EXPORT' | translate}}
             </md-button>
-         </div>
+        </div>
     </md-toolbar>
     <tri-widget widget-chart flex="100">
-        <div id="lossChartAll_racks"  flex="100" ng-show="!groupRack"></div>
-        <md-grid-list ng-show="groupRack" md-cols="3" md-row-height="300px" md-gutter="12px">
-            <md-grid-tile data-ng-repeat="rack in racks">
-                <div id="lossChart{{rack}}" class="chartContainer"></div>
-            </md-grid-tile>
-        </md-grid-list>
+        <md-content flex>
+            <div id="lossChartAll_racks" class="chartContainer" ng-show="!groupRack"></div>
+            <md-grid-list ng-show="groupRack" md-cols="3" md-row-height="300px" md-gutter="12px">
+                <md-grid-tile data-ng-repeat="rack in racks">
+                    <div id="lossChart{{rack}}" class="chartContainer"></div>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-content>
     </tri-widget>
-    <md-progress-circular md-mode="indeterminate" ng-show="showProgress" md-diameter="120" style="position:absolute;z-index:-1;top:300px;left:400px;"></md-progress-circular>
+    <md-progress-circular md-mode="indeterminate" ng-show="showProgress" md-diameter="120"
+                          style="position:absolute;z-index:-1;top:300px;left:400px;"></md-progress-circular>
 </div>

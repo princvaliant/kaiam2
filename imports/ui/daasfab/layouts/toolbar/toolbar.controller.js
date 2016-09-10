@@ -1,19 +1,17 @@
 import angular from 'angular';
 import {Meteor} from 'meteor/meteor';
-import '../../permission/user.factory';
 
 angular
     .module('triangular.components')
     .controller('ToolbarController', DefaultToolbarController);
 
 DefaultToolbarController.$inject = ['$scope', '$state', '$injector', '$rootScope', '$mdMedia', '$filter',
-    '$mdUtil', '$mdSidenav', '$mdToast', '$document', 'triBreadcrumbsService', 'triSettings', 'triLayout',
-    'UserService'];
+    '$mdUtil', '$mdSidenav', '$mdToast', '$document', 'triBreadcrumbsService', 'triSettings', 'triLayout'];
 
 /* @ngInject */
 function DefaultToolbarController ($scope, $state, $injector, $rootScope, $mdMedia, $filter,
                                    $mdUtil, $mdSidenav, $mdToast, $document, triBreadcrumbsService,
-                                   triSettings, triLayout, UserService) {
+                                   triSettings, triLayout) {
     let vm = this;
     vm.breadcrumbs = triBreadcrumbsService.breadcrumbs;
     vm.emailNew = false;
@@ -25,7 +23,6 @@ function DefaultToolbarController ($scope, $state, $injector, $rootScope, $mdMed
     vm.isFullScreen = false;
     vm.fullScreenIcon = 'zmdi zmdi-fullscreen';
     vm.toggleFullScreen = toggleFullScreen;
-    vm.currentUser = UserService.getCurrentUser();
 
     ////////////////
 

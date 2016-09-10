@@ -4,17 +4,17 @@ angular
     .module('daasfab')
     .controller('ErrorPageController', ErrorPageController);
 
-ErrorPageController.$inject =  ['$state'];
+ErrorPageController.$inject = ['$state'];
 
 /* @ngInject */
-function ErrorPageController($state) {
+function ErrorPageController ($state) {
     var vm = this;
 
     vm.goHome = goHome;
 
     /////////
 
-    function goHome() {
+    function goHome () {
         $state.go('triangular.dashboard');
     }
 }

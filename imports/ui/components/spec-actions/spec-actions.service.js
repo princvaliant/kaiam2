@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('kaiamSpecActions')
-    .service('SpecActionsService', ['$translate', '$meteor', '$q',
-        function ($translate, $meteor, $q) {
+    .service('SpecActionsService', ['$translate',  '$q',
+        function ($translate, $q) {
 
             function updateSarExecution(sarId, sarActionId, operation, name, title) {
                 let _execution = Sar.findOne(sarId).execution;
@@ -42,7 +42,7 @@ angular.module('kaiamSpecActions')
                         let s = selection.getSelectedRows()[0];
                         if (s) {
                             Sar.remove(s._id);
-                            $meteor.call('removeSar', s._id);
+                            Meteor.call('removeSar', s._id);
                         }
                     }
                 },
@@ -131,7 +131,7 @@ angular.module('kaiamSpecActions')
                         let s = selection.getSelectedRows()[0];
                         if (s) {
                             SarAction.remove(s._id);
-                            $meteor.call('removeSarAction', s._id);
+                            Meteor.call('removeSarAction', s._id);
                             updateSarExecution(s.sarId, s._id, 'R', '', '');
                         }
                     }
@@ -193,7 +193,7 @@ angular.module('kaiamSpecActions')
                         let s = selection.getSelectedRows()[0];
                         if (s) {
                             SarSpec.remove(s._id);
-                            $meteor.call('removeSarSpec', s._id);
+                            Meteor.call('removeSarSpec', s._id);
                         }
                     }
                 },

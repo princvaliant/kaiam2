@@ -7,10 +7,10 @@ import './500.tmpl.html';
 angular.module('daasfab')
     .config(routeConfig);
 
-routeConfig.$inject =  ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+routeConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
 /* @ngInject */
-function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+function routeConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $locationProvider.html5Mode({
         enabled: true,

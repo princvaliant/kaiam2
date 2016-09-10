@@ -25,6 +25,8 @@ angular.module('kaiamCharts').controller('LossCheckController', [
         $scope.manufacturer = '-all-';
         $scope.device = $cookies.get('lossDevice') || '40GB';
         $scope.paramsFail = false;
+        $scope.yieldType =  $stateParams.yieldType || 'Fixed week';
+
         if ($stateParams.device) {
             $scope.device = $stateParams.device;
         }
@@ -85,6 +87,11 @@ angular.module('kaiamCharts').controller('LossCheckController', [
             processRowsDebounce();
         };
 
+        $scope.changeYieldType = (yieldType)=> {
+            $scope.yieldType = yieldType;
+            processRowsDebounce();
+        };
+
         $scope.changeInterval = function (interval) {
             $scope.range = '';
             $scope.rangeLabel = '';
@@ -132,7 +139,8 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                 charts[rack] = null;
                 chartsObjs[rack] = null;
                 Meteor.call('losses', $scope.lossChartType, $scope.partNumber,
-                    $scope.manufacturer, $scope.intervalValue, $scope.range, rack, $scope.reworkOnly, $scope.device, $scope.paramsFail,
+                    $scope.manufacturer, $scope.intervalValue, $scope.range, rack, $scope.reworkOnly,
+                    $scope.device, $scope.paramsFail, $scope.yieldType,
                     (err, losses) => {
                         if (err) {
                             $mdToast.show(

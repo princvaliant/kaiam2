@@ -7,6 +7,8 @@
  *
  *
  */
+import angular from 'angular';
+import {Meteor} from 'meteor/meteor';
 import './spec-actions-init.service';
 import './spec-actions.service';
 
@@ -18,7 +20,6 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
               $mdBottomSheet, $stateParams, $mdDialog, $mdToast, $window, Upload, SpecActionsInitService, SpecActionsService) {
         $reactive(this).attach($scope);
 
-        let self = this;
         $scope.class = $stateParams.class;
         $scope.isAction = false;
 
@@ -27,18 +28,16 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         $scope.selectedTab = $cookies.get('specActionsTabSelected') || 0;
         $scope.partNumbers = [''].concat(_.keys(Settings.partNumbers));
         $scope.partNumber = $cookies.get('specActionsPartNumber') || 'XQX4100';
-        self.selectedPnum = $scope.partNumber;
 
         // Initialize all grids
-        SpecActionsInitService.initSars($scope, this);
-        SpecActionsInitService.initSarActionParams($scope, this);
-        SpecActionsInitService.initSarActions($scope, this);
-        SpecActionsInitService.initSarSpecRanges($scope, this);
-        SpecActionsInitService.initSarSpecs($scope, this);
+        SpecActionsInitService.initSars($scope);
+        SpecActionsInitService.initSarActionParams($scope);
+        SpecActionsInitService.initSarActions($scope);
+        SpecActionsInitService.initSarSpecRanges($scope);
+        SpecActionsInitService.initSarSpecs($scope);
 
         $scope.changePartNumber = function (pn) {
             $scope.partNumber = pn;
-            self.selectedPnum = pn;
             $cookies.put('specActionsPartNumber', pn);
         };
 
@@ -56,9 +55,9 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             });
         };
         $scope.copySarClick = function () {
-            if (self.selectedSar) {
-                showToast('Revision ' + self.selectedSar.name + ' copied to clipboard');
-                $scope.copySar = self.selectedSar;
+            if ($scope.selectedSar) {
+                showToast('Revision ' + $scope.selectedSar.name + ' copied to clipboard');
+                $scope.copySar = $scope.selectedSar;
             }
         };
         $scope.pasteSarClick = function () {
@@ -68,10 +67,10 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             }
         };
         $scope.lockSarClick = function () {
-            if (self.selectedSar) {
+            if ($scope.selectedSar) {
                 let confirm = $mdDialog.confirm()
                     .title('Would you like to lock selected revision ' +
-                        self.selectedSar.name + ' (' + self.selectedSar.rev +
+                        $scope.selectedSar.name + ' (' + $scope.selectedSar.rev +
                         ') ? If locked can not be unlocked.')
                     .ariaLabel('Lock revision')
                     .ok('Lock')
@@ -84,7 +83,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         };
 
         $scope.addSarActionClick = function () {
-            SpecActionsService.addSarAction(self.selectedSar, '', '');
+            SpecActionsService.addSarAction($scope.selectedSar, '', '');
         };
         $scope.removeSarActionClick = function () {
             let confirm = $mdDialog.confirm()
@@ -98,7 +97,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         };
 
         $scope.addSarActionParamClick = function () {
-            SpecActionsService.addSarActionParam(self.selectedSar, self.selectedSarAction, '', 0);
+            SpecActionsService.addSarActionParam($scope.selectedSar, $scope.selectedSarAction, '', 0);
         };
         $scope.removeSarActionParamClick = function () {
             let confirm = $mdDialog.confirm()
@@ -111,20 +110,20 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             });
         };
         $scope.copySarActionClick = function () {
-            if (self.selectedSarAction) {
-                showToast('Action ' + self.selectedSarAction.name + ' copied to clipboard');
-                $scope.copySarAction = self.selectedSarAction;
+            if ($scope.selectedSarAction) {
+                showToast('Action ' + $scope.selectedSarAction.name + ' copied to clipboard');
+                $scope.copySarAction = $scope.selectedSarAction;
             }
         };
         $scope.pasteSarActionClick = function () {
             if ($scope.copySarAction) {
-                SpecActionsService.pasteSarAction(self.selectedSar, $scope.copySarAction);
+                SpecActionsService.pasteSarAction($scope.selectedSar, $scope.copySarAction);
                 showToast('Action pasted from clipboard');
             }
         };
 
         $scope.addSarSpecClick = function () {
-            SpecActionsService.addSarSpec(self.selectedSar, '', '', '');
+            SpecActionsService.addSarSpec($scope.selectedSar, '', '', '');
         };
         $scope.removeSarSpecClick = function () {
             let confirm = $mdDialog.confirm()
@@ -138,7 +137,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         };
 
         $scope.addSarSpecRangeClick = function () {
-            SpecActionsService.addSarSpecRange(self.selectedSar, self.selectedSarSpec, '', '', '', '');
+            SpecActionsService.addSarSpecRange($scope.selectedSar, $scope.selectedSarSpec, '', '', '', '');
         };
         $scope.removeSarSpecRangeClick = function () {
             let confirm = $mdDialog.confirm()
@@ -151,20 +150,20 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             });
         };
         $scope.copySarSpecClick = function () {
-            if (self.selectedSarSpec) {
-                showToast('Spec ' + self.selectedSarSpec.type + ' copied to clipboard');
-                $scope.copySarSpec = self.selectedSarSpec;
+            if ($scope.selectedSarSpec) {
+                showToast('Spec ' + $scope.selectedSarSpec.type + ' copied to clipboard');
+                $scope.copySarSpec = $scope.selectedSarSpec;
             }
         };
         $scope.pasteSarSpecClick = function () {
             if ($scope.copySarSpec) {
-                SpecActionsService.pasteSarSpec(self.selectedSar, $scope.copySarSpec);
+                SpecActionsService.pasteSarSpec($scope.selectedSar, $scope.copySarSpec);
                 showToast('Spec pasted from clipboard');
             }
         };
 
         $scope.addNodeClick = function () {
-            SpecActionsService.addExecution(self.selectedSarAction);
+            SpecActionsService.addExecution($scope.selectedSarAction);
         };
 
         $scope.upload = function (file) {
@@ -173,7 +172,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                 data: {file: file, 'username': $scope.username}
             }).then(function (resp) {
                 SpecActionsService.readFileAsync(resp.config.data.file).then(function (fileInputContent) {
-                    SpecActionsService.updateFile(self.selectedSar, fileInputContent, resp.config.data.file.name);
+                    SpecActionsService.updateFile($scope.selectedSar, fileInputContent, resp.config.data.file.name);
                     showToast('File successfully imported');
                 });
             });
@@ -182,22 +181,22 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         $scope.$watch(
             'selectedExecution',
             function handleFooChange (newValue) {
-                if (self.selectedSar) {
+                if ($scope.selectedSar) {
                     let nv = angular.copy(newValue);
-                    Sar.update({_id: self.selectedSar._id}, {$set: {execution: nv}});
+                    Sar.update({_id: $scope.selectedSar._id}, {$set: {execution: nv}});
                 }
             }, true
         );
 
-        this.subscribe('sars', () => {
-            $scope.gridSars.data = Sar.find({
-                pnum: self.getReactively('selectedPnum'),
-                class: {$in: [$scope.class, null]}
-            }).fetch();
+        $scope.subscribe('sars', () => {
+            return [$scope.getReactively('partNumber'), $scope.getReactively('class')];
+        });
+        $scope.autorun(() => {
+            $scope.gridSars.data  = $scope.getReactively('sars');
             $timeout(function () {
                 let isSel = false;
                 $scope.sarApi.grid.rows.forEach(function (row) {
-                    if (self.selectedSar && self.selectedSar._id === row.entity._id) {
+                    if ($scope.selectedSar && $scope.selectedSar._id === row.entity._id) {
                         $scope.sarApi.selection.selectRow(row.entity);
                         isSel = true;
                     }
@@ -214,6 +213,86 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                 }
             });
         });
+        $scope.helpers({
+            sars: () => {
+                return Sar.find({
+                    pnum: $scope.getReactively('partNumber'),
+                    class: {$in: [$scope.getReactively('class'), null]}
+                });
+            },
+            sarActions: () => {
+                if ($scope.getReactively('selectedSar')) {
+                    return SarAction.find({sarId: $scope.selectedSar._id}, {sort: {order: 1}});
+                }
+                return null;
+            },
+            sarActionParams: () => {
+                if ($scope.getReactively('selectedSarAction')) {
+                    return SarActionParam.find({sarActionId: $scope.selectedSarAction._id});
+                }
+                return null;
+            },
+            sarSpecs: () => {
+                if ($scope.getReactively('selectedSar')) {
+                    return SarSpec.find({sarId: $scope.selectedSar._id});
+                }
+                return null;
+            },
+            sarSpecRanges: () => {
+                if ($scope.getReactively('selectedSarSpec')) {
+                    return SarSpecRange.find({sarSpecId: $scope.selectedSarSpec._id});
+                }
+                return null;
+            }
+        });
+
+        $scope.autorun(() => {
+            let selectedSar  = $scope.getReactively('selectedSar') || {};
+            $scope.subscribe('sar-actions', () => {
+                return [selectedSar._id];
+            });
+            $scope.subscribe('sar-action-params', () => {
+                return [selectedSar._id];
+            });
+            $scope.subscribe('sar-specs', () => {
+                return [selectedSar._id];
+            });
+            $scope.subscribe('sar-spec-ranges', () => {
+                return [selectedSar._id];
+            });
+        });
+
+        $scope.autorun(() => {
+            $scope.gridSarActions.data = $scope.getReactively('sarActions') || [];
+            $timeout(function () {
+                if ($scope.sarActionApi && $scope.sarActionApi.selection && $scope.gridSarActions.data[0]) {
+                    $scope.sarActionApi.selection.selectRow($scope.gridSarActions.data[0]);
+                } else {
+                    $scope.gridSarActionParams.data = [];
+                }
+            });
+        });
+
+        $scope.autorun(() => {
+            $scope.gridSarSpecs.data =  $scope.getReactively('sarSpecs') || [];
+            $timeout(function () {
+                if ($scope.sarSpecApi && $scope.sarSpecApi.selection && $scope.gridSarSpecs.data[0]) {
+                    $scope.sarSpecApi.selection.selectRow($scope.gridSarSpecs.data[0]);
+                } else {
+                    $scope.gridSarSpecRanges.data = [];
+                }
+            });
+        });
+
+        $scope.autorun(() => {
+            $scope.gridSarActionParams.data =  $scope.getReactively('sarActionParams') || [];
+        });
+
+        $scope.autorun(() => {
+            $scope.gridSarSpecRanges.data =  $scope.getReactively('sarSpecRanges') || [];
+        });
+
+
         $scope.tabSelected = (idx, field) => {
             $cookies.put('specActionsTabSelected', idx);
             $timeout(function () {
@@ -221,94 +300,53 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             });
         };
         $scope.calcSpecClicked = () => {
-            if (self.selectedSar) {
+            if ($scope.selectedSar) {
                 let confirm = $mdDialog.confirm()
-                    .title('Would you like to recalculate ' + self.selectedSar.name + ' ' + self.selectedSar.rev + '?')
+                    .title('Would you like to recalculate ' + $scope.selectedSar.name + ' ' + $scope.selectedSar.rev + '?')
                     .ariaLabel('Re-calculate spec')
                     .ok('Submit')
                     .cancel('Cancel');
                 $mdDialog.show(confirm).then(function () {
-                    SpecActionsService.recalculateSar(self.selectedSar, $scope.recalcSnList, $scope.recalcFromDate, $scope.recalcToDate);
+                    SpecActionsService.recalculateSar($scope.selectedSar, $scope.recalcSnList, $scope.recalcFromDate, $scope.recalcToDate);
                     showToast('Recalculation successfully started');
                 });
             }
         };
         function initTab (field) {
             switch (field) {
-                case 'actionEdit':
-                    self.subscribe('sar-actions', () => {
-                        if (self.getReactively('selectedSar')) {
-                            $scope.gridSarActions.data = SarAction.find({sarId: self.selectedSar._id}, {sort: {order: 1}}).fetch();
-                            $timeout(function () {
-                                if ($scope.sarActionApi.selection && $scope.gridSarActions.data[0]) {
-                                    $scope.sarActionApi.selection.selectRow($scope.gridSarActions.data[0]);
-                                } else {
-                                    $scope.gridSarActionParams.data = [];
-                                }
-                            });
-                        }
+            case 'specCalc':
+                $scope.autorun(() => {
+                    if ($scope.getReactively('selectedSar')) {
+                        $scope.recalcSnList = $scope.selectedSar.recalcSnList;
+                        $scope.recalcFromDate = $scope.selectedSar.recalcFromDate;
+                        $scope.recalcToDate = $scope.selectedSar.recalcToDate;
+                        $scope.recalcShowProgress = $scope.selectedSar.recalcForce;
+                    }
+                });
+                break;
+            case 'actionView':
+                $scope.autorun(() => {
+                    Meteor.call('getActions', $scope.getReactively('selectedSar'), (err, data) => {
+                        $scope.actions = data;
                     });
-
-                    self.subscribe('sar-action-params', () => {
-                        if (self.getReactively('selectedSarAction')) {
-                            $scope.gridSarActionParams.data = SarActionParam.find({sarActionId: self.selectedSarAction._id}).fetch();
-                        }
+                });
+                break;
+            case 'specView':
+                $scope.autorun(() => {
+                    Meteor.call('getSpecs', $scope.getReactively('selectedSar'), (err, data) => {
+                        $scope.specs = data;
                     });
-                    break;
-                case 'specEdit':
-                    self.subscribe('sar-specs', () => {
-                        if (self.getReactively('selectedSar')) {
-                            $scope.gridSarSpecs.data = SarSpec.find({sarId: self.selectedSar._id}).fetch();
-                            $timeout(function () {
-                                if ($scope.sarSpecApi.selection && $scope.gridSarSpecs.data[0]) {
-                                    $scope.sarSpecApi.selection.selectRow($scope.gridSarSpecs.data[0]);
-                                } else {
-                                    $scope.gridSarSpecRanges.data = [];
-                                }
-                            });
-                        }
+                });
+                break;
+            case 'log':
+                $scope.autorun(() => {
+                    Meteor.call('getLogs', $scope.getReactively('selectedSar'), (err, data) => {
+                        $scope.logs = data;
                     });
-
-                    self.subscribe('sar-spec-ranges', () => {
-                        if (self.getReactively('selectedSarSpec')) {
-                            $scope.gridSarSpecRanges.data = SarSpecRange.find({sarSpecId: self.selectedSarSpec._id}).fetch();
-                        }
-                    });
-                    break;
-                case 'specCalc':
-                    self.autorun(() => {
-                        if (self.getReactively('selectedSar')) {
-                            $scope.recalcSnList = self.selectedSar.recalcSnList;
-                            $scope.recalcFromDate = self.selectedSar.recalcFromDate;
-                            $scope.recalcToDate = self.selectedSar.recalcToDate;
-                            $scope.recalcShowProgress = self.selectedSar.recalcForce;
-                        }
-                    });
-                    break;
-                case 'actionView':
-                    self.autorun(() => {
-                        self.call('getActions', self.getReactively('selectedSar'), (err, data) => {
-                            $scope.actions = data;
-                        });
-                    });
-                    break;
-                case 'specView':
-                    self.autorun(() => {
-                        self.call('getSpecs', self.getReactively('selectedSar'), (err, data) => {
-                            $scope.specs = data;
-                        });
-                    });
-                    break;
-                case 'log':
-                    self.autorun(() => {
-                        self.call('getLogs', self.getReactively('selectedSar'), (err, data) => {
-                            $scope.logs = data;
-                            console.log(data);
-                        });
-                    });
-                    break;
-                default:
-                    break;
+                });
+                break;
+            default:
+                break;
             }
         }
 
@@ -320,4 +358,5 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                     .hideDelay(3000));
         }
     }
-]);
+])
+;

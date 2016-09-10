@@ -76,7 +76,8 @@ angular.module('kaiamCharts')
                         'pnum': null,
                         'week': null,
                         'rework': null,
-                        'device': null
+                        'device': null,
+                        'yieldType': null
                     }
                 });
         }

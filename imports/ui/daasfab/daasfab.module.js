@@ -29,7 +29,7 @@ import './triangular/router/router.provider';
 import './triangular/router/router.run';
 
 import './triangular/layouts/layouts.provider';
-import './permission/permission.module';
+// import './permission/permission.module';
 
 // Application modules
 import '../components/authentication/authentication.run';
@@ -75,7 +75,7 @@ export default angular.module(name, [
 
     'triangular',
     'app.translate',
-    'app.permission',
+  //  'app.permission',
 
     // Kaiam modules
     'kaiamAuthentication',

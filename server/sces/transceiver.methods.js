@@ -9,7 +9,7 @@ let sequenceConfig = {
         reset: 'isoWeek' // Monday
     },
     XQX4009: {
-        seq: 'SEQ12',
+        seq: 'SEQ11',
         reset: 'isoWeek' // Monday
     },
     XQX4007: {
@@ -56,9 +56,9 @@ Meteor.methods({
         ScesDomains.getUser(this.userId);
         // Check if this serial number is already assigned
         let domain = ScesDomains.getDomain(snum);
-        if (domain && tray.dc.isRma !== true) {
-            return ScesDomains.addEvent(tray._id, 'error', 'SCES.ITEM-ALREADY-ASSIGNED', snum);
-        }
+        // if (domain && tray.dc.isRma !== true && domain.state.id !== 'AddedToLocation') {
+        //     return ScesDomains.addEvent(tray._id, 'error', 'SCES.ITEM-ALREADY-ASSIGNED', snum);
+        // }
         // Check if this serial number successfully passed through packout
         let regsnum = new RegExp(snum, 'i');
 
@@ -150,9 +150,9 @@ Meteor.methods({
                 }).length >= totl) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.TRAY-IS-FULL', snum);
             }
-            if (tray.dc.isRma === true && domain) {
-                // If this is RMA authorization
-                ScesDomains.move(this.userId, snum, [tray._id], [], {isRma: true}, [], 'AddedToTray');
+            if (domain) {
+                // If this transceiver already exists move it to tray
+                ScesDomains.move(this.userId, snum, [tray._id], [], {isRma: tray.dc.isRma}, [], 'AddedToTray');
             } else {
                 // Insert transceiver into domains table
                 ScesDomains.create('transceiver', this.userId, snum, [tray._id], {
@@ -213,9 +213,9 @@ Meteor.methods({
                 }).length >= totl) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.TRAY-IS-FULL', snum);
             }
-            if (tray.dc.isRma === true && domain) {
-                // If this is RMA authorization
-                ScesDomains.move(this.userId, snum, [tray._id], [], {isRma: true}, [], 'AddedToTray');
+            if (domain) {
+                // If this transceiver already exists
+                ScesDomains.move(this.userId, snum, [tray._id], [], {isRma: tray.dc.isRma}, [], 'AddedToTray');
             } else {
                 // Insert transceiver into domains table
                 ScesDomains.create('transceiver', this.userId, snum, [tray._id], td.device, [td.device.ContractManufacturer]);
@@ -230,9 +230,7 @@ Meteor.methods({
         check(snum, String);
         ScesDomains.getUser(this.userId);
         if (snum) {
-            Domains.remove({
-                '_id': snum
-            });
+            ScesDomains.move(this.userId, snum, [], [tray._id], {}, [], 'RemovedFromTray');
             ScesDomains.addEvent(tray._id, 'remove',
                 snum + ' transceiver removed from tray.', snum);
         }
@@ -299,10 +297,12 @@ Meteor.methods({
         if (pnum.device === '100GB') {
             let summ = Testsummary.find({sn: id}, {sort: {timestamp: -1}}).fetch()[0];
             if (summ) {
+                if (summ.e > 0) {
+                    return {status: 'ERR', pnum: testdata.pnum, data: _returnSummary(summ)};
+                }
                 return {status: 'OK', pnum: testdata.pnum, data: _returnSummary(summ)};
-            } else {
-                return {status: 'NOID', pnum: testdata.pnum};
             }
+            return {status: 'NOID', pnum: testdata.pnum};
         } else {
             let filtered = _.filter(testdata.list, (o) => {
                 return o.r === 'ERR' || o.s === 'E';

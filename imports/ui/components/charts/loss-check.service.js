@@ -53,7 +53,7 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
                     dataPoints: []
                 }];
             }
-            if (doc.fail > 0) {
+            if (doc.fail > 0 || doc.err > 0) {
                 let t = doc._id.tsts;
                 let y = doc._id.tsts;
                 if (_.isArray(t)) {
@@ -73,7 +73,7 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
                 if (dataPoint === undefined) {
                     _charts.data[0].dataPoints.push({
                         color: Settings.processStepColor[t.split('|')[0]],
-                        y: doc.fail,
+                        y: doc.fail + doc.err,
                         cursor: 'pointer',
                         label: ' ',
                         indexLabel: y,
@@ -82,8 +82,9 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
                             barClick(e.dataPoint.t, doc);
                         }
                     });
+                    _charts.height = 100 + _charts.data[0].dataPoints.length * 46;
                 } else {
-                    dataPoint.y += doc.fail;
+                    dataPoint.y += doc.fail + doc.err;
                 }
             }
             return _charts;

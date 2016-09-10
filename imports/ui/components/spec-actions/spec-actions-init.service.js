@@ -5,8 +5,8 @@ angular.module('kaiamSpecActions')
         function ($translate, $meteor, $timeout, $mdDialog, SpecActionsService) {
 
             let service = {
-                initSars: function (scope, cntrl) {
-                    scope.canEdit = function(){
+                initSars: function (scope) {
+                    scope.canEdit = function () {
                         if (!scope.selectedSarLock) {
                             return false;
                         }
@@ -16,13 +16,13 @@ angular.module('kaiamSpecActions')
                         field: 'name',
                         headerName: 'Name',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '25%'
                     }, {
                         field: 'rev',
                         headerName: 'Rev.',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '12%'
                     }, {
                         headerName: 'Active',
@@ -31,10 +31,10 @@ angular.module('kaiamSpecActions')
                         enableFiltering: true,
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownValueLabel: 'active',
-                        cellEditableCondition : true,
+                        cellEditableCondition: true,
                         editDropdownOptionsArray: [
-                            { id: 'Y', active: 'Y' },
-                            { id: 'N', active: 'N' }
+                            {id: 'Y', active: 'Y'},
+                            {id: 'N', active: 'N'}
                         ],
                         width: '12%'
                     }, {
@@ -43,9 +43,8 @@ angular.module('kaiamSpecActions')
                         name: 'lock',
                         enableFiltering: true,
                         type: 'boolean',
-                        cellEditableCondition : false,
-                        cellTemplate:
-                            '<div class="ui-grid-cell-contents"><span ng-if="row.entity.lock == \'Y\'"><md-icon md-font-icon="zmdi zmdi-lock"></md-icon></span></div>',
+                        cellEditableCondition: false,
+                        cellTemplate: '<div class="ui-grid-cell-contents"><span ng-if="row.entity.lock == \'Y\'"><md-icon md-font-icon="zmdi zmdi-lock"></md-icon></span></div>',
                         width: '12%'
                     }, {
                         headerName: 'Type',
@@ -54,10 +53,10 @@ angular.module('kaiamSpecActions')
                         width: '15%',
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownValueLabel: 'id',
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         editDropdownOptionsArray: [
-                            { id: 'PROD' },
-                            { id: 'ENG' }
+                            {id: 'PROD'},
+                            {id: 'ENG'}
                         ]
                     }, {
                         headerName: 'Class',
@@ -66,12 +65,12 @@ angular.module('kaiamSpecActions')
                         width: '12%',
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownValueLabel: 'id',
-                        cellEditableCondition : true,
+                        cellEditableCondition: true,
                         editDropdownOptionsArray: [
-                            { id: 'ACTION' },
-                            { id: 'SPEC' },
-                            { id: 'FILE'},
-                            { id: 'OBSOLETE'}
+                            {id: 'ACTION'},
+                            {id: 'SPEC'},
+                            {id: 'FILE'},
+                            {id: 'OBSOLETE'}
                         ]
                     }];
                     scope.gridSars = {
@@ -93,32 +92,33 @@ angular.module('kaiamSpecActions')
                                 SpecActionsService.updateSar(row);
                             });
                             gridApi.selection.on.rowSelectionChanged(scope, function (row) {
-                                cntrl.selectedSarLock = row.entity.lock;
-                                scope.selectedSarLock = row.entity.lock;
-                                scope.selectedFileContent = row.entity.fileContent;
-                                scope.selectedFileName = row.entity.fileName;
-                                cntrl.selectedSar = row.entity;
-                                cntrl.cacheSar = _.clone(row.entity);
-                                scope.selectedExecution = angular.copy(row.entity.execution) || [];
-                                if (scope.sarActionApi) {
-                                    scope.sarActionApi.dragndrop.setDragDisabled(!scope.canEdit());
+                                if (row && row.entity) {
+                                    scope.selectedSarLock = row.entity.lock;
+                                    scope.selectedFileContent = row.entity.fileContent;
+                                    scope.selectedFileName = row.entity.fileName;
+                                    scope.selectedSar = row.entity;
+                                    scope.cacheSar = _.clone(row.entity);
+                                    scope.selectedExecution = angular.copy(row.entity.execution) || [];
+                                    if (scope.sarActionApi) {
+                                        scope.sarActionApi.dragndrop.setDragDisabled(!scope.canEdit());
+                                    }
                                 }
                             });
                         }
                     };
                 },
-                initSarActions: function (scope, cntrl) {
+                initSarActions: function (scope) {
                     let coldef = [{
                         field: 'name',
                         headerName: 'Name',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '70%'
                     }, {
                         field: 'group',
                         headerName: 'Group',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '20%'
                     }];
                     scope.gridSarActions = {
@@ -144,7 +144,7 @@ angular.module('kaiamSpecActions')
                                 SpecActionsService.updateSarAction(row);
                             });
                             gridApi.selection.on.rowSelectionChanged(scope, function (row) {
-                                cntrl.selectedSarAction = row.entity;
+                                scope.selectedSarAction = row.entity;
                             });
                             gridApi.draggableRows.on.rowDropped(scope, function (info, dropTarget) {
                                 let i = 1;
@@ -156,20 +156,20 @@ angular.module('kaiamSpecActions')
                                 }
                             });
                         }
-                     };
+                    };
                 },
-                initSarActionParams: function (scope, ctrnl) {
+                initSarActionParams: function (scope) {
                     let coldef = [{
                         field: 'name',
                         headerName: 'Name',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '60%'
                     }, {
                         field: 'value',
                         headerName: 'value',
                         enableFiltering: false,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '35%'
                     }];
                     scope.gridSarActionParams = {
@@ -191,24 +191,24 @@ angular.module('kaiamSpecActions')
                         }
                     };
                 },
-                initSarSpecs: function (scope, cntrl) {
+                initSarSpecs: function (scope) {
                     let coldef = [{
                         field: 'type',
                         headerName: 'Test type',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '37%'
                     }, {
                         field: 'subtype',
                         headerName: 'Test sub type',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '37%'
                     }, {
                         field: 'order',
                         headerName: 'Order',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit,
+                        cellEditableCondition: scope.canEdit,
                         width: '16%'
                     }];
                     scope.gridSarSpecs = {
@@ -230,32 +230,32 @@ angular.module('kaiamSpecActions')
                                 SpecActionsService.updateSarSpec(row);
                             });
                             gridApi.selection.on.rowSelectionChanged(scope, function (row) {
-                                cntrl.selectedSarSpec = row.entity;
+                                scope.selectedSarSpec = row.entity;
                             });
                         }
                     };
                 },
-                initSarSpecRanges: function (scope, cntrl) {
+                initSarSpecRanges: function (scope) {
                     let coldef = [{
                         field: 'param',
                         headerName: 'Parameter',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit
+                        cellEditableCondition: scope.canEdit
                     }, {
                         field: 'temperature',
                         headerName: 'Temperature',
                         enableFiltering: true,
-                        cellEditableCondition : scope.canEdit
+                        cellEditableCondition: scope.canEdit
                     }, {
                         field: 'testMin',
                         headerName: 'Test min',
                         enableFiltering: false,
-                        cellEditableCondition : scope.canEdit
+                        cellEditableCondition: scope.canEdit
                     }, {
                         field: 'testMax',
                         headerName: 'Test max',
                         enableFiltering: false,
-                        cellEditableCondition : scope.canEdit
+                        cellEditableCondition: scope.canEdit
                     }];
                     scope.gridSarSpecRanges = {
                         enableGridMenu: false,
@@ -273,7 +273,7 @@ angular.module('kaiamSpecActions')
                                 SpecActionsService.updateSarSpecRange(row);
                             });
                             gridApi.selection.on.rowSelectionChanged(scope, function (row) {
-                                cntrl.selectedSarSpecRange = row.entity;
+                                scope.selectedSarSpecRange = row.entity;
                             });
                         }
                     };
