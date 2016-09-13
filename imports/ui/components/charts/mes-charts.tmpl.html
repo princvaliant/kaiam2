@@ -1,0 +1,16 @@
+<div class="spc-container" layout-padding layout="column">
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout-align="start end">
+            <md-input-container>
+                <label>Chart</label>
+                <md-select ng-model="chartType"
+                           ng-change="changeChartType(chartType)" style="width:120px;">
+                    <md-option ng-repeat="ct in mesChartTypes" value="{{ct}}">{{ct}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </md-toolbar>
+    <tri-widget widget-chart flex="100">
+        <div id="mesChartId" flex="100"></div>
+    </tri-widget>
+</div>

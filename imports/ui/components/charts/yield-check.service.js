@@ -77,7 +77,7 @@ angular.module('kaiamCharts')
                         }
 
                         series = {
-                            type: 'line',
+                            type: doc._id.pnum === '-all-' ? 'spline' : 'line',
                             legendText: doc._id.pnum,
                             showInLegend: true,
                             reversed: true,

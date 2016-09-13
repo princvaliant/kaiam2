@@ -38,6 +38,12 @@ angular.module('kaiamCharts')
                         state: 'triangular.testinsertions',
                         priority: 1.2
                     });
+                    thruputmenu.children.push({
+                        name: 'MENU.CHARTS.MESCHARTS',
+                        type: 'link',
+                        state: 'triangular.mescharts',
+                        priority: 1.3
+                    });
                     triMenu.addMenu(thruputmenu);
 
                     let analysismenu = {

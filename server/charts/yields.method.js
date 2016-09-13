@@ -72,6 +72,7 @@ Meteor.methods({
             result = Yields.aggregate(aggr);
         }
         if (device === '100GB') {
+            match.pnum = {$nin: ['XQXGRR4000']};
             if (yieldType === 'Fixed week') {
                 result = TestsummaryWeek.aggregate(aggr);
             } else {
@@ -91,7 +92,7 @@ Meteor.methods({
             });
             _.each(grp, (val, key) => {
                 let id = _.clone(val[0]._id);
-                id.pnum = 'ALL';
+                id.pnum = '-all-';
                 let obj = {err: 0, pass: 0, fail: 0, _id: id};
                 _.each(val, (vo) => {
                     obj.err += vo.err;

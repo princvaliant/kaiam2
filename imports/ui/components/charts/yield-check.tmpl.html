@@ -36,10 +36,39 @@
                 </md-select>
             </md-input-container>
             <span flex></span>
-            <md-button ng-click="exportClick()" class="md-warn" aria-label="Export data">
-                <ng-md-icon icon="get_app" size="22"></ng-md-icon>
-                {{'SPC_OPTIONS_EXPORT' | translate}}
-            </md-button>
+            <md-menu>
+                <md-button aria-label="{{'SPC_OPTIONS_EXPORT' | translate}}" ng-click="$mdOpenMenu()" class="md-warn">
+                    <ng-md-icon icon="get_app" size="22"></ng-md-icon>
+                    {{'SPC_OPTIONS_EXPORT' | translate}}
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item >
+                        <md-button ng-click="exportSummary()" aria-label="ALL">
+                            Summary
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item ng-show="device !== '40GB'">
+                        <md-button ng-click="exportDetails('A')" aria-label="ALL">
+                            All
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item ng-show="device !== '40GB'">
+                        <md-button ng-click="exportDetails('P')" aria-label="Passes">
+                            Passes
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item ng-show="device !== '40GB'">
+                        <md-button ng-click="exportDetails('F')" aria-label="Fails">
+                            Fails
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item ng-show="device !== '40GB'">
+                        <md-button ng-click="exportDetails('E')" aria-label="Fails">
+                            Errors
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
         </div>
     </md-toolbar>
     <tri-widget widget-chart flex="100">

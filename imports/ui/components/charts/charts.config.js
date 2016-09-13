@@ -18,6 +18,8 @@ import './test-insertions.controller';
 import './test-insertions.tmpl.html';
 import './loss-check.controller';
 import './loss-check.tmpl.html';
+import './mes-charts.controller';
+import './mes-charts.tmpl.html';
 
 /**
  * @ngdoc module
@@ -52,6 +54,11 @@ angular.module('kaiamCharts')
                     url: '/testinsertions',
                     templateUrl: 'imports/ui/components/charts/test-insertions.tmpl.html',
                     controller: 'TestInsertionsController'
+                })
+                .state('triangular.mescharts', {
+                    url: '/mescharts',
+                    templateUrl: 'imports/ui/components/charts/mes-charts.tmpl.html',
+                    controller: 'MesChartsController'
                 })
                 .state('triangular.powercalbeforetx', {
                     url: '/powercalbeforetx',

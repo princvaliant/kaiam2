@@ -32,7 +32,7 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
             $cookies.put('yieldInterval', interval);
             processRows();
         };
-        $scope.changeYieldType = (yieldType)=> {
+        $scope.changeYieldType = (yieldType) => {
             $scope.yieldType = yieldType;
             $cookies.put('yieldType', yieldType);
             processRows();
@@ -58,7 +58,7 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
 
         processRows();
 
-        function processRows() {
+        function processRows () {
             charts = undefined;
             chartsObjs = undefined;
             Meteor.call('yields', $scope.minTotal,
@@ -84,7 +84,7 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
                 });
         }
 
-        function processRow(doc) {
+        function processRow (doc) {
             charts = YieldCheckService.construct(doc, charts,
                 'PARAMETRIC', () => {
                     if (chartsObjs !== undefined) {
@@ -102,7 +102,7 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         }
 
         // Executed when switching between tabs. Add data to created charts.
-        function initData() {
+        function initData () {
             setTimeout(() => {
                 if (charts !== undefined) {
                     charts.data = _.sortBy(charts.data, 'legendText');
@@ -116,11 +116,11 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         }
 
         // Event handler when export clicked
-        $scope.exportClick = () => {
+        $scope.exportSummary = () => {
             let ret = '';
-            if ($scope.device === '40GB') {
-                let yields = $scope.yields;
-                _.each(yields, (item) => {
+            let yields = $scope.yields;
+            _.each(yields, (item) => {
+                if (item._id.pnum !== '-all-') {
                     let row = '';
                     let head = '';
                     for (let v in item) {
@@ -138,25 +138,18 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
                         ret += ',' + head + '\n';
                     }
                     ret += row + '\n';
-                });
-                doExport('yields_test_parametric', ret);
-            } else {
-                let confirm = $mdDialog.confirm()
-                    .title('Export by status')
-                    .ariaLabel('export by status')
-                    .ok('Passes only')
-                    .cancel('Fails only');
-                $mdDialog.show(confirm).then(function () {
-                    exportSummary('P');
-                }, function () {
-                    exportSummary('F');
-                });
-            }
+                }
+            });
+            doExport('yields_test_parametric', ret);
+        };
+
+        $scope.exportDetails = (status) => {
+            exportDetails(status);
         };
     }
 ]);
 
-function exportSummary(status) {
+function exportDetails (status) {
     let ret = '';
     Meteor.call('getTestSummaries', status, (err, testSummaries) => {
         if (err) {
@@ -201,7 +194,7 @@ function exportSummary(status) {
     });
 }
 
-function doExport(name, list) {
+function doExport (name, list) {
     let a = document.createElement('a');
     document.body.appendChild(a);
     a.style.display = 'none';

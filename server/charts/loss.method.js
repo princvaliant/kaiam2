@@ -20,6 +20,8 @@ Meteor.methods({
         match.rwr = rework ? 1 : 0;
         if (partNumber !== '-all-') {
             match.pnum = partNumber;
+        } else {
+            match.pnum = {$nin: ['XQXGRR4000']};
         }
         if (manufacturer !== '-all-') {
             match.cm = manufacturer;

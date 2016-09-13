@@ -70,9 +70,6 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                 $scope.subscribe('domainParents', () => {
                     return [$scope.locationId];
                 });
-                $scope.subscribe('domainEvents', () => {
-                    return [$scope.locationId];
-                });
                 $scope.subscribe('domainKids', () => {
                     return [['transceiver', 'tray'], $scope.locationId, {
                         fields: {
@@ -212,12 +209,10 @@ angular.module('kaiamSces').controller('ScesLocationController', [
         };
 
         $scope.toggle = function (navID) {
-            $mdSidenav(navID)
-                .toggle()
-                .then(function () {
-                    $log.debug("toggle " + navID + " is done");
-                });
-
+            $scope.subscribe('domainEvents', () => {
+                return [$scope.locationId];
+            });
+            $mdSidenav(navID).toggle();
         };
 
         function showAddDialog (value) {

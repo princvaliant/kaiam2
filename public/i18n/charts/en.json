@@ -4,6 +4,7 @@
       "SPCS": "Statistic process control",
       "TIMETREND": "Test trends",
       "THRUPUT": "Thruput",
+      "MESCHARTS": "MES charts",
       "RXTESTS": {
         "RXTESTS": "Rx tests",
         "SENSITIVITY": "Sensitivity",
