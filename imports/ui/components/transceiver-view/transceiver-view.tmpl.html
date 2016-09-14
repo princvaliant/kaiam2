@@ -69,8 +69,8 @@
                 </md-card-title>
                 <md-card-content>
                     <div ng-repeat="obj in data" style="font-size:11px;padding-left:15px;">
-                        <span class="meas_status_{{obj.status}}">Status: {{obj.status}}  Meas: {{obj.measstatus}}
-                            Ind: {{obj.result}}</span>
+                        <span class="meas_status_{{obj.status}}">Status: {{obj.status}}
+                            <span class="meas_status_{{obj.result}}">Ind: {{obj.result}}</span></span>
                         {{obj.timestamp | date:'MM/dd/yyyy HH:mm:ss'}} {{obj.type}} {{obj.subtype}} -
                         <md-button class="md-primary btn-view-data" ng-click="select(obj)">view data
                         </md-button>

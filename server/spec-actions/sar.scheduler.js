@@ -376,7 +376,7 @@ function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, fa
 function getLastSyncDate (domain) {
     let syncstart = Syncstart.findOne({domain: domain});
     if (!syncstart) {
-        let date = moment('2016-06-06').toDate();
+        let date = moment('2016-09-01').toDate();
         Syncstart.insert({
             domain: domain,
             start: date
@@ -422,10 +422,7 @@ function commonAggregation (pnum, serials, endWeek) {
             },
             'device.PartNumber': pnum,
             'type': {
-                $nin: ['packout', 'link', 'download']
-            },
-            'data.ActionName': {
-                $ne: 'Packout'
+                $nin: ['link', 'download']
             },
             'timestamp': {
                 $lte: endWeek
