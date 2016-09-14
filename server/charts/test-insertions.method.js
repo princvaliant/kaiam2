@@ -5,22 +5,29 @@
 
 
 Meteor.methods({
-    testInsertions: function () {
+    testInsertions: function (device) {
         // Date and week range values
         ScesDomains.getUser(this.userId);
 
+        let pnumregex = '^XQX';
+        if (device === '100GB') {
+            pnumregex = '^XQX4';
+        }else if (device === '40GB') {
+            pnumregex = '^XQX3|^XQX2';
+        }
+
         let match = {
             'device.PartNumber': {
-                $regex: '^XQX4'
+                $regex: pnumregex
             },
             'timestamp': {
                 $gt: moment().subtract(20, 'days').toDate()
             },
             'type': {
-                $nin: ['calibration', 'functionaltest', 'packout']
+                $nin: ['calibration', 'functionaltest', 'packout', 'download']
             },
             'meta.Rack': {
-                $nin: ['TestStation1', '', null, 'Packout']
+                $nin: ['TestStation1', '', null, 'Packout', 'QSFP-DEV-PC2', 'Production-4']
             },
             'meta.ScriptName': {
                 $nin: ['Control']

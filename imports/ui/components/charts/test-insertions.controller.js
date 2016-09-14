@@ -58,6 +58,9 @@ angular.module('kaiamCharts').controller('TestInsertionsController', [
 
         function get() {
             chart.data = [];
+            $timeout(function () {
+                $scope.widgetCtrl.setLoading(true);
+            }, 10);
             Meteor.call('testInsertions', $scope.device, (err, testsinsertions) => {
                 if (err) {
                     $mdToast.show(
