@@ -43,9 +43,11 @@ Meteor.methods({
                     let st = '';
                     if (tt[0] !== tt[1]) {
                         st = tt[1];
+                        st = st.split('|')[0];
+                        query.$and.push({type: tt[0], subtype: st});
+                    } else {
+                        query.$and.push({type: tt[0], subtype: tt[1]});
                     }
-                    st = st.split('|')[0];
-                    query.$and.push({type: tt[0], subtype: st});
                 }
             });
         } else {

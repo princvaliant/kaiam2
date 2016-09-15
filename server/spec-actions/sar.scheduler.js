@@ -40,7 +40,7 @@ function execSar (pnum) {
     // Get latest spec revision for the pnum
     let sar = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
     if (sar) {
-        // Get valid spec ranges for sar named 'Test'
+        // Get valid spec ranges for sar named 'Spec'
         let specs = getSpecRanges(sar);
         if (specs.length > 0) {
             // Get list of serials that are changed from last compilation
@@ -50,7 +50,7 @@ function execSar (pnum) {
                 let sw = moment(m).startOf('week');
                 let ew = moment(m).endOf('week');
                 let serials = getPartsChangedBetweenDates(pnum, sw, ew);
-                // serials = ['Q4801'];  // testing
+                // serials = ['Q3432'];  // testing
                 for (let i = 0; i < serials.length; i += 10) {
                     let array = serials.slice(i, i + 10);
                     // Get all testdata for pnum from certain date and aggregate by serial number and mid
@@ -202,9 +202,8 @@ function processLastTestData (pnum, testData, specs, specTestSorted, sar) {
                 }
             }
 
-
             // Loop through each spec  item for this serial number if there is no error
-            if (continueSpec === true) {
+            if (continueSpec === true && items[0].t !== 'packout') {
                 _.each(specs, (spec) => {
                     // Get test that contains test, subtest and temperature from spec
                     let testItems = _.filter(items, (itm) => {
