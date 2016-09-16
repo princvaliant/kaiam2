@@ -13,11 +13,11 @@ import './spec-actions-init.service';
 import './spec-actions.service';
 
 
-angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootScope', '$q', '$meteor', '$scope', '$filter',
+angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootScope', '$q', '$document', '$scope', '$filter',
     '$reactive', '$cookies', '$timeout', '$location', '$state', '$mdMedia', '$mdBottomSheet', '$stateParams', '$mdDialog',
-    '$mdToast', '$window', 'Upload', 'SpecActionsInitService', 'SpecActionsService',
-    function ($rootScope, $q, $meteor, $scope, $filter, $reactive, $cookies, $timeout, $location, $state, $mdMedia,
-              $mdBottomSheet, $stateParams, $mdDialog, $mdToast, $window, Upload, SpecActionsInitService, SpecActionsService) {
+    '$mdToast', '$window', 'Upload', 'SpecActionsInitService', 'SpecActionsService','ExportDataService',
+    function ($rootScope, $q, $document, $scope, $filter, $reactive, $cookies, $timeout, $location, $state, $mdMedia,
+              $mdBottomSheet, $stateParams, $mdDialog, $mdToast, $window, Upload, SpecActionsInitService, SpecActionsService, ExportDataService) {
         $reactive(this).attach($scope);
 
         $scope.class = $stateParams.class;
@@ -81,10 +81,32 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                 });
             }
         };
-
-        $scope.addSarActionClick = function () {
-            SpecActionsService.addSarAction($scope.selectedSar, '', '');
+        $scope.exportSarClick = function () {
+            let methodName = 'exportActions';
+            if ($scope.class === 'SPEC') {
+                methodName = 'exportSpecs';
+            }
+            Meteor.call(methodName, $scope.selectedSar._id, (err, data) => {
+                let ret = ExportDataService.exportData(data);
+                let blob = new Blob([ret.substring(1)], {type: 'data:text/csv;charset=utf-8'});
+                let filename = methodName + '-' + $scope.selectedSar.name + ' ' + $scope.selectedSar.rev + '.csv';
+                if (window.navigator.msSaveOrOpenBlob) {
+                    navigator.msSaveBlob(blob, filename);
+                } else {
+                    let downloadContainer = angular.element('<div data-tap-disabled="true"><a></a></div>');
+                    let downloadLink = angular.element(downloadContainer.children()[0]);
+                    downloadLink.attr('href', (window.URL || window.webkitURL).createObjectURL(blob));
+                    downloadLink.attr('download', filename);
+                    downloadLink.attr('target', '_blank');
+                    $document.find('body').append(downloadContainer);
+                    $timeout(function () {
+                        downloadLink[0].click();
+                        downloadLink.remove();
+                    }, null);
+                }
+            });
         };
+
         $scope.removeSarActionClick = function () {
             let confirm = $mdDialog.confirm()
                 .title('Would you like to remove revision action?')
@@ -94,6 +116,9 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             $mdDialog.show(confirm).then(function () {
                 SpecActionsService.removeSarAction($scope.sarActionApi.selection);
             });
+        };
+        $scope.addSarActionClick = function () {
+            SpecActionsService.addSarAction($scope.selectedSar, '', '');
         };
 
         $scope.addSarActionParamClick = function () {

@@ -39,7 +39,7 @@ Meteor.methods({
         });
     },
     pasteSarAction: function (sar, sarAction) {
-        _pasteSarAction(sar._id || sarAction.sarId,  sarAction);
+        _pasteSarAction(sar._id || sarAction.sarId, sarAction);
     },
     pasteSarSpec: function (sar, sarSpec) {
         _pasteSarSpec(sar._id || sarSpec);
@@ -62,10 +62,118 @@ Meteor.methods({
             }
         ];
         return Sar.aggregate(pipeline);
+    },
+    exportActions: function (id) {
+        return Sar.aggregate([{
+            $match: {
+                _id: id
+            }
+        }, {
+            $lookup: {
+                from: 'saractions',
+                localField: '_id',
+                foreignField: 'sarId',
+                as: 'sa'
+            }
+        }, {
+            $unwind: {
+                'path': '$sa',
+                'preserveNullAndEmptyArrays': true
+            }
+        }, {
+            $sort: {
+                'sa.order': 1
+            }
+        }, {
+            $lookup: {
+                from: 'saractionparams',
+                localField: 'sa._id',
+                foreignField: 'sarActionId',
+                as: 'sap'
+            }
+        }, {
+            $unwind: {
+                'path': '$sap',
+                'preserveNullAndEmptyArrays': true
+            }
+        }, {
+            $project: {
+                name: '$name',
+                rev: '$rev',
+                pnum: '$pnum',
+                active: '$active',
+                lock: '$lock',
+                action: '$sa.name',
+                group: '$sa.group',
+                order: '$sa.order',
+                parameter: {$ifNull: ['$sap.name', '']},
+                value: {$ifNull: ['$sap.value', '']}
+            }
+        }, {
+            $sort: {
+                'order': 1
+            }
+        }
+        ]);
+    },
+    exportSpecs: function (id) {
+        return Sar.aggregate([{
+            $match: {
+                _id: id
+            }
+        }, {
+            $lookup: {
+                from: 'sarspecs',
+                localField: '_id',
+                foreignField: 'sarId',
+                as: 'ss'
+            }
+        }, {
+            $unwind: {
+                'path': '$ss',
+                'preserveNullAndEmptyArrays': true
+            }
+        }, {
+            $sort: {
+                'ss.order': 1
+            }
+        }, {
+            $lookup: {
+                from: 'sarspecranges',
+                localField: 'ss._id',
+                foreignField: 'sarSpecId',
+                as: 'ssr'
+            }
+        }, {
+            $unwind: {
+                'path': '$ssr',
+                'preserveNullAndEmptyArrays': true
+            }
+        }, {
+            $project: {
+                name: '$name',
+                rev: '$rev',
+                pnum: '$pnum',
+                active: '$active',
+                lock: '$lock',
+                type: '$ss.type',
+                subtype: '$ss.subtype',
+                order: '$ss.order',
+                parameter: {$ifNull: ['$ssr.param', '']},
+                temperature: {$ifNull: ['$ssr.temperature', '']},
+                min: {$ifNull: ['$ssr.testMin', '']},
+                max: {$ifNull: ['$ssr.testMax', '']}
+            }
+        }, {
+            $sort: {
+                'order': 1
+            }
+        }
+        ]);
     }
 });
 
-function  _pasteSarAction (sarId, sa) {
+function _pasteSarAction (sarId, sa) {
     let id = SarAction.insert({
         sarId: sarId,
         name: sa.name,
@@ -83,7 +191,7 @@ function  _pasteSarAction (sarId, sa) {
     });
 }
 
-function  _pasteSarSpec (sarId, ss) {
+function _pasteSarSpec (sarId, ss) {
     let id = SarSpec.insert({
         sarId: sarId,
         type: ss.type,

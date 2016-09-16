@@ -31,6 +31,9 @@
                     Revisions
                 </div>
                 <span flex></span>
+                <md-button class="md-icon-button tool-btn" aria-label="add" ng-click="exportSarClick()" ng-show="selectedSar.class === 'ACTION' || selectedSar.class === 'SPEC'">
+                    <md-icon md-font-icon="zmdi zmdi-download"></md-icon>
+                </md-button>
                 <md-button class="md-icon-button tool-btn" aria-label="lock" ng-click="lockSarClick()" ng-show="selectedSarLock !== 'Y'">
                     <md-icon md-font-icon="zmdi zmdi-lock"></md-icon>
                 </md-button>
@@ -131,18 +134,18 @@
                                 Specs
                             </div>
                             <span flex></span>
-                            <md-button class="md-icon-button tool-btn" ng-click="copySarSpecClick()">
+                            <md-button class="md-icon-button tool-btn" aria-label="copy" ng-click="copySarSpecClick()">
                                 <md-icon md-font-icon="zmdi zmdi-copy"></md-icon>
                             </md-button>
-                            <md-button class="md-icon-button tool-btn" ng-click="pasteSarSpecClick()"
+                            <md-button class="md-icon-button tool-btn" aria-label="paste" ng-click="pasteSarSpecClick()"
                                        ng-show="selectedSarLock !== 'Y'">
                                 <md-icon md-font-icon="zmdi zmdi-paste"></md-icon>
                             </md-button>
-                            <md-button class="md-icon-button" ng-click="addSarSpecClick()"
+                            <md-button class="md-icon-button" aria-label="add" ng-click="addSarSpecClick()"
                                        ng-show="selectedSarLock !== 'Y'">
                                 <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
                             </md-button>
-                            <md-button class="md-icon-button" ng-click="removeSarSpecClick()"
+                            <md-button class="md-icon-button" aria-label="remove" ng-click="removeSarSpecClick()"
                                        ng-show="selectedSarLock !== 'Y'">
                                 <md-icon md-font-icon="zmdi zmdi-minus"></md-icon>
                             </md-button>
@@ -157,11 +160,11 @@
                                 Ranges
                             </div>
                             <span flex></span>
-                            <md-button class="md-icon-button" ng-click="addSarSpecRangeClick()"
+                            <md-button class="md-icon-button" aria-label="add" ng-click="addSarSpecRangeClick()"
                                        ng-show="selectedSarLock !== 'Y'">
                                 <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
                             </md-button>
-                            <md-button class="md-icon-button" ng-click="removeSarSpecRangeClick()"
+                            <md-button class="md-icon-button" aria-label="remove" ng-click="removeSarSpecRangeClick()"
                                        ng-show="selectedSarLock !== 'Y'">
                                 <md-icon md-font-icon="zmdi zmdi-minus"></md-icon>
                             </md-button>
