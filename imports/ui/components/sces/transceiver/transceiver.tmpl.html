@@ -71,7 +71,7 @@
             <span style="font-size:14px;">Meas ID '{{key}}'</span>
           </md-card-title-text>
         </md-card-title>
-        <md-card-content ng-repeat="obj in data" style="font-size:11px;padding-left:25px;margin-top:-15px;margin-bottom:-15px;">
+        <md-card-content ng-repeat="obj in data  | orderBy : '-timestamp'" style="font-size:11px;padding-left:25px;margin-top:-15px;margin-bottom:-15px;">
           <span class="meas_status_{{obj.status}}">Meas: {{obj.status}} Ind: {{obj.result}}</span> {{obj.timestamp | date:'MM/dd/yyyy hh:mm:ss'}} {{obj.type}} {{obj.subtype}} -
           <md-button md-no-ink="" class="md-primary btn-view-data" ng-click="select(obj)">view data</md-button>
         </md-card-content>

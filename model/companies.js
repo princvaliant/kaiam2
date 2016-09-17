@@ -6,13 +6,13 @@ Companies = new Mongo.Collection('companies');
  * @type {Mongo.Collection.allow}
  */
 Companies.allow({
-  insert: function() {
-    return true;
-  },
-  update: function() {
-    return true;
-  },
-  remove: function() {
-    return false;
-  }
+    insert: function () {
+        return true;
+    },
+    update: function () {
+        return true;
+    },
+    remove: function () {
+        return false;
+    }
 });

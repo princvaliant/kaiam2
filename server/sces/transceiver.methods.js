@@ -244,8 +244,7 @@ Meteor.methods({
             'device.SerialNumber': id
         }, {
             sort: {
-                'meta.StartDateTime': 1,
-                timestamp: 1
+                'meta.StartDateTime': -1
             }
         }).fetch();
     },
