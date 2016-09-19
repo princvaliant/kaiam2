@@ -80,7 +80,7 @@ let options = {
             }
         }],
         "meta.Rack": {
-            "$in": Settings.racks
+            "$in": _.union(Settings.racks, Settings.spcRacks100GB)
         }
     },
     sort: {"meta.StartDateTime": 1},

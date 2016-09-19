@@ -2,18 +2,18 @@
     <md-card>
         <md-card-content layout="column">
             <md-progress-linear class="scesPadding" md-mode="indeterminate"></md-progress-linear>
-            <md-input-container style="margin-top:20px">
+            <md-input-container style="margin-top:20px;margin-bottom:-20px;">
                 <label>Scan barcode</label>
                 <input type="text" id="allScanTrans" ng-model="tr" ng-keypress="onKeyPressed($event)">
             </md-input-container>
-            <div layout-sm="column" layout="row" layout-align="start start">
+            <md-input-container layout-sm="column" layout="row" layout-align="start start" style="margin-bottom:0px">
                 <md-radio-group ng-model="grouping" layout="row" ng-change="changeGrouping(grouping)" flex="100">
                     <md-radio-button value="errorCheck" class="md-primary">Error check</md-radio-button>
                     <md-radio-button value="eyeImages">Eye Images</md-radio-button>
                     <md-radio-button value="testData">Test data</md-radio-button>
                     <md-radio-button value="sensitivityCharts">Sensitivity charts</md-radio-button>
                 </md-radio-group>
-            </div>
+            </md-input-container>
         </md-card-content>
     </md-card>
     <md-subheader class="md-no-sticky" ng-show="grouping === 'errorCheck'">Scanned transceivers (Newest on top)

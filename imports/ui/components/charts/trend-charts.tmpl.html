@@ -9,16 +9,16 @@
                 </md-select>
             </md-input-container>
             <md-input-container>
-                <label>{{'TIMETREND_VARIABLE' | translate}}</label>
-                <md-select ng-model="variable" ng-change="changeVariable(variable)" style="width:260px">
-                    <md-option ng-repeat="variable in variables | orderBy" value="{{variable}}">{{variable}}</md-option>
-                </md-select>
-            </md-input-container>
-            <md-input-container>
                 <label>{{'TIMETREND_OPTIONS_PARTNUMBER' | translate}}</label>
                 <md-select ng-model="partNumber" ng-change="changePartNumber(partNumber)" style="width:120px">
                     <md-option ng-repeat="partNumber in partNumbers  | orderBy"
                                value="{{partNumber}}">{{partNumber}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>{{'TIMETREND_VARIABLE' | translate}}</label>
+                <md-select ng-model="variable" ng-change="changeVariable(variable)" style="width:260px">
+                    <md-option ng-repeat="variable in variables | orderBy" value="{{variable}}">{{variable}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>

@@ -64,6 +64,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
         $scope.lossChartTypes = ['Unique fails', 'Grouped fails', 'Fail trends'];
         $scope.lossChartType = $cookies.get('lossChartType') || 'Unique fails';
         $scope.racks = $scope.device === '40GB' ? Settings.spcRacks40GB : Settings.spcRacks100GB;
+        $scope.duts = $scope.device === '40GB' ? Settings.spcDUT40GB : Settings.spcDUT100GB;
 
         let processRowsDebounce = _.debounce(processRows, 500, true);
         let charts = {};
@@ -101,6 +102,8 @@ angular.module('kaiamCharts').controller('LossCheckController', [
 
         $scope.changeDevice = (device) => {
             $scope.device = device;
+            $scope.racks = $scope.device === '40GB' ? Settings.spcRacks40GB : Settings.spcRacks100GB;
+            $scope.duts = $scope.device === '40GB' ? Settings.spcDUT40GB : Settings.spcDUT100GB;
             $cookies.put('lossDevice', device);
             processRowsDebounce();
         };

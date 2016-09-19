@@ -76,10 +76,10 @@
     </md-toolbar>
     <tri-widget widget-chart flex="100">
         <md-content flex>
-            <div id="lossChartAll_racks" class="chartContainer" ng-show="!groupRack"></div>
-            <md-grid-list ng-show="groupRack" md-cols="3" md-row-height="300px" md-gutter="12px">
+            <div id="lossChartAll_racks" class="chartLossContainer" ng-show="!groupRack"></div>
+            <md-grid-list ng-show="groupRack" md-cols="3"  md-row-height="400px"  md-gutter="12px">
                 <md-grid-tile data-ng-repeat="rack in racks">
-                    <div id="lossChart{{rack}}" class="chartContainer"></div>
+                    <div id="lossChart{{rack}}" class="chartLossContainer"></div>
                 </md-grid-tile>
             </md-grid-list>
         </md-content>

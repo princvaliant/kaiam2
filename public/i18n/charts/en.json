@@ -57,6 +57,11 @@
         "ACTIONSTATUS": "Action status",
         "ERROR": "Error"
       },
+      "FUNCTIONALTEST": {
+        "FUNCTIONALTEST": "Functional",
+        "RX": "Rx",
+        "TX": "Tx"
+      },
       "DOWNLOAD": {
         "DOWNLOAD": "Download"
       },

@@ -14,8 +14,8 @@ import './trend-charts.service';
  */
 
 angular.module('kaiamCharts').controller('TimetrendChartsController', [
-    '$scope', '$mdToast', '$stateParams', '$location', '$timeout', 'TimetrendChartsService',
-    function ($scope, $mdToast, $stateParams, $location, $timeout, TimetrendChartsService) {
+    '$scope', '$mdToast', '$stateParams', '$location', '$cookies', '$timeout', 'TimetrendChartsService',
+    function ($scope, $mdToast, $stateParams, $location, $cookies, $timeout, TimetrendChartsService) {
         // Retrieve what is the test type (txtest, rxtest etc.)
         $scope.testType = $stateParams.type;
         $scope.testSubType = $stateParams.subtype;
@@ -24,8 +24,8 @@ angular.module('kaiamCharts').controller('TimetrendChartsController', [
         $scope.selectedIndex = 0;
         // Interval for the data
         $scope.intervals = $scope.intervals = _.keys(Settings.lossintervals);
-        $scope.interval = $scope.intervals[0];
-        $scope.partNumber = '-all-';
+        $scope.interval = $cookies.get('timeTrendInterval') || $scope.intervals[0];
+        $scope.partNumber = $cookies.get('timeTrendPartNumber') || '-all-';
         $scope.manufacturer = '-all-';
         $scope.partNumbers = ['-all-'].concat(_.keys(Settings.partNumbers));
         $scope.manufacturers = _.union(['-all-'], Settings.manufacturers);
@@ -33,6 +33,7 @@ angular.module('kaiamCharts').controller('TimetrendChartsController', [
         // Event handler when interval changed
         $scope.changeInterval = function (i) {
             $scope.interval = i;
+            $cookies.put('timeTrendInterval', $scope.interval);
             subs();
         };
 
@@ -45,6 +46,7 @@ angular.module('kaiamCharts').controller('TimetrendChartsController', [
         // Event handler when part number changed
         $scope.changePartNumber = function (pn) {
             $scope.partNumber = pn;
+            $cookies.put('timeTrendPartNumber', $scope.partNumber);
             initVars();
             subs();
         };
@@ -130,7 +132,7 @@ angular.module('kaiamCharts').controller('TimetrendChartsController', [
 
         function initVars() {
             // Initialize list for part family dropdown
-            let ttd1 = Settings.getTestConfigVariablesForPartNumber($scope.partNumber !== '-all-' ? 'XQX3202' : '', $scope.testType, $scope.testSubType);
+            let ttd1 = Settings.getTestConfigVariablesForPartNumber($scope.partNumber === '-all-' ? 'XQX4000' : $scope.partNumber, $scope.testType, $scope.testSubType);
             $scope.variables = _.pluck(ttd1, 'v');
             $scope.variable = $scope.variables[0];
         }
