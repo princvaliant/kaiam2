@@ -15,14 +15,18 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
 
     let service = {
 
-        construct: (doc, charts, rack, title, barClick) => {
+        construct: (doc, charts, rack, dut, title, barClick) => {
             let _charts = charts;
+            let titleLocal =  title ? title + ' ' + rack : rack;
+            if (dut !== 'All_duts') {
+                titleLocal += ' ' + dut;
+            }
             if (_charts === null) {
                 _charts = {
                     animationDuration: 300,
                     animationEnabled: true,
                     title: {
-                        text: title ? title + ' ' + rack : rack,
+                        text: titleLocal,
                         fontSize: 16,
                         fontColor: 'DarkSlateGrey'
                     },
@@ -89,7 +93,7 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
             }
             return _charts;
         },
-        constructLossTrend: function (doc, charts, rack, ltv, title, renderCallback) {
+        constructLossTrend: function (doc, charts, rack, dut, ltv, title, renderCallback) {
             let _charts = charts;
             if (_charts === null) {
                 _charts = {
@@ -103,7 +107,7 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
                         fontColor: 'DarkSlateGrey'
                     },
                     axisX: {
-                        title: rack,
+                        title: rack + ' ' + dut,
                         interval: 1,
                         intervalType: 'day',
                         labelAngle: -10,

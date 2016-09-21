@@ -8,9 +8,10 @@ Meteor.methods({
     'createPartAndAddToLocation': function (locationId, transceiver) {
         check(locationId, String);
         let user = ScesDomains.getUser(this.userId);
-        let retId =  ScesDomains.create('transceiver', user._id, transceiver._id, [locationId], {
-            pnum: transceiver.pnum,
-            PartNumber: transceiver.pnum,
+        let dc = getLatestTestData(transceiver._id);
+        let retId = ScesDomains.create('transceiver', user._id, transceiver._id, [locationId], {
+            pnum: dc.pnum,
+            PartNumber: dc.pnum,
             TOSA: transceiver.TOSA,
             ROSA: transceiver.ROSA,
             PCBA: transceiver.PCBA,
@@ -104,3 +105,23 @@ Meteor.methods({
         Domains.remove(location._id);
     }
 });
+
+function getLatestTestData (transceiverId) {
+    // Custom check for script names
+    let td = Testdata.findOne({
+        'device.SerialNumber': transceiverId
+    }, {
+        fields: {
+            'device': 1
+        },
+        sort: {
+            timestamp: -1
+        }
+    });
+    if (td) {
+        return {
+            pnum: td.device.PartNumber
+        };
+    }
+    return {};
+}

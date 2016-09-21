@@ -61,6 +61,11 @@
                     by rack
                 </md-checkbox>
             </md-input-container>
+            <md-input-container class="hide-error-msg" style="width:110px">
+                <md-checkbox ng-model="groupRackDut" aria-label="Group by rack dut" ng-change="groupRackDutClicked(groupRackDut)">
+                    by rack, dut
+                </md-checkbox>
+            </md-input-container>
             <md-input-container class="hide-error-msg" style="width:100px" ng-show="device === '100GB'">
                 <md-checkbox ng-model="paramsFail" aria-label="With failed params"
                              ng-change="paramsFailClicked(paramsFail)">
@@ -76,10 +81,15 @@
     </md-toolbar>
     <tri-widget widget-chart flex="100">
         <md-content flex>
-            <div id="lossChartAll_racks" class="chartLossContainer" ng-show="!groupRack"></div>
+            <div id="lossChartAll_racksAll_duts" class="chartLossContainer" ng-show="!groupRack && !groupRackDut"></div>
             <md-grid-list ng-show="groupRack" md-cols="3"  md-row-height="400px"  md-gutter="12px">
                 <md-grid-tile data-ng-repeat="rack in racks">
-                    <div id="lossChart{{rack}}" class="chartLossContainer"></div>
+                        <div id="lossChart{{rack}}All_duts" class="chartLossContainer"></div>
+                </md-grid-tile>
+            </md-grid-list>
+            <md-grid-list data-ng-repeat="rack in racks" ng-show="groupRackDut" md-cols="6"  md-row-height="400px"  md-gutter="6px">
+                <md-grid-tile data-ng-repeat="dut in duts">
+                    <div id="lossChart{{rack}}{{dut}}" class="chartLossContainer"></div>
                 </md-grid-tile>
             </md-grid-list>
         </md-content>

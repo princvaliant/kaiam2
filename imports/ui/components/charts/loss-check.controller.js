@@ -25,12 +25,13 @@ angular.module('kaiamCharts').controller('LossCheckController', [
         $scope.manufacturer = '-all-';
         $scope.device = $cookies.get('lossDevice') || '40GB';
         $scope.paramsFail = false;
-        $scope.yieldType =  $stateParams.yieldType || 'Fixed week';
+        $scope.yieldType = $stateParams.yieldType || 'Fixed week';
 
         if ($stateParams.device) {
             $scope.device = $stateParams.device;
         }
         $scope.groupRack = false;
+        $scope.groupRackDut = false;
         $scope.reworkOnly = false;
         $scope.lossTrendValue = 'Fail qty';
         $scope.showProgress = false;
@@ -88,7 +89,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
             processRowsDebounce();
         };
 
-        $scope.changeYieldType = (yieldType)=> {
+        $scope.changeYieldType = (yieldType) => {
             $scope.yieldType = yieldType;
             processRowsDebounce();
         };
@@ -115,7 +116,14 @@ angular.module('kaiamCharts').controller('LossCheckController', [
         };
 
         $scope.groupRackClicked = function (val) {
+            $scope.groupRackDut = false;
             $scope.groupRack = val;
+            processRowsDebounce();
+        };
+
+        $scope.groupRackDutClicked = function (val) {
+            $scope.groupRack = false;
+            $scope.groupRackDut = val;
             processRowsDebounce();
         };
 
@@ -133,86 +141,94 @@ angular.module('kaiamCharts').controller('LossCheckController', [
             exportData();
         };
 
-        function processRows() {
+        function processRows () {
             let racks = ['All_racks'];
+            let duts = ['All_duts'];
             if ($scope.groupRack) {
                 racks = $scope.racks;
             }
+            if ($scope.groupRackDut) {
+                racks = $scope.racks;
+                duts = $scope.duts;
+            }
             _.each(racks, (rack) => {
-                charts[rack] = null;
-                chartsObjs[rack] = null;
-                Meteor.call('losses', $scope.lossChartType, $scope.partNumber,
-                    $scope.manufacturer, $scope.intervalValue, $scope.range, rack, $scope.reworkOnly,
-                    $scope.device, $scope.paramsFail, $scope.yieldType,
-                    (err, losses) => {
-                        if (err) {
-                            $mdToast.show(
-                                $mdToast.simple()
-                                    .content(err)
-                                    .position('bottom right')
-                                    .hideDelay(3000));
-                        } else {
-                            listOfSerials = [];
-                            _.each(losses, (loss) => {
-                                listOfSerials = _.union(listOfSerials, loss.ids);
-                                if ($scope.lossChartType === 'Fail trends') {
-                                    processRowFailTrends(loss, rack, $scope.lossTrendValue, $scope.range + ' ' + $scope.rangeLabel);
-                                } else {
-                                    // console.log(loss._id.t.join(','));
-                                    processRow(loss, rack, $scope.range + ' ' + $scope.rangeLabel);
-                                }
-                            });
-                            initData(rack);
-                        }
-                    });
+                _.each(duts, (dut) => {
+                    charts[rack + dut] = null;
+                    chartsObjs[rack + dut] = null;
+                    Meteor.call('losses', $scope.lossChartType, $scope.partNumber,
+                        $scope.manufacturer, $scope.intervalValue, $scope.range, rack, dut, $scope.reworkOnly,
+                        $scope.device, $scope.paramsFail, $scope.yieldType,
+                        (err, losses) => {
+                            if (err) {
+                                $mdToast.show(
+                                    $mdToast.simple()
+                                        .content(err)
+                                        .position('bottom right')
+                                        .hideDelay(3000));
+                            } else {
+
+                                listOfSerials = [];
+                                _.each(losses, (loss) => {
+                                    listOfSerials = _.union(listOfSerials, loss.ids);
+                                    if ($scope.lossChartType === 'Fail trends') {
+                                        processRowFailTrends(loss, rack, dut, $scope.lossTrendValue, $scope.range + ' ' + $scope.rangeLabel);
+                                    } else {
+                                        // console.log(loss._id.t.join(','));
+                                        processRow(loss, rack, dut, $scope.range + ' ' + $scope.rangeLabel);
+                                    }
+                                });
+                                initData(rack, dut);
+                            }
+                        });
+                });
             });
         }
 
-        function processRowFailTrends(doc, rack, ltv, title) {
-            charts[rack] = LossCheckService.constructLossTrend(doc, charts[rack], rack, ltv, title, () => {
-                if (chartsObjs[rack] !== undefined) {
-                    chartsObjs[rack].render();
+        function processRowFailTrends (doc, rack, dut, ltv, title) {
+            charts[rack + dut] = LossCheckService.constructLossTrend(doc, charts[rack + dut], rack, dut, ltv, title, () => {
+                if (chartsObjs[rack + dut] !== undefined) {
+                    chartsObjs[rack + dut].render();
                 }
             });
         }
 
-        function processRow(doc, rack, title) {
-            charts[rack] = LossCheckService.construct(doc, charts[rack], rack, title, (t) => {
+        function processRow (doc, rack, dut, title) {
+            charts[rack + dut] = LossCheckService.construct(doc, charts[rack + dut], rack, dut, title, (t) => {
                 exportData(t, doc);
             });
         }
 
         // Executed when switching between tabs. Add data to created charts.
-        function initData(rack) {
+        function initData (rack, dut) {
             setTimeout(function () {
-                if (charts[rack] !== null && charts[rack].title !== undefined) {
+                if (charts[rack + dut] !== null && charts[rack + dut].title !== undefined) {
                     let sortvar = 'y';
                     if ($scope.lossChartType === 'Fail trends') {
                         sortvar = 'x';
                     }
-                    charts[rack].data[0].dataPoints = _.sortBy(charts[rack].data[0].dataPoints, sortvar);
-                    if (document.querySelector('#lossChart' + rack) !== null) {
-                        chartsObjs[rack] = new CanvasJS.Chart('lossChart' + rack, charts[rack]);
-                        chartsObjs[rack].render();
+                    charts[rack + dut].data[0].dataPoints = _.sortBy(charts[rack + dut].data[0].dataPoints, sortvar);
+                    if (document.querySelector('#lossChart' + rack + dut) !== null) {
+                        chartsObjs[rack + dut] = new CanvasJS.Chart('lossChart' + rack + dut, charts[rack + dut]);
+                        chartsObjs[rack + dut].render();
                     }
                 } else {
-                    document.querySelector('#lossChart' + rack).innerHTML =
+                    document.querySelector('#lossChart' + rack + dut).innerHTML =
                         '<div style="padding:20px;font-weight:bold;font-size:15px;">NO DATA</div>';
                 }
                 $scope.widgetCtrl.setLoading(false);
             }, 20);
         }
 
-        function exportData(tt, doc) {
+        function exportData (tt, doc) {
             $scope.showProgress = true;
             Meteor.call('exportData', tt ? doc.ids : listOfSerials, [tt], null, null, null, 'F',
                 (err, data) => {
                     if (err) {
-                            $mdToast.show(
-                                $mdToast.simple()
-                                    .content($translate.instant('Loss export error') + ' ' + err)
-                                    .position('top right')
-                                    .hideDelay(5000));
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .content($translate.instant('Loss export error') + ' ' + err)
+                                .position('top right')
+                                .hideDelay(5000));
                     } else {
                         let ret = ExportDataService.exportData(data, 'loss_export_' + (tt || 'alltests'), $scope.partNumber);
                         let blob = new Blob([ret.substring(1)], {type: 'data:text/csv;charset=utf-8'});

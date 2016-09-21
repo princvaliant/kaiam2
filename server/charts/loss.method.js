@@ -8,7 +8,7 @@
 
 
 Meteor.methods({
-    losses: function (chartType, partNumber, manufacturer, interval, range, rack, rework, device, paramsFail, yieldType) {
+    losses: function (chartType, partNumber, manufacturer, interval, range, rack, dut, rework, device, paramsFail, yieldType) {
         // Date and week range values
         ScesDomains.getUser(this.userId);
         let drange = moment().subtract(interval - 1000, 'days').format('YYYY-MM-DD');
@@ -50,6 +50,9 @@ Meteor.methods({
 
         if (rack !== 'All_racks') {
             match.rack = rack;
+        }
+        if (dut !== 'All_duts') {
+            match.dut = dut;
         }
 
         let unwind;
