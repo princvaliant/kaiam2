@@ -1,0 +1,11 @@
+{
+    "MENU": {
+        "EPROM": {
+            "EPROM": "Eprom",
+            "COMPARE": "Compare"
+        }
+    },
+    "EPROM" :{
+        "COMPARE-BTN" : "Compare"
+    }
+}

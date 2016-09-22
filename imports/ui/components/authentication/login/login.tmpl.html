@@ -10,7 +10,7 @@
                 </div>
             </md-toolbar>
             <md-content class="md-padding">
-                <form name="login" layout="column">
+                <form name="login" layout="column" ng-submit="loginClick()">
                     <md-input-container>
                         <label for="email">{{'LOGIN.EMAIL.LABEL' | translate}}</label>
                         <input id="email" label="email" name="email" type="email" ng-model="user.email" required/>
@@ -32,7 +32,7 @@
                         <md-input-container>
                         </md-input-container>
                     </div> -->
-                    <md-button class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10" ng-click="loginClick()" ng-disabled="login.$invalid">{{'LOGIN.BUTTON' | translate}}</md-button>
+                    <md-button type="submit" class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10"  ng-disabled="login.$invalid">{{'LOGIN.BUTTON' | translate}}</md-button>
                     <md-button class="md-primary full-width margin-left-0 margin-right-0 margin-top-10 " href="signup">{{'LOGIN.SIGNUP_LINK' | translate}}</md-button>
                     <md-button class="md-primary full-width margin-left-0 margin-right-0 margin-bottom-10" href="forgot">{{'LOGIN.FORGOT' | translate}}</md-button>
                 </form>

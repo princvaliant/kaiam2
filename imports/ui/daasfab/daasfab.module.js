@@ -40,6 +40,7 @@ import '../components/charts/charts.run';
 import '../components/export-data/export-data.config';
 import '../components/transceiver-view/transceiver-view.config';
 import '../components/sces/sces.run';
+import '../components/eprom/eprom.config';
 
 const name = 'daasfab';
 
@@ -85,7 +86,8 @@ export default angular.module(name, [
     'kaiamCharts',
     'kaiamExportData',
     'kaiamTransceiverView',
-    'kaiamSces'
+    'kaiamSces',
+    'kaiamEprom'
 ]);
 angular.module(name)
     .constant('API_CONFIG', {

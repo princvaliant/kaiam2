@@ -93,7 +93,7 @@ Meteor.methods({
                     timestamp: -1
                 }
             });
-            if (!packout) {
+            if (!packout && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
             }
             // Custom check for script names
@@ -139,8 +139,10 @@ Meteor.methods({
                 return ScesDomains.addEvent(tray._id, 'error', 'Test part family does not match tray part family', snum);
             }
             // Check packout partnumber with tray part number
-            if (packout.device.PartNumber !== tray.dc.pnum) {
-                return ScesDomains.addEvent(tray._id, 'error', 'Packout part number does not match tray part number', snum);
+            if (!adminOverride) {
+                if (packout.device.PartNumber !== tray.dc.pnum) {
+                    return ScesDomains.addEvent(tray._id, 'error', 'Packout part number does not match tray part number', snum);
+                }
             }
             // Check if tray is already full
             let tot = tray.dc.type.split('x');
@@ -184,7 +186,7 @@ Meteor.methods({
                     timestamp: -1
                 }
             });
-            if (!td) {
+            if (!td && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
             }
 
@@ -202,8 +204,10 @@ Meteor.methods({
 
             // Check if tray part number matches transceiver
             //
-            if (td.device.PartNumber !== tray.dc.pnum) {
-                return ScesDomains.addEvent(tray._id, 'error', 'SCES.PART-NUMBER-NO-MATCH', snum);
+            if (!adminOverride) {
+                if (td.device.PartNumber !== tray.dc.pnum) {
+                    return ScesDomains.addEvent(tray._id, 'error', 'SCES.PART-NUMBER-NO-MATCH', snum);
+                }
             }
             // Check if tray is already full
             let tot = tray.dc.type.split('x');

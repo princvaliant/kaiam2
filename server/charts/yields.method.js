@@ -72,7 +72,7 @@ Meteor.methods({
             result = Yields.aggregate(aggr);
         }
         if (device === '100GB') {
-            match.pnum = {$nin: ['XQXGRR4000']};
+            match.pnum = {$nin: ['XQXGRR4000', 'XQXENG4000', 'XQXENG4100']};
             if (yieldType === 'Fixed week') {
                 result = TestsummaryWeek.aggregate(aggr);
             } else {
