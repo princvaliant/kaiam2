@@ -176,8 +176,6 @@ Meteor.methods({
                 },
                 type: 'packout',
                 subtype: '',
-                status: 'P',
-                result: 'OK'
             }, {
                 fields: {
                     'device': 1
@@ -186,15 +184,15 @@ Meteor.methods({
                     timestamp: -1
                 }
             });
-            if (!td && !adminOverride) {
+            if (!td && td.status !== 'P' && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
             }
 
             // Check if TOSA or ROSA are not in the list
-            if (td.device.TOSA && getTosas().includes(td.device.TOSA)) {
+            if (td.device.TOSA && getTosas().includes(td.device.TOSA) && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.NOT-VALID-TOSA', snum);
             }
-            if (td.device.ROSA && getRosas().includes(td.device.ROSA)) {
+            if (td.device.ROSA && getRosas().includes(td.device.ROSA) && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.NOT-VALID-ROSA', snum);
             }
             // Is transceiver on noship list
@@ -204,11 +202,10 @@ Meteor.methods({
 
             // Check if tray part number matches transceiver
             //
-            if (!adminOverride) {
-                if (td.device.PartNumber !== tray.dc.pnum) {
-                    return ScesDomains.addEvent(tray._id, 'error', 'SCES.PART-NUMBER-NO-MATCH', snum);
-                }
+            if (td.device.PartNumber !== tray.dc.pnum && !adminOverride) {
+                return ScesDomains.addEvent(tray._id, 'error', 'SCES.PART-NUMBER-NO-MATCH', snum);
             }
+
             // Check if tray is already full
             let tot = tray.dc.type.split('x');
             let totl = parseInt(tot[0]) * parseInt(tot[1]);

@@ -19,22 +19,39 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
         $translatePartialLoader.addPart('eprom');
         $translate.refresh();
         $scope.pages = [];
-        for (let i = 1; i <= 22; i++) {
+        for (let i = 0; i <= 21; i++) {
             $scope.pages.push(i);
         }
-        $scope.page = 3;
+        $scope.page = 0;
+        $scope.serial1 = 'Q3565';
+        $scope.serial2 = 'Q3445';
         $scope.showProgress = false;
+        $scope.columns = [{
+            min: 0,
+            max: 63
+        }, {
+            min: 64,
+            max: 127
+        }, {
+            min: 128,
+            max: 191
+        }, {
+            min: 192,
+            max: 255
+        }];
         let memory = [0, 0];
 
         $scope.onSubmit = function (e) {
             e.preventDefault();
+            memory[0] = '';
+            memory[1] = '';
             packout($scope.serial1, 0);
             packout($scope.serial2, 1, compare);
-            ;
         };
 
         $scope.pageChange = function (page) {
             $scope.page = page;
+            showPage();
         };
 
         function packout (serial, idx, compFunc) {
@@ -44,35 +61,79 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
             Meteor.call('getLastPackout', serial,
                 (err, data) => {
                     if (err) {
-                        $mdToast.show(
-                            $mdToast.simple()
-                                .content(err)
-                                .position('bottom right')
-                                .hideDelay(3000));
+                        showError(err);
                     } else {
                         if (!data) {
-                            $mdToast.show(
-                                $mdToast.simple()
-                                    .content('No packout data for serial ' + serial )
-                                    .position('bottom right')
-                                    .hideDelay(3000));
+                            showError('No packout data for serial ' + serial);
                         }
                         memory[idx] = data.data.MemoryDump;
-                        if(compFunc) {
+                        if (compFunc) {
                             compFunc();
                         }
                     }
                 });
         }
 
-        function compare() {
+        function compare () {
+            if (!memory[0] || !memory[1]) {
+                showError('');
+            }
+            let data1 = pagify(memory[0]);
+            let data2 = pagify(memory[1]);
+            process(data1, data2);
+            $scope.data1 = data1;
+            $scope.data2 = data2;
+            showPage();
+        }
 
-
-
-            $scope.memory1 = '1';
-            $scope.memory2 = '2';
+        function showPage () {
+            $scope.pageData1 = $scope.data1[$scope.page];
+            $scope.pageData2 = $scope.data2[$scope.page];
             $scope.$apply();
+        }
 
+        function showError (err) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .content(err)
+                    .position('bottom right')
+                    .hideDelay(3000));
+            $scope.pageData1 = null;
+            $scope.pageData2 = null;
+            $scope.data1 = null;
+            $scope.$apply();
+        }
+
+        function pagify (memoryString) {
+            let pages = {};
+            _.each($scope.pages, (page) => {
+                let pageData = memoryString.substring(page * 512, page * 512 + 512);
+                pages[page] = {
+                    diff: '',
+                    list: _.map(pageData.match(/.{1,2}/g), (r) => {
+                        return {diff: '',
+                            val: String.fromCharCode(parseInt(r, 16)),
+                            hex: r};
+                    })
+                };
+            });
+            return pages;
+        }
+
+        function process (data1, data2) {
+            for (let key in data1) {
+                if (!data1.hasOwnProperty(key)) continue;
+                let obj1 = data1[key];
+                let obj2 = data2[key];
+                for (let i = 0; i < 256; i++) {
+                    if (obj1.list[i].hex !== obj2.list[i].hex) {
+                        obj1.diff = 'red';
+                        obj2.diff = 'red';
+                        obj1.list[i].diff = 'red';
+                        obj2.list[i].diff = 'red';
+                    }
+                }
+            }
         }
     }
 ]);

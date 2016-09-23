@@ -1,59 +1,49 @@
-.intro-feature-row {
-  .md-whiteframe-z1 {
-    background-color: #26C6DA;
-  }
-  .md-font {
-    color: white;
-  }
-}
 
-.trans_status {
-    font-size: 1.2rem;
-    font-weight:300;
-    margin-left:10px;
+
+
+.epromdata {
+    font-size: 1.0rem;
+    font-weight:400;
+    margin-left:0px;
     margin-right:10px;
     margin-top: 2px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     text-align:right;
     padding: 0px;
 }
 
-.extras-image-dialog {
-  img {
-    max-width: 100%;
-    max-height: 600px;
-  }
+.epromdata.red {
+  color: red;
+  font-weight: 900;
 }
 
-.image-footer {
-  font-size:9px;
-  font-weight: bold;
-  margin-bottom: -10px;
+.epromdata1 {
+  width: 40px;
+  margin-left: 0px;
+  text-align:right;
+}
+.epromdata2 {
+  width: 28px;
+  margin-left: 10px;
+}
+.epromdata3 {
+  width: 28px;
+  margin-left: 10px;
 }
 
-.btn-view-data {
-  font-size:10px;
-  padding:-10px;
-  margin:-10px
+.epromhead {
+  border-bottom: solid 2px;
+  font-size: 1.0rem;
+}
+.epromfoot {
+  border-top: solid 2px;
+  font-size: 1.0rem;
 }
 
-.meas_status_E {
-  color: #918D03;
-  font-weight:800;
+li.navbtn.md-nav-item  {
+  width:42px !important;
 }
-.meas_status_F {
-  color: #FF0000;
-  font-weight:800;
-}
-.meas_status_P {
-  color: #00FF00;
-  font-weight:800;
-}
-.meas_status_OK {
-  color: #00FF00;
-  font-weight:800;
-}
-.meas_status_X {
-  color: #0000FF;
-  font-weight:800;
+
+li.navbtn.red ._md-nav-button-text   {
+  color: red;
 }

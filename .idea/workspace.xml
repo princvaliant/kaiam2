@@ -2,24 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.tmpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/eprom/eprom.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/eprom/eprom.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/eprom/eprom.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/i18n/eprom/en.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/eprom/eprom.methods.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles.scss" afterPath="$PROJECT_DIR$/client/styles.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/authentication/login/login.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/authentication/login/login.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/sces-settings.js" afterPath="$PROJECT_DIR$/lib/sces-settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/settings.js" afterPath="$PROJECT_DIR$/lib/settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/loss.method.js" afterPath="$PROJECT_DIR$/server/charts/loss.method.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/yields.method.js" afterPath="$PROJECT_DIR$/server/charts/yields.method.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/eprom/eprom.scss" afterPath="$PROJECT_DIR$/imports/ui/components/eprom/eprom.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/transceiver.methods.js" afterPath="$PROJECT_DIR$/server/sces/transceiver.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/settings/companies.publish.js" afterPath="$PROJECT_DIR$/server/settings/companies.publish.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
@@ -41,7 +28,7 @@
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -57,7 +44,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/test-summary.methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/yield-check.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/yield-check.controller.js" />
         <option value="$PROJECT_DIR$/packages/canvasjs/canvasjs.js" />
@@ -102,11 +88,12 @@
         <option value="$PROJECT_DIR$/public/i18n/eprom/en.json" />
         <option value="$PROJECT_DIR$/imports/ui/components/authentication/login/login.tmpl.html" />
         <option value="$PROJECT_DIR$/server/eprom/eprom.methods.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.controller.js" />
         <option value="$PROJECT_DIR$/lib/settings.js" />
         <option value="$PROJECT_DIR$/server/charts/loss.method.js" />
         <option value="$PROJECT_DIR$/server/charts/yields.method.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/eprom/eprom.scss" />
+        <option value="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.tmpl.html" />
         <option value="$PROJECT_DIR$/server/sces/transceiver.methods.js" />
       </list>
     </option>
@@ -127,10 +114,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1632" />
-    <option name="y" value="-818" />
-    <option name="width" value="1589" />
-    <option name="height" value="1127" />
+    <option name="x" value="-761" />
+    <option name="y" value="-1410" />
+    <option name="width" value="1235" />
+    <option name="height" value="1402" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -164,7 +151,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -178,136 +164,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tray" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -362,7 +221,7 @@
       <recent name="$PROJECT_DIR$/imports/ui/components/sces/transceiver" />
     </key>
   </component>
-  <component name="RunManager" selected="Meteor.Meteor Dev Debug">
+  <component name="RunManager" selected="Meteor.Meteor Prod debug">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -662,14 +521,10 @@
       <workItem from="1474420454850" duration="161000" />
       <workItem from="1474420882592" duration="8000" />
       <workItem from="1474420904624" duration="15811000" />
-      <workItem from="1474584520785" duration="1585000" />
-    </task>
-    <task id="LOCAL-00002" summary="Initial commit">
-      <created>1466612351768</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1466612351768</updated>
+      <workItem from="1474584520785" duration="2277000" />
+      <workItem from="1474602031149" duration="20000" />
+      <workItem from="1474603733598" duration="1492000" />
+      <workItem from="1474650379226" duration="16684000" />
     </task>
     <task id="LOCAL-00003" summary="Initial commit">
       <created>1466661763027</created>
@@ -1007,11 +862,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474479856332</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="- Add 'allow add transceiver to tray' even if not passed test and packout. Only for admin and supervisor.">
+      <created>1474586708501</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1474586708501</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="545552000" />
+    <option name="totallyTimeSpent" value="564440000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1023,19 +885,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1632" y="-818" width="1589" height="1127" extended-state="0" />
+    <frame x="-761" y="-1410" width="1235" height="1402" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20727041" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24382208" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.49719888" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53816426" sideWeight="0.4094388" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17938931" sideWeight="0.41350907" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.51544404" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858416" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24339035" sideWeight="0.47559592" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53816426" sideWeight="0.5905612" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17938931" sideWeight="0.5864909" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1083,7 +945,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="- Moving to new meteor 1.4.1  (transceiver module improvement)" />
     <MESSAGE value="- Moving to new meteor 1.4.1  (supply chain module improvement)" />
     <MESSAGE value="- Moving to new meteor 1.4.1  (spec and actions module improvement)" />
     <MESSAGE value="- Moving to new meteor 1.4.1  (MES module improvement)" />
@@ -1108,39 +969,19 @@
     <MESSAGE value="- Fixing trend charts&#10;- Fixing export for rx and tx functionality&#10;- Sort test data in descending order&#10;- Upgrade angular material to 1.1.1" />
     <MESSAGE value="- Fixing transceiver view layout bug after upgrade to material 1.1.1" />
     <MESSAGE value="- Add DUT grouping in paretto loss charts&#10;- Initialize part number from last test when adding trasceiver to MES (locations)" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Add DUT grouping in paretto loss charts&#10;- Initialize part number from last test when adding trasceiver to MES (locations)" />
+    <MESSAGE value="- Add 'allow add transceiver to tray' even if not passed test and packout. Only for admin and supervisor." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add 'allow add transceiver to tray' even if not passed test and packout. Only for admin and supervisor." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="755" />
+      <option name="time" value="769" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/sces/domain-report.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="152" column="21" lean-forward="true" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/mes-charts.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="106" column="31" lean-forward="true" selection-start-line="106" selection-start-column="25" selection-end-line="106" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/mes-charts.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -1197,13 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/trend.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="67" column="10" lean-forward="true" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -1214,13 +1048,6 @@
     <entry file="http://localhost:3000/packages/modules.js?hash=692f0b307b44abdda455e4b75c0fb63dfeb9bf48">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="70" column="1" lean-forward="false" selection-start-line="70" selection-start-column="1" selection-end-line="70" selection-end-column="1" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/location/location-edit.tmpl.html">
@@ -1283,90 +1110,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <marker date="1471467981000" expanded="true" signature="164872:165051" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="164901:165050" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="164927:165039" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="165131:165185" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="499514:499710" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="499565:499710" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="499653:499710" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="499854:500056" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="533671:533763" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="693853:694103" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="693882:694103" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="693904:694008" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="694037:694094" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="694182:694276" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="703907:703913" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="737277:737571" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="737306:737571" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="737328:737432" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="737461:737562" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="737650:737741" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="874817:875237" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="874846:875237" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="874868:874972" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="875002:875228" ph="{&quot;data&quot;: $scope.data...}" />
-            <marker date="1471467981000" expanded="true" signature="875086:875193" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="875316:875384" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="937801:938177" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="937830:938177" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="937852:937956" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="937985:938086" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="938256:938324" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1003901:1004137" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1003930:1004137" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="1003952:1004044" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1004073:1004128" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1004216:1004323" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1016387:1016757" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1016416:1016756" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="1016440:1016629" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1016659:1016747" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1016812:1016853" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="1016937:1017049" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1050204:1050976" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1050233:1050976" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="1050255:1050751" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1050781:1050968" ph="{&quot;data&quot;: 'data'...}" />
-            <marker date="1471467981000" expanded="true" signature="1050898:1050959" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1051055:1051125" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1164614:1164946" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1164643:1164946" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="1164665:1164765" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1164795:1164937" ph="{&quot;data&quot;: $scope.data...}" />
-            <marker date="1471467981000" expanded="true" signature="1164817:1164902" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1165025:1165095" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1198158:1198452" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1198187:1198452" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="1198209:1198313" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1198342:1198443" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1198531:1198627" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1302637:1303013" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1302666:1303013" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="1302688:1302792" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1302821:1302922" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1303092:1303161" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1329246:1329700" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1329275:1329700" ph="{...}" />
-            <marker date="1471467981000" expanded="true" signature="1329297:1329401" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1329430:1329691" ph="[...]" />
-            <marker date="1471467981000" expanded="true" signature="1329779:1329887" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1331598:1331604" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="1332403:1332409" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="1334953:1334959" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="1336803:1336811" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1337224:1337232" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1340540:1340546" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="1341682:1341688" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="1343801:1343848" ph="..." />
-            <marker date="1471467981000" expanded="true" signature="1348506:1348512" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="1348675:1348681" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="1350331:1350337" ph=" " />
-            <marker date="1471467981000" expanded="true" signature="1352167:1352173" ph=" " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1374,7 +1117,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1389,13 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/eprom/eprom.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1480,7 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" column="30" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1505,20 +1239,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/charts/loss.method.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -1530,7 +1250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="70" column="32" lean-forward="true" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1545,15 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="120" column="35" lean-forward="true" selection-start-line="120" selection-start-column="35" selection-end-line="120" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="225" column="13" lean-forward="true" selection-start-line="225" selection-start-column="13" selection-end-line="225" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1561,6 +1271,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
           <caret line="35" column="92" lean-forward="false" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/lib/Scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="44" column="90" lean-forward="false" selection-start-line="44" selection-start-column="90" selection-end-line="44" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/trend.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="35" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/charts.module.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="70" column="1" lean-forward="false" selection-start-line="70" selection-start-column="1" selection-end-line="70" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="267" column="1" lean-forward="false" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-tab.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/eprom/eprom.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="208" column="44" lean-forward="true" selection-start-line="208" selection-start-column="44" selection-end-line="208" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="14" lean-forward="false" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
           <folding />
         </state>
       </provider>
