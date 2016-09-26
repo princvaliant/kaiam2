@@ -89,7 +89,6 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
         function showPage () {
             $scope.pageData1 = $scope.data1[$scope.page];
             $scope.pageData2 = $scope.data2[$scope.page];
-            $scope.$apply();
         }
 
         function showError (err) {
@@ -101,7 +100,6 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
             $scope.pageData1 = null;
             $scope.pageData2 = null;
             $scope.data1 = null;
-            $scope.$apply();
         }
 
         function pagify (memoryString) {
@@ -127,8 +125,8 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
                 let obj2 = data2[key];
                 for (let i = 0; i < 256; i++) {
                     if (obj1.list[i].hex !== obj2.list[i].hex) {
-                        obj1.diff = 'red';
-                        obj2.diff = 'red';
+                        obj1.diff = 'btnred';
+                        obj2.diff = 'btnred';
                         obj1.list[i].diff = 'red';
                         obj2.list[i].diff = 'red';
                     }

@@ -14,58 +14,61 @@
                        aria-label="button">{{'EPROM.COMPARE-BTN' | translate}}</md-button>
         </form>
     </md-content>
-    <div flex="80" layout="column" style="padding-top:20px;">
-        <md-nav-bar md-selected-nav-item="page" nav-bar-aria-label="navigation links">
-            <md-nav-item class="navbtn {{p.diff}}" ng-repeat="(k, p) in data1" md-nav-click="pageChange(k)">{{k}}</md-nav-item>
-        </md-nav-bar>
-        <div layout="row">
-            <md-card flex="50">
-                <md-card-content flex="100">
-                    <md-grid-list md-cols="4" md-gutter="12px" md-row-height="820px" flex="100" >
-                        <md-grid-tile ng-repeat="col in columns" >
-                            <div layout="column" layout-fill>
-                                <div class="epromhead">{{col.min}} - {{col.max}}</div>
-                                <div ng-repeat="pd in pageData1.list" layout="row" class="epromdata {{pd.diff}}"
-                                     ng-if="$index >= col.min && $index <= col.max">
-                                    <div class="epromdata1">
-                                        {{$index}}
-                                    </div>
-                                    <div class="epromdata2">
-                                        {{pd.hex}}
-                                    </div>
-                                    <div class="epromdata3">
-                                        {{pd.val}}
-                                    </div>
+    <div flex="80" layout="row" style="padding-top:0px;">
+        <md-sidenav style="width:55px;" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="true">
+            <div style="font-size:23px;font-weight:bold;margin:17px;">{{page}}</div>
+            <md-button ng-repeat="(k, p) in data1" ng-click="pageChange(k)"
+                       class="eprombutton">
+                <span class="{{p.diff}}">{{k}}</span>
+            </md-button>
+        </md-sidenav>
+        <md-card flex="46">
+            <md-card-content flex="100">
+                <md-grid-list md-cols="4" md-gutter="12px" md-row-height="800px" flex="100">
+                    <md-grid-tile ng-repeat="col in columns">
+                        <div layout="column" layout-fill>
+                            <div class="epromhead">{{col.min}} - {{col.max}}</div>
+                            <div ng-repeat="pd in pageData1.list" layout="row" class="epromdata {{pd.diff}}"
+                                 ng-if="$index >= col.min && $index <= col.max">
+                                <div class="epromdata1">
+                                    {{$index}}
+                                </div>
+                                <div class="epromdata2">
+                                    {{pd.hex}}
+                                </div>
+                                <div class="epromdata3">
+                                    {{pd.val}}
                                 </div>
                             </div>
-                        </md-grid-tile>
-                    </md-grid-list>
-                </md-card-content>
-            </md-card>
-            <md-card flex="50">
-                <md-card-content flex="100">
-                    <md-grid-list md-cols="4" md-gutter="12px" md-row-height="820px" flex="100" >
-                        <md-grid-tile ng-repeat="col in columns">
-                            <div layout="column" layout-fill>
-                                <div class="epromhead">{{col.min}} - {{col.max}}</div>
-                                <div ng-repeat="pd in pageData2.list" layout="row" class="epromdata {{pd.diff}}"
-                                     ng-if="$index >= col.min && $index <= col.max">
-                                    <div class="epromdata1">
-                                        {{$index}}
-                                    </div>
-                                    <div class="epromdata2">
-                                        {{pd.hex}}
-                                    </div>
-                                    <div class="epromdata3">
-                                        {{pd.val}}
-                                    </div>
+                        </div>
+                    </md-grid-tile>
+                </md-grid-list>
+            </md-card-content>
+        </md-card>
+        <md-card flex="46">
+            <md-card-content flex="100">
+                <md-grid-list md-cols="4" md-gutter="12px" md-row-height="800px" flex="100">
+                    <md-grid-tile ng-repeat="col in columns">
+                        <div layout="column" layout-fill>
+                            <div class="epromhead">{{col.min}} - {{col.max}}</div>
+                            <div ng-repeat="pd in pageData2.list" layout="row" class="epromdata {{pd.diff}}"
+                                 ng-if="$index >= col.min && $index <= col.max">
+                                <div class="epromdata1">
+                                    {{$index}}
+                                </div>
+                                <div class="epromdata2">
+                                    {{pd.hex}}
+                                </div>
+                                <div class="epromdata3">
+                                    {{pd.val}}
                                 </div>
                             </div>
-                        </md-grid-tile>
-                    </md-grid-list>
-                </md-card-content>
-            </md-card>
-        </md-content>
-    </md-content>
+                        </div>
+                    </md-grid-tile>
+                </md-grid-list>
+            </md-card-content>
+        </md-card>
+</md-content>
+</md-content>
 
 </md-content>
