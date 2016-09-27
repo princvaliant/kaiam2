@@ -1,11 +1,12 @@
 {
-    "MENU": {
-        "EPROM": {
-            "EPROM": "Eprom",
-            "COMPARE": "Compare"
-        }
-    },
-    "EPROM" :{
-        "COMPARE-BTN" : "Compare"
+  "MENU": {
+    "EPROM": {
+      "EPROM": "Eprom",
+      "COMPARE": "Compare"
     }
+  },
+  "EPROM": {
+    "COMPARE-BTN": "Compare",
+    "EXPORT-BTN": "Export"
+  }
 }

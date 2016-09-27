@@ -1,5 +1,5 @@
-<md-content layout="row" class="overlay-10" flex="100">
-    <md-content flex="20" layout-padding>
+<div layout="row" class="overlay-10" flex="100">
+    <md-content flex="16" layout-padding>
         <form ng-submit="onSubmit($event)" layout="column">
             <span><br/></span>
             <md-input-container flex="100">
@@ -13,8 +13,13 @@
             <md-button type="submit" class="md-primary md-raised"
                        aria-label="button">{{'EPROM.COMPARE-BTN' | translate}}</md-button>
         </form>
+        <md-divider></md-divider>
+        <md-button class="md-warn" ng-click="export(serial1)" ng-show="pageData1"
+                   aria-label="button">{{'EPROM.EXPORT-BTN' | translate}} 1</md-button>
+        <md-button class="md-warn" ng-click="export(serial2)" ng-show="pageData2"
+                   aria-label="button">{{'EPROM.EXPORT-BTN' | translate}} 2</md-button>
     </md-content>
-    <div flex="80" layout="row" style="padding-top:0px;">
+    <md-content flex="80" layout="row" style="padding-top:0px;">
         <md-sidenav style="width:55px;" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="true">
             <div style="font-size:23px;font-weight:bold;margin:17px;">{{page}}</div>
             <md-button ng-repeat="(k, p) in data1" ng-click="pageChange(k)"
@@ -22,9 +27,8 @@
                 <span class="{{p.diff}}">{{k}}</span>
             </md-button>
         </md-sidenav>
-        <md-card flex="46">
-            <md-card-content flex="100">
-                <md-grid-list md-cols="4" md-gutter="12px" md-row-height="800px" flex="100">
+        <md-card flex="48" layout-fill layout-padding>
+                <md-grid-list md-cols="4" md-gutter="12px" md-row-height="fit" flex="100">
                     <md-grid-tile ng-repeat="col in columns">
                         <div layout="column" layout-fill>
                             <div class="epromhead">{{col.min}} - {{col.max}}</div>
@@ -43,32 +47,27 @@
                         </div>
                     </md-grid-tile>
                 </md-grid-list>
-            </md-card-content>
         </md-card>
-        <md-card flex="46">
-            <md-card-content flex="100">
-                <md-grid-list md-cols="4" md-gutter="12px" md-row-height="800px" flex="100">
-                    <md-grid-tile ng-repeat="col in columns">
-                        <div layout="column" layout-fill>
-                            <div class="epromhead">{{col.min}} - {{col.max}}</div>
-                            <div ng-repeat="pd in pageData2.list" layout="row" class="epromdata {{pd.diff}}"
-                                 ng-if="$index >= col.min && $index <= col.max">
-                                <div class="epromdata1">
-                                    {{$index}}
-                                </div>
-                                <div class="epromdata2">
-                                    {{pd.hex}}
-                                </div>
-                                <div class="epromdata3">
-                                    {{pd.val}}
-                                </div>
+        <md-card flex="48" layout-fill layout-padding>
+            <md-grid-list md-cols="4" md-gutter="12px" md-row-height="fit" flex="100">
+                <md-grid-tile ng-repeat="col in columns">
+                    <div layout="column" layout-fill>
+                        <div class="epromhead">{{col.min}} - {{col.max}}</div>
+                        <div ng-repeat="pd in pageData2.list" layout="row" class="epromdata {{pd.diff}}"
+                             ng-if="$index >= col.min && $index <= col.max">
+                            <div class="epromdata1">
+                                {{$index}}
+                            </div>
+                            <div class="epromdata2">
+                                {{pd.hex}}
+                            </div>
+                            <div class="epromdata3">
+                                {{pd.val}}
                             </div>
                         </div>
-                    </md-grid-tile>
-                </md-grid-list>
-            </md-card-content>
+                    </div>
+                </md-grid-tile>
+            </md-grid-list>
         </md-card>
-</md-content>
-</md-content>
-
-</md-content>
+    </md-content>
+</div>

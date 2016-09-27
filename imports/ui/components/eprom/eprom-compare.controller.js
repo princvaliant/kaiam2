@@ -54,6 +54,17 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
             showPage();
         };
 
+        $scope.export = function (serial) {
+            Meteor.call('exportEprom', serial === $scope.serial1 ? $scope.data1 : $scope.data2,
+                (err, data) => {
+                    if (err) {
+                        showError(err);
+                    } else {
+                        window.open('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' +  encodeURIComponent(data));
+                    }
+                });
+        };
+
         function packout (serial, idx, compFunc) {
             if (!serial) {
                 return;
