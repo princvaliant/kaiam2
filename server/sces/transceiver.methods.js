@@ -184,7 +184,10 @@ Meteor.methods({
                     timestamp: -1
                 }
             });
-            if (!td && td.status !== 'P' && !adminOverride) {
+            if (!td) {
+                return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT_AT_ALL', snum);
+            }
+            if (td.status !== 'P' && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
             }
 
