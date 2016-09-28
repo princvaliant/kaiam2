@@ -107,6 +107,7 @@ Meteor.methods({
             }, {
                 fields: {
                     'device.PartNumber': 1,
+                    'device.FwVer': 1,
                     'meta.ScriptName': 1,
                     'meta.ScriptVer': 1
                 },
@@ -114,6 +115,14 @@ Meteor.methods({
                     timestamp: -1
                 }
             });
+            // Check if this part is tested with txtests-channeldata
+            if (!td) {
+                return ScesDomains.addEvent(tray._id, 'error', 'This did not complete txtest-channeldata', snum);
+            }
+            // Check if firmware version is not smaller then 00.09.28
+            if (td.device.FwVer < '00.09.28') {
+                return ScesDomains.addEvent(tray._id, 'error', 'Firmware version is smaller than 00.09.28 so it can not be shipped', snum);
+            }
             let tdpf = td.device.PartNumber.substring(0, td.device.PartNumber.length - 2);
             if (tdpf === 'XQX40') {
                 if ((td.meta.ScriptName.toUpperCase() === 'TESTTUNE' && td.meta.ScriptVer === '10') ||
