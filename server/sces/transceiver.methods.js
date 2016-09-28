@@ -175,9 +175,9 @@ Meteor.methods({
                     $regex: regsnum
                 },
                 type: 'packout',
-                subtype: '',
             }, {
                 fields: {
+                    'status': 1,
                     'device': 1
                 },
                 sort: {

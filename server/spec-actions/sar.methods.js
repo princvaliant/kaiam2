@@ -170,6 +170,14 @@ Meteor.methods({
             }
         }
         ]);
+    },
+
+    exportFile: function (id) {
+        return Sar.aggregate([{
+            $match: {
+                _id: id
+            }
+        }]);
     }
 });
 

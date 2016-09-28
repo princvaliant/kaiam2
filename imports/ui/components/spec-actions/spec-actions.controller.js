@@ -86,17 +86,27 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             if ($scope.class === 'SPEC') {
                 methodName = 'exportSpecs';
             }
+            if ($scope.class === 'FILE') {
+                methodName = 'exportFile';
+            }
             Meteor.call(methodName, $scope.selectedSar._id, (err, data) => {
-                let ret = ExportDataService.exportData(data);
-                let blob = new Blob([ret.substring(1)], {type: 'data:text/csv;charset=utf-8'});
-                let filename = methodName + '-' + $scope.selectedSar.name + ' ' + $scope.selectedSar.rev + '.csv';
+                let csvData;
+                let fileName;
+                if ($scope.class === 'FILE') {
+                    csvData = ',' + data[0].fileContent;
+                    fileName = data[0].fileName;
+                } else {
+                    csvData = ExportDataService.exportData(data);
+                    fileName = methodName + '-' + $scope.selectedSar.name + ' ' + $scope.selectedSar.rev + '.csv';
+                }
+                let blob = new Blob([csvData.substring(1)], {type: 'data:text/csv;charset=utf-8'});
                 if (window.navigator.msSaveOrOpenBlob) {
-                    navigator.msSaveBlob(blob, filename);
+                    navigator.msSaveBlob(blob, fileName);
                 } else {
                     let downloadContainer = angular.element('<div data-tap-disabled="true"><a></a></div>');
                     let downloadLink = angular.element(downloadContainer.children()[0]);
                     downloadLink.attr('href', (window.URL || window.webkitURL).createObjectURL(blob));
-                    downloadLink.attr('download', filename);
+                    downloadLink.attr('download', fileName);
                     downloadLink.attr('target', '_blank');
                     $document.find('body').append(downloadContainer);
                     $timeout(function () {

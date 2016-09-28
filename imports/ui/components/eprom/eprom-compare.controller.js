@@ -95,6 +95,7 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
             $scope.data1 = data1;
             $scope.data2 = data2;
             showPage();
+            $scope.$apply();
         }
 
         function showPage () {
