@@ -83,17 +83,20 @@ Meteor.methods({
                     $regex: regsnum
                 },
                 type: 'packout',
-                subtype: 'packout',
-                result: {$in: ['OK', 'P']}
+                subtype: 'packout'
             }, {
                 fields: {
-                    'device': 1
+                    'device': 1,
+                    'status': 1
                 },
                 sort: {
                     timestamp: -1
                 }
             });
-            if (!packout && !adminOverride) {
+            if (!packout) {
+                return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT_AT_ALL', snum);
+            }
+            if (packout.status !== 'P' && !adminOverride) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-NO-PACKOUT', snum);
             }
             // Custom check for script names
