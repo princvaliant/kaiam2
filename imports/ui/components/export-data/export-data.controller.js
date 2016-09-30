@@ -25,6 +25,9 @@ angular.module('kaiamExportData').controller('ExportdataController', [
         $scope.showProgress = false;
         $scope.dateTo = moment().toDate();
         $scope.dateFrom = moment().subtract(4, 'days').toDate();
+        $scope.ignoreDate = true;
+        $scope.ignorePartNumber = true;
+        $scope.exportLast = false;
 
         initTest();
         $scope.onChangePartNumber = function (pn) {
@@ -39,11 +42,20 @@ angular.module('kaiamExportData').controller('ExportdataController', [
         $scope.exportDetailsClicked = function (val) {
             $scope.exportDetails = val;
         };
+        $scope.ignoreDateClicked = function (val) {
+            $scope.ignoreDate = val;
+        };
+        $scope.ignorePartNumberClicked = function (val) {
+            $scope.ignorePartNumber = val;
+        };
+        $scope.exportLastClicked = function (val) {
+            $scope.exportLast = val;
+        };
 
         $scope.exportClicked = function () {
             $scope.showProgress = true;
             Meteor.call('exportData', $scope.serial, [$scope.testType], $scope.partNumber, $scope.dateFrom,
-                $scope.dateTo, $scope.errorStatus,
+                $scope.dateTo, $scope.errorStatus, $scope.ignorePartNumber, $scope.ignoreDate, $scope.exportLast,
                 (err, data) => {
                     if (err) {
                         showError(err);

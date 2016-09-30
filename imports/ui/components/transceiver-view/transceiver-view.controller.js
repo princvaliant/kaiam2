@@ -177,7 +177,9 @@ angular.module('kaiamTransceiverView').controller('TransceiverViewController', [
                             $scope.scans.splice(0, 0, {
                                 data: data.data,
                                 pnum: data.pnum,
-                                rework: rework
+                                rework: rework,
+                                rosa: code === data.data[0].rosa ? 'ROSA: ' + code : '',
+                                tosa: code === data.data[0].tosa ? 'TOSA: ' + code : ''
                             });
                         } else {
                             $scope.scans.splice(0, 0, {

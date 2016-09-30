@@ -23,7 +23,6 @@
             <md-subheader class="md-no-sticky">Scanned transceivers (Newest on top)
             </md-subheader>
             <div ng-repeat="scan in scans" layout="column">
-
                 <div layout="row">
                     <md-card style="background:#EEEEEE;" flex="80">
                         <md-card-header>
@@ -32,6 +31,8 @@
                                         href="/sces/transceiver?id={{scan.data[0].sn || scan.c}}">{{scan.data
                                         [0].sn || scan.c}}</a>
                                     <span class="trans_status">{{scan.pnum}}</span>
+                                    <span class="trans_status"><b>{{scan.rosa}}</b></span>
+                                    <span class="trans_status"><b>{{scan.tosa}}</b></span>
                                 </md-whiteframe>
                             </md-card-header-text>
                         </md-card-header>

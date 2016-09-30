@@ -5,16 +5,28 @@
             <md-input-container>
                 <input type="text" name="serial" ng-model="serial" aria-label="Serial#" style="width:500px">
             </md-input-container>
-            <div class="exportsmall">Part number</div>
-            <md-select class="export-select" placeholder="Part number" ng-change="onChangePartNumber(partNumber)"
-                       ng-model="partNumber" ng-required>
-                <md-option ng-repeat="partNumber in partNumbers | orderBy"
-                           value="{{partNumber}}">{{partNumber}}</md-option>
-            </md-select>
+            <div class="exportsmall" style="padding-top:18px">Part number</div>
+            <div layout="row">
+                <md-select class="export-select" placeholder="Part number" ng-change="onChangePartNumber(partNumber)"
+                           ng-model="partNumber" ng-required>
+                    <md-option ng-repeat="partNumber in partNumbers | orderBy"
+                               value="{{partNumber}}">{{partNumber}}</md-option>
+                </md-select>
+                <md-checkbox ng-model="ignorePartNumber" aria-label="Ignore part number" ng-show="serial"
+                             style="padding-top:5px;margin-top:20px;margin-left:35px;"
+                             ng-change="ignorePArtNumberClicked(ignorePartNumber)">
+                    Ignore part number
+                </md-checkbox>
+            </div>
             <div class="exportsmall">From - To Date</div>
             <div layout="row">
                 <md-datepicker ng-model="dateFrom" md-placeholder="From date"></md-datepicker>
                 <md-datepicker ng-model="dateTo" md-placeholder="To date"></md-datepicker>
+                <md-checkbox ng-model="ignoreDate" aria-label="Ignore date" ng-show="serial"
+                             style="margin-top:8px;margin-left:35px;"
+                             ng-change="ignoreDateClicked(ignoreDate)">
+                    Ignore date
+                </md-checkbox>
             </div>
             <br/>
             <div class="exportsmall">Test type</div>
@@ -31,7 +43,11 @@
                          ng-change="exportDetailsClicked(exportDetails)">
                 Export details
             </md-checkbox>
-            <md-button class="md-primary md-raised" aria-label="button" ng-click="exportClicked()">Export</md-button>
+            <md-checkbox ng-model="exportLast" aria-label="Export last"
+                         ng-change="exportLastClicked(exportLast)">
+                Export only last test per serial
+            </md-checkbox>
+            <md-button class="md-primary md-raised" aria-label="button" ng-click="exportClicked()" style="width:300px;">Export</md-button>
             <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
         </md-card-content>
     </md-card>

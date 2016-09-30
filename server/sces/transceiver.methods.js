@@ -270,7 +270,13 @@ Meteor.methods({
         ScesDomains.getUser(this.userId);
         let testdata = Testdata.aggregate([{
             $match: {
-                'device.SerialNumber': id
+                $or: [{
+                    'device.SerialNumber': id
+                }, {
+                    'device.TOSA': id
+                }, {
+                    'device.ROSA': id
+                }]
             }
         }, {
             $group: {
@@ -286,7 +292,9 @@ Meteor.methods({
                         st: '$subtype',
                         ts: '$timestamp',
                         s: '$status',
-                        r: '$result'
+                        r: '$result',
+                        rosa: '$device.ROSA',
+                        tosa: '$device.TOSA'
                     }
                 },
                 pnum: {
@@ -308,8 +316,8 @@ Meteor.methods({
             return {status: 'NOID', pnum: testdata.pnum};
         }
 
-        // If this is 100GB device
         if (pnum.device === '100GB') {
+            // If this is 100GB device
             let summ = Testsummary.find({sn: id}, {sort: {timestamp: -1}}).fetch()[0];
             if (summ) {
                 if (summ.e > 0) {
