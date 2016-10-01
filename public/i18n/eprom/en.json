@@ -7,6 +7,8 @@
   },
   "EPROM": {
     "COMPARE-BTN": "Compare",
-    "EXPORT-BTN": "Export"
+    "EXPORT-BTN": "Export",
+    "IMPORT-BTN": "Import from file",
+    "LOAD-BTN": "Load from packout"
   }
 }
