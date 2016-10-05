@@ -52,7 +52,12 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
                     if (err) {
                         showError(err);
                     } else {
-                        window.open('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' + encodeURIComponent(data));
+                        let a = document.createElement('a');
+                        document.body.appendChild(a);
+                        a.style.display = 'none';
+                        a.href = encodeURI('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' + data);
+                        a.download = serial === $scope.serial1 ? $scope.serial1 : $scope.serial2;
+                        a.click();
                     }
                 });
         };
@@ -66,7 +71,9 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
         $scope.upload = function (file, idx) {
             memory[idx] = '';
             $scope['serial' + (idx + 1)] = '';
-            uploadFromFile(file, idx);
+            if (file) {
+                uploadFromFile(file, idx);
+            }
         };
 
         function uploadFromFile (file, idx) {
@@ -74,8 +81,21 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
                 url: 'upload/url',
                 data: {file: file, 'username': $scope.username}
             }).then(function (resp) {
-                SpecActionsService.readFileAsync(resp.config.data.file).then(function (fileInputContent) {
-                    console.log(resp.config.data.file.name);
+                if (idx === 0) {
+                    $scope.fileName1 = resp.config.data.file.name;
+                } else {
+                    $scope.fileName2 = resp.config.data.file.name;
+                }
+                Upload.base64DataUrl(file).then(function (url) {
+                    Meteor.call('importEprom', url,
+                        (err, data) => {
+                            if (err) {
+                                showError(err);
+                            } else {
+                                memory[idx] = data;
+                            }
+                            compare();
+                        });
                 });
             });
         };
@@ -128,13 +148,14 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
         }
 
         function process (data1, data2) {
-            if (data1 && data2) {
-                for (let key in data1) {
-                    if (!data1.hasOwnProperty(key)) continue;
-                    let obj1 = data1[key];
-                    let obj2 = data2[key];
+            for (let key in data1) {
+                if (!data1.hasOwnProperty(key)) continue;
+                let obj1 = data1[key];
+                let obj2 = data2[key];
+                if (obj1 && obj2) {
                     for (let i = 128; i < 256; i++) {
-                        if (obj1.list[i].hex !== obj2.list[i].hex) {
+                        if (obj1.list[i] && obj2.list[i] &&
+                            obj1.list[i].hex !== obj2.list[i].hex) {
                             obj1.diff = 'btnred';
                             obj2.diff = 'btnred';
                             obj1.list[i].diff = 'red';
