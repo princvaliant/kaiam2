@@ -17,7 +17,7 @@ angular.module('kaiamCharts').controller('TestSpeedController', [
     '$scope', '$state', '$mdToast', '$meteor', '$cookies', '$stateParams', '$location', ($scope, $state, $mdToast, $meteor, $cookies, $stateParams, $location) => {
         let chartsObjs;
         $scope.device = $cookies.get('testspeedDevice') || '40GB';
-        $scope.racks = ['-all-'].concat(Settings['spcRacks' + $scope.device]).sort();
+        $scope.racks = ['-all-'].concat(Settings['spcRacks100GB']).sort();
         $scope.rack = $cookies.get('speedRacksSel' + $scope.device) || $scope.racks[0];
 
         $scope.changeDevice = (device) => {
@@ -25,8 +25,6 @@ angular.module('kaiamCharts').controller('TestSpeedController', [
             $cookies.put('testspeedDevice', device);
             get();
         };
-
-
 
         let chartPerRack = {
             animationEnabled: true,

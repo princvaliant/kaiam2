@@ -38,6 +38,9 @@ Meteor.methods({
                     },
                     rack: '$Rack',
                     mid: '$mid',
+                    tst: {
+                        $concat: ['$type', ' - ', '$subtype']
+                    },
                     duration: {
                         '$divide': [
                             '$DurationSec',
@@ -48,11 +51,24 @@ Meteor.methods({
             }, {
                 $group: {
                     _id: {
+                        mid: '$mid',
+                        tst: '$tst',
                         date: '$date',
-                        mid: '$mid'
+                        rack: '$rack'
                     },
                     duration: {
                         $sum: '$duration'
+                    }
+                }
+            }, {
+                $group: {
+                    _id: {
+                        tst: '$_id.tst',
+                        date: '$_id.date',
+                        rack: '$_id.rack'
+                    },
+                    duration: {
+                        $avg: '$duration'
                     },
                     rack: {
                         $last: '$rack'
@@ -62,10 +78,10 @@ Meteor.methods({
                 $group: {
                     _id: {
                         date: '$_id.date',
-                        rack: '$rack'
+                        rack: '$_id.rack'
                     },
                     duration: {
-                        $avg: '$duration'
+                        $sum: '$duration'
                     }
                 }
             }, {
@@ -165,6 +181,7 @@ Meteor.methods({
                                 ]
                             }]
                     },
+                    mid: '$mid',
                     tst: {
                         $concat: ['$type', ' - ', '$subtype']
                     },
@@ -184,9 +201,6 @@ Meteor.methods({
                     },
                     duration: {
                         $sum: '$duration'
-                    },
-                    cnt: {
-                        $sum: 1
                     }
                 }
             }, {
@@ -196,12 +210,7 @@ Meteor.methods({
                         date: '$_id.date'
                     },
                     duration: {
-                        $sum: {
-                            '$divide': [
-                                '$duration',
-                                '$cnt'
-                            ]
-                        }
+                        $avg: '$duration'
                     }
                 }
             }, {
