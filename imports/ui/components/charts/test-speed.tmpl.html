@@ -8,6 +8,13 @@
                     <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
                 </md-select>
             </md-input-container>
+            <md-input-container>
+                <label>{{'SPC_OPTIONS_RACK' | translate}}</label>
+                <md-select ng-model="rack"
+                           ng-change="changeRack(rack)" style="width:120px">
+                    <md-option ng-repeat="rack in racks" value="{{rack}}">{{rack}}</md-option>
+                </md-select>
+            </md-input-container>
         </div>
     </md-toolbar>
     <tri-widget widget-chart flex="100">
