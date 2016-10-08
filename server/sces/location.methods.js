@@ -4,53 +4,32 @@ import {check} from 'meteor/check';
 
 
 Meteor.methods({
-
     'createPartAndAddToLocation': function (locationId, transceiver) {
         check(locationId, String);
         let user = ScesDomains.getUser(this.userId);
         let dc = getLatestTestData(transceiver._id);
-        let retId = ScesDomains.create('transceiver', user._id, transceiver._id, [locationId], {
-            pnum: dc.pnum,
-            PartNumber: dc.pnum,
-            TOSA: transceiver.TOSA,
-            ROSA: transceiver.ROSA,
-            PCBA: transceiver.PCBA,
-            state: 'AddedToLocation',
-            SerialNumber: transceiver._id
-        }, [transceiver.TOSA, transceiver.ROSA, transceiver.PCBA]);
-        ScesDomains.addEvent(locationId, 'add',
-            'Transceiver ' + transceiver._id + ' added to location.', transceiver._id);
-        return retId;
+        let tr = ScesDomains.getDomain(transceiver._id);
+        if (tr) {
+            addToLocation(locationId, transceiver._id, transceiver, user);
+            return transceiver._id;
+        } else {
+            let retId = ScesDomains.create('transceiver', user._id, transceiver._id, [locationId], {
+                pnum: dc.pnum || transceiver.pnum,
+                PartNumber: dc.pnum || transceiver.pnum,
+                TOSA: transceiver.TOSA,
+                ROSA: transceiver.ROSA,
+                PCBA: transceiver.PCBA,
+                state: 'AddedToLocation',
+                SerialNumber: transceiver._id
+            }, [transceiver.TOSA, transceiver.ROSA, transceiver.PCBA]);
+            ScesDomains.addEvent(locationId, 'add',
+                'Transceiver ' + transceiver._id + ' added to location.', transceiver._id);
+            return retId;
+        }
     },
 
     'addToLocation': function (locationId, unitId) {
-        check(unitId, String);
-        check(locationId, String);
-        let user = ScesDomains.getUser(this.userId);
-
-        let domain = ScesDomains.getDomain(unitId);
-        if (domain.type === 'tray') {
-            // If this is tray add tray and all the transceivers to location
-            Domains.find({
-                type: 'transceiver',
-                parents: domain._id
-            }).forEach(function (transceiver) {
-                ScesDomains.move(user._id, transceiver._id, [locationId], null, null, null, 'AddedToLocation');
-                return ScesDomains.addEvent(locationId, 'add',
-                    'Transceiver ' + transceiver._id + ' added to location.', transceiver._id);
-            });
-            ScesDomains.move(user._id, domain._id, [locationId], null, null, null, 'AddedToLocation');
-            return ScesDomains.addEvent(locationId, 'add',
-                'Tray ' + domain._id + ' added to location.', domain._id);
-        }
-        if (domain.type === 'transceiver') {
-            // If this is transceiver add it to location
-            ScesDomains.move(user._id, domain._id, [locationId], null, null, null, 'AddedToLocation');
-            // Insert domain events to display to user
-            return ScesDomains.addEvent(locationId, 'add',
-                'Transceiver ' + domain._id + ' added to location.', domain._id);
-        }
-        return '';
+        addToLocation(locationId, unitId, {}, ScesDomains.getUser(this.userId));
     },
 
     'removeFromLocation': function (locationId, unitId) {
@@ -105,6 +84,34 @@ Meteor.methods({
         Domains.remove(location._id);
     }
 });
+
+function addToLocation (locationId, unitId, dc, user) {
+    check(unitId, String);
+    check(locationId, String);
+    let domain = ScesDomains.getDomain(unitId);
+    if (domain.type === 'tray') {
+        // If this is tray add tray and all the transceivers to location
+        Domains.find({
+            type: 'transceiver',
+            parents: domain._id
+        }).forEach(function (transceiver) {
+            ScesDomains.move(user._id, transceiver._id, [locationId], null, dc, null, 'AddedToLocation');
+            return ScesDomains.addEvent(locationId, 'add',
+                'Transceiver ' + transceiver._id + ' added to location.', transceiver._id);
+        });
+        ScesDomains.move(user._id, domain._id, [locationId], null, null, null, 'AddedToLocation');
+        return ScesDomains.addEvent(locationId, 'add',
+            'Tray ' + domain._id + ' added to location.', domain._id);
+    }
+    if (domain.type === 'transceiver') {
+        // If this is transceiver add it to location
+        ScesDomains.move(user._id, domain._id, [locationId], null, dc, null, 'AddedToLocation');
+        // Insert domain events to display to user
+        return ScesDomains.addEvent(locationId, 'add',
+            'Transceiver ' + domain._id + ' added to location.', domain._id);
+    }
+    return '';
+}
 
 function getLatestTestData (transceiverId) {
     // Custom check for script names

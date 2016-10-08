@@ -248,7 +248,9 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                                         .position('bottom right')
                                         .hideDelay(5000));
                             } else {
-                                if (!data) {
+                                if ($scope.domain.dc.name === 'Assembly') {
+                                    showAddDialog(newValue);
+                                } else if (!data) {
                                     // If this transceiver does not exist
                                     Meteor.call('createPartAndAddToLocation', $scope.locationId, {_id: newValue}, (err2, retId) => {
                                         if (!err2) {
@@ -266,8 +268,7 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                                                     .hideDelay(3000));
                                         }
                                     });
-                                    // showAddDialog(newValue);
-                                } else if (_.contains(['transceiver', 'tray'], data.type))  {
+                                } else if (_.contains(['transceiver', 'tray'], data.type)) {
                                     add(newValue);
                                 } else {
                                     $mdToast.show(
