@@ -42,6 +42,10 @@ Meteor.methods({
             group._id.w = '$w';
             group._id.nw = '$nw';
             sort['_id.nw'] = 1;
+        } else if (interval === 'Monthly') {
+            group._id.m = '$m';
+            group._id.nm = '$nm';
+            sort['_id.nm'] = 1;
         } else {
             group._id.d = '$d';
             group._id.nd = '$nd';
@@ -88,7 +92,7 @@ Meteor.methods({
         }
         if (device === '100GB') {
             let grp = _.groupBy(result, (c) => {
-                return 'd' + c._id.d + 'nd' + c._id.nd + 'w' + c._id.w + 'nw' + c._id.nw;
+                return 'd' + c._id.d + 'nd' + c._id.nd + 'w' + c._id.w + 'nw' + c._id.nw + 'm' + c._id.m + 'nm' + c._id.nm;
             });
             _.each(grp, (val, key) => {
                 let id = _.clone(val[0]._id);
@@ -102,7 +106,7 @@ Meteor.methods({
                 result.push(obj);
             });
             result = _.sortBy(result, (srt) => {
-                return srt._id.nw ? srt._id.nw : srt._id.nd;
+                return srt._id.nw ? srt._id.nw : (srt._id.nd ? srt._id.nd : srt._id.nm );
             });
         }
 

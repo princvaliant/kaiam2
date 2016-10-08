@@ -337,12 +337,16 @@ function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, fa
     let nd = moment(date).format('YYYYDDD');
     let w = parseInt(moment(date).format('WW'));
     let nw = moment(date).format('YYYYWW');
+    let m = parseInt(moment(date).format('MM'));
+    let nm = moment(date).format('YYYYMM');
     let set = {
         sn: serial,
         w: w,
         nw: nw,
         d: d,
         nd: nd,
+        m: m,
+        nm: nm,
         rwr: 0,
         pnum: pnum,
         cm: 'Kaiam',

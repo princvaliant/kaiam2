@@ -146,6 +146,19 @@ Scheduler = {
                         $subtract: ['$meta.StartDateTime', offset]
                     }
                 }
+            },
+            m: {
+                $month: {
+                    $subtract: ['$meta.StartDateTime', offset]
+                }
+            },
+            nm: {
+                $dateToString: {
+                    format: '%Y%m',
+                    date: {
+                        $subtract: ['$meta.StartDateTime', offset]
+                    }
+                }
             }
         };
     }

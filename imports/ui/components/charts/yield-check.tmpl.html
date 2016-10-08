@@ -17,7 +17,7 @@
                 <label>{{'TIMETREND_OPTIONS_INTERVAL' | translate}}</label>
                 <md-select  ng-model="interval"
                            ng-change="changeInterval(interval)">
-                    <md-option ng-repeat="i in ['Daily', 'Weekly', 'Rework']" value="{{i}}">{{i}}</md-option>
+                    <md-option ng-repeat="i in ['Daily', 'Weekly', 'Monthly', 'Rework']" value="{{i}}">{{i}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>

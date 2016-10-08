@@ -183,7 +183,7 @@ function exportDetails (status) {
                 head += 'tsts,';
                 row += item.tsts.toString().replace(/,/g, '|') + ',';
                 head += 'tstparams,';
-                row += item.tstparams.toString().replace(/,/g, '|') + ',';
+                row += item.tstparams.toString().replace(/,/g, '|').replace(/^[\r\n]+|\.|[\r\n]+$/g, ' ') + ',';
                 if (ret === '') {
                     ret += ',' + head + '\n';
                 }

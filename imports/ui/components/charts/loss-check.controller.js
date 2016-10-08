@@ -141,6 +141,10 @@ angular.module('kaiamCharts').controller('LossCheckController', [
             exportData();
         };
 
+        $scope.exportSummary = function () {
+            exportSummary();
+        };
+
         function processRows () {
             let racks = ['All_racks'];
             let duts = ['All_duts'];
@@ -151,6 +155,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                 racks = $scope.racks;
                 duts = $scope.duts;
             }
+            LossCheckService.setMaxY();
             _.each(racks, (rack) => {
                 _.each(duts, (dut) => {
                     charts[rack + dut] = null;
@@ -166,7 +171,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                                         .position('bottom right')
                                         .hideDelay(3000));
                             } else {
-
+                                $scope.losses = losses;
                                 listOfSerials = [];
                                 _.each(losses, (loss) => {
                                     listOfSerials = _.union(listOfSerials, loss.ids);
@@ -177,7 +182,18 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                                         processRow(loss, rack, dut, $scope.range + ' ' + $scope.rangeLabel);
                                     }
                                 });
-                                initData(rack, dut);
+                                initData(rack, dut, LossCheckService.getMaxY());
+                                $scope.widgetCtrl.setLoading(false);
+
+                                // If this is the last pass
+                                if (racks[racks.length - 1] === rack && duts[duts.length - 1] === dut) {
+                                    _.each(racks, (rack1) => {
+                                        _.each(duts, (dut1) => {
+                                            charts[rack1 + dut1].axisY2.maximum = LossCheckService.getMaxY();
+                                            chartsObjs[rack1 + dut1].render();
+                                        });
+                                    });
+                                }
                             }
                         });
                 });
@@ -199,24 +215,24 @@ angular.module('kaiamCharts').controller('LossCheckController', [
         }
 
         // Executed when switching between tabs. Add data to created charts.
-        function initData (rack, dut) {
-            setTimeout(function () {
-                if (charts[rack + dut] !== null && charts[rack + dut].title !== undefined) {
-                    let sortvar = 'y';
-                    if ($scope.lossChartType === 'Fail trends') {
-                        sortvar = 'x';
-                    }
-                    charts[rack + dut].data[0].dataPoints = _.sortBy(charts[rack + dut].data[0].dataPoints, sortvar);
-                    if (document.querySelector('#lossChart' + rack + dut) !== null) {
-                        chartsObjs[rack + dut] = new CanvasJS.Chart('lossChart' + rack + dut, charts[rack + dut]);
-                        chartsObjs[rack + dut].render();
-                    }
+        function initData (rack, dut, maxy) {
+            if (charts[rack + dut] !== null && charts[rack + dut].title !== undefined) {
+                let sortvar;
+                if ($scope.lossChartType === 'Fail trends') {
+                    sortvar = 'x';
                 } else {
-                    document.querySelector('#lossChart' + rack + dut).innerHTML =
-                        '<div style="padding:20px;font-weight:bold;font-size:15px;">NO DATA</div>';
+                    sortvar = 'y';
+                    charts[rack + dut].axisY2.maximum = maxy;
                 }
-                $scope.widgetCtrl.setLoading(false);
-            }, 20);
+                charts[rack + dut].data[0].dataPoints = _.sortBy(charts[rack + dut].data[0].dataPoints, sortvar);
+                if (document.querySelector('#lossChart' + rack + dut) !== null) {
+                    chartsObjs[rack + dut] = new CanvasJS.Chart('lossChart' + rack + dut, charts[rack + dut]);
+                    chartsObjs[rack + dut].render();
+                }
+            } else {
+                document.querySelector('#lossChart' + rack + dut).innerHTML =
+                    '<div style="padding:20px;font-weight:bold;font-size:16px;">NO DATA</div>';
+            }
         }
 
         function exportData (tt, doc) {
@@ -250,6 +266,35 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                         }
                     }
                 });
+        }
+
+        function exportSummary () {
+            $scope.showProgress = true;
+            let ret = '';
+            _.each($scope.losses, (item) => {
+                let row = '';
+                let head = '';
+                head += 'test,';
+                row += item._id.tsts + ',';
+                head += 'yield%,';
+                row += item.pass * 100 + ',';
+                head += 'fail,';
+                row += item.fail + ',';
+                head += 'total,';
+                row += item.fail / (item.pass === 0 ? 1 : item.pass)  + ',';
+                head += 'date,';
+                row += item._id.d;
+                if (ret === '') {
+                    ret += ',' + head + '\n';
+                }
+                ret += row + '\n';
+            });
+            let a = document.createElement('a');
+            document.body.appendChild(a);
+            a.style.display = 'none';
+            a.href = encodeURI('data:text/csv;' + ret);
+            a.download = 'loss-summary.csv';
+            a.click();
         }
     }
 ]);

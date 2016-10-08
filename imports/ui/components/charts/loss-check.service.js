@@ -12,9 +12,15 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
     CanvasJS.addColorSet('customColorSet', Settings.customColorSet);
 
     let visibility = {};
+    let maxY = 0;
 
     let service = {
-
+        getMaxY () {
+            return maxY;
+        },
+        setMaxY () {
+            maxY = 0;
+        },
         construct: (doc, charts, rack, dut, title, barClick) => {
             let _charts = charts;
             let titleLocal =  title ? title + ' ' + rack : rack;
@@ -89,6 +95,9 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
                     _charts.height = 100 + _charts.data[0].dataPoints.length * 46;
                 } else {
                     dataPoint.y += doc.fail + doc.err;
+                }
+                if (doc.fail + doc.err > maxY) {
+                    maxY = doc.fail + doc.err;
                 }
             }
             return _charts;
@@ -170,6 +179,9 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
                 label: doc._id.d,
                 y: y
             });
+            if (y > maxY) {
+                maxY = y;
+            }
             return _charts;
         }
     };

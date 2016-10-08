@@ -96,24 +96,29 @@ angular.module('kaiamCharts')
                         if (doc._id.d) {
                             label = doc._id.d;
                         }
-                        if (label2 !== label) {
-                            xval += 1;
+                        if (doc._id.m) {
+                            label = parseInt(doc._id.m);
                         }
-                        label2 = label;
-                        series.dataPoints.push({
-                            x: xval,
-                            label: label,
-                            label1: doc._id.w || doc._id.d,
-                            y: y,
-                            pn: doc._id.pnum,
-                            pass: doc.pass,
-                            fail: doc.fail,
-                            err: doc.err,
-                            total: doc.pass + doc.fail + doc.err,
-                            click: function (e) {
-                                pointClicked(e.dataPoint.pn, e.dataPoint.label1);
+                        if (label) {
+                            if (label2 !== label) {
+                                xval += 1;
                             }
-                        });
+                            label2 = label;
+                            series.dataPoints.push({
+                                x: xval,
+                                label: label,
+                                label1: doc._id.w || (doc._id.m || doc._id.d),
+                                y: y,
+                                pn: doc._id.pnum,
+                                pass: doc.pass,
+                                fail: doc.fail,
+                                err: doc.err,
+                                total: doc.pass + doc.fail + doc.err,
+                                click: function (e) {
+                                    pointClicked(e.dataPoint.pn, e.dataPoint.label1);
+                                }
+                            });
+                        }
                     }
                     return _charts;
                 }
