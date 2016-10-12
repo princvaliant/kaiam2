@@ -27,7 +27,7 @@ function execLinktest() {
 
     let row = true;
     while (row) {
-        row = SyncFiles.findOne({source: 'DB1', path: 'Z:/', processed: false}, {sort: {dateCreated: 1}});
+        row = SyncFiles.findOne({source: 'DB1', path: '//s1/Legacy/linktestdata', processed: false}, {sort: {dateCreated: 1}});
         if (row) {
             let data = Papa.parse(row.content);
             if (data && data.data) {
