@@ -187,8 +187,10 @@ angular.module('kaiamCharts').controller('MesChartsController', [
                             let record = _.find(records, (r) => {
                                 return r.x1 <= item.duration;
                             });
-                            record.y += 1;
-                            record.serials.push(item.serial);
+                            if (record) {
+                                record.y += 1;
+                                record.serials.push(item.serial);
+                            }
                         });
                         chart.data.push({
                             type: 'stackedColumn',
