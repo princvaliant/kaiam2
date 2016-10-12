@@ -18,6 +18,7 @@ angular.module('kaiamCharts').controller('PackoutChartsController', [
         // $reactive(this).attach($scope);
         $scope.manufacturer = '-all-';
         $scope.interval = $cookies.get('packoutInterval') || 'Daily';
+        $scope.device = $cookies.get('packoutDevice') || '40GB';
         // Event handler when manufacturer changed
         $scope.changeManufacturer = (manufacturer) => {
             $scope.manufacturer = manufacturer;
@@ -28,11 +29,17 @@ angular.module('kaiamCharts').controller('PackoutChartsController', [
             $cookies.put('packoutInterval', interval);
             processRows($scope.packouts);
         };
+        $scope.changeDevice = (device) => {
+            $scope.device = device;
+            $cookies.put('packoutDevice', device);
+            processRows($scope.packouts);
+        };
 
         $scope.subscribe('packout');
         $scope.helpers({
             packouts: () => {
-                return Packouts.find();
+                let partNumbers = Settings.getPartNumbersForDevice($scope.getReactively('device'));
+                return Packouts.find({'id.pnum': {$in: partNumbers}}) || [];
             }
         });
         $scope.autorun(() => {
@@ -83,6 +90,12 @@ angular.module('kaiamCharts').controller('PackoutChartsController', [
                     }
                 }
                 initData();
+            } else {
+                setTimeout(() => {
+                    $scope.widgetCtrl.setLoading(false);
+                    $scope.chartsObjs = new CanvasJS.Chart('packoutChart', {});
+                    $scope.chartsObjs.render();
+                }, 1);
             }
         }
 

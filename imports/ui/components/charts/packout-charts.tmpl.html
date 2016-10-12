@@ -2,6 +2,12 @@
     <md-toolbar>
         <div class="md-toolbar-tools" layout-align="start end">
             <md-input-container>
+                <label>device</label>
+                <md-select ng-model="device" ng-change="changeDevice(device)">
+                    <md-option ng-repeat="i in ['40GB', '100GB']" value="{{i}}">{{i}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
                 <label>{{'TIMETREND_OPTIONS_INTERVAL' | translate}}</label>
                 <md-select ng-model="interval"
                            ng-change="changeInterval(interval)">

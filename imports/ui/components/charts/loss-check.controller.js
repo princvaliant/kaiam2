@@ -146,6 +146,9 @@ angular.module('kaiamCharts').controller('LossCheckController', [
         };
 
         function processRows () {
+            if ($scope.widgetCtrl) {
+                $scope.widgetCtrl.setLoading(true);
+            }
             let racks = ['All_racks'];
             let duts = ['All_duts'];
             if ($scope.groupRack) {
@@ -174,7 +177,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                                 $scope.losses = losses;
                                 listOfSerials = [];
                                 _.each(losses, (loss) => {
-                                    listOfSerials = _.union(listOfSerials, loss.ids);
+                                    listOfSerials = listOfSerials.concat(loss.ids);
                                     if ($scope.lossChartType === 'Fail trends') {
                                         processRowFailTrends(loss, rack, dut, $scope.lossTrendValue, $scope.range + ' ' + $scope.rangeLabel);
                                     } else {
@@ -183,14 +186,18 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                                     }
                                 });
                                 initData(rack, dut, LossCheckService.getMaxY());
-                                $scope.widgetCtrl.setLoading(false);
+                                $timeout(() => {
+                                    $scope.widgetCtrl.setLoading(false);
+                                }, 10);
 
                                 // If this is the last pass
                                 if (racks[racks.length - 1] === rack && duts[duts.length - 1] === dut) {
                                     _.each(racks, (rack1) => {
                                         _.each(duts, (dut1) => {
-                                            charts[rack1 + dut1].axisY2.maximum = LossCheckService.getMaxY();
-                                            chartsObjs[rack1 + dut1].render();
+                                            if (charts[rack1 + dut1].axisY2) {
+                                                charts[rack1 + dut1].axisY2.maximum = LossCheckService.getMaxY();
+                                                chartsObjs[rack1 + dut1].render();
+                                            }
                                         });
                                     });
                                 }
@@ -237,7 +244,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
 
         function exportData (tt, doc) {
             $scope.showProgress = true;
-            Meteor.call('exportData', tt ? doc.ids : listOfSerials, [tt], null, null, null, 'F',
+            Meteor.call('exportData', tt ? doc.ids : _.uniq(listOfSerials), [tt], null, null, null, 'F',
                 (err, data) => {
                     if (err) {
                         $mdToast.show(
