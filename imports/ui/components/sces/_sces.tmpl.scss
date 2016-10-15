@@ -8,6 +8,20 @@
     }
 }
 
+.ui-grid-pager-panel {
+    display: inline-block;
+}
+.ui-grid-pager-max-pages-number {
+    vertical-align: bottom;
+}
+.ui-grid-pager-control-input {
+    height: 14px !important;
+    width: 40px !important;
+}
+.ui-grid-pager-row-count-picker select {
+    width: 50px !important;
+}
+
 .shipout {
     .status {
         padding: 8px 14px;
@@ -97,12 +111,19 @@
     padding: 2px;
 }
 
+.colorLink {
+    font-weight: 900;
+    font-size: 1.4rem;
+    margin-top: 4px;
+    color: #112211;
+}
+
 .scesPadding {
     font-size: 1.3rem;
     font-weight:300;
     margin-left:10px;
     margin-right:10px;
-    margin-top: 2px;
+    margin-top: 1px;
     margin-bottom: 5px;
     padding: 0px;
 }
@@ -113,7 +134,7 @@
 }
 
 .md-grid-tile-c.ng-enter {
-    animation: 2s appear;
+    animation: 5s appear;
 }
 
 .md-list-item-anim

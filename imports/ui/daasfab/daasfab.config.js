@@ -14,7 +14,8 @@ function routeConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $locationProvider.html5Mode({
         enabled: true,
-        requireBase: false
+        requireBase: true,
+        rewriteLinks: true
     });
 
     // 404 & 500 pages
@@ -54,10 +55,11 @@ function routeConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 
 
     // set default routes when no path specified
-    $urlRouterProvider.when('', '/dashboard');
     $urlRouterProvider.when('/', '/dashboard');
 
     // always goto 404 if route not found
+    $urlRouterProvider.deferIntercept();
     $urlRouterProvider.otherwise('/404');
+
 }
 

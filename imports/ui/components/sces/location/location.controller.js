@@ -36,6 +36,45 @@ angular.module('kaiamSces').controller('ScesLocationController', [
         $scope.content = 'log';
         $scope.isAdmin = ScesSettings.isInternalMember(Meteor.user(), ['ADMIN', 'INVENTORY_SUPERVISOR']);
 
+        // Initialize grid that shows all kids
+        let paginationOptions = {
+            pageNumber: 1,
+            pageSize: 25,
+        };
+        $scope.locationSort = {'state.when': -1};
+        $scope.gridOptions = {
+            paginationPageSizes: [25, 50, 75, 100],
+            paginationPageSize: 25,
+            useExternalPagination: true,
+            useExternalSorting: true,
+            columnDefs: [
+                { name: 'state.when', displayName: 'When',  cellTemplate: '<div class="scesPadding text-ellipsis" nowrap am-time-ago="row.entity.state.when"></div>' },
+                { name: '_id', displayName: 'Serial#',  cellTemplate: '<div style="position:absolute;"><div class="md-grid-md-list-item-anim colorLink"><a href="/sces/transceiver?id={{row.entity._id}}" class="colorLink text-ellipsis  scesPadding">{{row.entity._id}}</a></div></div>'},
+                { name: 'type', displayName: 'Type' }
+            ]
+        };
+        $scope.gridOptions.onRegisterApi = function (gridApi) {
+            $scope.gridApi = gridApi;
+            gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
+                paginationOptions.pageNumber = newPage;
+                paginationOptions.pageSize = pageSize;
+                initGrid();
+            });
+            gridApi.core.on.sortChanged($scope, function(grid, sortColumns) {
+                if (sortColumns.length === 0) {
+                    paginationOptions.sort = null;
+                } else {
+                    paginationOptions.sort = {};
+                    paginationOptions.pageNumber = 1;
+                    paginationOptions.pageSize = 25;
+                    let s = {};
+                    gridApi.pagination.seek(1);
+                    s[sortColumns[0].field] = sortColumns[0].sort.direction === 'asc' ? 1 : -1;
+                    $scope.locationSort = s;
+                }
+            });
+        }
+
         // This part provides order select functionality for new shipment ////////////////////
         $scope.confirmClicked = function () {
             if ($scope.name) {
@@ -82,13 +121,6 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                     }, true];
                 });
                 $scope.barcodeimg = JsBarcode($scope.locationId);
-                //Set focus on radio group so scanner will work immidiatelly
-                $timeout(function () {
-                    let element = $window.document.getElementById('locationScanOptions');
-                    if (element) {
-                        element.focus();
-                    }
-                }, 200);
             }
         });
 
@@ -110,7 +142,19 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                 $scope.totalTrays = _.where(domainKids, {type: 'tray'}).length;
                 $scope.totalTransceivers = _.where(domainKids, {type: 'transceiver'}).length;
             }
+            $scope.gridOptions.totalItems = domainKids.length;
+            //Set focus on radio group so scanner will work immidiatelly
+            $timeout(function () {
+                $window.document.getElementById('locationScanOptions').focus();
+            }, 1000);
+            initGrid();
         });
+
+        function initGrid () {
+            let limit = paginationOptions.pageSize;
+            let skip = limit * (paginationOptions.pageNumber - 1);
+            $scope.gridOptions.data = $scope.domainKids.slice(skip, skip  + limit);
+        }
 
         $scope.helpers({
             domains: () => {
@@ -131,9 +175,7 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                     'state.parentId': $scope.getReactively('locationId'),
                     type: {$in: ['transceiver', 'tray']}
                 }, {
-                    sort: {
-                        'state.when': -1
-                    }
+                    sort: $scope.getReactively('locationSort')
                 });
             }
         });
@@ -221,7 +263,8 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                 templateUrl: 'imports/ui/components/sces/location/new-part.tmpl.html',
                 locals: {
                     locationId: $scope.locationId,
-                    transceiverId: value
+                    transceiverId: value,
+                    position: {top: 200, right: 100},
                 }
             });
         };

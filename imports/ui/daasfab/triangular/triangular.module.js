@@ -2,6 +2,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 
+import './router/router.module';
 import './themes/themes.module';
 import './themes/theming.provider';
 import './themes/skins.provider';
@@ -18,15 +19,14 @@ import './layouts/layouts.module';
 
 import './directives/directives.module';
 
-import './router/router.module';
-
 export default angular
     .module('triangular', [
+        'triangular.router',
         ngMaterial,
         uiRouter,
         'triangular.layouts',
         'triangular.components',
         'triangular.themes',
-        'triangular.directives',
-        'triangular.router'
+        'triangular.directives'
+
     ]);

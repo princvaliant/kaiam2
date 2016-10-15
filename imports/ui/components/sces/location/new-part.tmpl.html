@@ -13,7 +13,7 @@
         <md-dialog-content layout="column" class="md-padding">
             <md-input-container style="width:300px;" md-is-error="form.pnum.$invalid">
                 <label for="pnum">Part number</label>
-                <md-select name="pnum" ng-model="transceiver.pnum"  ng-required="true" style="margin-bottom:15px;">
+                <md-select name="pnum" ng-model="transceiver.pnum"  ng-required="true" style="margin-bottom:15px;"  ng-change="changePartNumber(transceiver.pnum, 'tosaInputId')">
                     <md-option ng-repeat="partNumber in partNumbers | orderBy"
                                value="{{partNumber}}">{{partNumber}}</md-option>
                 </md-select>
@@ -23,21 +23,21 @@
             </md-input-container>
             <md-input-container style="width:300px;" md-is-error="form.tosa.$invalid">
                 <label for="tosa">TOSA</label>
-                <input name="tosa" ng-model="transceiver.TOSA" aria-label="TOSA" ng-required="true"/>
+                <input name="tosa" id="tosaInputId" ng-model="transceiver.TOSA" aria-label="TOSA" ng-required="true" ng-keypress="onKeyPressed($event, 'rosaInputId')"/>
                 <div ng-messages="form.tosa.$error" md-auto-hide="false" ng-if="form.tosa.$touched">
                     <div ng-message="required">TOSA required</div>
                 </div>
             </md-input-container>
             <md-input-container style="width:300px;" md-is-error="form.rosa.$invalid">
                 <label for="rosa">ROSA</label>
-                <input name="rosa" ng-model="transceiver.ROSA" aria-label="ROSA" ng-required="true"/>
+                <input name="rosa" id="rosaInputId" ng-model="transceiver.ROSA" aria-label="ROSA" ng-required="true" ng-keypress="onKeyPressed($event, 'pcbaInputId')"/>
                 <div ng-messages="form.rosa.$error" md-auto-hide="false" ng-if="form.rosa.$touched">
                     <div ng-message="required">ROSA required</div>
                 </div>
             </md-input-container>
             <md-input-container style="width:300px;" md-is-error="form.pcba.$invalid">
                 <label for="pcba">PCBA</label>
-                <input name="pcba" ng-model="transceiver.PCBA" aria-label="PCBA" ng-required="true"/>
+                <input name="pcba" id="pcbaInputId" ng-model="transceiver.PCBA" aria-label="PCBA" ng-required="true" ng-keypress="onKeyPressed($event, 'buttonInputId')"/>
                 <div ng-messages="form.pcba.$error" md-auto-hide="false" ng-if="form.pcba.$touched">
                     <div ng-message="required">PCBA required</div>
                 </div>
@@ -45,7 +45,7 @@
         </md-dialog-content>
         <md-dialog-actions>
             <span flex></span>
-            <md-button aria-label="{{'SETTINGS.SUBMIT' | translate}}" class="md-primary" ng-click="submit()"
+            <md-button id="buttonInputId" aria-label="{{'SETTINGS.SUBMIT' | translate}}" class="md-primary" ng-click="submit()"
                        ng-disabled="form.$invalid">
                 <md-icon md-font-icon="zmdi zmdi-save"></md-icon>
                 Register and add to location

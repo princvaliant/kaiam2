@@ -73,6 +73,7 @@ export default angular.module(name, [
     'ui.grid.importer',
     'ui.grid.cellNav',
     'ui.grid.draggable-rows',
+    'ui.grid.pagination',
 
     'triangular',
     'app.translate',

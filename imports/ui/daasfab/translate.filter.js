@@ -7,7 +7,7 @@ angular
 triTranslateFilter.$inject =  ['$injector', '$filter'];
 
 /* @ngInject */
-function triTranslateFilter($injector, $filter) {
+function triTranslateFilter ($injector, $filter) {
     return function (input) {
         // if angular translate installed this will return true
         // so we can translate

@@ -1,5 +1,5 @@
-<md-card>
-    <md-card-content layout="column" ng-show="!locationId && canAdd">
+<md-card layout-fill layout-padding >
+    <md-card-content layout="column" ng-show="!locationId && canAdd" layout-fill >
         <form name="locationForm" layout="column" novalidate>
             <md-subheader class="md-no-sticky">{{'SCES.NEW' | translate}} {{'SCES.location' | translate}}</md-subheader>
             <md-input-container style="width:300px;" md-is-error="locationForm.name.$invalid">
@@ -122,22 +122,9 @@
                 </md-button>
             </div>
             <div layout="row" flex>
-                <md-card flex="100">
-                    <md-subheader>{{'SCES.LOCATION-ASSIGNED' | translate}}</md-subheader>
-                    <md-card-content>
-                        <md-list>
-                            <md-list-item ng-repeat="item in domainKids" class="md-grid-tile-c" layout="row"
-                                          layout-align="start center">
-                                    <md-icon md-font-icon="zmdi zmdi-collection-plus" class="md-primary"
-                                             style="margin-right:0px;"></md-icon>
-                                    <div class="scesPadding text-ellipsis" nowrap am-time-ago="item.state.when"></div>
-                                    <p class="scesPadding text-ellipsis">{{item.type}} <a
-                                            href="/sces/transceiver?id={{item._id}}"
-                                            class="text-ellipsis scesPadding">{{item._id}}</a> - {{item.dc.pnum}} </p>
-                            </md-list-item>
-                        </md-list>
-                    </md-card-content>
-                </md-card>
+                <div ui-grid="gridOptions" ui-grid-pagination ui-grid-auto-resize
+                     style="position:absolute;height:calc(100% - 110px) !important;top:90px;left:300px;right:308px;bottom:0px;"></div>
+
                 <md-sidenav class="md-sidenav-right rightnav md-whiteframe-4dp" md-component-id="right">
                     <md-subheader>{{'SCES.SHIP-ACTION-LOG' | translate}}</md-subheader>
                     <md-list>
