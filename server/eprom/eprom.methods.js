@@ -22,6 +22,19 @@ Meteor.methods({
         });
     },
 
+    getLastDump: function (serial) {
+        ScesDomains.getUser(this.userId);
+        return Testdata.findOne({
+            'device.SerialNumber': serial.toUpperCase(),
+            'type': 'memory',
+            'subtype': 'dump'
+        }, {
+            sort: {
+                timestamp: -1
+            }
+        });
+    },
+
     exportEprom: function (data) {
         let future = new Future();
         let workbook = new Excel.Workbook();

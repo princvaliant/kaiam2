@@ -25,6 +25,8 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
         $scope.page = 0;
         $scope.serial1 = 'Q3565';
         $scope.serial2 = 'Q3445';
+        $scope.serialDump1 = 'Q1848';
+        $scope.serialDump2 = 'Q1848';
         $scope.showProgress = false;
         $scope.columns = [{
             min: 128,
@@ -68,6 +70,12 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
             loadFromPackout(serial, idx);
         };
 
+        $scope.loadDump = function (serial, idx) {
+            memory[idx] = '';
+            $scope['fileName' + (idx + 1)] = '';
+            loadFromDump(serial, idx);
+        };
+
         $scope.upload = function (file, idx) {
             memory[idx] = '';
             $scope['serial' + (idx + 1)] = '';
@@ -98,7 +106,7 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
                         });
                 });
             });
-        };
+        }
 
         function loadFromPackout (serial, idx) {
             if (serial) {
@@ -108,7 +116,11 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
                             showError(err);
                         } else {
                             if (!data) {
-                                showError('No packout data for serial ' + serial);
+                                $mdToast.show(
+                                    $mdToast.simple()
+                                        .content('No packout data for serial ' + serial)
+                                        .position('bottom right')
+                                        .hideDelay(3000));
                             }
                             memory[idx] = data.data.MemoryDump;
                         }
@@ -116,6 +128,28 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
                     });
             }
         }
+
+        function loadFromDump (serial, idx) {
+            if (serial) {
+                Meteor.call('getLastDump', serial,
+                    (err, data) => {
+                        if (err) {
+                            showError(err);
+                        } else {
+                            if (!data) {
+                                $mdToast.show(
+                                    $mdToast.simple()
+                                        .content('No memory dump data for serial ' + serial)
+                                        .position('bottom right')
+                                        .hideDelay(3000));
+                            }
+                            memory[idx] = data.data.MemoryDump;
+                        }
+                        compare();
+                    });
+            }
+        }
+
 
         function compare () {
             let data1 = pagify(memory[0]);
@@ -180,6 +214,7 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
             $scope.pageData1 = null;
             $scope.pageData2 = null;
             $scope.data1 = null;
+            $scope.data2 = null;
         }
     }
 ]);

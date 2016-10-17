@@ -122,7 +122,9 @@ Meteor.methods({
 
         for (let j = 0; j < result.length; j++) {
             result[j].pass = result[j].fail / totalPasses;
-            result[j]._id.tsts = result[j]._id.tsts.split('|')[0];
+            if (chartType !== 'Grouped fails') {
+                result[j]._id.tsts = result[j]._id.tsts.split('|')[0];
+            }
         }
 
         return result;

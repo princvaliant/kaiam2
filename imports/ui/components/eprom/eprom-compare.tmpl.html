@@ -9,7 +9,16 @@
                         <input type="text" ng-model="serial1"/>
                     </md-input-container>
                     <md-button class="md-primary" ng-click="load(serial1, 0)">
-                        {{'EPROM.LOAD-BTN' | translate}}
+                        Packout
+                    </md-button>
+                </div>
+                <div layout="row" flex="100">
+                    <md-input-container flex="70">
+                        <label>Serial</label>
+                        <input type="text" ng-model="serialDump1"/>
+                    </md-input-container>
+                    <md-button class="md-primary" ng-click="loadDump(serialDump1, 0)">
+                       Memory dump
                     </md-button>
                 </div>
                 <div layout="row" flex="100">
@@ -35,7 +44,16 @@
                         <input type="text" ng-model="serial2"/>
                     </md-input-container>
                     <md-button class="md-primary" ng-click="load(serial2, 1)">
-                        {{'EPROM.LOAD-BTN' | translate}}
+                        Packout
+                    </md-button>
+                </div>
+                <div layout="row" flex="100">
+                    <md-input-container flex="70">
+                        <label>Serial</label>
+                        <input type="text" ng-model="serialDump2"/>
+                    </md-input-container>
+                    <md-button class="md-primary" ng-click="loadDump(serialDump2, 1)">
+                        Memory dump
                     </md-button>
                 </div>
                 <div layout="row" flex="100">

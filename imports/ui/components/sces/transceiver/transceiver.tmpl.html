@@ -1,6 +1,6 @@
 <md-card>
     <div layout="row" flex>
-        <div layout="column" style="width:305px;">
+        <div layout="column" style="width:345px;">
             <div palette-background="deep-orange:200" content-layout="column" content-layout-align="space-between">
                 <h2 class="md-display-1 font-weight-400 margin-0" flex
                     layout-padding>{{'SCES.TRANSCEIVER'| translate}}</h2>
@@ -35,7 +35,7 @@
                 <md-subheader>{{'location' | translate}}</md-subheader>
                 <md-list>
                     <md-list-item ng-repeat="location in locations" layout="row" layout-align="start start">
-                        <div class="scesPadding" nowrap am-time-ago="location.state.when"></div>
+                        <div class="scesPadding" am-time-ago="location.state.when" style="white-space: nowrap;"></div>
                         <p><a href="/sces/location?id={{location._id}}"
                               class="text-ellipsis scesPadding">{{location.dc.name}}</a></p>
                     </md-list-item>
@@ -45,7 +45,7 @@
                 <md-subheader>{{'SCES.ASSIGNED-SHIPMENT' | translate}}</md-subheader>
                 <md-list>
                     <md-list-item ng-repeat="ship in shipments" layout="row" layout-align="start start">
-                        <div class="text-ellipsis scesPadding" nowrap am-time-ago="ship.state.when"></div>
+                        <div class="text-ellipsis scesPadding" style="white-space: nowrap;" am-time-ago="ship.state.when"></div>
                         <p><a href="/sces/shipment?id={{ship._id}}" class="text-ellipsis scesPadding">{{ship._id}}</a>
                         </p>
                     </md-list-item>
@@ -55,7 +55,7 @@
                 <md-subheader>{{'SCES.ASSIGNED-TRAYS' | translate}}</md-subheader>
                 <md-list>
                     <md-list-item ng-repeat="tray in trays" layout="row" layout-align="start start">
-                        <div class="text-ellipsis scesPadding" nowrap am-time-ago="tray.state.when"></div>
+                        <div class="text-ellipsis scesPadding" style="white-space: nowrap;" am-time-ago="tray.state.when"></div>
                         <p><a href="/sces/tray?id={{tray._id}}" class="text-ellipsis scesPadding">{{tray._id}}
                             - {{tray.dc.pnum}}</a></p>
                     </md-list-item>
@@ -65,7 +65,7 @@
                 <md-subheader>{{'SCES.ASSIGNED-SALESORDERS' | translate}}</md-subheader>
                 <md-list>
                     <md-list-item ng-repeat="order in salesOrders" layout="row" layout-align="start start">
-                        <div class="text-ellipsis scesPadding" nowrap am-time-ago="order.state.when"></div>
+                        <div class="text-ellipsis scesPadding" style="white-space: nowrap;" am-time-ago="order.state.when"></div>
                         <p><a href="/sces/salesorder?id={{order._id}}"
                               class="text-ellipsis scesPadding">{{order.dc.Order}} - {{order.dc.Line}} {{order.dc
                                 ['Name (Sold-To)']}}</a></p>
@@ -76,7 +76,7 @@
                 <md-subheader>{{'Return requests' | translate}}</md-subheader>
                 <md-list>
                     <md-list-item ng-repeat="rma in rmas" layout="row" layout-align="start start">
-                        <div class="text-ellipsis scesPadding" nowrap am-time-ago="rma.state.when"></div>
+                        <div class="text-ellipsis scesPadding" style="white-space: nowrap;" am-time-ago="rma.state.when"></div>
                         <p><a href="/sces/rma?id={{rma._id}}" class="text-ellipsis scesPadding">{{rma._id}}</a></p>
                     </md-list-item>
                 </md-list>
