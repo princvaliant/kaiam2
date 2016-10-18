@@ -16,6 +16,9 @@ let sequenceConfig = {
         seq: 'SEQ2',
         reset: 'week' // Sunday
     },
+    XQX5000: {
+        seq: 'SEQ3'
+    },
     DEFAULT: {
         seq: 'SEQ',
         reset: 'week'  //Sunday
