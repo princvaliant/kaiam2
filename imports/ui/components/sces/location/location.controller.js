@@ -282,8 +282,9 @@ angular.module('kaiamSces').controller('ScesLocationController', [
         function addOrRemove (newValue) {
             if ($scope.domain && $scope.domain.canEdit()) {
                 if (newValue) {
+                    let val = newValue.toUpperCase();
                     if ($scope.scanadd) {
-                        Meteor.call('getDomain', newValue, (err, data) => {
+                        Meteor.call('getDomain', val, (err, data) => {
                             if (err) {
                                 $mdToast.show(
                                     $mdToast.simple()
@@ -292,10 +293,10 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                                         .hideDelay(5000));
                             } else {
                                 if ($scope.domain.dc.name === 'Assembly') {
-                                    showAddDialog(newValue);
+                                    showAddDialog(val);
                                 } else if (!data) {
                                     // If this transceiver does not exist
-                                    Meteor.call('createPartAndAddToLocation', $scope.locationId, {_id: newValue}, (err2, retId) => {
+                                    Meteor.call('createPartAndAddToLocation', $scope.locationId, {_id: val}, (err2, retId) => {
                                         if (!err2) {
                                             $mdToast.show(
                                                 $mdToast.simple()
@@ -312,7 +313,7 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                                         }
                                     });
                                 } else if (_.contains(['transceiver', 'tray'], data.type)) {
-                                    add(newValue);
+                                    add(val);
                                 } else {
                                     $mdToast.show(
                                         $mdToast.simple()
@@ -325,7 +326,7 @@ angular.module('kaiamSces').controller('ScesLocationController', [
                     }
                     if ($scope.scanremove) {
                         // If 'scan to remove' radio button
-                        Meteor.call('removeFromLocation', $scope.locationId, newValue, (err) => {
+                        Meteor.call('removeFromLocation', $scope.locationId, val, (err) => {
                             if (err) {
                                 showError(err.error);
                             }

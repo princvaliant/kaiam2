@@ -50,7 +50,7 @@ function execSar (pnum) {
                 let sw = moment(m).startOf('week');
                 let ew = moment(m).endOf('week');
                 let serials = getPartsChangedBetweenDates(pnum, sw, ew);
-                // serials = ['Q3432'];  // testing
+                // serials = ['Q6025'];  // testing
                 for (let i = 0; i < serials.length; i += 10) {
                     let array = serials.slice(i, i + 10);
                     // Get all testdata for pnum from certain date and aggregate by serial number and mid
@@ -210,9 +210,14 @@ function processLastTestData (pnum, testData, specs, specTestSorted, sar) {
                         if (_.isDate(itm.sd)) {
                             date = itm.sd;
                         }
-                        return spec.type === itm.t &&
-                            spec.subtype === itm.s &&
-                            spec.temperature === itm.tmpr;
+                        if (spec.temperature === null || isNaN(spec.temperature)) {
+                            return spec.type === itm.t &&
+                                spec.subtype === itm.s;
+                        } else {
+                            return spec.type === itm.t &&
+                                spec.subtype === itm.s &&
+                                spec.temperature === itm.tmpr;
+                        }
                     });
                     if (testItems.length === 0) {
                         // This test is missing, add it to missing tests
@@ -232,6 +237,9 @@ function processLastTestData (pnum, testData, specs, specTestSorted, sar) {
 
                             // Get value for the parameter
                             let val = testItem.data[spec.param];
+                            if (!_.isNumber(val)) {
+                                val = parseFloat(val);
+                            }
 
                             if (_.isNumber(val) === true && _.isNumber(spec.min) === true) {
                                 if (val < spec.min) {
