@@ -51,7 +51,14 @@ Meteor.methods({
                     for (let i = 128; i <= 255; i++) {
                         worksheet.getCell('E' + (i - 124)).value = data[id].list[i].hex;
                         worksheet.getCell('D' + (i - 124)).value = {formula: 'HEX2DEC(E' + (i - 124) + ')'};
-                        worksheet.getCell('F' + (i - 124)).value = {formula: 'CHAR(D' + (i - 124) + ')'};
+                        worksheet.getCell('D' + (i - 124)).numFmt = '000';
+                        worksheet.getCell('F' + (i - 124)).value = {formula: 'IF(D' +  (i - 124) + '=0,"",CHAR(D' + (i - 124) + '))'};
+                    }
+                    for (let i = 128; i <= 255; i++) {
+                        let val = worksheet.getCell('H' + (i - 124)).value;
+                        if (val && val.formula) {
+                            worksheet.getCell('H' + (i - 124)).value = {formula: val.formula};
+                        }
                     }
                 });
                 workbook.xlsx.write(unstream({}, function (bytes) {

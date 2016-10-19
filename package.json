@@ -26,7 +26,7 @@
     "angular-tree": "^0.1.1",
     "angular-ui-router": "^0.2.18",
     "bcrypt": "^0.8.7",
-    "exceljs": "^0.2.27",
+    "exceljs": "^0.2.29",
     "fibers": "^1.0.14",
     "mathjs": "^3.5.2",
     "meteor-node-stubs": "~0.2.0",

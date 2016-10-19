@@ -23,8 +23,7 @@ Meteor.methods({
     }
 });
 
-function execLinktest() {
-
+function execLinktest () {
     let row = true;
     while (row) {
         row = SyncFiles.findOne({source: 'DB1', path: '//s1/Legacy/linktestdata', processed: false}, {sort: {dateCreated: 1}});
@@ -47,6 +46,7 @@ function execLinktest() {
                         }
                         obj.data[dataDef[o]] = finalval;
                     }
+                    obj.data.switch = parseInt(row.code);
                     let datestr = row.fileName.split('_');
                     if (datestr.length === 3) {
                         let date = moment(datestr[1] + datestr[2].substring(0, 2), 'YYYYMMDDHH');
@@ -92,6 +92,5 @@ function execLinktest() {
             SyncFiles.update({_id: row._id}, {$set: {processed: true}});
         }
     }
-
-
 }
+
