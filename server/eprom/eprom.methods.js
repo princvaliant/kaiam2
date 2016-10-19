@@ -70,9 +70,14 @@ Meteor.methods({
         workbook.xlsx.read(strm).then(wb => {
             let memorydump = '';
             wb.eachSheet(function (worksheet, id) {
-                _.times(128, () => {memorydump += '00';});
+                _.times(128, () => {
+                    memorydump += '00';
+                });
                 for (let i = 4; i <= 131; i++) {
                     memorydump += worksheet.getCell('E' + i).value;
+                }
+                if (id === 1) {
+                    _.times(256, () => {memorydump += '00';});
                 }
             });
             future.return(memorydump);

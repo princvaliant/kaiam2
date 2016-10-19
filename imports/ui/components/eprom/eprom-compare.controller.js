@@ -23,10 +23,11 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
             $scope.pages.push(i);
         }
         $scope.page = 0;
-        $scope.serial1 = 'Q3565';
-        $scope.serial2 = 'Q3445';
+        $scope.serial1 = 'Q5169';
+        $scope.serial2 = 'Q4532';
         $scope.serialDump1 = 'Q1848';
         $scope.serialDump2 = 'Q1848';
+
         $scope.showProgress = false;
         $scope.columns = [{
             min: 128,
@@ -42,14 +43,23 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
             max: 255
         }];
         let memory = [0, 0];
+        let load = '';
 
         $scope.pageChange = function (page) {
             $scope.page = page;
             showPage();
         };
 
-        $scope.export = function (serial) {
-            Meteor.call('exportEprom', serial === $scope.serial1 ? $scope.data1 : $scope.data2,
+        $scope.export = function (idx) {
+            let serial = '';
+            let dt = idx === 1 ? $scope.data1 : $scope.data2;
+            if (load === 'packout') {
+                serial = idx === 1 ? $scope.serial1 : $scope.serial2;
+            }
+            if (load === 'memory') {
+                serial = idx === 1 ? $scope.serialDump1 : $scope.serialDump2;
+            }
+            Meteor.call('exportEprom', dt,
                 (err, data) => {
                     if (err) {
                         showError(err);
@@ -58,7 +68,7 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
                         document.body.appendChild(a);
                         a.style.display = 'none';
                         a.href = encodeURI('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' + data);
-                        a.download = serial === $scope.serial1 ? $scope.serial1 : $scope.serial2;
+                        a.download = serial;
                         a.click();
                     }
                 });
@@ -67,20 +77,26 @@ angular.module('kaiamEprom').controller('EpromCompareController', [
         $scope.load = function (serial, idx) {
             memory[idx] = '';
             $scope['fileName' + (idx + 1)] = '';
+            $scope['serialDump' + (idx + 1)] = '';
             loadFromPackout(serial, idx);
+            load = 'packout';
         };
 
         $scope.loadDump = function (serial, idx) {
             memory[idx] = '';
             $scope['fileName' + (idx + 1)] = '';
+            $scope['serial' + (idx + 1)] = '';
             loadFromDump(serial, idx);
+            load = 'memory';
         };
 
         $scope.upload = function (file, idx) {
             memory[idx] = '';
             $scope['serial' + (idx + 1)] = '';
+            $scope['serialDump' + (idx + 1)] = '';
             if (file) {
                 uploadFromFile(file, idx);
+                load = 'file';
             }
         };
 

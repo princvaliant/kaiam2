@@ -121,7 +121,7 @@
     </md-content>
     <md-content flex="100" layout="row" style="margin-top:0px;">
         <md-card flex="50" layout-fill layout-padding layout-margin>
-            <md-button flex="50" class="md-warn" ng-click="export(serial1)" ng-show="serial1 && pageData1"
+            <md-button flex="50" class="md-warn" ng-click="export(1)" ng-show="(serial1 || serialDump1) && pageData1"
                        aria-label="button">{{'EPROM.EXPORT-BTN' | translate}}
             </md-button>
         </md-card>
@@ -129,7 +129,7 @@
 
         </md-sidenav>
         <md-card flex="50" layout-fill layout-padding layout-margin>
-            <md-button flex="50" class="md-warn" ng-click="export(serial2)" ng-show="serial2 && pageData2"
+            <md-button flex="50" class="md-warn" ng-click="export(2)" ng-show="(serial2 || serialDump2) && pageData2"
                        aria-label="button">{{'EPROM.EXPORT-BTN' | translate}}
             </md-button>
         </md-card>
