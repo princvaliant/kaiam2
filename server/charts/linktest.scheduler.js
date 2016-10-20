@@ -46,11 +46,12 @@ function execLinktest () {
                         }
                         obj.data[dataDef[o]] = finalval;
                     }
-                    obj.data.switch = parseInt(row.code);
+
                     let datestr = row.fileName.split('_');
                     if (datestr.length === 3) {
                         let date = moment(datestr[1] + datestr[2].substring(0, 2), 'YYYYMMDDHH');
-
+                        obj.data.switch = parseInt(row.code);
+                        obj.data.fileName = row.fileName;
                         obj.data.subpath = row.subpath;
                         obj.meta.Channel = parseInt(row.code);
 
@@ -84,8 +85,7 @@ function execLinktest () {
                         obj.device.PartType = 'ENG';
                         obj.meta.StartDateTime = date.toDate();
                         obj.meta.EndDateTime = date.toDate();
-
-                        Testdata.insert(obj);
+                       Testdata.insert(obj);
                     }
                 }
             }
