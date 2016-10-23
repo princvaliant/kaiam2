@@ -278,7 +278,64 @@ angular.module('kaiamSpecActions')
                         }
                     };
                 },
-            }
+                initSarFlows: function (scope) {
+                    let coldef = [{
+                        field: 'type',
+                        headerName: 'Test type',
+                        enableFiltering: true,
+                        cellEditableCondition: scope.canEdit,
+                        width: '31%'
+                    }, {
+                        field: 'subtype',
+                        headerName: 'Test sub type',
+                        enableFiltering: true,
+                        cellEditableCondition: scope.canEdit,
+                        width: '31%'
+                    }, {
+                        field: 'order',
+                        headerName: 'Order',
+                        enableFiltering: true,
+                        cellEditableCondition: scope.canEdit,
+                        width: '16%'
+                    }, {
+                        headerName: 'Required',
+                        field: 'required',
+                        name: 'required',
+                        enableFiltering: true,
+                        editableCellTemplate: 'ui-grid/dropdownEditor',
+                        editDropdownValueLabel: 'active',
+                        cellEditableCondition: true,
+                        editDropdownOptionsArray: [
+                            {id: 'Y', active: 'Y'},
+                            {id: 'N', active: 'N'}
+                        ],
+                        width: '16%'
+                    }];
+                    scope.gridSarFlows = {
+                        enableGridMenu: false,
+                        enableSorting: true,
+                        noUnselect: true,
+                        multiSelect: false,
+                        enableFiltering: true,
+                        minRowsToShow: 15,
+                        enableRowSelection: true,
+                        enableCellEditOnFocus: true,
+                        columnDefs: coldef,
+                        onRegisterApi: function (gridApi) {
+                            scope.sarFlowApi = gridApi;
+                            gridApi.edit.on.beginCellEdit(scope, function (row) {
+                                gridApi.selection.selectRow(row);
+                            });
+                            gridApi.edit.on.afterCellEdit(scope, function (row) {
+                                SpecActionsService.updateSarFlow(row);
+                            });
+                            gridApi.selection.on.rowSelectionChanged(scope, function (row) {
+                                scope.selectedSarFlow = row.entity;
+                            });
+                        }
+                    };
+                }
+            };
             return service;
         }
     ]);

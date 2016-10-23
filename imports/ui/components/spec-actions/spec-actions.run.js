@@ -60,6 +60,16 @@ angular.module('kaiamSpecActions')
                     }
                 });
                 menu.children.push({
+                    name: 'Flows',
+                    type: 'link',
+                    icon: 'format_list_numbered',
+                    state: 'triangular.specactions',
+                    priority: 1.4,
+                    params: {
+                        class: 'FLOW'
+                    }
+                });
+                menu.children.push({
                     name: 'MENU.SPECACTIONS.OBSOLETE',
                     type: 'link',
                     icon: 'delete_sweep',

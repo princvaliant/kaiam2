@@ -27,7 +27,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         //   $scope.uploader = new FileUploader();
         $scope.selectedTab = $cookies.get('specActionsTabSelected') || 0;
         $scope.partNumbers = [''].concat(_.keys(Settings.partNumbers));
-        $scope.partNumber = $cookies.get('specActionsPartNumber') || 'XQX4100';
+        $scope.partNumber = $cookies.get('specActionsPartNumber') || 'XQX4000';
 
         // Initialize all grids
         SpecActionsInitService.initSars($scope);
@@ -35,6 +35,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         SpecActionsInitService.initSarActions($scope);
         SpecActionsInitService.initSarSpecRanges($scope);
         SpecActionsInitService.initSarSpecs($scope);
+        SpecActionsInitService.initSarFlows($scope);
 
         $scope.changePartNumber = function (pn) {
             $scope.partNumber = pn;
@@ -197,6 +198,20 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             }
         };
 
+        $scope.addSarFlowClick = function () {
+            SpecActionsService.addSarFlow($scope.selectedSar, '', '', '');
+        };
+        $scope.removeSarFlowClick = function () {
+            let confirm = $mdDialog.confirm()
+                .title('Would you like to remove revision flow?')
+                .ariaLabel('Remove revision flow')
+                .ok('Remove')
+                .cancel('Cancel');
+            $mdDialog.show(confirm).then(function () {
+                SpecActionsService.removeSarFlow($scope.sarFlowApi.selection);
+            });
+        };
+
         $scope.addNodeClick = function () {
             SpecActionsService.addExecution($scope.selectedSarAction);
         };
@@ -244,6 +259,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                         $scope.gridSarActionParams.data = [];
                         $scope.gridSarSpecs.data = [];
                         $scope.gridSarSpecRanges.data = [];
+                        $scope.gridSarFlows.data = [];
                     }
                 }
             });
@@ -278,7 +294,13 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                     return SarSpecRange.find({sarSpecId: $scope.selectedSarSpec._id});
                 }
                 return null;
-            }
+            },
+            sarFlows: () => {
+                if ($scope.getReactively('selectedSar')) {
+                    return SarFlow.find({sarId: $scope.selectedSar._id});
+                }
+                return null;
+            },
         });
 
         $scope.autorun(() => {
@@ -293,6 +315,9 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                 return [selectedSar._id];
             });
             $scope.subscribe('sar-spec-ranges', () => {
+                return [selectedSar._id];
+            });
+            $scope.subscribe('sar-flows', () => {
                 return [selectedSar._id];
             });
         });
@@ -315,6 +340,15 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                     $scope.sarSpecApi.selection.selectRow($scope.gridSarSpecs.data[0]);
                 } else {
                     $scope.gridSarSpecRanges.data = [];
+                }
+            });
+        });
+
+        $scope.autorun(() => {
+            $scope.gridSarFlows.data =  $scope.getReactively('sarFlows') || [];
+            $timeout(function () {
+                if ($scope.sarFlowApi && $scope.sarFlowApi.selection && $scope.gridSarFlows.data[0]) {
+                    $scope.sarFlowApi.selection.selectRow($scope.gridSarFlows.data[0]);
                 }
             });
         });

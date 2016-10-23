@@ -1,5 +1,8 @@
 Testsummary = new Mongo.Collection('testsummary');
 TestsummaryWeek = new Mongo.Collection('testsummaryweek');
+
+Testsummary2 = new Mongo.Collection('testsummary2');
+TestsummaryWeek2 = new Mongo.Collection('testsummaryweek2');
 /**
  * Security Restriction
  * todo: refactor

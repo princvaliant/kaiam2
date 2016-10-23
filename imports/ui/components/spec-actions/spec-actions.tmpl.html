@@ -215,6 +215,29 @@
                     </div>
                 </div>
             </md-tab>
+            <md-tab md-on-select="tabSelected(6, 'flow')" label="Flow" ng-if="class == 'FLOW'">
+                <md-tab-content layout="row" layout-fill>
+                    <md-content layout-align="top center" flex="90">
+                        <div layout="row">
+                            <div layout-padding>
+                                Flows
+                            </div>
+                            <span flex></span>
+                            <md-button class="md-icon-button" aria-label="add" ng-click="addSarFlowClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="remove" ng-click="removeSarFlowClick()"
+                                       ng-show="selectedSarLock !== 'Y'">
+                                <md-icon md-font-icon="zmdi zmdi-minus"></md-icon>
+                            </md-button>
+                        </div>
+                        <div ui-grid="gridSarFlows" ui-grid-selection ui-grid-edit ui-grid-cellnav
+                             ui-grid-resize-columns ui-grid-move-columns ui-grid-save-state ui-grid-auto-resize
+                             style="position:absolute;height: auto;top:40px;left:5px;right:5px;bottom:10px;"></div>
+                    </md-content>
+                </md-tab-content>
+            </md-tab>
 
         </md-tabs>
     </md-content>

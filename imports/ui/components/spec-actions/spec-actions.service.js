@@ -248,6 +248,38 @@ angular.module('kaiamSpecActions')
                 },
                 pasteSarSpec: function (sar, sarSpec) {
                     Meteor.call('pasteSarSpec', sar, sarSpec);
+                },
+                addSarFlow: function (sar, type, subtype, order, required) {
+                    if (sar) {
+                        SarFlow.insert({
+                            sarId: sar._id,
+                            type: type,
+                            subtype: subtype,
+                            order: order,
+                            required: required || 'Y'
+                        });
+                    }
+                },
+                removeSarFlow: function (selection) {
+                    if (selection) {
+                        let s = selection.getSelectedRows()[0];
+                        if (s) {
+                            SarFlow.remove(s._id);
+                            Meteor.call('removeSarFlow', s._id);
+                        }
+                    }
+                },
+                updateSarFlow: function (sarFlow) {
+                    SarFlow.update({
+                        _id: sarFlow._id
+                    }, {
+                        $set: {
+                            type: sarFlow.type,
+                            subtype: sarFlow.subtype,
+                            order: sarFlow.order !== '' ? parseInt(sarFlow.order) : '',
+                            required: sarFlow.required
+                        }
+                    });
                 }
             }
             return service;

@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/sarflow.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.eslintrc" afterPath="$PROJECT_DIR$/.eslintrc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.run.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.run.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/settings.js" afterPath="$PROJECT_DIR$/lib/settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/linktest.scheduler.js" afterPath="$PROJECT_DIR$/server/charts/linktest.scheduler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/testsummary.js" afterPath="$PROJECT_DIR$/model/testsummary.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.methods.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.methods.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.publish.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.publish.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
@@ -38,15 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>appl</find>
-      <find>packout</find>
-      <find>scans</find>
-      <find>vendor</find>
-      <find>$lookup</find>
-      <find>upload</find>
-      <find>packou</find>
-      <find>IOUtils</find>
-      <find>ByteArrayOutputStream</find>
       <find>ByteStreams</find>
       <find>BufferStream</find>
       <find>Stream</find>
@@ -68,6 +70,15 @@
       <find>VendorSequence</find>
       <find>fileName</find>
       <find>linktest</find>
+      <find>Spec</find>
+      <find>addSarF</find>
+      <find>flow</find>
+      <find>gridSarFlows</find>
+      <find>commonAggregation</find>
+      <find>selectedSarSpec</find>
+      <find>spec</find>
+      <find>trai</find>
+      <find>specs</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -85,17 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/test-speed/testspeed.method.js" />
-        <option value="$PROJECT_DIR$/server/charts/trend.methods.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/charts/yield-check.tmpl.html" />
-        <option value="$PROJECT_DIR$/server/charts/yields.method.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/charts/loss-check.service.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/charts/yield-check.service.js" />
-        <option value="$PROJECT_DIR$/server/charts/yields.scheduler.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/charts/yield-check.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html" />
-        <option value="$PROJECT_DIR$/server/sces/location.methods.js" />
-        <option value="$PROJECT_DIR$/lib/domain-transceiver.js" />
         <option value="$PROJECT_DIR$/server/sces/shipment.methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/packout-charts.tmpl.html" />
         <option value="$PROJECT_DIR$/server/charts/packout.scheduler.js" />
@@ -112,7 +112,6 @@
         <option value="$PROJECT_DIR$/client/index.html" />
         <option value="$PROJECT_DIR$/imports/ui/daasfab/triangular/triangular.module.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.config.js" />
-        <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js" />
         <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.run.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/location/new-part.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/location/new-part.controller.js" />
@@ -123,12 +122,10 @@
         <option value="$PROJECT_DIR$/imports/ui/components/sces/location/location.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" />
         <option value="$PROJECT_DIR$/.meteor/packages" />
-        <option value="$PROJECT_DIR$/../kaiam2d_dev/mup.json" />
         <option value="$PROJECT_DIR$/../kaiam2d/mup.json" />
         <option value="$PROJECT_DIR$/server/charts/loss.method.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/location/location.controller.js" />
-        <option value="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
         <option value="$PROJECT_DIR$/server/sces/transceiver.methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/eprom/eprom-compare.controller.js" />
@@ -136,6 +133,20 @@
         <option value="$PROJECT_DIR$/server/eprom/eprom.methods.js" />
         <option value="$PROJECT_DIR$/server/charts/linktest.scheduler.js" />
         <option value="$PROJECT_DIR$/lib/settings.js" />
+        <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.run.js" />
+        <option value="$PROJECT_DIR$/model/sarflow.js" />
+        <option value="$PROJECT_DIR$/server/spec-actions/sar.publish.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" />
+        <option value="$PROJECT_DIR$/.eslintrc" />
+        <option value="$PROJECT_DIR$/.meteor/local/build/programs/server/app/app.js" />
+        <option value="$PROJECT_DIR$/model/testsummary.js" />
+        <option value="$PROJECT_DIR$/server/spec-actions/sar.methods.js" />
+        <option value="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
+        <option value="$PROJECT_DIR$/../kaiam2d_dev/mup.json" />
       </list>
     </option>
   </component>
@@ -155,10 +166,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="266" />
-    <option name="y" value="-1344" />
-    <option name="width" value="1531" />
-    <option name="height" value="1346" />
+    <option name="x" value="-2685" />
+    <option name="y" value="-836" />
+    <option name="width" value="1291" />
+    <option name="height" value="1416" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -192,7 +203,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -205,8 +215,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spec-actions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -247,13 +290,6 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/model" />
-      <recent name="$PROJECT_DIR$/public/i18n/eprom" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/eprom" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/charts" />
-      <recent name="$PROJECT_DIR$/imports/ui/components/sces/location" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/server/spec-actions" />
       <recent name="$PROJECT_DIR$/imports/api" />
@@ -261,8 +297,15 @@
       <recent name="$PROJECT_DIR$/imports/ui/components/sces/rma" />
       <recent name="$PROJECT_DIR$/imports/ui/components/sces/batch-request" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/model" />
+      <recent name="$PROJECT_DIR$/public/i18n/eprom" />
+      <recent name="$PROJECT_DIR$/imports/ui/components/eprom" />
+      <recent name="$PROJECT_DIR$/imports/ui/components/charts" />
+      <recent name="$PROJECT_DIR$/imports/ui/components/sces/location" />
+    </key>
   </component>
-  <component name="RunManager" selected="Meteor.Meteor Prod debug">
+  <component name="RunManager" selected="Meteor.Meteor Dev Debug">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -604,14 +647,12 @@
       <workItem from="1476740055241" duration="7976000" />
       <workItem from="1476752922946" duration="3823000" />
       <workItem from="1476826064870" duration="821000" />
-      <workItem from="1476900534494" duration="15332000" />
-    </task>
-    <task id="LOCAL-00026" summary="- Developing MES tracking system&#10;- Create auto increment counter for vendor specific serials&#10;- Preparing for deployment to production">
-      <created>1472860757630</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1472860757630</updated>
+      <workItem from="1476900534494" duration="15340000" />
+      <workItem from="1476922271895" duration="367000" />
+      <workItem from="1477022073980" duration="955000" />
+      <workItem from="1477068875946" duration="33016000" />
+      <workItem from="1477168257137" duration="359000" />
+      <workItem from="1477191074981" duration="221000" />
     </task>
     <task id="LOCAL-00027" summary="- Developing MES tracking system&#10;- Create auto increment counter for vendor specific serials&#10;- Preparing for deployment to production">
       <created>1472874459809</created>
@@ -949,11 +990,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476917552363</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="- Fixing eprom import export functionality">
+      <created>1476921991817</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1476921991817</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="753786000" />
+    <option name="totallyTimeSpent" value="788712000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -965,27 +1013,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="266" y="-1344" width="1531" height="1346" extended-state="0" />
+    <frame x="-2685" y="-836" width="1291" height="1416" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20397352" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24251969" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.49719888" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28070176" sideWeight="0.18278146" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25590873" sideWeight="0.3681979" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586103" sideWeight="0.32423398" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275194" sideWeight="0.4970888" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.51544404" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23946957" sideWeight="0.51675975" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28070176" sideWeight="0.81721854" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25590873" sideWeight="0.3681979" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586103" sideWeight="0.675766" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.49719888" order="6" side_tool="false" content_ui="tabs" />
@@ -1057,7 +1105,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="1179" />
+      <option name="time" value="1260" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="meteor-app-runner">
@@ -1066,132 +1114,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/location/location.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="125" column="110" lean-forward="false" selection-start-line="125" selection-start-column="110" selection-end-line="125" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/packages">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kaiam2d_dev/mup.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kaiam2d/mup.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="38" column="54" lean-forward="false" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="78" column="91" lean-forward="false" selection-start-line="78" selection-start-column="91" selection-end-line="78" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/yields.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="40" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/location/location.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="886">
-          <caret line="319" column="73" lean-forward="true" selection-start-line="319" selection-start-column="73" selection-end-line="319" selection-end-column="73" />
-          <folding>
-            <marker date="1476741335000" expanded="true" signature="2054:2072" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/loss.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="115" column="12" lean-forward="false" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/yields.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1107">
-          <caret line="77" column="33" lean-forward="true" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/test-speed/testspeed.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/test-speed/testspeed.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2168">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.eslintrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/location.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1553">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/images.publish.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/home/home.publish.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1224,7 +1146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1980">
           <caret line="134" column="101" lean-forward="false" selection-start-line="134" selection-start-column="101" selection-end-line="134" selection-end-column="101" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1249,13 +1170,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1890">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/accounts.methods.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1264,20 +1178,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.publish.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.methods.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1295,7 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1303,7 +1202,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,15 +1209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/lib/Scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="4" lean-forward="false" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1327,15 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/lib/SarCalculation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1343,7 +1223,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1351,7 +1230,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1359,7 +1237,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1367,7 +1244,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1375,15 +1251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="113" column="42" lean-forward="true" selection-start-line="113" selection-start-column="42" selection-end-line="113" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="432" column="14" lean-forward="true" selection-start-line="432" selection-start-column="14" selection-end-line="432" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1391,7 +1258,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="14" lean-forward="false" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1399,7 +1265,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
           <caret line="192" column="28" lean-forward="false" selection-start-line="192" selection-start-column="28" selection-end-line="192" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1407,15 +1272,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2955">
           <caret line="197" column="15" lean-forward="false" selection-start-line="197" selection-start-column="15" selection-end-line="197" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1423,7 +1279,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="58" column="35" lean-forward="false" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1431,15 +1286,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="559">
           <caret line="68" column="49" lean-forward="true" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="632" column="34" lean-forward="true" selection-start-line="632" selection-start-column="34" selection-end-line="632" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1447,6 +1293,182 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2235">
+          <caret line="149" column="8" lean-forward="false" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="62" column="24" lean-forward="false" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/test-speed/testspeed.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/test-speed/testspeed.method.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="343" column="37" lean-forward="true" selection-start-line="343" selection-start-column="37" selection-end-line="343" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="739">
+          <caret line="61" column="41" lean-forward="false" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/lib/Scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="93" column="4" lean-forward="false" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="57" column="29" lean-forward="true" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/sarflow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="219" column="66" lean-forward="false" selection-start-line="219" selection-start-column="66" selection-end-line="219" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="314" column="46" lean-forward="true" selection-start-line="314" selection-start-column="46" selection-end-line="314" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="294" column="8" lean-forward="false" selection-start-line="294" selection-start-column="8" selection-end-line="294" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.eslintrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="159" column="30" lean-forward="true" selection-start-line="159" selection-start-column="30" selection-end-line="159" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/server/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="268" column="4" lean-forward="false" selection-start-line="268" selection-start-column="4" selection-end-line="268" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/lib/SarCalculation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1849">
+          <caret line="245" column="20" lean-forward="false" selection-start-line="245" selection-start-column="20" selection-end-line="245" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/testsummary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="57" lean-forward="false" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="809">
+          <caret line="256" column="45" lean-forward="true" selection-start-line="256" selection-start-column="45" selection-end-line="256" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2101">
+          <caret line="38" column="11" lean-forward="true" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.publish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kaiam2d_dev/mup.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="914">
+          <caret line="169" column="67" lean-forward="false" selection-start-line="169" selection-start-column="67" selection-end-line="169" selection-end-column="67" />
           <folding />
         </state>
       </provider>

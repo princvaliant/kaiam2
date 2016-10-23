@@ -60,6 +60,5 @@ function routeConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
     // always goto 404 if route not found
     $urlRouterProvider.deferIntercept();
     $urlRouterProvider.otherwise('/404');
-
 }
 

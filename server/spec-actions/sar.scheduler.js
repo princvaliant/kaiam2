@@ -28,314 +28,347 @@ Meteor.methods({
         // ScesDomains.getUser(this.userId);
         let pnums = _.keys(Settings.partNumbers);
         _.each(pnums, (pnum) => {
+            // Loop through all part numbers and execute only for 100GB
             if (Settings.partNumbers[pnum].device === '100GB') {
-                execSar(pnum);
+                execSar(pnum, 'Q5162', false);  // testing with snum
             }
         });
     }
 });
 
 
-function execSar (pnum) {
+function execSar (pnum, snum, calcVars = true) {
     // Get latest spec revision for the pnum
-    let sar = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
-    if (sar) {
+    let sarDef = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
+    // Get latest revision of flow definition
+    let flowDef = Sar.findOne({pnum: pnum, class: 'FLOW', active: 'Y'}, {sort: {rev: -1}});
+    if (sarDef) {
         // Get valid spec ranges for sar named 'Spec'
-        let specs = getSpecRanges(sar);
-        if (specs.length > 0) {
-            // Get list of serials that are changed from last compilation
-            let lastDate = getLastSyncDate('SPEC_' + pnum);
-            let mom = moment(lastDate);
-            for (let m = mom; m.isBefore(moment()); m.add(7, 'days')) {
-                let sw = moment(m).startOf('week');
-                let ew = moment(m).endOf('week');
-                let serials = getPartsChangedBetweenDates(pnum, sw, ew);
-            //    serials = ['Q6041'];  // testing
-                for (let i = 0; i < serials.length; i += 10) {
-                    let array = serials.slice(i, i + 10);
-                    // Get all testdata for pnum from certain date and aggregate by serial number and mid
-                    processCustomVars(getLastTestData(pnum, array, ew.toDate()));
-                    processLastTestData(pnum, getLastTestData(pnum, array, ew.toDate()), specs, getSpecOrder(sar), sar);
+        let specs = getSpecRanges(sarDef);
+
+        // Group tests in spec by order number (One order number represents one measurement ID)
+        // Distribute specs through the flow items
+        let flows = getFlowsGroupedByOrder(flowDef, specs);
+
+        // Get list of serials that are changed from last compilation
+        let lastDate = getLastSyncDate('SPEC_' + pnum);
+        let mom = moment(lastDate);
+
+        // Increment date range weekly
+        for (let m = mom; m.isBefore(moment()); m.add(7, 'days')) {
+
+            // Find start end end of week for that range
+            let sw = moment(m).startOf('week');
+            let ew = moment(m).endOf('week');
+
+            // Get all serials for part number that have testdata inserted between dates
+            // or use one from parameter
+            let serials = [];
+            if (snum) {
+                serials = [snum];
+            } else {
+                serials = getPartsChangedBetweenDates(pnum, sw, ew);
+            }
+
+            // Loop through all the serials to calculate custom variables for last measurement
+            if (calcVars) {
+                for (let i = 0; i < serials.length; i++) {
+                    _.each(flows, (flow) => {
+                        calculateCustomVars(getLastTestData(pnum, serials[i], ew.toDate(), flow.tests));
+                    });
                 }
             }
+            // Loop through the test flow and compile test data
+            for (let i = 0; i < serials.length; i++) {
+                let doList = [];
+                _.each(flows, (flow) => {
+                    doList.push({
+                        flow: flow,
+                        data: getLastTestData(pnum, serials[i], ew.toDate(), flow.tests)
+                    });
+                });
+                // Compile spec and determine pass or fail
+                compileDoList(doList, sarDef, pnum, serials[i]);
+            }
         }
+
     } else {
         sar = {_id: ''};
     }
 
     // Get sars that are forced to calculate
-    let sars = Sar.find({pnum: pnum, recalcForce: true}).fetch();
-    _.each(sars, (s) => {
-        let specs = getSpecRanges(s);
-        if (specs.length > 0) {
-            // Get list of serials that are changed from last compilation
-            let serials = getPartsForDatesAndSerials(pnum, s.recalcFromDate, s.recalcToDate, s.recalcSnList);
-            // Create chunks of 10 serials and process them
-            for (let i = 0; i < serials.length; i += 10) {
-                let array = serials.slice(i, i + 10);
-                // Get all testdata for pnum from certain date and aggregate by serial number and mid
-                processCustomVars(getLastTestData(pnum, array, s.recalcToDate));
-                processLastTestData(pnum, getLastTestData(pnum, array, s.recalcToDate), specs, getSpecOrder(s), s);
-            }
-        }
-        Sar.update({_id: s._id}, {$set: {recalcForce: false}});
-    });
+    // let sars = Sar.find({pnum: pnum, recalcForce: true}).fetch();
+    // Sar.update({_id: s._id}, {$set: {recalcForce: false}});
 }
 
-function processCustomVars (testData) {
+function calculateCustomVars (items) {
     // Prepare custom calculation
-    SarCalculation.init();
-    _.each(testData, (testDataGroupBySn) => {
-        let items = testDataGroupBySn.items;
-        _.each(items, (item) => {
+    SarCalculation.init()
+    if (items) {
+        _.each(items.data, (item) => {
             // Add data for custom calculation
             SarCalculation.add(item);
         });
-    });
+    }
     // Execute custom processing
     SarCalculation.execute();
 }
 
-function processLastTestData (pnum, testData, specs, specTestSorted, sar) {
-    // Loop through the test aggregation by serial number and check fail conditions
+function compileDoList (doList, sarDef, pnum, sn) {
+    let racks = new Set();
+    let duts = new Set();
+    // List of failed tests
+    let failTests = new Set();
+    // List of tests that are missing
+    let missingTests = new Set();
+    // List of tests that failed together with parameters that failed
+    let failTestsWithCodes = new Set();
 
-    // Retrieve order number from the spec to determine which tests have the same order number as txtests
-    let orderNo = _.filter(specTestSorted, (o) => {
-        return o.t.match(/^txtests/);
-    })[0]['order'];
-    let primaryTests = _.pluck(_.where(specTestSorted, {order: orderNo}), 't');
-    let secondaryTests = _.difference(_.pluck(specTestSorted, 't'), primaryTests);
+    for(let i = 0; i < doList.length; i++) {
+        let doItem = doList[i];
+        // doItem: {
+        //   data: [{
+        //         channel = 0
+        //         data = Object
+        //         dut = "Station1"
+        //         mid = "9a31390a-2d29-41e1-9c78-82166b6855e8"
+        //         pnum = "XQX4000"
+        //         r = "P"
+        //         rack = "TestStation1"
+        //         s = "rx"
+        //         sd = Mon Oct 17 2016 11:31:59 GMT-0700 (PDT)
+        //         sn = "Q6041"
+        //         st = "P"
+        //         t = "functionaltest"
+        //         tf = Array[0]
+        //         tmpr = 99.9
+        //         tst = "functionaltest - rx"
+        //         volt = 0
+        //         _id = "e5f3013a-d350-48de-938f-c6c7905c4984"
+        //     }],
+        //   flow: {
+        //     required: 'Y',
+        //     specs: [{
+        //             max = ""
+        //             min = 10
+        //             param = "CwdmMaskMargin"
+        //             subtype = "channeldata"
+        //             temperature = 0
+        //             tst = "txtests - channeldata"
+        //             type = "txtests"
+        //             _id = "qbGtW4AxHhEf65DnK"
+        //     }],
+        //     tests: ['actionstatus - error', 'txtests - channeldata']
+        //   }
 
-    _.each(testData, (testDataGroupBySn) => {
-        let serial = testDataGroupBySn._id;
-        let items = testDataGroupBySn.items;
-        // List that will determine the order of tests
-        let allTests = new Set();
-        // List of tests that failed
-        let failTests = new Set();
-        // List of tests that are missing
-        let missingTests = new Set();
-        // List of tests that failed together with parameters that failed
-        let failTestsWithCodes = new Set();
-        // Date for this test
-        let date = null;
-        let racks = new Set();
-        let duts = new Set();
-
-        if (items.length > 0) {
-            let continueSpec = true;
+        // Check first if this flow step is required
+        if (doItem.flow.required === 'Y' && doItem.data.length === 0) {
+            // Mark measstatus X and status X
+            updateOverallStatus(sn, pnum, doList, 'X');
+            _.each(doItem.flow.tests, (test) => {
+                if (test !== 'actionstatus - error') {
+                    failTests.add(test.split(' ').join('') + '-M');
+                    failTestsWithCodes.add(test + '-M');
+                }
+            });
+            insertTestSummary(sn, pnum, new Date(), racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'X');
+            return;
+        } else if (doItem.data.length > 0) {
             // Determine if there is error for this measurement
-            let isTestError = _.where(items, {t: 'actionstatus', s: 'error'})[0];
-            if (isTestError) {
-                let testsErrored = _.where(items, {r: 'E'});
+            let errorItem = _.where(doItem.data, {tst: 'actionstatus - error'})[0];
+            if (errorItem) {
+                // Find test items that errored
+                let testsErrored = _.where(doItem.data, {r: 'E'});
                 if (testsErrored) {
                     _.each(testsErrored, (testErrored) => {
                         racks.add(testErrored.rack);
                         duts.add(testErrored.dut);
                         failTests.add(testErrored.t + '-' + testErrored.s);
-                        failTestsWithCodes.add(testErrored.t + ' - ' + testErrored.s + ' - ' + isTestError.data.TestErr[0]);
+                        failTestsWithCodes.add(testErrored.t + ' - ' + testErrored.s + ' - ' + errorItem.data.TestErr[0]);
                     });
-                    insertTestSummary(serial, pnum, isTestError.sd, racks, duts, sar.name, sar.rev,
-                        failTests, failTestsWithCodes, 'E');
-                    // Update all test items for this measurement to 'E'
-                    Testdata.update(
-                        {
-                            'device.SerialNumber': serial,
-                            'device.PartNumber': pnum
-                        }, {
-                            $set: {
-                                status: 'E'
-                            }
-                        }, {
-                            multi: true
-                        }
-                    );
-                    continueSpec = false;
+                    updateMeasurementStatus(errorItem.sn, errorItem.pnum, testsErrored[0].mid, 'E');
+                    updateOverallStatus(errorItem.sn, errorItem.pnum, doList, 'E');
+                    insertTestSummary(errorItem.sn, errorItem.pnum, errorItem.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'E');
                 }
+                return;
             }
 
-            if (continueSpec === true) {
-                // Determine if there is TestFail populated in any record
-                let testsMarkedFailed = _.filter(items, function (item) {
-                    let tf = item.tf || [];
-                    if (tf.length > 0) {
-                        return true;
-                    }
-                    return false;
-                });
-                if (testsMarkedFailed && testsMarkedFailed.length > 0) {
-                    _.each(testsMarkedFailed, (testMarkedFailed) => {
-                        let failCodesPerId = new Set();
-                        racks.add(testMarkedFailed.rack);
-                        duts.add(testMarkedFailed.dut);
-                        failTests.add(testMarkedFailed.t + '-' + testMarkedFailed.s);
-                        _.each(testMarkedFailed.tf, (tf) => {
-                            failTestsWithCodes.add(testMarkedFailed.t + ' - ' + testMarkedFailed.s + ' - ' + tf);
-                            failCodesPerId.add(tf);
-                        });
-                        Testdata.update({
-                            '_id': testMarkedFailed.id
-                        }, {
-                            $set: {
-                                failCodes: [...failCodesPerId].sort()
-                            }
-                        }, {
-                            multi: true
-                        });
+            // Determine if error is determined by test software
+            let testsMarkedFailed = _.filter(doItem.data, function (item) {
+                let tf = item.tf || [];
+                return tf.length > 0;
+            });
+            if (testsMarkedFailed && testsMarkedFailed.length > 0) {
+                _.each(testsMarkedFailed, (testMarkedFailed) => {
+                    let failCodesPerId = new Set();
+                    racks.add(testMarkedFailed.rack);
+                    duts.add(testMarkedFailed.dut);
+                    failTests.add(testMarkedFailed.t + '-' + testMarkedFailed.s);
+                    _.each(testMarkedFailed.tf, (tf) => {
+                        failTestsWithCodes.add(testMarkedFailed.t + ' - ' + testMarkedFailed.s + ' - ' + tf);
+                        failCodesPerId.add(tf);
                     });
-                    insertTestSummary(serial, pnum, testsMarkedFailed[0].sd, racks, duts, sar.name, sar.rev,
-                        failTests, failTestsWithCodes, 'F');
-                    // Update all test items for this measurement to 'F'
-                    Testdata.update(
-                        {
-                            'device.SerialNumber': serial,
-                            'device.PartNumber': pnum
-                        }, {
-                            $set: {
-                                status: 'F'
-                            }
-                        }, {
-                            multi: true
-                        }
-                    );
-                    continueSpec = false;
-                }
-            }
-
-            // Loop through each spec  item for this serial number if there is no error
-            if (continueSpec === true && items[0].t !== 'packout') {
-                _.each(specs, (spec) => {
-                    // Get test that contains test, subtest and temperature from spec
-                    let testItems = _.filter(items, (itm) => {
-                        if (_.isDate(itm.sd)) {
-                            date = itm.sd;
-                        }
-                        if (spec.temperature === null || isNaN(spec.temperature)) {
-                            return spec.type === itm.t &&
-                                spec.subtype === itm.s;
-                        } else {
-                            return spec.type === itm.t &&
-                                spec.subtype === itm.s &&
-                                spec.temperature === itm.tmpr;
-                        }
-                    });
-                    if (testItems.length === 0) {
-                        // This test is missing, add it to missing tests
-                        missingTests.add(spec.type + '-' + spec.subtype);
-                        //console.log(JSON.stringify(testItem));
-                    } else {
-                        _.each(testItems, (testItem) => {
-                            date = testItem.sd;
-                            racks.add(testItem.rack);
-                            duts.add(testItem.dut);
-                            // Temporary list of fail codes
-                            if (!testItem.failCodes) {
-                                testItem.failCodes = [];
-                            }
-                            // console.log(JSON.stringify(testItem.failCodes));
-                            // Loop through all params in spec to find if value is within range
-
-                            // Get value for the parameter
-                            let val = testItem.data[spec.param];
-                            if (!_.isNumber(val)) {
-                                val = parseFloat(val);
-                            }
-
-                            if (_.isNumber(val) === true && _.isNumber(spec.min) === true) {
-                                if (val < spec.min) {
-                                    // Append _L explaining that value is under min range
-                                    testItem.failCodes.push(spec.param + '|L');
-                                }
-                            }
-                            if (_.isNumber(val) === true && _.isNumber(spec.max) === true) {
-                                if (val > spec.max) {
-                                    // Append _H explaining that value is over max range
-                                    testItem.failCodes.push(spec.param + '|H');
-                                }
-                            }
-                            if (val === undefined) {
-                                // Append _M explaining that parameter is missing in test record
-                                testItem.failCodes.push(spec.param + '|M');
-                            } else if (val + '' === 'NaN') {
-                                testItem.failCodes.push(spec.param + '|M');
-                            }
-
-                            let result = testItem.failCodes.length === 0 ? 'OK' : 'ERR';
-                            if (result === 'ERR') {
-                                // Add this test type and subtype to failed tests list for serial
-                                failTests.add(testItem.t + '-' + testItem.s);
-                                _.each(testItem.failCodes, (failCode) => {
-                                    failTestsWithCodes.add(testItem.t + ' - ' + testItem.s + ' - ' + failCode);
-                                });
-                            }
-                            // Store this test type to map with date for test order check
-                            allTests.add(testItem.t + '-' + testItem.s);
-
-                            // Flag testdata record with the proper fail status
-                            Testdata.update({
-                                '_id': testItem.id
-                            }, {
-                                $set: {
-                                    failCodes: testItem.failCodes,
-                                    status: 'X',
-                                    result: result
-                                }
-                            }, {
-                                multi: true
-                            });
-                        });
-                    }
-                });
-
-                // Determine if all tests exist and status of each test
-                let status = '';
-                let fails = new Set();
-                for (let test of primaryTests) {
-                    if (missingTests.has(test)) {
-                        status = 'X';
-                        fails.add(test + '|M');
-                        break;
-                    } else if (failTests.has(test)) {
-                        status = 'F';
-                        fails.add(test + '|F');
-                        break;
-                    } else if (allTests.has(test)) {
-                        status = 'P';
-                    }
-                }
-                for (let test of secondaryTests) {
-                    if (missingTests.has(test)) {
-                        status = 'X';
-                        fails.add(test + '|M');
-                        break;
-                    } else if (failTests.has(test)) {
-                        status = 'F';
-                        fails.add(test + '|F');
-                    }
-                }
-
-                Testdata.update(
-                    {
-                        'device.SerialNumber': serial,
-                        'device.PartNumber': pnum
+                    Testdata.update({
+                        '_id': testMarkedFailed.id
                     }, {
                         $set: {
-                            status: status
+                            failCodes: [...failCodesPerId].sort()
                         }
                     }, {
                         multi: true
-                    }
-                );
+                    });
+                });
+                let tmf = testsMarkedFailed[0];
+                updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, 'F');
+                updateOverallStatus(tmf.sn, tmf.pnum, doList, 'F');
+                insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'F');
+                return;
+            }
 
-                // Insert summary table for easy query of pass fail
-                insertTestSummary(serial, pnum, date, racks, duts, sar.name, sar.rev,
-                    fails, failTestsWithCodes, status);
+            // If there is no spec just mark test as passed
+            if (doItem.flow.specs.length === 0) {
+                let itm = doItem.data[0];
+                updateMeasurementStatus(itm.sn, itm.pnum, itm.mid, 'P');
+            }
+
+            // Loop through each spec item for this serial number if there is no error
+            let date = null;
+            _.each(doItem.flow.specs, (spec) => {
+                // Get test that contains test, subtest and temperature from spec
+                let testItems = _.filter(doItem.data, (itm) => {
+                    if (_.isDate(itm.sd)) {
+                        date = itm.sd;
+                    }
+                    if (spec.temperature === null || isNaN(spec.temperature)) {
+                        return spec.type === itm.t &&
+                            spec.subtype === itm.s;
+                    } else {
+                        return spec.type === itm.t &&
+                            spec.subtype === itm.s &&
+                            spec.temperature === itm.tmpr;
+                    }
+                });
+                if (testItems.length === 0) {
+                    // This test is missing, add it to missing tests
+                    missingTests.add(spec.type + '-' + spec.subtype);
+                } else {
+                    _.each(testItems, (testItem) => {
+                        date = testItem.sd;
+                        racks.add(testItem.rack);
+                        duts.add(testItem.dut);
+                        // Temporary list of fail codes
+                        if (!testItem.failCodes) {
+                            testItem.failCodes = [];
+                        }
+                        // console.log(JSON.stringify(testItem.failCodes));
+                        // Loop through all params in spec to find if value is within range
+                        // Get value for the parameter
+                        let val = testItem.data[spec.param];
+                        if (!_.isNumber(val)) {
+                            val = parseFloat(val);
+                        }
+
+                        if (_.isNumber(val) === true && _.isNumber(spec.min) === true) {
+                            if (val < spec.min) {
+                                // Append _L explaining that value is under min range
+                                testItem.failCodes.push(spec.param + '|L');
+                            }
+                        }
+                        if (_.isNumber(val) === true && _.isNumber(spec.max) === true) {
+                            if (val > spec.max) {
+                                // Append _H explaining that value is over max range
+                                testItem.failCodes.push(spec.param + '|H');
+                            }
+                        }
+                        if (val === undefined) {
+                            // Append _M explaining that parameter is missing in test record
+                            testItem.failCodes.push(spec.param + '|M');
+                        } else if (val + '' === 'NaN') {
+                            testItem.failCodes.push(spec.param + '|M');
+                        }
+
+                        let result = testItem.failCodes.length === 0 ? 'OK' : 'ERR';
+                        if (result === 'ERR') {
+                            // Add this test type and subtype to failed tests list for serial
+                            failTests.add(testItem.t + '-' + testItem.s);
+                            _.each(testItem.failCodes, (failCode) => {
+                                failTestsWithCodes.add(testItem.t + ' - ' + testItem.s + ' - ' + failCode);
+                            });
+                        }
+                        // Flag testdata record with the proper fail status
+                        Testdata.update({
+                            '_id': testItem.id
+                        }, {
+                            $set: {
+                                failCodes: testItem.failCodes,
+                                result: result
+                            }
+                        }, {
+                            multi: true
+                        });
+                    });
+                }
+            });
+
+            // Determine if all tests exist and status of each test
+            let itm = doItem.data[0];
+            if (missingTests.size > 0 || failTests.size > 0) {
+                updateMeasurementStatus(itm.sn, itm.pnum, itm.mid, 'F');
+                break;
+            } else {
+                updateMeasurementStatus(itm.sn, itm.pnum, itm.mid, 'P');
             }
         }
-    });
-    console.log('finish latest');
+    }
+
+    let status = '';
+    let itm = doList[0].data[0];
+    if (missingTests.size > 0 || failTests.size > 0) {
+        status = 'F';
+    } else {
+        status = 'P';
+    }
+    updateOverallStatus(itm.sn, itm.pnum, doList, status);
+    insertTestSummary(itm.sn, itm.pnum, itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, status);
 }
 
+function updateMeasurementStatus(serial, pnum, mid, measstatus) {
+    Testdata.update(
+        {
+            'device.SerialNumber': serial,
+            'device.PartNumber': pnum,
+            'mid': mid
+        }, {
+            $set: {
+                measstatus: measstatus
+            }
+        }, {
+            multi: true
+        }
+    );
+}
+
+function updateOverallStatus(serial, pnum, doList, status) {
+    let mids = _.map(doList, (doItem) => {
+        if (doItem.data.length > 0) {
+            return doItem.data[0].mid;
+        }
+        return undefined;
+    });
+    Testdata.update(
+        {
+            'device.SerialNumber': serial,
+            'device.PartNumber': pnum,
+            'mid': {$in: mids}
+        }, {
+            $set: {
+                status: status
+            }
+        }, {
+            multi: true
+        }
+    );
+}
 
 function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, failTests, failTestsWithCodes, status) {
     let tsts = _.uniq(_.map([...failTests], function (ft) {
@@ -405,36 +438,47 @@ function getLastSyncDate (domain) {
     }
 }
 
-function getSpecOrder (sar) {
-    return SarSpec.aggregate([{
+function getFlowsGroupedByOrder (flow, specs) {
+    let flows = SarFlow.aggregate([{
         $match: {
-            sarId: sar._id
+            sarId: flow._id
         }
     }, {
-        $project: {
-            order: '$order',
-            t: {
-                $concat: ['$type', '-', '$subtype']
+        $group: {
+            _id: '$order',
+            tests: {
+                $push: {
+                    $concat: ['$type', ' - ', '$subtype']
+                }
+            },
+            required: {
+                $first: '$required'
             }
         }
     }, {
         $sort: {
-            order: 1,
-            t: 1
+            _id: 1
         }
     }]);
+
+    for (let i = 0; i < flows.length; i++) {
+        flows[i].specs = [];
+        flows[i].tests.unshift('actionstatus - error');
+       _.each(specs, (spec) => {
+            if (_.contains(flows[i].tests, spec.tst)) {
+                flows[i].specs.push(spec);
+            }
+       });
+    }
+
+    return flows;
 }
 
-function commonAggregation (pnum, serials, endWeek) {
+function commonAggregation (pnum, serial, endWeek, tests) {
     return [{
         $match: {
-            'device.SerialNumber': {
-                $in: serials
-            },
+            'device.SerialNumber': serial,
             'device.PartNumber': pnum,
-            'type': {
-                $nin: ['link', 'download']
-            },
             'timestamp': {
                 $lte: endWeek
             }
@@ -451,6 +495,12 @@ function commonAggregation (pnum, serials, endWeek) {
                 volt: '$meta.SetVoltage'
             })
     }, {
+        $match: {
+            tst: {
+                $in: tests
+            }
+        }
+    }, {
         // First sort by serial and date
         $sort: {
             sn: 1,
@@ -459,8 +509,8 @@ function commonAggregation (pnum, serials, endWeek) {
     }];
 }
 
-function getLastTestData (pnum, serials, ew) {
-    let lastTestAggregation = commonAggregation(pnum, serials, ew).concat([{
+function getLastTestData (pnum, serial, ew, tests) {
+    let lastTestAggregation = commonAggregation(pnum, serial, ew, tests).concat([{
         // Group by serial and tests to prepare for finding last tests
         $group: {
             _id: {
@@ -510,30 +560,26 @@ function getLastTestData (pnum, serials, ew) {
         // Unwind items in order to group them by serial number
         $unwind: '$items'
     }, {
-        $group: {
-            _id: '$_id.sn',
-            items: {
-                $push: {
-                    id: '$items.__id',
-                    mid: '$items.mid',
-                    sn: '$_id.sn',
-                    t: '$items.t',
-                    s: '$items.s',
-                    sd: '$items.sd',
-                    pnum: '$items.pnum',
-                    cm: '$items.cm',
-                    rack: '$items.rack',
-                    dut: '$items.dut',
-                    usr: '$items.usr',
-                    r: '$items.r',
-                    st: '$items.st',
-                    tf: '$items.tf',
-                    data: '$items.data',
-                    tmpr: '$items.setTemperature',
-                    channel: '$items.channel',
-                    volt: '$items.volt'
-                }
-            }
+        $project: {
+            _id: '$items.__id',
+            sn: '$_id.sn',
+            mid: '$items.mid',
+            tst: '$items.tst',
+            t: '$items.t',
+            s: '$items.s',
+            sd: '$items.sd',
+            pnum: '$items.pnum',
+            cm: '$items.cm',
+            rack: '$items.rack',
+            dut: '$items.dut',
+            usr: '$items.usr',
+            r: '$items.r',
+            st: '$items.st',
+            tf: '$items.tf',
+            data: '$items.data',
+            tmpr: '$items.setTemperature',
+            channel: '$items.channel',
+            volt: '$items.volt'
         }
     }]);
     return Testdata.aggregate(lastTestAggregation, {allowDiskUse: true});
@@ -566,6 +612,7 @@ function getSpecRanges (sar) {
         $project: {
             type: '$type',
             subtype: '$subtype',
+            tst: {$concat: ['$type', ' - ', '$subtype']},
             temperature: '$params.temperature',
             param: '$params.param',
             min: '$params.testMin',
@@ -631,32 +678,15 @@ HTTP.methods({
         get: function () {
             let sn = this.query.sn;
             let pnum = this.query.pnum;
-            // Get latest spec revision for the pnum
-            let sar = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
-            if (sar) {
-                // Get valid spec ranges for sar named 'Test'
-                let specs = getSpecRanges(sar);
-                if (specs.length > 0) {
-                    // Get list of serials that are changed from last compilation
-                    let serials = [sn];
-                    for (let i = 0; i < serials.length; i += 10) {
-                        let array = serials.slice(i, i + 10);
-                        processCustomVars(getLastTestData(pnum, array, moment().toDate()));
-                        processLastTestData(pnum, getLastTestData(pnum, array, moment().toDate()), specs, getSpecOrder(sar), sar);
+            execSar(pnum, snum, false);
+            return Testsummary.findOne(
+                {
+                    sn: sn
+                }, {
+                    sort: {
+                        d: -1
                     }
-                }
-                return Testsummary.findOne(
-                    {
-                        sn: sn
-                    }, {
-                        sort: {
-                            d: -1
-                        }
-                    });
-            }
-            else {
-                return 'Invalid pnum';
-            }
+                });
         }
     }
 });

@@ -37,6 +37,10 @@ Meteor.methods({
         _.each(sarSpecs, (sa) => {
             _pasteSarSpec(id, sa);
         });
+        let sarFlows = SarFlow.find({sarId: sar._id}).fetch();
+        _.each(sarFlows, (sa) => {
+            _pasteSarFlow(id, sa);
+        });
     },
     pasteSarAction: function (sar, sarAction) {
         _pasteSarAction(sar._id || sarAction.sarId, sarAction);
@@ -216,6 +220,16 @@ function _pasteSarSpec (sarId, ss) {
             testMin: sas.testMin,
             testMax: sas.testMax
         });
+    });
+}
+
+function _pasteSarFlow (sarId, ss) {
+    SarFlow.insert({
+        sarId: sarId,
+        type: ss.type,
+        subtype: ss.subtype,
+        order: ss.order,
+        required: ss.required
     });
 }
 

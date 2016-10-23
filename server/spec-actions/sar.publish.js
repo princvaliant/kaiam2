@@ -34,4 +34,8 @@ Meteor.publish('sar-spec-ranges', function (sarId) {
     }
 });
 
-
+Meteor.publish('sar-flows', function (sarId) {
+    if (this.userId) {
+        return SarFlow.find({sarId: sarId}, {});
+    }
+});
