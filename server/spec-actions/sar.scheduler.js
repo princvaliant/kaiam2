@@ -30,7 +30,7 @@ Meteor.methods({
         _.each(pnums, (pnum) => {
             // Loop through all part numbers and execute only for 100GB
             if (Settings.partNumbers[pnum].device === '100GB') {
-                execSar(pnum, 'Q5162', false);  // testing with snum
+                execSar(pnum); //, 'Q5162', false);  // testing with snum
             }
         });
     }
@@ -88,7 +88,7 @@ function execSar (pnum, snum, calcVars = true) {
                     });
                 });
                 // Compile spec and determine pass or fail
-                compileDoList(doList, sarDef, pnum, serials[i]);
+                compileDoList(doList, sarDef, pnum, serials[i], ew);
             }
         }
 
@@ -114,7 +114,7 @@ function calculateCustomVars (items) {
     SarCalculation.execute();
 }
 
-function compileDoList (doList, sarDef, pnum, sn) {
+function compileDoList (doList, sarDef, pnum, sn, ew) {
     let racks = new Set();
     let duts = new Set();
     // List of failed tests
@@ -171,7 +171,7 @@ function compileDoList (doList, sarDef, pnum, sn) {
                     failTestsWithCodes.add(test + '-M');
                 }
             });
-            insertTestSummary(sn, pnum, new Date(), racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'X');
+            insertTestSummary(sn, pnum, ew.toDate(), racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'X');
             return;
         } else if (doItem.data.length > 0) {
             // Determine if there is error for this measurement
@@ -179,7 +179,7 @@ function compileDoList (doList, sarDef, pnum, sn) {
             if (errorItem) {
                 // Find test items that errored
                 let testsErrored = _.where(doItem.data, {r: 'E'});
-                if (testsErrored) {
+                if (testsErrored && testsErrored.length > 0) {
                     _.each(testsErrored, (testErrored) => {
                         racks.add(testErrored.rack);
                         duts.add(testErrored.dut);

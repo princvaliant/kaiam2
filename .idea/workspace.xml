@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/sarflow.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.eslintrc" afterPath="$PROJECT_DIR$/.eslintrc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.run.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.run.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js" afterPath="$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/settings.js" afterPath="$PROJECT_DIR$/lib/settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/testsummary.js" afterPath="$PROJECT_DIR$/model/testsummary.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.methods.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.publish.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.publish.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist">
@@ -37,7 +25,18 @@
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="sar.scheduler.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="326" column="21" lean-forward="true" selection-start-line="326" selection-start-column="21" selection-end-line="326" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -145,8 +144,8 @@
         <option value="$PROJECT_DIR$/.meteor/local/build/programs/server/app/app.js" />
         <option value="$PROJECT_DIR$/model/testsummary.js" />
         <option value="$PROJECT_DIR$/server/spec-actions/sar.methods.js" />
-        <option value="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
         <option value="$PROJECT_DIR$/../kaiam2d_dev/mup.json" />
+        <option value="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
       </list>
     </option>
   </component>
@@ -158,6 +157,10 @@
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
     <package-json value="$PROJECT_DIR$/package.json" />
   </component>
+  <component name="JsFlowSettings">
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -166,8 +169,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2685" />
-    <option name="y" value="-836" />
+    <option name="x" value="-3211" />
+    <option name="y" value="-842" />
     <option name="width" value="1291" />
     <option name="height" value="1416" />
   </component>
@@ -203,6 +206,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -249,8 +254,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -259,7 +262,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="enabled" />
     <property name="js.meteor.project" value="true" />
     <property name="js.meteor.library.was.enabled" value="true" />
-    <property name="settings.editor.selected.configurable" value="liveEdit" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
@@ -407,7 +410,7 @@
     </configuration>
     <configuration default="false" name="Meteor Dev Debug" type="meteor-app-runner" factoryName="Meteor">
       <option name="envs">
-        <entry key="MONGO_URL" value="mongodb://Miljenko:ka1amc00lc10ud@159.203.231.8:27017/KaiamApp?ssl=true&amp;sslVerifyCertificate=false" />
+        <entry key="MONGO_URL" value="mongodb://159.203.231.8:27017/KaiamApp" />
       </option>
       <option name="exePath" value="/usr/local/bin/meteor" />
       <option name="startBrowserSettings">
@@ -652,14 +655,8 @@
       <workItem from="1477022073980" duration="955000" />
       <workItem from="1477068875946" duration="33016000" />
       <workItem from="1477168257137" duration="359000" />
-      <workItem from="1477191074981" duration="221000" />
-    </task>
-    <task id="LOCAL-00027" summary="- Developing MES tracking system&#10;- Create auto increment counter for vendor specific serials&#10;- Preparing for deployment to production">
-      <created>1472874459809</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1472874459809</updated>
+      <workItem from="1477191074981" duration="776000" />
+      <workItem from="1477196669659" duration="2278000" />
     </task>
     <task id="LOCAL-00028" summary="- Minor fixes related to user roles">
       <created>1473050263537</created>
@@ -997,11 +994,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476921991817</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="- Developing new spec compiler">
+      <created>1477191377414</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1477191377415</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="788712000" />
+    <option name="totallyTimeSpent" value="791545000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1013,27 +1017,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2685" y="-836" width="1291" height="1416" extended-state="0" />
+    <frame x="-3211" y="-842" width="1291" height="1416" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24251969" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.49719888" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586103" sideWeight="0.32423398" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586103" sideWeight="0.33228347" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275194" sideWeight="0.4970888" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.51544404" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23946957" sideWeight="0.51675975" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586103" sideWeight="0.66771656" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25590873" sideWeight="0.3681979" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586103" sideWeight="0.675766" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.49719888" order="6" side_tool="false" content_ui="tabs" />
@@ -1073,7 +1077,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="- Add export to excel functionality for actions and specs" />
     <MESSAGE value="- Add MES thruput charts weekly and daily&#10;- Fix sorting of test data in transceiver view" />
     <MESSAGE value="- Fixing trend charts&#10;- Fixing export for rx and tx functionality&#10;- Sort test data in descending order&#10;- Upgrade angular material to 1.1.1" />
     <MESSAGE value="- Fixing transceiver view layout bug after upgrade to material 1.1.1" />
@@ -1098,14 +1101,15 @@
     <MESSAGE value="- Fixed spec compiler to handle exponential numbers" />
     <MESSAGE value="- Deployed sequencing for XQX5000" />
     <MESSAGE value="- Fixing eprom import export functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixing eprom import export functionality" />
+    <MESSAGE value="- Developing new spec compiler" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Developing new spec compiler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="1260" />
+      <option name="time" value="1272" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="meteor-app-runner">
@@ -1461,14 +1465,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="914">
-          <caret line="169" column="67" lean-forward="false" selection-start-line="169" selection-start-column="67" selection-end-line="169" selection-end-column="67" />
+        <state relative-caret-position="344">
+          <caret line="326" column="21" lean-forward="true" selection-start-line="326" selection-start-column="21" selection-end-line="326" selection-end-column="21" />
           <folding />
         </state>
       </provider>
