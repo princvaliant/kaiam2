@@ -24,13 +24,13 @@ Meteor.startup(function () {
 
 // For testing in development
 Meteor.methods({
-    'sarcalc': function () {
+    'sarcalc': function (code) {
         // ScesDomains.getUser(this.userId);
         let pnums = _.keys(Settings.partNumbers);
         _.each(pnums, (pnum) => {
             // Loop through all part numbers and execute only for 100GB
             if (Settings.partNumbers[pnum].device === '100GB') {
-                execSar(pnum); //, 'Q5162', false);  // testing with snum
+                execSar(pnum, code, false);  // testing with snum
             }
         });
     }
@@ -42,7 +42,7 @@ function execSar (pnum, snum, calcVars = true) {
     let sarDef = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
     // Get latest revision of flow definition
     let flowDef = Sar.findOne({pnum: pnum, class: 'FLOW', active: 'Y'}, {sort: {rev: -1}});
-    if (sarDef) {
+    if (sarDef && flowDef) {
         // Get valid spec ranges for sar named 'Spec'
         let specs = getSpecRanges(sarDef);
 
@@ -124,6 +124,32 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
     // List of tests that failed together with parameters that failed
     let failTestsWithCodes = new Set();
 
+    // Determine if there is last error for this measurement
+    let errorItem = getLastTestData(pnum, sn, ew.toDate(), ['actionstatus - error'])[0];
+    if (errorItem) {
+        // Find test items that errored
+        let errors = [];
+        _.each(doList, (doItem) => {
+            _.each(doItem.data, (itm) => {
+                if (itm.r === 'E') {
+                    errors.push(itm);
+                }
+            });
+        });
+        if (errors && errors.length > 0) {
+            _.each(errors, (testErrored) => {
+                racks.add(testErrored.rack);
+                duts.add(testErrored.dut);
+                failTests.add(testErrored.t + '-' + testErrored.s);
+                failTestsWithCodes.add(testErrored.t + ' - ' + testErrored.s + ' - ' + errorItem.data.TestErr[0]);
+            });
+            updateMeasurementStatus(errorItem.sn, errorItem.pnum, errors[0].mid, 'E');
+            updateOverallStatus(errorItem.sn, errorItem.pnum, doList, 'E');
+            insertTestSummary(errorItem.sn, errorItem.pnum, errorItem.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'E');
+            return;
+        }
+    }
+
     for(let i = 0; i < doList.length; i++) {
         let doItem = doList[i];
         // doItem: {
@@ -158,7 +184,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
         //             type = "txtests"
         //             _id = "qbGtW4AxHhEf65DnK"
         //     }],
-        //     tests: ['actionstatus - error', 'txtests - channeldata']
+        //     tests: ['txtests - channeldata']
         //   }
 
         // Check first if this flow step is required
@@ -166,37 +192,16 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
             // Mark measstatus X and status X
             updateOverallStatus(sn, pnum, doList, 'X');
             _.each(doItem.flow.tests, (test) => {
-                if (test !== 'actionstatus - error') {
-                    failTests.add(test.split(' ').join('') + '-M');
-                    failTestsWithCodes.add(test + '-M');
-                }
+                failTests.add(test.split(' ').join('') + ' - M');
+                failTestsWithCodes.add(test + ' - M');
             });
             insertTestSummary(sn, pnum, ew.toDate(), racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'X');
             return;
         } else if (doItem.data.length > 0) {
-            // Determine if there is error for this measurement
-            let errorItem = _.where(doItem.data, {tst: 'actionstatus - error'})[0];
-            if (errorItem) {
-                // Find test items that errored
-                let testsErrored = _.where(doItem.data, {r: 'E'});
-                if (testsErrored && testsErrored.length > 0) {
-                    _.each(testsErrored, (testErrored) => {
-                        racks.add(testErrored.rack);
-                        duts.add(testErrored.dut);
-                        failTests.add(testErrored.t + '-' + testErrored.s);
-                        failTestsWithCodes.add(testErrored.t + ' - ' + testErrored.s + ' - ' + errorItem.data.TestErr[0]);
-                    });
-                    updateMeasurementStatus(errorItem.sn, errorItem.pnum, testsErrored[0].mid, 'E');
-                    updateOverallStatus(errorItem.sn, errorItem.pnum, doList, 'E');
-                    insertTestSummary(errorItem.sn, errorItem.pnum, errorItem.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'E');
-                }
-                return;
-            }
-
             // Determine if error is determined by test software
             let testsMarkedFailed = _.filter(doItem.data, function (item) {
                 let tf = item.tf || [];
-                return tf.length > 0;
+                return tf.length > 0 || item.r === 'F';
             });
             if (testsMarkedFailed && testsMarkedFailed.length > 0) {
                 _.each(testsMarkedFailed, (testMarkedFailed) => {
@@ -463,14 +468,12 @@ function getFlowsGroupedByOrder (flow, specs) {
 
     for (let i = 0; i < flows.length; i++) {
         flows[i].specs = [];
-        flows[i].tests.unshift('actionstatus - error');
        _.each(specs, (spec) => {
             if (_.contains(flows[i].tests, spec.tst)) {
                 flows[i].specs.push(spec);
             }
        });
     }
-
     return flows;
 }
 
