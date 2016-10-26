@@ -81,11 +81,17 @@ function execSar (pnum, snum, calcVars = true) {
             // Loop through the test flow and compile test data
             for (let i = 0; i < serials.length; i++) {
                 let doList = [];
+                let dateCursor = moment('2000-01-01').toDate();
                 _.each(flows, (flow) => {
-                    doList.push({
-                        flow: flow,
-                        data: getLastTestData(pnum, serials[i], ew.toDate(), flow.tests)
-                    });
+                    // Find last test data for tests
+                    let lastData = getLastTestData(pnum, serials[i], ew.toDate(), flow.tests);
+                    if (lastData.length > 0 && lastData[0].sd >= dateCursor) {
+                        doList.push({
+                            flow: flow,
+                            data: lastData
+                        });
+                        dateCursor = lastData[0].sd;
+                    }
                 });
                 // Compile spec and determine pass or fail
                 compileDoList(doList, sarDef, pnum, serials[i], ew);
@@ -187,11 +193,16 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
         //     tests: ['txtests - channeldata']
         //   }
 
+        // Check if all tests are present in data
+        let tsts = _.map(doItem.data, (d) => {
+            return d.tst;
+        });
+        let mtsts = _.difference(doItem.flow.tests, tsts);
         // Check first if this flow step is required
-        if (doItem.flow.required === 'Y' && doItem.data.length === 0) {
+        if (doItem.flow.required === 'Y' && mtsts.length > 0) {
             // Mark measstatus X and status X
             updateOverallStatus(sn, pnum, doList, 'X');
-            _.each(doItem.flow.tests, (test) => {
+            _.each(mtsts, (test) => {
                 failTests.add(test.split(' ').join('') + ' - M');
                 failTestsWithCodes.add(test + ' - M');
             });
@@ -326,15 +337,17 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
         }
     }
 
-    let status = '';
-    let itm = doList[0].data[0];
-    if (missingTests.size > 0 || failTests.size > 0) {
-        status = 'F';
-    } else {
-        status = 'P';
+    if (doList.length > 0) {
+        let status = '';
+        let itm = doList[0].data[0];
+        if (missingTests.size > 0 || failTests.size > 0) {
+            status = 'F';
+        } else {
+            status = 'P';
+        }
+        updateOverallStatus(itm.sn, itm.pnum, doList, status);
+        insertTestSummary(itm.sn, itm.pnum, itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, status);
     }
-    updateOverallStatus(itm.sn, itm.pnum, doList, status);
-    insertTestSummary(itm.sn, itm.pnum, itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, status);
 }
 
 function updateMeasurementStatus(serial, pnum, mid, measstatus) {

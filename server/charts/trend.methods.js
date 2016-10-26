@@ -71,11 +71,11 @@ Meteor.methods({
         //console.log(JSON.stringify(match));
         let res = [];
         let direct = new DirectCollection('trends');
-        direct.findEach(match, {fields: fields, sort: {'value.d': 1}}, function (trend) {
+        direct.findEach(match, {fields: fields, sort: {'_id.t': 1, '_id.c': 1, 'value.d': 1}}, function (trend) {
             res.push({
                 s: trend._id.s,
                 c: trend._id.c || '4',
-                t: trend._id.t || '_',
+                t: trend._id.t === null ? '_' : trend._id.t,
                 n: trend.value.n,
                 d: trend.value.d
             });

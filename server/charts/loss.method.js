@@ -45,7 +45,11 @@ Meteor.methods({
         }
         if (device === '100GB') {
             match.status = {$in: ['P', 'F', 'E']};
-            totalPasses = TestsummaryWeek.aggregate([{$match: match}]).length;
+            if (yieldType === 'Fixed week') {
+                totalPasses = TestsummaryWeek.aggregate([{$match: match}]).length;
+            } else {
+                totalPasses = Testsummary.aggregate([{$match: match}]).length;
+            }
         }
 
         if (rack !== 'All_racks') {
@@ -122,7 +126,7 @@ Meteor.methods({
 
         for (let j = 0; j < result.length; j++) {
             result[j].pass = result[j].fail / totalPasses;
-            if (chartType !== 'Grouped fails') {
+            if (chartType === 'Fail trends') {
                 result[j]._id.tsts = result[j]._id.tsts.split('|')[0];
             }
         }
