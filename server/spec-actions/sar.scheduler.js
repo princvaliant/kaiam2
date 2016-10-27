@@ -202,7 +202,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
         let tsts = _.map(doItem.data, (d) => {
             return d.tst;
         });
-        let mtsts = _.difference(doItem.flow.tests, tsts);
+        let mtsts = _.difference(doItem.flow.tests, tsts || []);
         // Check first if this flow step is required
         if (doItem.flow.required === 'Y' && mtsts.length > 0) {
             // Mark measstatus X and status X
@@ -225,6 +225,9 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                     racks.add(testMarkedFailed.rack);
                     duts.add(testMarkedFailed.dut);
                     failTests.add(testMarkedFailed.t + '-' + testMarkedFailed.s);
+                    if (testMarkedFailed.tf.length === 0) {
+                        testMarkedFailed.tf = ['unknown error'];
+                    }
                     _.each(testMarkedFailed.tf, (tf) => {
                         failTestsWithCodes.add(testMarkedFailed.t + ' - ' + testMarkedFailed.s + ' - ' + tf);
                         failCodesPerId.add(tf);
