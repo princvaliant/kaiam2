@@ -85,19 +85,24 @@ function execSar (pnum, snum, calcVars = true) {
                 _.each(flows, (flow) => {
                     // Find last test data for tests
                     let lastData = getLastTestData(pnum, serials[i], ew.toDate(), flow.tests);
-                    if (lastData.length > 0 && lastData[0].sd >= dateCursor) {
+                    if (dateCursor !== null && lastData.length > 0 && lastData[lastData.length - 1].sd > dateCursor) {
                         doList.push({
                             flow: flow,
                             data: lastData
                         });
-                        dateCursor = lastData[0].sd;
+                        dateCursor = lastData[lastData.length - 1].sd;
+                    } else {
+                        doList.push({
+                            flow: flow,
+                            data: []
+                        });
+                        dateCursor = null;
                     }
                 });
                 // Compile spec and determine pass or fail
                 compileDoList(doList, sarDef, pnum, serials[i], ew);
             }
         }
-
     } else {
         sar = {_id: ''};
     }
