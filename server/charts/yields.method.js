@@ -29,6 +29,11 @@ Meteor.methods({
                     $gt: moment().subtract(90, 'days').format('YYYY-MM-DD')
                 };
             }
+            if (interval === 'Weekly') {
+                match.d = {
+                    $gt: moment().subtract(190, 'days').format('YYYY-MM-DD')
+                };
+            }
         }
         if (manufacturer !== '-all-') {
             match.cm = manufacturer;
