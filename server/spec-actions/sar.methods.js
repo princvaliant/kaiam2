@@ -230,7 +230,8 @@ function _pasteSarFlow (sarId, ss) {
         type: ss.type,
         subtype: ss.subtype,
         order: ss.order,
-        required: ss.required
+        required: ss.required,
+        ignoreSeq: ss.ignoreSeq
     });
 }
 
