@@ -20,6 +20,8 @@ import './loss-check.controller';
 import './loss-check.tmpl.html';
 import './mes-charts.controller';
 import './mes-charts.tmpl.html';
+import './shipout-charts.controller';
+import './shipout-charts.tmpl.html';
 
 /**
  * @ngdoc module
@@ -59,6 +61,11 @@ angular.module('kaiamCharts')
                     url: '/mescharts',
                     templateUrl: 'imports/ui/components/charts/mes-charts.tmpl.html',
                     controller: 'MesChartsController'
+                })
+                .state('triangular.shipout', {
+                    url: '/shipout',
+                    templateUrl: 'imports/ui/components/charts/shipout-charts.tmpl.html',
+                    controller: 'ShipoutChartsController'
                 })
                 .state('triangular.powercalbeforetx', {
                     url: '/powercalbeforetx',

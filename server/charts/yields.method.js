@@ -7,7 +7,7 @@
  */
 
 Meteor.methods({
-    yields: function (minTotal, manufacturer, interval, device, yieldType) {
+    yields: function (minTotal, manufacturer, interval, device, yieldType, testType) {
         ScesDomains.getUser(this.userId);
         let match = {};
         if (interval === 'Rework') {
@@ -37,6 +37,19 @@ Meteor.methods({
         }
         if (manufacturer !== '-all-') {
             match.cm = manufacturer;
+        }
+        if (testType !== '-all-') {
+            match.$and = [{'$or': []}];
+            match.$and[0].$or.push(
+                {
+                    tsts: {
+                        $regex: '^' + testType
+                    }
+                });
+            match.$and[0].$or.push(
+                {
+                    tsts: {$size: 0}
+                });
         }
         let group = {
             _id: {}

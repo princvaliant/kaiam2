@@ -86,6 +86,9 @@ function execSar (pnum, snum, calcVars = true) {
                 _.each(flows, (flow) => {
                     // Find last test data for tests
                     let lastData = getLastTestData(pnum, serials[i], ew.toDate(), flow.tests);
+                    if (flow.ignoreSeq === 'Y') {
+                        dateCursor = moment('2000-01-01').toDate();
+                    }
                     if (dateCursor !== null && lastData.length > 0 && lastData[lastData.length - 1].sd > dateCursor) {
                         doList.push({
                             flow: flow,
@@ -483,6 +486,9 @@ function getFlowsGroupedByOrder (flow, specs) {
             },
             required: {
                 $first: '$required'
+            },
+            ignoreSeq: {
+                $first: '$ignoreSeq'
             }
         }
     }, {

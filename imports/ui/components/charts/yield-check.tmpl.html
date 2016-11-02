@@ -35,6 +35,14 @@
                                value="{{manufacturer}}">{{manufacturer}}</md-option>
                 </md-select>
             </md-input-container>
+            <md-input-container>
+                <label>Tests</label>
+                <md-select  ng-model="testType" style="width:150px"
+                            ng-change="changeTestType(testType)">
+                    <md-option ng-repeat="testType in testTypes | orderBy"
+                               value="{{testType}}">{{testType}}</md-option>
+                </md-select>
+            </md-input-container>
             <span flex></span>
             <md-menu>
                 <md-button aria-label="{{'SPC_OPTIONS_EXPORT' | translate}}" ng-click="$mdOpenMenu()" class="md-warn">

@@ -4,7 +4,7 @@ import './widget.tmpl.html';
 angular.module('triangular.components').directive('triWidget', widget);
 
 widget.$inject = ['$mdTheming'];
-Controller.$inject = [];
+Controller.$inject = ['$scope'];
 
 /* @ngInject */
 function widget ($mdTheming) {
@@ -71,7 +71,7 @@ function widget ($mdTheming) {
 }
 
 /* @ngInject */
-function Controller() {
+function Controller($scope) {
     let vm = this;
     vm.menu = null;
     vm.loading = false;
@@ -81,6 +81,10 @@ function Controller() {
     };
 
     this.setLoading = function (loading) {
-        vm.loading = loading;
+        setTimeout(function () {
+            $scope.$apply(function () {
+                vm.loading = loading;
+            });
+        }, 0);
     };
 }

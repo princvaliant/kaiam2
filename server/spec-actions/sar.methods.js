@@ -8,6 +8,7 @@ Meteor.methods({
         SarSpecRange.remove({sarId: sarId});
         SarAction.remove({sarId: sarId});
         SarSpec.remove({sarId: sarId});
+        SarFlow.remove({sarId: sarId});
     },
     removeSarAction: function (sarActionId) {
         check(sarActionId, String);

@@ -23,6 +23,8 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         $scope.manufacturers = _.union(['-all-'], Settings.manufacturers);
         $scope.device = $cookies.get('yieldDevice') || '40GB';
         $scope.yieldType = $cookies.get('yieldType') || 'Fixed week';
+        $scope.testType = '-all-';
+        $scope.testTypes = _.union(['-all-'], Settings.getTestConfigForDevice($scope.device));
         let charts = null;
         let chartsObjs = null;
 
@@ -52,7 +54,13 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
         };
         $scope.changeDevice = (device) => {
             $scope.device = device;
+            $scope.testType = '-all-';
+            $scope.testTypes = _.union(['-all-'], Settings.getTestConfigForDevice($scope.device));
             $cookies.put('yieldDevice', device);
+            processRows();
+        };
+        $scope.changeTestType = (testType) => {
+            $scope.testType = testType;
             processRows();
         };
 
@@ -65,7 +73,8 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
                 $scope.manufacturer,
                 $scope.interval,
                 $scope.device,
-                $scope.yieldType, (err, yields) => {
+                $scope.yieldType,
+                $scope.testType, (err, yields) => {
                     if (err) {
                         $mdToast.show(
                             $mdToast.simple()

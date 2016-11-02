@@ -249,14 +249,15 @@ angular.module('kaiamSpecActions')
                 pasteSarSpec: function (sar, sarSpec) {
                     Meteor.call('pasteSarSpec', sar, sarSpec);
                 },
-                addSarFlow: function (sar, type, subtype, order, required) {
+                addSarFlow: function (sar, type, subtype, order, required, ignoreSeq) {
                     if (sar) {
                         SarFlow.insert({
                             sarId: sar._id,
                             type: type,
                             subtype: subtype,
                             order: order,
-                            required: required || 'Y'
+                            required: required || 'Y',
+                            ignoreSeq: ignoreSeq || ''
                         });
                     }
                 },
@@ -277,7 +278,8 @@ angular.module('kaiamSpecActions')
                             type: sarFlow.type,
                             subtype: sarFlow.subtype,
                             order: sarFlow.order !== '' ? parseInt(sarFlow.order) : '',
-                            required: sarFlow.required
+                            required: sarFlow.required,
+                            ignoreSeq: sarFlow.ignoreSeq
                         }
                     });
                 }

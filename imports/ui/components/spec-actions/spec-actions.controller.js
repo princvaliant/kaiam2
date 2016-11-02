@@ -199,7 +199,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         };
 
         $scope.addSarFlowClick = function () {
-            SpecActionsService.addSarFlow($scope.selectedSar, '', '', '');
+            SpecActionsService.addSarFlow($scope.selectedSar, '', '', '', '');
         };
         $scope.removeSarFlowClick = function () {
             let confirm = $mdDialog.confirm()

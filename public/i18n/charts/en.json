@@ -5,6 +5,7 @@
       "TIMETREND": "Test trends",
       "THRUPUT": "Thruput",
       "MESCHARTS": "MES charts",
+      "SHIPOUT": "Shipout",
       "RXTESTS": {
         "RXTESTS": "Rx tests",
         "SENSITIVITY": "Sensitivity",

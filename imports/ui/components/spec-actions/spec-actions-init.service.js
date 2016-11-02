@@ -284,19 +284,19 @@ angular.module('kaiamSpecActions')
                         headerName: 'Test type',
                         enableFiltering: true,
                         cellEditableCondition: scope.canEdit,
-                        width: '31%'
+                        width: '25%'
                     }, {
                         field: 'subtype',
                         headerName: 'Test sub type',
                         enableFiltering: true,
                         cellEditableCondition: scope.canEdit,
-                        width: '31%'
+                        width: '25%'
                     }, {
                         field: 'order',
                         headerName: 'Order',
                         enableFiltering: true,
                         cellEditableCondition: scope.canEdit,
-                        width: '16%'
+                        width: '12%'
                     }, {
                         headerName: 'Required',
                         field: 'required',
@@ -309,7 +309,20 @@ angular.module('kaiamSpecActions')
                             {id: 'Y', active: 'Y'},
                             {id: 'N', active: 'N'}
                         ],
-                        width: '16%'
+                        width: '12%'
+                    }, {
+                        headerName: 'Ignore sequence',
+                        field: 'ignoreSeq',
+                        name: 'ignoreSeq',
+                        enableFiltering: true,
+                        editableCellTemplate: 'ui-grid/dropdownEditor',
+                        editDropdownValueLabel: 'active',
+                        cellEditableCondition: true,
+                        editDropdownOptionsArray: [
+                            {id: 'Y', active: 'Y'},
+                            {id: '', active: ''}
+                        ],
+                        width: '12%'
                     }];
                     scope.gridSarFlows = {
                         enableGridMenu: false,

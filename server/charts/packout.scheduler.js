@@ -81,7 +81,7 @@ function execPackout () {
                         $subtract: ['$meta.StartDateTime', offset]
                     }
                 }
-            },
+            }
         }
     }, {
         $sort: {
