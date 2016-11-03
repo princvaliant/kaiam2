@@ -42,7 +42,7 @@ HTTP.methods({
         auth: SarHelper.myAuth,
         get: function (data) {
             let regsnum = new RegExp(this.query.sn, 'i');
-            return TestData.findOne(
+            return Testdata.findOne(
                 {
                     'device.SerialNumber': {
                         $regex: regsnum

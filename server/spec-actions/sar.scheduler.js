@@ -166,8 +166,10 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
             });
             updateMeasurementStatus(errorItem.sn, errorItem.pnum, errors[0].mid, 'E');
             updateOverallStatus(errorItem.sn, errorItem.pnum, doList, 'E');
-            insertTestSummary(errorItem.sn, errorItem.pnum, errorItem.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, failTests, 'E');
+            insertTestSummary(errorItem.sn, errorItem.pnum, errorItem.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'E');
             return;
+        } else {
+            runTests.clear();
         }
     }
 
@@ -259,6 +261,9 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 let tmf = testsMarkedFailed[0];
                 updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, 'F');
                 updateOverallStatus(tmf.sn, tmf.pnum, doList, 'F');
+                _.each(doItem.data, (item) => {
+                    runTests.add(item.t + '-' + item.s);
+                });
                 insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'F');
                 return;
             }

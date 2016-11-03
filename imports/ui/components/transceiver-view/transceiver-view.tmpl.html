@@ -8,12 +8,12 @@
                     <label>Scan barcode</label>
                     <input type="text" id="allScanTrans" ng-model="tr" ng-keypress="onKeyPressed($event)">
                 </md-input-container>
-                    <md-radio-group ng-model="grouping" layout="row" ng-change="changeGrouping(grouping)" flex="100">
-                        <md-radio-button value="errorCheck" class="md-primary">Error check</md-radio-button>
-                        <md-radio-button value="eyeImages">Eye Images</md-radio-button>
-                        <md-radio-button value="testData">Test data</md-radio-button>
-                        <md-radio-button value="sensitivityCharts">Sensitivity charts</md-radio-button>
-                    </md-radio-group>
+                <md-radio-group ng-model="grouping" layout="row" ng-change="changeGrouping(grouping)" flex="100">
+                    <md-radio-button value="errorCheck" class="md-primary">Error check</md-radio-button>
+                    <md-radio-button value="eyeImages">Eye Images</md-radio-button>
+                    <md-radio-button value="testData">Test data</md-radio-button>
+                    <md-radio-button value="sensitivityCharts">Sensitivity charts</md-radio-button>
+                </md-radio-group>
             </form>
         </md-card-content>
     </md-card>
@@ -78,8 +78,12 @@
                     <md-card-content>
                         <div ng-repeat="obj in data  | orderBy : '-timestamp' "
                              style="font-size:11px;padding-left:15px;">
-                        <span class="meas_status_{{obj.status}}">Status: {{obj.status}}
-                            <span class="meas_status_{{obj.result}}">Ind: {{obj.result}}</span></span>
+                          <span class="meas_status_{{obj.status}}">All: {{obj.status}}
+                              <span class="meas_status_{{obj.measstatus}}">Meas: {{obj.measstatus}}
+                                  <span class="meas_status_{{obj.result}}">Row: {{obj.result}}
+                                    </span>
+                                </span>
+                            </span>
                             {{obj.timestamp | date:'MM/dd/yyyy HH:mm:ss'}} {{obj.type}} {{obj.subtype}} -
                             <md-button class="md-primary btn-view-data" ng-click="select(obj)">view data
                             </md-button>
@@ -114,7 +118,7 @@
             <md-subheader class="md-no-sticky" ng-show="grouping === 'sensitivityCharts'">Sensitivity charts
                 for {{code}}
             </md-subheader>
-            <md-grid-list  md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4" md-row-height="300px" md-gutter="5px">
+            <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4" md-row-height="300px" md-gutter="5px">
                 <md-grid-tile md-colspan="1" data-ng-repeat="sensChart in sensCharts">
                     <div id="sens{{sensChart._id}}" class="chartContainer"></div>
                 </md-grid-tile>
