@@ -154,6 +154,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 if (itm.r === 'E') {
                     errors.push(itm);
                 }
+                runTests.add(itm.t + '-' + itm.s);
             });
         });
         if (errors && errors.length > 0) {
@@ -260,11 +261,11 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 updateOverallStatus(tmf.sn, tmf.pnum, doList, 'F');
                 insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'F');
                 return;
-            } else {
-                _.each(doItem.data, (item) => {
-                    runTests.add(item.t + '-' + item.s);
-                });
             }
+            _.each(doItem.data, (item) => {
+                runTests.add(item.t + '-' + item.s);
+            });
+
 
             // If there is no spec just mark test as passed
             if (doItem.flow.specs.length === 0) {
