@@ -137,6 +137,8 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
     let duts = new Set();
     // List of failed tests
     let failTests = new Set();
+    // List of passed tests
+    let runTests = new Set();
     // List of tests that are missing
     let missingTests = new Set();
     // List of tests that failed together with parameters that failed
@@ -163,7 +165,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
             });
             updateMeasurementStatus(errorItem.sn, errorItem.pnum, errors[0].mid, 'E');
             updateOverallStatus(errorItem.sn, errorItem.pnum, doList, 'E');
-            insertTestSummary(errorItem.sn, errorItem.pnum, errorItem.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'E');
+            insertTestSummary(errorItem.sn, errorItem.pnum, errorItem.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, failTests, 'E');
             return;
         }
     }
@@ -218,7 +220,11 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 failTests.add(test.split(' ').join('') + ' - M');
                 failTestsWithCodes.add(test + ' - M');
             });
-            insertTestSummary(sn, pnum, ew.toDate(), racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'X');
+            let vtsts  = _.intersection(doItem.flow.tests, tsts || []);
+            _.each(vtsts, (test) => {
+                runTests.add(test.split(' ').join(''));
+            });
+            insertTestSummary(sn, pnum, ew.toDate(), racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'X');
             return;
         } else if (doItem.data.length > 0) {
             // Determine if error is determined by test software
@@ -252,8 +258,12 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 let tmf = testsMarkedFailed[0];
                 updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, 'F');
                 updateOverallStatus(tmf.sn, tmf.pnum, doList, 'F');
-                insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, 'F');
+                insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'F');
                 return;
+            } else {
+                _.each(doItem.data, (item) => {
+                    runTests.add(item.t + '-' + item.s);
+                });
             }
 
             // If there is no spec just mark test as passed
@@ -326,6 +336,8 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                                 failTestsWithCodes.add(testItem.t + ' - ' + testItem.s + ' - ' + failCode);
                             });
                         }
+                        runTests.add(testItem.t + '-' + testItem.s);
+
                         // Flag testdata record with the proper fail status
                         Testdata.update({
                             '_id': testItem.id
@@ -361,7 +373,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
             status = 'P';
         }
         updateOverallStatus(itm.sn, itm.pnum, doList, status);
-        insertTestSummary(itm.sn, itm.pnum, itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, status);
+        insertTestSummary(itm.sn, itm.pnum, itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, status);
     }
 }
 
@@ -403,8 +415,11 @@ function updateOverallStatus(serial, pnum, doList, status) {
     );
 }
 
-function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, failTests, failTestsWithCodes, status) {
+function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, failTests, failTestsWithCodes, runTests, status) {
     let tsts = _.uniq(_.map([...failTests], function (ft) {
+        return ft.replace('-', ' - ');
+    })).sort();
+    let runs = _.uniq(_.map([...runTests], function (ft) {
         return ft.replace('-', ' - ');
     })).sort();
     let d = moment(date).format('YYYY-MM-DD');
@@ -432,6 +447,7 @@ function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, fa
         e: status === 'E' ? 1 : 0,
         tsts: tsts,
         tstparams: [...failTestsWithCodes].sort(),
+        runs: runs,
         status: status,
         timestamp: date,
         spec: revname + ' ' + revnum

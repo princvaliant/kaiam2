@@ -82,12 +82,17 @@ angular.module('kaiamCharts').controller('YieldCheckController', [
                                 .position('bottom right')
                                 .hideDelay(3000));
                     } else {
-                        $scope.yields = yields;
-                        _.each(yields, (yld) => {
-                            processRow(yld);
-                        });
-                        if (yields.length > 0) {
-                            initData();
+                        if (yields.length === 0) {
+                            chartsObjs = new CanvasJS.Chart('yieldChartParametric', {});
+                            $scope.widgetCtrl.setLoading(false);
+                        } else {
+                            $scope.yields = yields;
+                            _.each(yields, (yld) => {
+                                processRow(yld);
+                            });
+                            if (yields.length > 0) {
+                                initData();
+                            }
                         }
                     }
                 });

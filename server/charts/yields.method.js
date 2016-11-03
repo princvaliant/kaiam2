@@ -39,17 +39,7 @@ Meteor.methods({
             match.cm = manufacturer;
         }
         if (testType !== '-all-') {
-            match.$and = [{'$or': []}];
-            match.$and[0].$or.push(
-                {
-                    tsts: {
-                        $regex: '^' + testType
-                    }
-                });
-            match.$and[0].$or.push(
-                {
-                    tsts: {$size: 0}
-                });
+            match.runs = testType;
         }
         let group = {
             _id: {}
