@@ -20,5 +20,6 @@ angular.module('kaiamDashboard').config(['$translatePartialLoaderProvider', '$st
                 templateUrl: 'imports/ui/components/dashboard/dashboard.tmpl.html',
                 controller: 'DashboardController'
             });
+
     }
 ]);

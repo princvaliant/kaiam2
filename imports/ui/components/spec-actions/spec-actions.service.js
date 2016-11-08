@@ -6,12 +6,14 @@ angular.module('kaiamSpecActions')
 
             function updateSarExecution(sarId, sarActionId, operation, name, title) {
                 let _execution = Sar.findOne(sarId).execution;
-                if (operation === 'A') {
-                    _execution.push({id: sarActionId, title: title || name, nodes: []});
-                } else {
-                    eachRecursive(_execution, sarActionId, name, title, operation);
+                if (_execution) {
+                    if (operation === 'A') {
+                        _execution.push({id: sarActionId, title: title || name, nodes: []});
+                    } else {
+                        eachRecursive(_execution, sarActionId, name, title, operation);
+                    }
+                    Sar.update({_id: sarId}, {$set: {execution: _execution}});
                 }
-                Sar.update({_id: sarId}, {$set: {execution: _execution}});
             }
 
             function eachRecursive(list, sarActionId, name, title, operation) {
@@ -149,6 +151,9 @@ angular.module('kaiamSpecActions')
                             order: sarAction.order
                         }
                     });
+
+                    console.log(sarAction.name + ' ' + sarAction.order);
+
                     updateSarExecution(sarAction.sarId, sarAction._id, 'U', sarAction.name, sarAction.title);
                 },
                 addSarActionParam: function (sar, sarAction, name, value) {

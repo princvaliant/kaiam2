@@ -14,6 +14,7 @@ Meteor.methods({
                 $or: [
                     {'dc.Purchase Order': {$regex: '^' + (search || '')}},
                     {'dc.Order': {$regex: '^' + (search || '')}},
+                    {'tags': {$regex: '^' + (search || '')}},
                     {'dc.Item Number': {$regex: '^' + (search || '')}}]
             }
         }, {

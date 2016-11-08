@@ -147,11 +147,12 @@ angular.module('kaiamSpecActions')
                                 scope.selectedSarAction = row.entity;
                             });
                             gridApi.draggableRows.on.rowDropped(scope, function (info, dropTarget) {
-                                let i = 1;
+                                let i = 10;
                                 if (scope.canEdit()) {
                                     gridApi.grid.rows.forEach(function (row) {
-                                        row.entity.order = i++;
+                                        row.entity.order = i;
                                         SpecActionsService.updateSarAction(row.entity);
+                                        i += 10;
                                     });
                                 }
                             });

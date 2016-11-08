@@ -17,7 +17,7 @@
     <md-button class="toolbar-button" ng-show="vm.isInventoryUser()" aria-label="scan" href="/sces/shipment" style="color: #FF7755;">
         {{'SCES.NEW-SHIPMENT' | translate}}
     </md-button>
-    <md-button class="toolbar-button" ng-click="vm.openScan()" aria-label="scan">
+    <md-button class="toolbar-button" ng-show="vm.isInventoryUser()" ng-click="vm.openScan()" aria-label="scan">
         <ng-md-icon class="side-menu-icon scan-icon" icon="cast" size="26" ></ng-md-icon>
         {{'SCES.SCAN-FIND' | translate}}
     </md-button>

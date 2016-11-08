@@ -27,7 +27,7 @@ momentjs:moment
 percolate:synced-cron
 peerlibrary:directcollection
 meteorhacks:aggregate
-ixdi:material-design-iconic-font
+ixdi:material-design-iconic-font@2.1.5
 cfs:http-methods
 msavin:mongol
 harrison:papa-parse
