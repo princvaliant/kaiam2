@@ -13,16 +13,8 @@ Meteor.methods({
         if (interval === 'Rework') {
             match.rwr = 1;
         } else {
-            match = {
-                $or: [{
-                    'rwr': {
-                        $ne: 1
-                    }
-                }, {
-                    f: {
-                        $ne: 1
-                    }
-                }]
+            match.rwr = {
+                $ne: 1
             };
             if (interval === 'Daily') {
                 match.d = {
@@ -59,15 +51,45 @@ Meteor.methods({
             group._id.nd = '$nd';
             sort['_id.nd'] = 1;
         }
-        group.fail = {
-            $sum: '$f'
-        };
-        group.pass = {
-            $sum: '$p'
-        };
-        group.err = {
-            $sum: '$e'
-        };
+        if (testType === '-all-') {
+            group.fail = {
+                $sum: '$f'
+            };
+            group.pass = {
+                $sum: '$p'
+            };
+            group.err = {
+                $sum: '$e'
+            };
+        } else {
+            group.fail = {
+                $sum: {
+                    $size: {
+                        $filter: {
+                            input: '$tsts',
+                            as: 'ttt',
+                            cond: { $eq: [ '$$ttt', testType ] }
+                        }
+                    }
+                }
+            };
+            group.pass = {
+                $sum: {
+                    $subtract: [1, {
+                        $size: {
+                            $filter: {
+                                input: '$tsts',
+                                as: 'ttt',
+                                cond: { $eq: [ '$$ttt', testType ] }
+                            }
+                        }
+                    }]
+                }
+            };
+            group.err = {
+                $sum: 0
+            };
+        }
 
         let aggr = [{
             $match: match
@@ -95,7 +117,7 @@ Meteor.methods({
         let min = parseInt(minTotal);
         if (min > 0) {
             result = _.filter(result, function (rec) {
-                return rec.pass + rec.fail > min;
+                return rec.pass + rec.fail + rec.err > min;
             });
         }
         if (device === '100GB') {

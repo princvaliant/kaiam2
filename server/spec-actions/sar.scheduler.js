@@ -24,15 +24,19 @@ Meteor.startup(function () {
 
 // For testing in development
 Meteor.methods({
-    'sarcalc': function (code) {
+    'sarcalc': function (code, pnum2) {
         // ScesDomains.getUser(this.userId);
-        let pnums = _.keys(Settings.partNumbers);
-        _.each(pnums, (pnum) => {
-            // Loop through all part numbers and execute only for 100GB
-            if (Settings.partNumbers[pnum].device === '100GB') {
-                execSar(pnum, code, false);  // testing with snum
-            }
-        });
+        if(pnum2) {
+            execSar(pnum2, code, false);  // testing with snum
+        } else {
+            let pnums = _.keys(Settings.partNumbers);
+            _.each(pnums, (pnum) => {
+                // Loop through all part numbers and execute only for 100GB
+                if (Settings.partNumbers[pnum].device === '100GB') {
+                    execSar(pnum, code, false);  // testing with snum
+                }
+            });
+        }
     }
 });
 
@@ -94,7 +98,9 @@ function execSar (pnum, snum, calcVars = true) {
                             flow: flow,
                             data: lastData
                         });
-                        dateCursor = lastData[lastData.length - 1].sd;
+                        if (flow.ignoreSeq !== 'Y') {
+                            dateCursor = lastData[lastData.length - 1].sd;
+                        }
                         containsAtleastOne = true;
                     } else {
                         doList.push({

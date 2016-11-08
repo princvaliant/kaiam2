@@ -15,11 +15,13 @@ angular.module('kaiamSpecActions')
             }
 
             function eachRecursive(list, sarActionId, name, title, operation) {
-                for (var i = 0; i < list.length; i++) {
-                    if (list[i].id === sarActionId) {
-                        list[i].title = title || name;
+                if (list) {
+                    for (let i = 0; i < list.length; i++) {
+                        if (list[i].id === sarActionId) {
+                            list[i].title = title || name;
+                        }
+                        eachRecursive(list[i].nodes, sarActionId, name, title, operation);
                     }
-                    eachRecursive(list[i].nodes, sarActionId, name, title, operation);
                 }
             }
 

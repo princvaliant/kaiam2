@@ -25,7 +25,7 @@ Meteor.methods({
             $match: {
                 'type': 'shipment',
                 'state.when': {
-                    $gt: moment().subtract(30, 'days').toDate()
+                    $gt: moment().subtract(45, 'days').toDate()
                 },
                 'state.id': 'Sent'
             }

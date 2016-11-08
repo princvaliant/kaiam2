@@ -40,20 +40,29 @@ HTTP.methods({
     },
     '/getTransceiverStatus': {
         auth: SarHelper.myAuth,
-        get: function (data) {
-            let regsnum = new RegExp(this.query.sn, 'i');
-            return Testdata.findOne(
+        get: function () {
+            let summary =  Testsummary.findOne(
                 {
-                    'device.SerialNumber': {
-                        $regex: regsnum
-                    },
+                    sn: this.query.sn.toUpperCase()
+                }, {
+                    sort: {
+                        d: -1
+                    }
+                });
+            let test =  Testdata.findOne(
+                {
+                    'device.SerialNumber': this.query.sn.toUpperCase(),
                     type: 'txtests',
                     subtype: 'channeldata'
                 }, {
                     sort: {
                         'meta.StartDateTime': -1
                     }
-                }) || 'TEST NOT COMPLETE ALL FAILED';
+                });
+            if (summary && test) {
+                summary.status = test.measstatus;
+            }
+            return summary;
         }
     }
 });
