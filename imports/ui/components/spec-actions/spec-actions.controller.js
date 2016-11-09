@@ -273,7 +273,6 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             },
             sarActions: () => {
                 if ($scope.getReactively('selectedSar')) {
-                    console.log('sss');
                     return SarAction.find({sarId: $scope.selectedSar._id}, {sort: {order: 1}});
                 }
                 return null;

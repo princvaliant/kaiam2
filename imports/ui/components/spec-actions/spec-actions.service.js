@@ -148,12 +148,9 @@ angular.module('kaiamSpecActions')
                             name: sarAction.name,
                             title: sarAction.title,
                             group: sarAction.group,
-                            order: sarAction.order
+                            order: typeof sarAction.order === 'string' ? parseInt(sarAction.order) : sarAction.order
                         }
                     });
-
-                    console.log(sarAction.name + ' ' + sarAction.order);
-
                     updateSarExecution(sarAction.sarId, sarAction._id, 'U', sarAction.name, sarAction.title);
                 },
                 addSarActionParam: function (sar, sarAction, name, value) {

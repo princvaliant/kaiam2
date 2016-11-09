@@ -113,13 +113,19 @@ angular.module('kaiamSpecActions')
                         headerName: 'Name',
                         enableFiltering: true,
                         cellEditableCondition: scope.canEdit,
-                        width: '70%'
+                        width: '60%'
                     }, {
                         field: 'group',
                         headerName: 'Group',
                         enableFiltering: true,
                         cellEditableCondition: scope.canEdit,
-                        width: '20%'
+                        width: '17%'
+                    }, {
+                        field: 'order',
+                        headerName: 'order',
+                        enableFiltering: true,
+                        cellEditableCondition: scope.canEdit,
+                        width: '17%'
                     }];
                     scope.gridSarActions = {
                         enableGridMenu: false,
@@ -147,14 +153,14 @@ angular.module('kaiamSpecActions')
                                 scope.selectedSarAction = row.entity;
                             });
                             gridApi.draggableRows.on.rowDropped(scope, function (info, dropTarget) {
-                                let i = 10;
-                                if (scope.canEdit()) {
-                                    gridApi.grid.rows.forEach(function (row) {
-                                        row.entity.order = i;
-                                        SpecActionsService.updateSarAction(row.entity);
-                                        i += 10;
-                                    });
-                                }
+                                // let i = 10;
+                                // if (scope.canEdit()) {
+                                //     gridApi.grid.rows.forEach(function (row) {
+                                //         row.entity.order = i;
+                                //         SpecActionsService.updateSarAction(row.entity);
+                                //         i += 10;
+                                //     });
+                                // }
                             });
                         }
                     };
