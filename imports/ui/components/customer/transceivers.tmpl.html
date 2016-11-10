@@ -1,0 +1,11 @@
+
+<div layout="row">
+    <md-input-container style="width:300px;position:absolute;height:120px !important;top:25px;left:8px;right:8px;bottom:0px;">
+        <label for="search">Search transceivers</label>
+        <input type="text" name="search" ng-model="search" aria-label="{{'SCES.SEARCH-TEXT' | translate}}">
+    </md-input-container>
+    <span flex></span>
+</div>
+<div ui-grid="gridOptions" ui-grid-resize-columns ui-grid-move-columns
+     ui-grid-save-state ui-grid-pagination
+     ui-grid-auto-resize style="position:absolute;height:calc(100% - 70px) !important;top:70px;left:8px;right:8px;bottom:0px;"></div>

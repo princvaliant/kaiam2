@@ -258,7 +258,7 @@ Meteor.methods({
 
     getTestdata: function (id) {
         check(id, String);
-        ScesDomains.getUser(this.userId);
+        ScesDomains.isLoggedIn(this.userId);
         return Testdata.find({
             'device.SerialNumber': id
         }, {
@@ -270,7 +270,7 @@ Meteor.methods({
 
     getFailedTestdata: function (id) {
         check(id, String);
-        ScesDomains.getUser(this.userId);
+        ScesDomains.isLoggedIn(this.userId);
         let testdata = Testdata.aggregate([{
             $match: {
                 $or: [{
@@ -371,7 +371,7 @@ Meteor.methods({
 
     getEyeImages: function (code) {
         check(code, String);
-        ScesDomains.getUser(this.userId);
+        ScesDomains.isLoggedIn(this.userId);
         return SyncFiles.find({
             code: code
         }, {
@@ -384,7 +384,7 @@ Meteor.methods({
 
     getSensitivityData: function (code) {
         check(code, String);
-        ScesDomains.getUser(this.userId);
+        ScesDomains.isLoggedIn(this.userId);
         let testdata = Testdata.find({
             'device.SerialNumber': code,
             'type': 'rxtests',

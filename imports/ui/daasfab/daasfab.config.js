@@ -53,8 +53,6 @@ function routeConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         });
 
-
-    // set default routes when no path specified
     $urlRouterProvider.when('/', '/dashboard');
 
     // always goto 404 if route not found

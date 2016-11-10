@@ -18,12 +18,8 @@ angular.module('kaiamAuthentication')
     .controller('LockController', ['$scope', '$state', function ($scope, $state) {
         // controller to handle login check
         $scope.loginClick = function () {
+            $state.go('triangular.dashboard');
             // user logged in ok so goto the dashboard
-            if (Meteor.user().profile.isClient === 'Y') {
-                $state.go('triangular.client');
-            } else {
-                $state.go('triangular.dashboard');
-            }
         };
 
 

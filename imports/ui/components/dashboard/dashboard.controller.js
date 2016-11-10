@@ -14,6 +14,8 @@ angular.module('kaiamDashboard').controller('DashboardController', ['$scope', '$
         $scope.summaries = [];
         $scope.total = {};
 
+        $scope.profile = Meteor.user().profile;
+
         $scope.subscribe('dashboard');
         $scope.helpers({
             dashboards: () => {

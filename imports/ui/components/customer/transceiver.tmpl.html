@@ -1,0 +1,123 @@
+<md-content layout="column" class="overlay-10" flex="100">
+
+    <md-card style="height:80px !important;min-height:80px !important">
+        <md-card-content>
+            <form name="transForm">
+                <md-radio-group ng-model="grouping" layout="row" ng-change="changeGrouping(grouping)" flex="100">
+                    <md-radio-button value="errorCheck" class="md-primary">Error check</md-radio-button>
+                    <md-radio-button value="eyeImages">Eye Images</md-radio-button>
+                    <md-radio-button value="testData">Test data</md-radio-button>
+                    <md-radio-button value="sensitivityCharts">Sensitivity charts</md-radio-button>
+                </md-radio-group>
+            </form>
+        </md-card-content>
+    </md-card>
+
+    <md-card>
+        <md-content ng-show="grouping === 'errorCheck'">
+            <md-subheader class="md-no-sticky">Scanned transceivers (Newest on top)
+            </md-subheader>
+            <div ng-repeat="scan in scans" layout="column">
+                <div layout="row">
+                    <md-card style="background:#EEEEEE;" flex="80">
+                        <md-card-header>
+                            <md-card-header-text style="padding-left:0px;font-size:16px;font-weight:700;">
+                                <md-whiteframe><a
+                                        href="/sces/transceiver?id={{scan.data[0].sn || scan.c}}">{{scan.data
+                                        [0].sn || scan.c}}</a>
+                                    <span class="trans_status">{{scan.pnum}}</span>
+                                    <span class="trans_status"><b>{{scan.rosa}}</b></span>
+                                    <span class="trans_status"><b>{{scan.tosa}}</b></span>
+                                </md-whiteframe>
+                            </md-card-header-text>
+                        </md-card-header>
+                        <md-card-content ng-if="scan.msg" style="padding-top:3px;margin-top:-15px;margin-bottom:-5px;">
+                            <span class="meas_status_{{scan.s}}">{{scan.msg}}</span>
+                        </md-card-content>
+                        <md-card-content ng-if="!scan.msg" ng-repeat="test in scan.data"
+                                         style="padding:-10px;margin-top:-15px;margin-bottom:-5px;">
+                            <span class="meas_status_{{test.s}}">{{test.t}} {{test.st}} {{test.param || ''}}</span>
+                            <span
+                                    class="trans_status">{{test.d | date:'MM/dd/yyyy hh:mm:ss'}} Meas: {{test.s}}
+                                Ind: {{test.r}}</span>
+                        </md-card-content>
+                    </md-card>
+                    <div style="text-align:right;font-size:45px;font-weight:700;">{{scan.rework}}
+                    </div>
+                </div>
+            </div>
+        </md-content>
+        <md-content ng-show="grouping === 'eyeImages'">
+            <md-subheader class="md-no-sticky">Eye images for {{code}}</md-subheader>
+            <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
+            <md-grid-list flex="80" md-cols="3" md-cols-xs="2" md-row-height="5:4" md-gutter="6px">
+                <md-grid-tile ng-click="openImage(eye, $event)" md-rowspan="1"
+                              md-colspan="1" ng-repeat="eye in eyeImages"
+                              ng-style="::{ 'background-image': 'url(' + image.url + ')', 'background-size' : 'cover' }">
+                    <img alt="{{eye.fileName}}" src="{{eye.content}}"/>
+                    <md-grid-tile-footer>
+                        <div class="image-footer">{{eye.fileName.replace('TxEye_', '')}}</div>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-content>
+        <md-subheader class="md-no-sticky" ng-show="grouping === 'testData'">Test data for {{code}}</md-subheader>
+        <md-content layout="row" ng-show="grouping === 'testData'" style="height:800px">
+            <div flex="60" style="overflow:scroll">
+                <md-card ng-repeat="(key, data) in testdata">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span style="font-size:14px;">Meas ID '{{key}}'</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div ng-repeat="obj in data  | orderBy : '-timestamp' "
+                             style="font-size:11px;padding-left:15px;">
+                          <span class="meas_status_{{obj.status}}">All: {{obj.status}}
+                              <span class="meas_status_{{obj.measstatus}}">Meas: {{obj.measstatus}}
+                                  <span class="meas_status_{{obj.result}}">Row: {{obj.result}}
+                                    </span>
+                                </span>
+                            </span>
+                            {{obj.timestamp | date:'MM/dd/yyyy HH:mm:ss'}} {{obj.type}} {{obj.subtype}} -
+                            <md-button class="md-primary btn-view-data" ng-click="select(obj)">view data
+                            </md-button>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div flex="40" style="height:800px;">
+                <md-card style="overflow:scroll">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span style="font-size:14px;">{{selected._id}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content ng-repeat="(key, value) in selected"
+                                     style="font-size:11px;padding-left:25px;margin-top:-1px;margin-bottom:-25px;">
+                  <span ng-if="['data','meta','device'].indexOf(key) >= 0">
+                      <b>{{key}}</b><br/>
+                      <span ng-repeat="(key2, value2) in value">
+                         <span style="font-size:11px;padding-left:65px;margin-top:-15px;margin-bottom:-15px;">{{key2}}
+                             : {{value2}}</span><br/>
+                      </span>
+                  </span>
+                        <span ng-if="['data','meta','device'].indexOf(key) === -1">
+                    <span>{{key}}</span>: {{value}}
+                  </span>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
+        <md-content ng-show="grouping === 'sensitivityCharts'">
+            <md-subheader class="md-no-sticky" ng-show="grouping === 'sensitivityCharts'">Sensitivity charts
+                for {{code}}
+            </md-subheader>
+            <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4" md-row-height="300px" md-gutter="5px">
+                <md-grid-tile md-colspan="1" data-ng-repeat="sensChart in sensCharts">
+                    <div id="sens{{sensChart._id}}" class="chartContainer"></div>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-content>
+    </md-card>
+</md-content>

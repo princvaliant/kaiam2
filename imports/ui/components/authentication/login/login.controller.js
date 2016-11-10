@@ -34,7 +34,7 @@ angular.module('kaiamAuthentication')
                         $rootScope.user = Meteor.user();
                         // set default routes when no path specified
                         if (Meteor.user().profile.isClient === 'Y') {
-                            $state.go('triangular.client');
+                            $state.go('triangular.customer');
                         } else {
                             $state.go('triangular.dashboard');
                         }
