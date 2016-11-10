@@ -33,11 +33,7 @@ angular.module('kaiamAuthentication')
                         $rootScope.$broadcast('event:loginConfirmed');
                         $rootScope.user = Meteor.user();
                         // set default routes when no path specified
-                        if (Meteor.user().profile.isClient === 'Y') {
-                            $state.go('triangular.customer');
-                        } else {
-                            $state.go('triangular.dashboard');
-                        }
+                        $state.go('triangular.dashboard');
                     }
                 });
             };

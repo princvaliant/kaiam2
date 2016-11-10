@@ -1,6 +1,6 @@
-<div layout-padding class="full-container" layout="column">
-    <tri-widget widget-chart flex="100" content-padding ng-show="profile.isClient !== 'Y'">
-        <md-content>
+<div layout-padding class="full-container" layout="column" ng-show="isClient === false">
+    <tri-widget widget-chart flex="100" content-padding >
+        <md-content >
             <table class="table" style="overflow-y:scroll;">
                 <thead>
                 <tr>
@@ -74,12 +74,12 @@
             </table>
         </md-content>
     </tri-widget>
-    <md-content widget-chart flex="100" content-padding ng-show="profile.isClient === 'Y'">
-        <div class="md-padding">
-            <h2 class="md-display-1">Kaiam portal for {{profile.company}}</h2>
-
-            <h3 class="md-subheading">You could browse ordered products</h3>
-            <p>This is BETA version of the portal and we appreciate Your feedback.</p>
-        </div>
-    </md-content>
 </div>
+<md-content flex="100" content-padding ng-show="isClient === true">
+    <div class="md-padding">
+        <h2 class="md-display-1">Kaiam portal for {{profile.company}}</h2>
+
+        <h3 class="md-subheading">You could browse ordered products</h3>
+        <p>This is BETA version of the portal and we appreciate Your feedback.</p>
+    </div>
+</md-content>
