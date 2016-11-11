@@ -18,7 +18,6 @@ import '../export-data/export-data.service';
 angular.module('kaiamCharts').controller('LossCheckController', [
     '$scope', '$mdToast', '$cookies', '$translate', '$stateParams', '$timeout', '$location', '$document', 'LossCheckService', 'ExportDataService',
     ($scope, $mdToast, $cookies, $translate, $stateParams, $timeout, $location, $document, LossCheckService, ExportDataService) => {
-        $scope.partNumbers = ['-all-'].concat(_.keys(Settings.partNumbers));
         $scope.intervals = _.keys(Settings.lossintervals);
         $scope.partNumber = $stateParams.pnum || '-all-';
         $scope.manufacturers = _.union(['-all-'], Settings.manufacturers);
@@ -30,6 +29,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
         if ($stateParams.device) {
             $scope.device = $stateParams.device;
         }
+        $scope.partNumbers =  ['-all-'].concat(Settings.getPartNumbersForDevice($scope.device));
         $scope.groupRack = false;
         $scope.groupRackDut = false;
         $scope.reworkOnly = false;
@@ -105,6 +105,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
             $scope.device = device;
             $scope.racks = $scope.device === '40GB' ? Settings.spcRacks40GB : Settings.spcRacks100GB;
             $scope.duts = $scope.device === '40GB' ? Settings.spcDUT40GB : Settings.spcDUT100GB;
+            $scope.partNumbers = ['-all-'].concat(Settings.getPartNumbersForDevice(device));
             $cookies.put('lossDevice', device);
             processRowsDebounce();
         };
@@ -253,7 +254,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
                                 .position('top right')
                                 .hideDelay(5000));
                     } else {
-                        let ret = ExportDataService.exportData(data, 'loss_export_' + (tt || 'alltests'), $scope.partNumber);
+                        let ret = ExportDataService.exportData(data, 'loss_export_' + (tt || 'alltests'), $scope.partNumber, $scope.device);
                         let blob = new Blob([ret.substring(1)], {type: 'data:text/csv;charset=utf-8'});
                         $scope.filename = 'losses-' + (tt || 'all') + '.csv';
                         if (window.navigator.msSaveOrOpenBlob) {

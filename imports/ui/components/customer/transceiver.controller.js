@@ -117,57 +117,7 @@ angular.module('kaiamCustomer').controller('TransceiverController', [
 
         function findTransceiver (code) {
             $scope.showProgress = true;
-            if ($scope.grouping === 'errorCheck') {
-                $meteor.call('getFailedTestdata', code).then(
-                    (data) => {
-                        let strs = [];
-                        _.each(data.data, (o) => {
-                            strs.push({failures: {$regex: o.t + '-' + o.st}});
-                        });
-                        let rework = '-';
-                        if (strs.length > 0) {
-                            rework = ReworkCode.findOne({
-                                $and: strs
-                            }, {sort: {failures: 1}});
-                            if (rework) {
-                                rework = rework.rework;
-                            }
-                        }
-                        if (data.status === 'ERR') {
-                            $scope.scans.splice(0, 0, {
-                                s: 'E',
-                                msg: data.data.length === 0 ? ['Test error'] : '',
-                                data: data.data,
-                                c: code,
-                                pnum: data.pnum
-                            });
-                        } else if (data.status === 'NOID') {
-                            $scope.scans.splice(0, 0, {
-                                msg: 'Serial# ' + code + ' does not exist or test did not complete',
-                                s: 'F',
-                                c: code,
-                                pnum: data.pnum
-                            });
-                        } else if (_.isArray(data.data) && data.data.length > 0) {
-                            $scope.scans.splice(0, 0, {
-                                data: data.data,
-                                pnum: data.pnum,
-                                rework: rework,
-                                rosa: code === data.data[0].rosa ? 'ROSA: ' + code : '',
-                                tosa: code === data.data[0].tosa ? 'TOSA: ' + code : ''
-                            });
-                        } else {
-                            $scope.scans.splice(0, 0, {
-                                msg: 'Serial# ' + code + ' last measurement ' + data.data + ' OK',
-                                s: 'P',
-                                c: code,
-                                pnum: data.pnum
-                            });
-                        }
-                        $scope.showProgress = false;
-                    }
-                );
-            } else if ($scope.grouping === 'eyeImages') {
+            if ($scope.grouping === 'eyeImages') {
                 $meteor.call('getEyeImages', code).then(
                     (data) => {
                         $scope.eyeImages = data;

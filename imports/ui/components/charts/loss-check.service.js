@@ -39,7 +39,10 @@ angular.module('kaiamCharts').service('LossCheckService', ['$translate', ($trans
                     axisX: {
                         tickThickness: 0,
                         lineThickness: 0,
-                        labelFontSize: 18,
+                        labelFontSize: 8,
+                        labelMaxWidth: 0,
+                        interval: 1,
+                        valueFormatString: ' ',
                         labelFontColor: 'Peru'
                     },
                     axisY2: {

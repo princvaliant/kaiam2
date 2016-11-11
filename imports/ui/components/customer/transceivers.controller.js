@@ -23,9 +23,15 @@ angular.module('kaiamCustomer').controller('TransceiversController', [
             size: 25,
             num: 1
         };
+
         // Retrieve search and sort order from cookies
         $scope.search = $cookies.get($scope.domain + 'transceiverssearch') || '';
         $scope.sort = $cookies.getObject($scope.domain + 'transceiverssort') || {'state.when': -1};
+
+        $scope.changeSaleOrder = (saleOrder) => {
+            $scope.saleOrder = saleOrder;
+            $cookies.put($scope.domain + 'transceiverssaleorder', saleOrder);
+        };
 
         // Retrieve column definitions from settings
         let columnDefs = ScesSettings.columnsCommon.concat(ScesSettings.columns[$scope.domain]);
@@ -53,15 +59,19 @@ angular.module('kaiamCustomer').controller('TransceiversController', [
             data: [],
             onRegisterApi: function (gridApi) {
                 $scope.gridApi = gridApi;
-                $scope.gridApi.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: '', width: 30, cellTemplate:
-                    '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row) + 1}}</div>'} );
+                $scope.gridApi.core.addRowHeaderColumn({
+                    name: 'rowHeaderCol',
+                    displayName: '',
+                    width: 30,
+                    cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row) + 1}}</div>'
+                });
                 gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                     $scope.paging = {
                         size: pageSize,
                         num: newPage
                     };
                 });
-                gridApi.core.on.sortChanged($scope, function(grid, sortColumns) {
+                gridApi.core.on.sortChanged($scope, function (grid, sortColumns) {
                     if (sortColumns.length === 0) {
                         $scope.sort = null;
                     } else {
@@ -77,12 +87,6 @@ angular.module('kaiamCustomer').controller('TransceiversController', [
                 });
             },
         };
-        $scope.gridOptions.totalItems = Meteor.call('getTransceiversTotal',
-            $scope.getReactively('searchDebounce'),
-            $scope.domain, (err, count) => {
-                $scope.gridOptions.totalItems = count;
-            }
-        );
 
         $scope.$watch('search', _.debounce(function (search) {
             // This code will be invoked after 300 milliseconds from the last time 'id' has changed.
@@ -92,21 +96,38 @@ angular.module('kaiamCustomer').controller('TransceiversController', [
         }, 300), true);
 
         $scope.autorun(() => {
-            let paging =  $scope.getReactively('paging');
-            Meteor.call('getTransceivers', {
-                fields: fields,
-                skip: paging.size * (paging.num - 1),
-                limit: paging.size,
-                sort: $scope.getReactively('sort')
-            },
+            $scope.gridOptions.totalItems = Meteor.call('getTransceiversTotal',
                 $scope.getReactively('searchDebounce'),
-                $scope.domain, (err, list) => {
+                $scope.getReactively('saleOrder'),
+                (err, count) => {
+                    $scope.gridOptions.totalItems = count;
+                }
+            );
+        });
+
+        $scope.autorun(() => {
+            let paging = $scope.getReactively('paging');
+            Meteor.call('getTransceivers', {
+                    fields: fields,
+                    skip: paging.size * (paging.num - 1),
+                    limit: paging.size,
+                    sort: $scope.getReactively('sort')
+                },
+                $scope.getReactively('searchDebounce'),
+                $scope.getReactively('saleOrder'), (err, list) => {
                     $cookies.put($scope.domain + 'transceiverssearch', $scope.searchDebounce);
                     $cookies.putObject($scope.domain + 'transceiverssort', $scope.sort);
                     $scope.gridOptions.data = list;
                     $scope.gridApi.grid.refresh();
                 }
             );
+        });
+
+        $scope.autorun(() => {
+            Meteor.call('getSaleOrders', (err, list) => {
+                $scope.saleOrders = ['-all-'].concat(list);
+                $scope.saleOrder =  $cookies.get($scope.domain + 'transceiverssaleorder') ||  '-all-';
+            });
         });
 
         $scope.viewRow = function (grid, row) {

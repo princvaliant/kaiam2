@@ -4,8 +4,7 @@
         <md-card-content>
             <form name="transForm">
                 <md-radio-group ng-model="grouping" layout="row" ng-change="changeGrouping(grouping)" flex="100">
-                    <md-radio-button value="errorCheck" class="md-primary">Error check</md-radio-button>
-                    <md-radio-button value="eyeImages">Eye Images</md-radio-button>
+                    <md-radio-button value="eyeImages" class="md-primary">Eye Images</md-radio-button>
                     <md-radio-button value="testData">Test data</md-radio-button>
                     <md-radio-button value="sensitivityCharts">Sensitivity charts</md-radio-button>
                 </md-radio-group>
@@ -14,39 +13,6 @@
     </md-card>
 
     <md-card>
-        <md-content ng-show="grouping === 'errorCheck'">
-            <md-subheader class="md-no-sticky">Scanned transceivers (Newest on top)
-            </md-subheader>
-            <div ng-repeat="scan in scans" layout="column">
-                <div layout="row">
-                    <md-card style="background:#EEEEEE;" flex="80">
-                        <md-card-header>
-                            <md-card-header-text style="padding-left:0px;font-size:16px;font-weight:700;">
-                                <md-whiteframe><a
-                                        href="/sces/transceiver?id={{scan.data[0].sn || scan.c}}">{{scan.data
-                                        [0].sn || scan.c}}</a>
-                                    <span class="trans_status">{{scan.pnum}}</span>
-                                    <span class="trans_status"><b>{{scan.rosa}}</b></span>
-                                    <span class="trans_status"><b>{{scan.tosa}}</b></span>
-                                </md-whiteframe>
-                            </md-card-header-text>
-                        </md-card-header>
-                        <md-card-content ng-if="scan.msg" style="padding-top:3px;margin-top:-15px;margin-bottom:-5px;">
-                            <span class="meas_status_{{scan.s}}">{{scan.msg}}</span>
-                        </md-card-content>
-                        <md-card-content ng-if="!scan.msg" ng-repeat="test in scan.data"
-                                         style="padding:-10px;margin-top:-15px;margin-bottom:-5px;">
-                            <span class="meas_status_{{test.s}}">{{test.t}} {{test.st}} {{test.param || ''}}</span>
-                            <span
-                                    class="trans_status">{{test.d | date:'MM/dd/yyyy hh:mm:ss'}} Meas: {{test.s}}
-                                Ind: {{test.r}}</span>
-                        </md-card-content>
-                    </md-card>
-                    <div style="text-align:right;font-size:45px;font-weight:700;">{{scan.rework}}
-                    </div>
-                </div>
-            </div>
-        </md-content>
         <md-content ng-show="grouping === 'eyeImages'">
             <md-subheader class="md-no-sticky">Eye images for {{code}}</md-subheader>
             <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>

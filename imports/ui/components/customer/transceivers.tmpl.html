@@ -1,10 +1,17 @@
 
-<div layout="row">
-    <md-input-container style="width:300px;position:absolute;height:120px !important;top:25px;left:8px;right:8px;bottom:0px;">
+<div layout="row" style="width:700px;position:absolute;height:120px !important;top:15px;left:8px;right:8px;bottom:0px;">
+    <md-input-container>
+        <label>Sales orders</label>
+        <md-select ng-model="saleOrder" ng-change="changeSaleOrder(saleOrder)" style="width:240px">
+            <md-option ng-repeat="saleOrder in saleOrders | orderBy"
+                       value="{{saleOrder}}">{{saleOrder}}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container style="margin-left:20px;width:180px">
         <label for="search">Search transceivers</label>
         <input type="text" name="search" ng-model="search" aria-label="{{'SCES.SEARCH-TEXT' | translate}}">
     </md-input-container>
-    <span flex></span>
+
 </div>
 <div ui-grid="gridOptions" ui-grid-resize-columns ui-grid-move-columns
      ui-grid-save-state ui-grid-pagination

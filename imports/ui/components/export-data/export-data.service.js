@@ -14,7 +14,7 @@ angular.module('kaiamCharts')
     .service('ExportDataService', ['$reactive',
         function($reactive) {
             let service = {
-                exportData: function (data, exportDetails, pnum) {
+                exportData: function (data, exportDetails, pnum, device) {
                     let ret = '';
                     _.each(data, function (item) {
                         let row = '';
@@ -41,7 +41,11 @@ angular.module('kaiamCharts')
                             }
                         }
                         if (item.test !== undefined && item.subtest !== undefined) {
-                            let ttd1 = Settings.getTestConfigVariablesForPartNumber(pnum, item.test, item.subtest);
+                            let pn = pnum;
+                            if (pnum === '-all-' && device) {
+                                pn = Settings.getPartNumbersForDevice(device)[0];
+                            }
+                            let ttd1 = Settings.getTestConfigVariablesForPartNumber(pn, item.test, item.subtest);
                             let ttd = _.pluck(ttd1, 'v');
                             _.each(ttd, (v2) => {
                                 if (item.data[v2] instanceof Array) {
