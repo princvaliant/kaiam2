@@ -14,7 +14,7 @@ Meteor.startup(function () {
             let pnums = _.keys(Settings.partNumbers);
             _.each(pnums, (pnum) => {
                 if (Settings.partNumbers[pnum].device === '100GB') {
-                    execSar(pnum);
+                    execSar(pnum, null, true);
                 }
             });
         }
@@ -27,13 +27,13 @@ Meteor.methods({
     'sarcalc': function (code, pnum2) {
         // ScesDomains.getUser(this.userId);
         if(pnum2) {
-            execSar(pnum2, code, false);  // testing with snum
+            execSar(pnum2, code, true);  // testing with snum
         } else {
             let pnums = _.keys(Settings.partNumbers);
             _.each(pnums, (pnum) => {
                 // Loop through all part numbers and execute only for 100GB
                 if (Settings.partNumbers[pnum].device === '100GB') {
-                    execSar(pnum, code, false);  // testing with snum
+                    execSar(pnum, code, true);  // testing with snum
                 }
             });
         }
@@ -127,9 +127,9 @@ function execSar (pnum, snum, calcVars = true) {
 
 function calculateCustomVars (items) {
     // Prepare custom calculation
-    SarCalculation.init()
+    SarCalculation.init();
     if (items) {
-        _.each(items.data, (item) => {
+        _.each(items, (item) => {
             // Add data for custom calculation
             SarCalculation.add(item);
         });
@@ -239,7 +239,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
             // Determine if error is determined by test software
             let testsMarkedFailed = _.filter(doItem.data, function (item) {
                 let tf = item.tf || [];
-                return tf.length > 0 || item.r === 'F';
+                return tf.length > 0;
             });
             if (testsMarkedFailed && testsMarkedFailed.length > 0) {
                 _.each(testsMarkedFailed, (testMarkedFailed) => {
@@ -340,8 +340,8 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                             testItem.failCodes.push(spec.param + '|M');
                         }
 
-                        let result = testItem.failCodes.length === 0 ? 'OK' : 'ERR';
-                        if (result === 'ERR') {
+                        let result = testItem.failCodes.length === 0 ? 'P' : 'F';
+                        if (result === 'F') {
                             // Add this test type and subtype to failed tests list for serial
                             failTests.add(testItem.t + '-' + testItem.s);
                             _.each(testItem.failCodes, (failCode) => {
@@ -352,7 +352,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
 
                         // Flag testdata record with the proper fail status
                         Testdata.update({
-                            '_id': testItem.id
+                            '_id': testItem._id
                         }, {
                             $set: {
                                 failCodes: testItem.failCodes,
