@@ -158,6 +158,18 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             }
         };
 
+        $scope.renumberSarActionClick = function () {
+            let i = 20;
+            if ($scope.sarActionApi && $scope.canEdit()) {
+                $scope.sarActionApi.grid.rows.forEach(function (row) {
+                    row.entity.order = i;
+                    SpecActionsService.updateSarAction(row.entity);
+                    i += 20;
+                });
+            }
+            showToast('Actions successfully re-numbered');
+        };
+
         $scope.addSarSpecClick = function () {
             SpecActionsService.addSarSpec($scope.selectedSar, '', '', '');
         };

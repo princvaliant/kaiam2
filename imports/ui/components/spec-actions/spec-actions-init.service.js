@@ -99,9 +99,6 @@ angular.module('kaiamSpecActions')
                                     scope.selectedSar = row.entity;
                                     scope.cacheSar = _.clone(row.entity);
                                     scope.selectedExecution = angular.copy(row.entity.execution) || [];
-                                    if (scope.sarActionApi) {
-                                        scope.sarActionApi.dragndrop.setDragDisabled(!scope.canEdit());
-                                    }
                                 }
                             });
                         }
@@ -151,16 +148,6 @@ angular.module('kaiamSpecActions')
                             });
                             gridApi.selection.on.rowSelectionChanged(scope, function (row) {
                                 scope.selectedSarAction = row.entity;
-                            });
-                            gridApi.draggableRows.on.rowDropped(scope, function (info, dropTarget) {
-                                // let i = 10;
-                                // if (scope.canEdit()) {
-                                //     gridApi.grid.rows.forEach(function (row) {
-                                //         row.entity.order = i;
-                                //         SpecActionsService.updateSarAction(row.entity);
-                                //         i += 10;
-                                //     });
-                                // }
                             });
                         }
                     };

@@ -27,8 +27,6 @@ angular.module('kaiamDashboard').controller('DashboardController', ['$scope', '$
             $scope.summaries = [];
             $scope.total = {};
             $scope.getReactively('dashboards').forEach(processRow);
-
-            console.log(JSON.stringify($scope.summaries));
             $timeout(function () {
                 $scope.widgetCtrl.setLoading(false);
             }, 100);
