@@ -26,7 +26,7 @@ Meteor.methods({
     }
 });
 
-function getPipeline() {
+function getPipeline () {
     let offset = Math.abs(moment().utcOffset() * 60000);
     let pipeline = [{
         $match: {
@@ -69,20 +69,28 @@ function getPipeline() {
                     'tests'
                 ]
             },
+            y: {
+                $year: {
+                    $subtract: ['$meta.StartDateTime', offset]
+                }
+            },
             w: {
                 $week: {
                     $subtract: ['$meta.StartDateTime', offset]
                 }
             },
             d: {
-                $dayOfYear: {
-                    $subtract: ['$meta.StartDateTime', offset]
+                $dateToString: {
+                    format: '%Y-%m-%d',
+                    date: {
+                        $subtract: ['$meta.StartDateTime', offset]
+                    }
                 }
             }
         }
     }, {
         $sort: {
-            d: 1
+            ts: 1
         }
     }, {
         $group: {
@@ -97,6 +105,9 @@ function getPipeline() {
             w: {
                 $last: '$w'
             },
+            y: {
+                $last: '$y'
+            },
             d: {
                 $last: '$d'
             }
@@ -105,16 +116,14 @@ function getPipeline() {
         $group: {
             _id: {
                 p: '$_id.p',
-                t: '$_id.t'
+                t: '$_id.t',
+                y: '$y',
+                w: '$w'
             },
             wok: {
                 $sum: {
                     $cond: [{
-                        $and: [{
-                            $eq: ['$w', parseInt(moment().format('w'), 10) - 1]
-                        }, {
-                            $eq: ['$s', 'P']
-                        }]
+                        $eq: ['$s', 'P']
                     },
                         1,
                         0
@@ -124,25 +133,42 @@ function getPipeline() {
             wtot: {
                 $sum: {
                     $cond: [{
-                        $and: [{
-                            $eq: ['$w', parseInt(moment().format('w'), 10) - 1]
-                        }, {
-                            $ne: ['$s', 'X']
-                        }]
+                        $ne: ['$s', 'X']
                     },
                         1,
                         0
                     ]
                 }
             },
+            ds: {
+                $push: {
+                    s: '$s',
+                    d: '$d'
+                }
+            }
+        }
+    }, {
+        $unwind: '$ds'
+    }, {
+        $group: {
+            _id: {
+                p: '$_id.p',
+                t: '$_id.t',
+                d: '$ds.d'
+            },
+            wok: {
+                $last: '$wok'
+            },
+            wtot: {
+                $last: '$wtot'
+            },
+            w: {
+                $last: '$_id.w'
+            },
             dok: {
                 $sum: {
                     $cond: [{
-                        $and: [{
-                            $eq: ['$d', parseInt(moment().format('DDD'), 10)]
-                        }, {
-                            $eq: ['$s', 'P']
-                        }]
+                        $eq: ['$ds.s', 'P']
                     },
                         1,
                         0
@@ -152,11 +178,7 @@ function getPipeline() {
             dtot: {
                 $sum: {
                     $cond: [{
-                        $and: [{
-                            $eq: ['$d', parseInt(moment().format('DDD'), 10)]
-                        }, {
-                            $ne: ['$s', 'X']
-                        }]
+                        $ne: ['$ds.s', 'X']
                     },
                         1,
                         0
@@ -167,7 +189,10 @@ function getPipeline() {
     }, {
         $project: {
             _id: '$__id',
-            id: '$_id',
+            p: '$_id.p',
+            t: '$_id.t',
+            d: '$_id.d',
+            w: '$w',
             wok: '$wok',
             wtot: '$wtot',
             dtot: '$dtot',
@@ -175,8 +200,9 @@ function getPipeline() {
         }
     }, {
         $sort: {
-            'id.t': 1,
-            'id.p': 1
+            't': 1,
+            'p': 1,
+            'd': 1
         }
     }, {
         $out: 'dashboard'
@@ -184,7 +210,7 @@ function getPipeline() {
 
     let p = JSON.stringify(pipeline);
 
-    p = p.replace('\"DATEFILTER\"', 'ISODate(\"' + moment().subtract(8, 'days').toISOString() + '\")');
+    p = p.replace('\"DATEFILTER\"', 'ISODate(\"' + moment().subtract(90, 'days').toISOString() + '\")');
 
     return p;
 }

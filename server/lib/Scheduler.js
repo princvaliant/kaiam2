@@ -9,8 +9,7 @@ Scheduler = {
         let conn = process.env.MONGO_URL.replace('db://', ' ');
         conn = conn.split((/[\s,?@$:]+/));
         if (process.env.NODE_ENV === 'development') {
-            res = conn[0] + ' -u "' + conn[1] + '" -p "' + conn[2] + '" ' + conn[3] + ':' + conn[4] +
-                ' --ssl --sslAllowInvalidCertificates ';
+            res = conn[0] + ' --ssl  --sslAllowInvalidCertificates -u "' + conn[1] + '" -p "' + conn[2] + '" ' + conn[3] + ':' + conn[4];
             //res = conn[0] + ' ' + conn[1] + ':' + conn[2];
         } else {
             res = conn[0] + ' -u "' + conn[1] + '" -p "' + conn[2] + '" ' + conn[5] + ':' + conn[6] +

@@ -1,5 +1,6 @@
 <div layout-padding class="full-container" layout="column" ng-show="isClient === false">
     <tri-widget widget-chart flex="100" content-padding >
+
         <md-content >
             <table class="table" style="overflow-y:scroll;">
                 <thead>
@@ -9,9 +10,15 @@
                         ng-style="{'background': '#E0FAC0', 'padding-left':'25px', 'padding-top':'15px', 'font-size':'16px'}">
                         Packouts
                     </th>
-                    <th md-column colspan="4"
+                    <th md-column colspan="3"
                         ng-style="{'background': '#FCFBC2', 'padding-left':'25px', 'padding-top':'15px', 'font-size':'16px'}">
                         Tests
+                    </th>
+                    <th md-column  ng-style="{'background': '#FCFBC2', 'padding-left':'25px', 'padding-top':'15px', 'font-size':'16px', 'text-align':'right'}" >
+                        <md-button ng-click="exportClick()" class="md-warn" aria-label="Export data">
+                            <ng-md-icon icon="get_app" size="22"></ng-md-icon>
+                            {{'SPC_OPTIONS_EXPORT' | translate}}
+                        </md-button>
                     </th>
                 </tr>
                 <tr md-row>
@@ -45,13 +52,13 @@
                     <td md-cell
                         ng-style="{'background': '#FCE6C2', 'padding-right': '10px', 'text-align': 'left'}">{{summary.name}}</td>
                     <td md-cell
-                        ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">{{summary.packoutdok}}</td>
+                        ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">{{summary.packoutdok  || ''}}</td>
                     <td md-cell
-                        ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">{{summary.packoutwok}}</td>
+                        ng-style="{'background': '#E0FAC0', 'padding-right': '10px', 'text-align': 'right'}">{{summary.packoutwok || ''}}</td>
                     <td md-cell
-                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testsdok}}</td>
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testsdok || '' }}</td>
                     <td md-cell
-                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testswok}}</td>
+                        ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testswok || ''}}</td>
                     <td md-cell
                         ng-style="{'background': '#FCFBC2', 'padding-right': '10px', 'text-align': 'right'}">{{summary.testsdy | number: 2}}</td>
                     <td md-cell
@@ -60,13 +67,13 @@
                 <tr md-row>
                     <td md-cell ng-style="{'padding':'10px', 'text-align':'right'}">Total</td>
                     <td md-cell
-                        ng-style="{'background': '#D0F4B3', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.packoutdok}}</td>
+                        ng-style="{'background': '#D0F4B3', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.packoutdok || ''}}</td>
                     <td md-cell
-                        ng-style="{'background': '#D0F4B3', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.packoutwok}}</td>
+                        ng-style="{'background': '#D0F4B3', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.packoutwok || ''}}</td>
                     <td md-cell
-                        ng-style="{'background': '#EEF3B6', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.testsdok}}</td>
+                        ng-style="{'background': '#EEF3B6', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.testsdok|| '' }}</td>
                     <td md-cell
-                        ng-style="{'background': '#EEF3B6', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.testswok}}</td>
+                        ng-style="{'background': '#EEF3B6', 'font-weight': 'bold', 'padding-right': '10px', 'text-align': 'right'}">{{total.testswok || ''}}</td>
                     <td md-cell ng-style="{'background': '#EEF3B6'}"></td>
                     <td md-cell ng-style="{'background': '#EEF3B6'}"></td>
                 </tr>

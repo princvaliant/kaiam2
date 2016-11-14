@@ -3,7 +3,9 @@
  * Dashboard publish functions
  * @type {meteor.publish}
  */
-Meteor.publish('dashboard', function() {
-  ScesDomains.getUser(this.userId);
-  return Dashboards.find({'id.p': {$regex:'^XQX'}});
+Meteor.publish('dashboard', function () {
+    ScesDomains.getUser(this.userId);
+    let date = moment().format('YYYY');
+    let w = parseInt(moment().format('w')) - 1;
+    return Dashboards.find({'p': {$regex: '^XQX'}, 'd': {$regex: '^' + date}, w: w});
 });
