@@ -54,7 +54,7 @@ HTTP.methods({
 
 Meteor.methods({
 
-    'addTransceiverToTray': function (snum, tray, adminOverride) {
+    addTransceiverToTray: function (snum, tray, adminOverride) {
         check(snum, String);
         ScesDomains.getUser(this.userId);
         // Check if this serial number is already assigned
@@ -245,7 +245,7 @@ Meteor.methods({
         }
     },
 
-    'removeTransceiverFromTray': function (snum, tray) {
+    removeTransceiverFromTray: function (snum, tray) {
         check(snum, String);
         ScesDomains.getUser(this.userId);
         if (snum) {
@@ -259,8 +259,27 @@ Meteor.methods({
     getTestdata: function (id) {
         check(id, String);
         ScesDomains.isLoggedIn(this.userId);
+
+        let manufSn = id;
+        let packout =  Testdata.findOne(
+            {
+                'device.SerialNumber': id,
+                type: 'packout',
+                subtype: 'packout'
+            }, {
+                sort: {
+                    'meta.StartDateTime': -1
+                }
+            });
+        if (packout) {
+            manufSn = packout.device.ManufSn;
+        }
+
         return Testdata.find({
-            'device.SerialNumber': id
+            $or: [
+                {'device.SerialNumber': {$in: [id, manufSn]}},
+                {'device.ManufSn': manufSn},
+            ]
         }, {
             sort: {
                 'meta.StartDateTime': -1

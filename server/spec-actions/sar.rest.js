@@ -41,9 +41,23 @@ HTTP.methods({
     '/getTransceiverStatus': {
         auth: SarHelper.myAuth,
         get: function () {
+            let sn = this.query.sn.toUpperCase();
+            let packout =  Testdata.findOne(
+                {
+                    'device.SerialNumber': sn,
+                    type: 'packout',
+                    subtype: 'packout'
+                }, {
+                    sort: {
+                        'meta.StartDateTime': -1
+                    }
+                });
+            if (packout) {
+                sn = packout.device.ManufSn || packout.device.SerialNumber;
+            }
             let summary =  Testsummary.findOne(
                 {
-                    sn: this.query.sn.toUpperCase()
+                    sn: sn
                 }, {
                     sort: {
                         d: -1
@@ -51,7 +65,7 @@ HTTP.methods({
                 });
             let test =  Testdata.findOne(
                 {
-                    'device.SerialNumber': this.query.sn.toUpperCase(),
+                    'device.SerialNumber': sn,
                     type: 'txtests',
                     subtype: 'channeldata'
                 }, {
