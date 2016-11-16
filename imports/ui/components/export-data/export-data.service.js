@@ -125,17 +125,13 @@ angular.module('kaiamCharts')
                         res.volt = first.v !== undefined ? first.v : '';
                         res.chan = first.c !== undefined ? first.c : '';
                         res.temp = first.t !== undefined ? first.t : '';
-                        res.ares = first.ares;
-                        res.tres = first.tres;
+                        res.all = first.all;
+                        res.meas = first.meas;
                         res.swver = first.swver;
                         let flat = {};
-                        let tres = 'OK';
                         res.fails = [];
                         res.failsrt = [];
                         _.each(values, (val) => {
-                            if (val.tres === 'ERR') {
-                                tres = 'ERR';
-                            }
                             if (val.fails) {
                                 res.fails = res.fails.concat(val.fails);
                             }
@@ -146,8 +142,6 @@ angular.module('kaiamCharts')
                                 flat[val.test + ' ' + val.subtest + ' ' + dt] = val.data[dt];
                             }
                         });
-                        res.tres = tres;
-
                         _.each(tt, (t) => {
                             if (t.t !== '') {
                                 if (!Array.isArray(flat[t.k])) {
