@@ -33,6 +33,7 @@ function execLinktest () {
                 let dataDef = Settings.testConfig.link.test.common;
                 for (let i = 1; i < data.data.length; i++) {
                     let obj = {data: {}, meta: {}, device: {}};
+                    let date = moment();
                     // Construct testdata object for row in linktest file
                     for (let o in dataDef) {
                         let val = data.data[i][o.replace('_', '.')];
@@ -40,6 +41,7 @@ function execLinktest () {
                         if (_.isNaN(finalval)) {
                             if (dataDef[o] === 'counterRefreshTime') {
                                 finalval = moment(val, 'ddd MMM DD HH:mm:ss YYYY').toDate();
+                                date = moment(val, 'ddd MMM DD HH:mm:ss YYYY');
                             } else {
                                 finalval = val;
                             }
@@ -49,7 +51,6 @@ function execLinktest () {
 
                     let datestr = row.fileName.split('_');
                     if (datestr.length === 3) {
-                        let date = moment(datestr[1] + datestr[2].substring(0, 2), 'YYYYMMDDHH');
                         obj.data.switch = parseInt(row.code);
                         obj.data.fileName = row.fileName;
                         obj.data.subpath = row.subpath;
@@ -73,7 +74,7 @@ function execLinktest () {
                             obj.mid = firsttest.mid;
                         }
 
-                        obj.timestamp = moment().toDate();
+                        obj.timestamp = date.toDate();
                         obj.type = 'link';
                         obj.subtype = 'test';
                         obj.result = 'X';
@@ -85,7 +86,7 @@ function execLinktest () {
                         obj.device.PartType = 'ENG';
                         obj.meta.StartDateTime = date.toDate();
                         obj.meta.EndDateTime = date.toDate();
-                       Testdata.insert(obj);
+                        Testdata.insert(obj);
                     }
                 }
             }
