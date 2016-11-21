@@ -18,6 +18,22 @@ angular.module('kaiamCharts').controller('MesChartsController', [
         $scope.mesChartTypes = ['WIP', 'Non-moving inventory', 'Thruput'];
         $scope.chartType = $cookies.get('mesChartType') || 'WIP';
         $scope.interval = $cookies.get('mesChartInterval') || 'Daily';
+        $scope.device = $cookies.get('mesChartDevice') || '-all-';
+        $scope.partNumber = '-all-';
+        $scope.partNumbers = _.union(['-all-'], Settings.getPartNumbersForDevice($scope.device));
+
+        $scope.changeDevice = (device) => {
+            $cookies.put('mesChartDevice', device);
+            $scope.device = device;
+            $scope.partNumber = '-all-';
+            $scope.partNumbers = _.union(['-all-'], Settings.getPartNumbersForDevice($scope.device));
+            get();
+        };
+
+        $scope.changePartNumber = function (pn) {
+            $scope.partNumber = pn;
+            get();
+        };
 
         $scope.changeInterval = (interval) => {
             $scope.interval = interval;
@@ -104,7 +120,11 @@ angular.module('kaiamCharts').controller('MesChartsController', [
 
 
         function barClick (point, fileName) {
-            Meteor.call('mesExportData', point.serials,
+            exportData(point.serials, fileName, point.label);
+        }
+
+        function exportData (serials, fileName, label) {
+            Meteor.call('mesExportData', serials,
                 (err, data) => {
                     if (err) {
                         $mdToast.show(
@@ -115,7 +135,7 @@ angular.module('kaiamCharts').controller('MesChartsController', [
                     } else {
                         let ret = ExportDataService.exportData(data);
                         let blob = new Blob([ret.substring(1)], {type: 'data:text/csv;charset=utf-8'});
-                        $scope.filename = fileName + ' ' + point.label + '.csv';
+                        $scope.filename = fileName + ' ' + (label || '') + '.csv';
                         if (window.navigator.msSaveOrOpenBlob) {
                             navigator.msSaveBlob(blob, $scope.filename);
                         } else {
@@ -135,7 +155,7 @@ angular.module('kaiamCharts').controller('MesChartsController', [
         }
 
         function constructWip () {
-            Meteor.call('mesChartsWip', (err, data) => {
+            Meteor.call('mesChartsWip', $scope.device, $scope.partNumber, (err, data) => {
                 if (err) {
                     $mdToast.show(
                         $mdToast.simple()
@@ -143,6 +163,7 @@ angular.module('kaiamCharts').controller('MesChartsController', [
                             .position('bottom right')
                             .hideDelay(3000));
                 } else {
+                    $scope.mesdata = data;
                     chart.title.text = 'Distribution per location (WIP)';
                     let records = _.map(data, (r) => {
                         r.click = (e) => {
@@ -165,7 +186,7 @@ angular.module('kaiamCharts').controller('MesChartsController', [
         }
 
         function constructNonmovingInventory () {
-            Meteor.call('mesChartsNonmovingInventory', (err, data) => {
+            Meteor.call('mesChartsNonmovingInventory', $scope.device, $scope.partNumber, (err, data) => {
                 if (err) {
                     $mdToast.show(
                         $mdToast.simple()
@@ -173,6 +194,7 @@ angular.module('kaiamCharts').controller('MesChartsController', [
                             .position('bottom right')
                             .hideDelay(3000));
                 } else {
+                    $scope.mesdata = data;
                     chart.title.text = 'Non-moving inventory report';
                     _.each(data, (series) => {
                         let records = _.map(angular.copy(activityRanges), (r) => {
@@ -238,7 +260,7 @@ angular.module('kaiamCharts').controller('MesChartsController', [
         }
 
         function constructMesThruput () {
-            Meteor.call('mesChartsThruput', (err, data) => {
+            Meteor.call('mesChartsThruput', $scope.device, $scope.partNumber, (err, data) => {
                 if (err) {
                     $mdToast.show(
                         $mdToast.simple()
@@ -246,6 +268,7 @@ angular.module('kaiamCharts').controller('MesChartsController', [
                             .position('bottom right')
                             .hideDelay(3000));
                 } else {
+                    $scope.mesdata = data;
                     chart.title.text = 'Thruput';
                     // Group by location
                     let xprop = ($scope.interval === 'Daily') ? 'day' : 'week';
@@ -266,5 +289,67 @@ angular.module('kaiamCharts').controller('MesChartsController', [
                 }
             });
         }
+
+        $scope.exportAll = function () {
+            let serials = [];
+            switch ($scope.chartType) {
+            case 'WIP':
+                _.each($scope.mesdata, (item) => {
+                    serials = _.union(serials, item.serials);
+                });
+                break;
+            case 'Non-moving inventory':
+                _.each($scope.mesdata, (item) => {
+                    serials = _.union(serials, _.map(item.list, (o) => {return o.serial;}));
+                });
+                break;
+            case 'Thruput':
+                let s = new Set();
+                _.each($scope.mesdata, (item) => {
+                    s.add(item.serial);
+                });
+                serials = [...s];
+                break;
+            default:
+                break;
+            }
+            exportData (serials, $scope.chartType.toLowerCase());
+        };
+
+        $scope.exportSummary = function () {
+            $scope.showProgress = true;
+            let row = '';
+            let head = ' ,location,qty,date\n';
+            switch ($scope.chartType) {
+            case 'WIP':
+                _.each($scope.mesdata, (item) => {
+                    row += item.label + ',' + item.y + ',' + moment().format('MM/DD/YYYY') + '\n';
+                });
+                break;
+            case 'Non-moving inventory':
+                _.each($scope.mesdata, (item) => {
+                    row += item._id + ',' + item.list.length + ',' + moment().format('MM/DD/YYYY') + '\n';
+                });
+                break;
+            case 'Thruput':
+                let gr = _.groupBy($scope.mesdata, (item) => {
+                    return item.location + '|' + item.day;
+                });
+                _.each(gr, (item) => {
+                    if (item[0] && item[0].location) {
+                        row += item[0].location + ',' + item.length + ',' + item[0].day + '\n';
+                    }
+                });
+                break;
+            default:
+                break;
+            }
+            let a = document.createElement('a');
+            document.body.appendChild(a);
+            a.style.display = 'none';
+            a.href = encodeURI('data:text/csv;' + head + row);
+            a.download = 'mes-' + $scope.chartType.toLowerCase() + '.csv';
+            a.click();
+        };
     }
 ]);

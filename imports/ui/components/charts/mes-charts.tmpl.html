@@ -8,6 +8,19 @@
                     <md-option ng-repeat="ct in mesChartTypes" value="{{ct}}">{{ct}}</md-option>
                 </md-select>
             </md-input-container>
+            <md-input-container>
+                <label>device</label>
+                <md-select ng-model="device" ng-change="changeDevice(device)">
+                    <md-option ng-repeat="i in ['-all-', '40GB', '100GB']" value="{{i}}">{{i}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>part number</label>
+                <md-select ng-model="partNumber" ng-change="changePartNumber(partNumber)" style="width:130px">
+                    <md-option ng-repeat="partNumber in partNumbers | orderBy"
+                               value="{{partNumber}}">{{partNumber}}</md-option>
+                </md-select>
+            </md-input-container>
             <md-input-container ng-show="chartType === 'Thruput'">
                 <label>{{'TIMETREND_OPTIONS_INTERVAL' | translate}}</label>
                 <md-select ng-model="interval"
@@ -15,6 +28,25 @@
                     <md-option ng-repeat="i in ['Daily','Weekly']" value="{{i}}">{{i}}</md-option>
                 </md-select>
             </md-input-container>
+            <span flex></span>
+            <md-menu>
+                <md-button aria-label="{{'SPC_OPTIONS_EXPORT' | translate}}" ng-click="$mdOpenMenu()" class="md-warn">
+                    <ng-md-icon icon="get_app" size="22"></ng-md-icon>
+                    {{'SPC_OPTIONS_EXPORT' | translate}}
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item >
+                        <md-button ng-click="exportSummary()" aria-label="Summary">
+                            Summary
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item >
+                        <md-button ng-click="exportAll()" aria-label="ALL">
+                            All
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
         </div>
     </md-toolbar>
     <tri-widget widget-chart flex="100">

@@ -3,13 +3,22 @@
 
 
 Meteor.methods({
-    mesChartsNonmovingInventory: function () {
+    mesChartsNonmovingInventory: function (device, partNumber) {
         ScesDomains.isLoggedIn(this.userId);
+        let match = {
+            'state.id': 'AddedToLocation',
+            'type': 'transceiver'
+        };
+        if (device !== '-all-') {
+            match['dc.PartNumber'] = {
+                $in: Settings.getPartNumbersForDevice(device)
+            };
+        }
+        if (partNumber !== '-all-') {
+            match['dc.PartNumber'] = partNumber;
+        }
         return Domains.aggregate([{
-            $match: {
-                'state.id': 'AddedToLocation',
-                'type': 'transceiver'
-            }
+            $match: match
         }, {
             $lookup: {
                 from: 'domains',
@@ -19,6 +28,12 @@ Meteor.methods({
             }
         }, {
             $unwind: '$location'
+        }, {
+            $match: {
+                'location.dc.hide': {
+                    $ne: true
+                }
+            }
         }, {
             $project: {
                 serial: '$_id',
@@ -47,13 +62,22 @@ Meteor.methods({
         ]);
     },
 
-    mesChartsWip: function () {
+    mesChartsWip: function (device, partNumber) {
         ScesDomains.isLoggedIn(this.userId);
+        let match = {
+            'state.id': 'AddedToLocation',
+            'type': 'transceiver'
+        };
+        if (device !== '-all-') {
+            match['dc.PartNumber'] = {
+                $in: Settings.getPartNumbersForDevice(device)
+            };
+        }
+        if (partNumber !== '-all-') {
+            match['dc.PartNumber'] = partNumber;
+        }
         return Domains.aggregate([{
-            $match: {
-                'state.id': 'AddedToLocation',
-                'type': 'transceiver'
-            }
+            $match: match
         }, {
             $lookup: {
                 from: 'domains',
@@ -63,6 +87,12 @@ Meteor.methods({
             }
         }, {
             $unwind: '$location'
+        }, {
+            $match: {
+                'location.dc.hide': {
+                    $ne: true
+                }
+            }
         }, {
             $group: {
                 _id: '$location.dc.name',
@@ -90,13 +120,22 @@ Meteor.methods({
         ]);
     },
 
-    mesChartsThruput: function () {
+    mesChartsThruput: function (device, partNumber) {
         ScesDomains.isLoggedIn(this.userId);
         let offset = Math.abs(moment().utcOffset() * 60000);
+        let match = {
+            'type': 'transceiver'
+        };
+        if (device !== '-all-') {
+            match['dc.PartNumber'] = {
+                $in: Settings.getPartNumbersForDevice(device)
+            };
+        }
+        if (partNumber !== '-all-') {
+            match['dc.PartNumber'] = partNumber;
+        }
         return Domains.aggregate([{
-            $match: {
-                'type': 'transceiver'
-            }
+            $match: match
         }, {
             $unwind: '$audit'
         }, {
@@ -117,6 +156,12 @@ Meteor.methods({
             $unwind: {
                 'path': '$location',
                 'preserveNullAndEmptyArrays': true
+            }
+        }, {
+            $match: {
+                'location.dc.hide': {
+                    $ne: true
+                }
             }
         }, {
             $project: {
@@ -168,6 +213,7 @@ Meteor.methods({
             $project: {
                 serial: '$_id',
                 location: {$ifNull: ['$location.dc.name', '']},
+                partNumber: {$ifNull: ['$dc.PartNumber', '']},
                 type: '$type',
                 movedBy: '$state.movedBy',
                 when: '$state.when'

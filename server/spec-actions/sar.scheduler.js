@@ -255,10 +255,11 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                         failCodesPerId.add(tf);
                     });
                     Testdata.update({
-                        '_id': testMarkedFailed.id
+                        '_id': testMarkedFailed._id
                     }, {
                         $set: {
-                            failCodes: [...failCodesPerId].sort()
+                            failCodes: [...failCodesPerId].sort(),
+                            result: 'F'
                         }
                     }, {
                         multi: true

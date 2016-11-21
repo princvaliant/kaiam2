@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/linktest.scheduler.js" afterPath="$PROJECT_DIR$/server/charts/linktest.scheduler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/release" afterPath="$PROJECT_DIR$/.meteor/release" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/mes-charts.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/charts/mes-charts.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/mes-charts.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/charts/mes-charts.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/location/location-edit.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/location/location-edit.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/sces/location/location.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/sces/location/location.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/sces-settings.js" afterPath="$PROJECT_DIR$/lib/sces-settings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/settings.js" afterPath="$PROJECT_DIR$/lib/settings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/domain-report.methods.js" afterPath="$PROJECT_DIR$/server/sces/domain-report.methods.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/transceiver.scheduler.js" afterPath="$PROJECT_DIR$/server/sces/transceiver.scheduler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -23,7 +34,7 @@
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -35,11 +46,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ft.replac</find>
-      <find>ft.replace</find>
-      <find>runTests</find>
-      <find>testType</find>
-      <find>Material-Design-Iconic-Font.woff2</find>
       <find>Material-Design-Iconic-Font</find>
       <find>gridOptions</find>
       <find>TOSA</find>
@@ -53,7 +59,6 @@
       <find>ng-show</find>
       <find>ExportDataService.exportData</find>
       <find>partNumbers</find>
-      <find>pnum</find>
       <find>error</find>
       <find>Domains.aggregate</find>
       <find>ERR</find>
@@ -64,7 +69,13 @@
       <find>compileDoList</find>
       <find>tres</find>
       <find>link</find>
+      <find>mesChartsThruput</find>
+      <find>PartNumber</find>
+      <find>pnum</find>
+      <find>upsert</find>
+      <find>$lt</find>
       <find>moment</find>
+      <find>...</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -77,6 +88,7 @@
       <dir>$PROJECT_DIR$/model</dir>
       <dir>$PROJECT_DIR$/server/test-speed</dir>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/imports/ui/components/sces</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -85,16 +97,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.meteor/local/build/programs/server/boot.js" />
-        <option value="$PROJECT_DIR$/server/charts/yields.method.js" />
-        <option value="$PROJECT_DIR$/.meteor/packages" />
-        <option value="$PROJECT_DIR$/server/sces/sales-order.methods.js" />
-        <option value="$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.config.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/charts.config.js" />
-        <option value="$PROJECT_DIR$/lib/settings.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" />
-        <option value="$PROJECT_DIR$/server/sces/transceiver.scheduler.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/customer/customer.module.js" />
         <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js" />
         <option value="$PROJECT_DIR$/model/users.js" />
@@ -104,7 +109,6 @@
         <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.run.js" />
         <option value="$PROJECT_DIR$/imports/ui/daasfab/daasfab.config.js" />
         <option value="$PROJECT_DIR$/server/customer/customer.methods.js" />
-        <option value="$PROJECT_DIR$/lib/sces-settings.js" />
         <option value="localhost:3000/app/app.js?hash=f31dc99124e745d8658ebc2d53090c4e17a447e4" />
         <option value="$PROJECT_DIR$/imports/ui/components/customer/customer.controller.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/customer/customer.config.js" />
@@ -119,7 +123,6 @@
         <option value="$PROJECT_DIR$/imports/ui/components/customer/customer.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/loss-check.service.js" />
         <option value="$PROJECT_DIR$/.meteor/local/build/programs/server/app/app.js" />
-        <option value="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
         <option value="localhost:3000/packages/modules.js?hash=10e21c2c9a2024ea4dc2faaf679b605040fa0263" />
         <option value="$PROJECT_DIR$/server/dashboard/dashboard.method.js" />
         <option value="$PROJECT_DIR$/server/dashboard/dashboard.scheduler.js" />
@@ -136,6 +139,15 @@
         <option value="$PROJECT_DIR$/server/export-data.methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
         <option value="$PROJECT_DIR$/server/charts/linktest.scheduler.js" />
+        <option value="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
+        <option value="$PROJECT_DIR$/lib/settings.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/location/location-edit.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/sces/location/location.tmpl.html" />
+        <option value="$PROJECT_DIR$/lib/sces-settings.js" />
+        <option value="$PROJECT_DIR$/server/sces/transceiver.scheduler.js" />
+        <option value="$PROJECT_DIR$/server/sces/domain-report.methods.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/charts/mes-charts.tmpl.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/charts/mes-charts.controller.js" />
       </list>
     </option>
   </component>
@@ -160,10 +172,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-707" />
-    <option name="y" value="-1418" />
-    <option name="width" value="1604" />
-    <option name="height" value="1418" />
+    <option name="x" value="-759" />
+    <option name="y" value="-1401" />
+    <option name="width" value="1320" />
+    <option name="height" value="1320" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -197,7 +209,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -211,144 +222,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test-speed" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec-actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="settings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -783,14 +659,12 @@
       <workItem from="1479145832796" duration="19475000" />
       <workItem from="1479183017653" duration="17000" />
       <workItem from="1479318825460" duration="3046000" />
-      <workItem from="1479330766490" duration="3668000" />
-    </task>
-    <task id="LOCAL-00049" summary="- Fixing transceiver view layout bug after upgrade to material 1.1.1">
-      <created>1474318450444</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1474318450444</updated>
+      <workItem from="1479330766490" duration="6240000" />
+      <workItem from="1479429124639" duration="1076000" />
+      <workItem from="1479492880220" duration="10861000" />
+      <workItem from="1479621673857" duration="8000" />
+      <workItem from="1479624088807" duration="173000" />
+      <workItem from="1479750819965" duration="8006000" />
     </task>
     <task id="LOCAL-00050" summary="- Add DUT grouping in paretto loss charts&#10;- Initialize part number from last test when adding trasceiver to MES (locations)">
       <created>1474479856332</created>
@@ -1128,11 +1002,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479321870819</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="- Fixing  link test date formatting to include minutes and seconds&#10;&#10;">
+      <created>1479338563921</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1479338563921</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="937566000" />
+    <option name="totallyTimeSpent" value="960262000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1144,20 +1025,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-707" y="-1418" width="1604" height="1418" extended-state="0" />
+    <frame x="-759" y="-1401" width="1320" height="1320" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25900188" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2586605" sideWeight="0.484556" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.49719888" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25339368" sideWeight="0.66266584" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25339368" sideWeight="0.3373342" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3159609" sideWeight="0.48806775" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.252443" sideWeight="0.49037722" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32693985" sideWeight="0.4970888" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.51544404" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23742138" sideWeight="0.49281046" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23697068" sideWeight="0.4896074" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32579187" sideWeight="0.5445357" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3159609" sideWeight="0.51193225" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1204,7 +1085,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="- Added summary export in loss charts&#10;- Added ROSA,TOSA,PCBA entry requirement for location Assembly" />
     <MESSAGE value="- Fixed performance of loss trend charts&#10;- Added packout charts for 100GB devices&#10;- Fixed add to shipment functionality to add tray first and then transceivers&#10;" />
     <MESSAGE value="- Fix link test sync from files" />
     <MESSAGE value="- Fix non moving inventory chart" />
@@ -1229,228 +1109,31 @@
     <MESSAGE value="- Adding re-numbering for action column&#10;- Fixing favicon to display Kaiam logo&#10;&#10;" />
     <MESSAGE value="- Fixing getTransceiverStatus and getTestData to look alsi in manufSn.&#10;&#10;" />
     <MESSAGE value="- Fixing export data with fail statuses&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixing export data with fail statuses&#10;&#10;" />
+    <MESSAGE value="- Fixing  link test date formatting to include minutes and seconds&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixing  link test date formatting to include minutes and seconds&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js</url>
+          <line>380</line>
+          <option name="timeStamp" value="1636" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js</url>
+          <line>379</line>
+          <option name="timeStamp" value="1637" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="1635" />
+      <option name="time" value="1692" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/customer/transceivers.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/domain.core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="104" column="4" lean-forward="false" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/customer/transceiver.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/customer/transceivers.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="94" lean-forward="false" selection-start-line="4" selection-start-column="94" selection-end-line="4" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/customer/customer.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="47" column="29" lean-forward="true" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/server/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4020">
-          <caret line="268" column="4" lean-forward="false" selection-start-line="268" selection-start-column="4" selection-end-line="268" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/customer/customer.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/lib/SarCalculation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3690">
-          <caret line="246" column="24" lean-forward="false" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/daasfab.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/account-config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/accounts.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/yields.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4392">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="73" column="33" lean-forward="true" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/packout-charts.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="24" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="28" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/packout-charts.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="78" column="10" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="78" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/yield-check.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1947">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/yields.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/spcs.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/loss.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="10" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/packout.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="179" column="14" lean-forward="true" selection-start-line="172" selection-start-column="9" selection-end-line="179" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/dashboard/dashboard.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/dashboard/dashboard.publish.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/dashboard/dashboard.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/admin/service.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1496,20 +1179,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/domain.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1531,26 +1200,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="294" column="23" lean-forward="true" selection-start-line="294" selection-start-column="23" selection-end-line="294" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-625">
-          <caret line="56" column="42" lean-forward="false" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="65" column="32" lean-forward="true" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1558,14 +1211,209 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="149" column="92" lean-forward="false" selection-start-line="149" selection-start-column="92" selection-end-line="149" selection-end-column="92" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
+    <entry file="file://$PROJECT_DIR$/server/test-summary.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/linktest.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="44" lean-forward="true" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/testdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/yield-check.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="49" column="26" lean-forward="true" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/test-insertions.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/spcs.method.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="84" column="47" lean-forward="false" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/location/new-part.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/batchrequest/batchrequest.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="38" column="35" lean-forward="false" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/batchrequest/batchrequest.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" column="40" lean-forward="false" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain.upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain.publish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="215" column="21" lean-forward="false" selection-start-line="215" selection-start-column="21" selection-end-line="215" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain.core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="32" column="26" lean-forward="false" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/images.publish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="29" lean-forward="false" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="74" column="20" lean-forward="false" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/location.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/powercalbeforetx.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="48" column="10" lean-forward="false" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/powercalbeforetx.publish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/powercal-beforetx.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="20" column="95" lean-forward="false" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/packout.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2475">
+          <caret line="189" column="8" lean-forward="true" selection-start-line="189" selection-start-column="8" selection-end-line="189" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/yields.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/trend.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-780">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/location/location-edit.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="28" lean-forward="true" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/location/location.tmpl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="53" column="47" lean-forward="false" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
+          <caret line="58" column="45" lean-forward="true" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/sces-table.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="276" column="4" lean-forward="false" selection-start-line="276" selection-start-column="4" selection-end-line="276" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1578,28 +1426,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="77" column="27" lean-forward="true" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="50" column="39" lean-forward="false" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+        <state relative-caret-position="105">
+          <caret line="245" column="0" lean-forward="false" selection-start-line="245" selection-start-column="0" selection-end-line="305" selection-end-column="9" />
           <folding>
             <marker date="1478889527000" expanded="true" signature="10242:10287" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/test-summary.methods.js">
+    <entry file="file://$PROJECT_DIR$/lib/sces-settings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="296">
+          <caret line="35" column="41" lean-forward="false" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/linktest.scheduler.js">
+    <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="44" lean-forward="true" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+        <state relative-caret-position="300">
+          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/domain-report.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="190" column="13" lean-forward="true" selection-start-line="190" selection-start-column="13" selection-end-line="190" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/mes-charts.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="40" column="36" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-967">
+          <caret line="1" column="4" lean-forward="false" selection-start-line="74" selection-start-column="1" selection-end-line="92" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="434" column="29" lean-forward="false" selection-start-line="434" selection-start-column="29" selection-end-line="434" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/mes-charts.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="308" column="24" lean-forward="false" selection-start-line="308" selection-start-column="24" selection-end-line="308" selection-end-column="24" />
           <folding />
         </state>
       </provider>

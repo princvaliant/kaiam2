@@ -28,6 +28,11 @@
                 <input type="text" name="description" ng-model="entity.description"
                        aria-label="{{'SCES.LOCATION-DESCRIPTION' | translate}}">
             </md-input-container>
+            <md-input-container class="hide-error-msg" style="width:300px">
+                <md-checkbox ng-model="entity.hide" aria-label="Hide in reports">
+                   Hide in reports
+                </md-checkbox>
+            </md-input-container>
         </md-dialog-content>
         <md-dialog-actions>
             <span flex></span>
