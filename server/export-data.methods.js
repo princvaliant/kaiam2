@@ -6,7 +6,7 @@
  * @type {meteor.methods}
  */
 Meteor.methods({
-    exportData: function (serial, testType, partNumber, dateFrom, dateTo, errorStatus, ignorePnum, ignoreDate, onlyLast) {
+    exportData: function (serial, testType, partNumber, dateFrom, dateTo, errorStatus, ignorePnum, ignoreDate, onlyLast, includeTosa) {
         // Construct field collection to be returned
         ScesDomains.getUser(this.userId);
         let query = {$and: []};
@@ -106,9 +106,21 @@ Meteor.methods({
                 }
             });
             aggrArray.push({
-                $unwind: '$tests'
+                $unwind: '$tests',
+                preserveNullAndEmptyArrays: true
             });
             strTest = '$tests.';
+        }
+
+        if (includeTosa) {
+            aggrArray.push({
+                $lookup: {
+                    from: 'testdata',
+                    localField: 'device.TOSA',
+                    foreignField: 'device.SerialNumber',
+                    as: 'tosa'
+                }
+            });
         }
 
         aggrArray.push({
@@ -131,9 +143,27 @@ Meteor.methods({
                 r: strTest + 'meta.Rack',
                 swver: {$concat: ['', strTest + 'meta.SwVer']},
                 fails: strTest + 'failCodes',
-                failsrt: strTest + 'TestFail'
+                failsrt: strTest + 'TestFail',
+                tosa: {
+                    $filter: {
+                        input: '$tosa',
+                        as: 'tsa',
+                        cond: {
+                            $eq: ['$$tsa.meta.Channel', strTest + 'meta.Channel']
+                        }
+                    }
+                }
             }
         });
+
+        if (includeTosa) {
+            aggrArray.push({
+                $unwind: {
+                    path: '$tosa',
+                    preserveNullAndEmptyArrays: true
+                }
+            });
+        }
 
         aggrArray.push({
             $sort: {

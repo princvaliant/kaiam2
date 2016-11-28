@@ -51,11 +51,14 @@ angular.module('kaiamExportData').controller('ExportdataController', [
         $scope.exportLastClicked = function (val) {
             $scope.exportLast = val;
         };
+        $scope.exportTosaClicked = function (val) {
+            $scope.exportTosa = val;
+        };
 
         $scope.exportClicked = function () {
             $scope.showProgress = true;
             Meteor.call('exportData', $scope.serial, [$scope.testType], $scope.partNumber, $scope.dateFrom,
-                $scope.dateTo, $scope.errorStatus, $scope.ignorePartNumber, $scope.ignoreDate, $scope.exportLast,
+                $scope.dateTo, $scope.errorStatus, $scope.ignorePartNumber, $scope.ignoreDate, $scope.exportLast, $scope.exportTosa,
                 (err, data) => {
                     if (err) {
                         showError(err);

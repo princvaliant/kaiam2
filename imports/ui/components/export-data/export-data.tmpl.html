@@ -47,6 +47,10 @@
                          ng-change="exportLastClicked(exportLast)">
                 Export only last test per serial
             </md-checkbox>
+            <md-checkbox ng-model="exportTosa" aria-label="Export TOSA" ng-show="testType !== 'ALL - ALL'"
+                         ng-change="exportTosaClicked(exportTosa)">
+                Export TOSA data
+            </md-checkbox>
             <md-button class="md-primary md-raised" aria-label="button" ng-click="exportClicked()" style="width:300px;">Export</md-button>
             <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
         </md-card-content>

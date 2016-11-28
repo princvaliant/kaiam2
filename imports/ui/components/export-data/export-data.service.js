@@ -76,6 +76,18 @@ angular.module('kaiamCharts')
                                     }
                                 }
                             }
+                            if (item.tosa) {
+                                for (let v2 in item.tosa.data) {
+                                    head += 'tosa ' + v2 + ',';
+                                    if (item.tosa.data[v2] instanceof Array) {
+                                        if (item.tosa.data[v2].length > 0) {
+                                            row += item.tosa.data[v2].toString().replace(/,/g, '|').replace(/[\n\r,]/g, '') + ',';
+                                        }
+                                    } else {
+                                        row += item.tosa.data[v2] + ' ,';
+                                    }
+                                }
+                            }
                         }
                         if (ret === '') {
                             ret += head + '\n';
