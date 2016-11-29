@@ -77,14 +77,18 @@ angular.module('kaiamCharts')
                                 }
                             }
                             if (item.tosa) {
-                                for (let v2 in item.tosa.data) {
+                                let tosa = Settings.getTestConfigVariablesForPartNumber('', 'tosa', 'dc');
+                                for (let t1 in tosa) {
+                                    let v2 = tosa[t1].v;
                                     head += 'tosa ' + v2 + ',';
                                     if (item.tosa.data[v2] instanceof Array) {
                                         if (item.tosa.data[v2].length > 0) {
                                             row += item.tosa.data[v2].toString().replace(/,/g, '|').replace(/[\n\r,]/g, '') + ',';
+                                        } else {
+                                            row += ' ,';
                                         }
                                     } else {
-                                        row += item.tosa.data[v2] + ' ,';
+                                        row += (item.tosa.data[v2] || '') + ' ,';
                                     }
                                 }
                             }

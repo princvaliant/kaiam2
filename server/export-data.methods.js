@@ -115,8 +115,21 @@ Meteor.methods({
         if (includeTosa) {
             aggrArray.push({
                 $lookup: {
+                    from: 'domains',
+                    localField: 'device.SerialNumber',
+                    foreignField: '_id',
+                    as: 'doms'
+                }
+            });
+            aggrArray.push({
+                $unwind: {
+                    path: '$doms'
+                }
+            });
+            aggrArray.push({
+                $lookup: {
                     from: 'testdata',
-                    localField: 'device.TOSA',
+                    localField: 'doms.dc.TOSA',
                     foreignField: 'device.SerialNumber',
                     as: 'tosa'
                 }
@@ -159,8 +172,7 @@ Meteor.methods({
         if (includeTosa) {
             aggrArray.push({
                 $unwind: {
-                    path: '$tosa',
-                    preserveNullAndEmptyArrays: true
+                    path: '$tosa'
                 }
             });
         }
