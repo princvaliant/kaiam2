@@ -159,7 +159,7 @@ angular.module('kaiamCharts')
                             }
                         });
                         _.each(tt, (t) => {
-                            if (t.t !== '') {
+                            if (t.t !== undefined && t.t !== '') {
                                 if (!Array.isArray(flat[t.k])) {
                                     res[t.t + ' ' + t.v] = flat[t.k] !== undefined ? flat[t.k] : '';
                                 } else {

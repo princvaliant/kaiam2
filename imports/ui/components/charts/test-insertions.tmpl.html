@@ -7,6 +7,12 @@
                     <md-option ng-repeat="i in ['100GB', '40GB']" value="{{i}}">{{i}}</md-option>
                 </md-select>
             </md-input-container>
+            <md-input-container>
+                <label>Grouping</label>
+                <md-select ng-model="groupType" ng-change="changeGroupType(groupType)" style="width:160px">
+                    <md-option ng-repeat="i in ['rack', 'part number']" value="{{i}}">{{i}}</md-option>
+                </md-select>
+            </md-input-container>
         </div>
     </md-toolbar>
     <tri-widget widget-chart flex="100">

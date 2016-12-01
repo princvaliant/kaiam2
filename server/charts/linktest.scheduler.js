@@ -57,36 +57,38 @@ function execLinktest () {
                         obj.meta.Channel = parseInt(row.code);
 
                         // Query testdata for first value
-                        let firsttest = Testdata.findOne(
-                            {
-                                'device.SerialNumber': obj.data.transceiverSN,
-                                type: 'link',
-                                subtype: 'test',
-                                'data.subpath': row.subpath
-                            },
-                            {sort: {'meta.StartDateTime': 1}});
-                        if (!firsttest) {
-                            obj.data.hour = 0;
-                            obj.mid = Meteor.hashid();
-                        } else if (date) {
-                            let duration = moment.duration(date.diff(moment(firsttest.meta.StartDateTime)));
-                            obj.data.hour = Math.round(duration.asHours());
-                            obj.mid = firsttest.mid;
-                        }
+                        if (obj.data && obj.data.transceiverSN) {
+                            let firsttest = Testdata.findOne(
+                                {
+                                    'device.SerialNumber': obj.data.transceiverSN,
+                                    type: 'link',
+                                    subtype: 'test',
+                                    'data.subpath': row.subpath
+                                },
+                                {sort: {'meta.StartDateTime': 1}});
+                            if (!firsttest) {
+                                obj.data.hour = 0;
+                                obj.mid = Meteor.hashid();
+                            } else if (date) {
+                                let duration = moment.duration(date.diff(moment(firsttest.meta.StartDateTime)));
+                                obj.data.hour = Math.round(duration.asHours());
+                                obj.mid = firsttest.mid;
+                            }
 
-                        obj.timestamp = date.toDate();
-                        obj.type = 'link';
-                        obj.subtype = 'test';
-                        obj.result = 'X';
-                        obj.status = 'X';
-                        obj.measstatus = 'X';
-                        obj.device.SerialNumber = obj.data.transceiverSN;
-                        obj.device.ManufactureSerialNumber = null;
-                        obj.device.PartNumber = obj.data.pnum || 'XQX4000';
-                        obj.device.PartType = 'ENG';
-                        obj.meta.StartDateTime = date.toDate();
-                        obj.meta.EndDateTime = date.toDate();
-                        Testdata.insert(obj);
+                            obj.timestamp = date.toDate();
+                            obj.type = 'link';
+                            obj.subtype = 'test';
+                            obj.result = 'X';
+                            obj.status = 'X';
+                            obj.measstatus = 'X';
+                            obj.device.SerialNumber = obj.data.transceiverSN;
+                            obj.device.ManufactureSerialNumber = null;
+                            obj.device.PartNumber = obj.data.pnum || 'XQX4000';
+                            obj.device.PartType = 'ENG';
+                            obj.meta.StartDateTime = date.toDate();
+                            obj.meta.EndDateTime = date.toDate();
+                            Testdata.insert(obj);
+                        }
                     }
                 }
             }

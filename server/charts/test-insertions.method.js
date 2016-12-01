@@ -5,7 +5,7 @@
 
 
 Meteor.methods({
-    testInsertions: function (device) {
+    testInsertions: function (device, groupType) {
         // Date and week range values
         ScesDomains.getUser(this.userId);
 
@@ -42,6 +42,7 @@ Meteor.methods({
             date: {$substr: [{$subtract: ['$timestamp', 25200000]}, 0, 10]},
             pacTime: {$subtract: ['$timestamp', 25200000]},
             SerialNumber: '$device.SerialNumber',
+            PartNumber: '$device.PartNumber',
             ScriptName: '$meta.ScriptName',
             status: '$status'
         };
@@ -53,13 +54,18 @@ Meteor.methods({
                 Rack: '$Rack',
                 station: '$DUT',
                 SerialNumber: '$SerialNumber',
+                PartNumber: '$PartNumber',
                 ScriptName: '$ScriptName',
                 status: '$status'
             }, total: {$sum: 1}
         };
 
-        let group2 =
-        {_id: {date: '$_id.date', rack: '$_id.Rack'}, total: {$sum: 1}};
+        let group2;
+        if (groupType === 'rack') {
+            group2 = {_id: {date: '$_id.date', rack: '$_id.Rack'}, total: {$sum: 1}};
+        } else {
+            group2 = {_id: {date: '$_id.date', pnum: '$_id.PartNumber'}, total: {$sum: 1}};
+        }
 
         return Testdata.aggregate([
             {$match: match},
@@ -67,10 +73,11 @@ Meteor.methods({
             {$group: group1},
             {$group: group2},
             {$project: {
-                date: '$_id.date', rack: '$_id.rack', total: '$total'
+                date: '$_id.date', rack: '$_id.rack', pnum: '$_id.pnum', total: '$total'
             }},
             {$sort: {
                 'rack': 1,
+                'pnum': 1,
                 'date': 1
             }}
         ]);

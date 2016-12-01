@@ -64,7 +64,6 @@ angular.module('kaiamDashboard').controller('DashboardController', ['$scope', '$
         };
 
         function processRow (obj) {
-
             let item = _.findWhere($scope.summaries, {
                 name: obj.p
             });
@@ -73,10 +72,6 @@ angular.module('kaiamDashboard').controller('DashboardController', ['$scope', '$
                     name: obj.p
                 };
                 $scope.summaries.push(item);
-            }
-            if (item[obj.t + 'wok'] === undefined) {
-                $scope.total[obj.t + 'wok'] = 0;
-                $scope.total[obj.t + 'wtot'] = 0;
             }
 
             let date = moment().format('YYYY-MM-DD');
@@ -93,13 +88,18 @@ angular.module('kaiamDashboard').controller('DashboardController', ['$scope', '$
                 item[obj.t + 'dy'] = 100 * obj.dok / obj.dtot;
             }
 
-            item[obj.t + 'wok'] = obj.wok;
-            $scope.total[obj.t + 'wok'] += obj.wok;
+            if ($scope.total[obj.t + 'wok'] === undefined) {
+                $scope.total[obj.t + 'wok'] = 0;
+                $scope.total[obj.t + 'wtot'] = 0;
+            }
 
-            item[obj.t + 'wtot'] = obj.wtot;
-            $scope.total[obj.t + 'wtot'] += obj.wtot;
-
-            item[obj.t + 'wy'] = 100 * obj.wok / obj.wtot;
+            if (item[obj.t + 'wok'] === undefined) {
+                item[obj.t + 'wok'] = obj.wok;
+                item[obj.t + 'wtot'] = obj.wtot;
+                item[obj.t + 'wy'] = 100 * obj.wok / obj.wtot;
+                $scope.total[obj.t + 'wok'] += obj.wok;
+                $scope.total[obj.t + 'wtot'] += obj.wtot;
+            }
         }
     }
 ]);
