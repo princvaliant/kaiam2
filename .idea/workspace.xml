@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/test-insertions.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/charts/test-insertions.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/test-insertions.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/charts/test-insertions.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/dashboard/dashboard.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/linktest.scheduler.js" afterPath="$PROJECT_DIR$/server/charts/linktest.scheduler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/charts/test-insertions.method.js" afterPath="$PROJECT_DIR$/server/charts/test-insertions.method.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/domain.upload.js" afterPath="$PROJECT_DIR$/server/sces/domain.upload.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -800,14 +793,7 @@
       <workItem from="1480374208141" duration="3560000" />
       <workItem from="1480528570786" duration="8411000" />
       <workItem from="1480555876839" duration="11000" />
-      <workItem from="1480555904482" duration="1720000" />
-    </task>
-    <task id="LOCAL-00053" summary="- Release eprom tools compare memory dump functionality&#10;">
-      <created>1474911415452</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1474911415453</updated>
+      <workItem from="1480555904482" duration="1739000" />
     </task>
     <task id="LOCAL-00054" summary="- Add eprom export to excel functionality&#10;">
       <created>1475000721275</created>
@@ -1145,11 +1131,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480381290974</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="- Adding tosa data imported from MySql manufacturing DB to export page&#10;&#10;">
+      <created>1480558759360</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1480558759361</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="980476000" />
+    <option name="totallyTimeSpent" value="980495000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
