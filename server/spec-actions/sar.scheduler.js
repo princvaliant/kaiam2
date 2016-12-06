@@ -26,7 +26,7 @@ Meteor.startup(function () {
 Meteor.methods({
     'sarcalc': function (code, pnum2) {
         // ScesDomains.getUser(this.userId);
-        if(pnum2) {
+        if (pnum2) {
             execSar(pnum2, code, true);  // testing with snum
         } else {
             let pnums = _.keys(Settings.partNumbers);
@@ -93,21 +93,18 @@ function execSar (pnum, snum, calcVars = true) {
                     if (flow.ignoreSeq === 'Y') {
                         dateCursor = moment('2000-01-01').toDate();
                     }
-                    if (dateCursor !== null && lastData.length > 0 && lastData[lastData.length - 1].sd > dateCursor) {
+                    if (lastData.length > 0 && lastData[lastData.length - 1].sd > dateCursor) {
                         doList.push({
                             flow: flow,
                             data: lastData
                         });
-                        if (flow.ignoreSeq !== 'Y') {
-                            dateCursor = lastData[lastData.length - 1].sd;
-                        }
+                        dateCursor = lastData[lastData.length - 1].sd;
                         containsAtleastOne = true;
                     } else {
                         doList.push({
                             flow: flow,
                             data: []
                         });
-                        dateCursor = null;
                     }
                 });
                 // Compile spec and determine pass or fail
@@ -179,7 +176,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
         }
     }
 
-    for(let i = 0; i < doList.length; i++) {
+    for (let i = 0; i < doList.length; i++) {
         let doItem = doList[i];
         // doItem: {
         //   data: [{
@@ -229,7 +226,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 failTests.add(test.split(' ').join('') + ' - M');
                 failTestsWithCodes.add(test + ' - M');
             });
-            let vtsts  = _.intersection(doItem.flow.tests, tsts || []);
+            let vtsts = _.intersection(doItem.flow.tests, tsts || []);
             _.each(vtsts, (test) => {
                 runTests.add(test.split(' ').join(''));
             });
@@ -241,37 +238,47 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 let tf = item.tf || [];
                 return tf.length > 0;
             });
+
             if (testsMarkedFailed && testsMarkedFailed.length > 0) {
+                let res = 'P';
                 _.each(testsMarkedFailed, (testMarkedFailed) => {
+                    let resp = 'P';
                     let failCodesPerId = new Set();
                     racks.add(testMarkedFailed.rack);
                     duts.add(testMarkedFailed.dut);
                     failTests.add(testMarkedFailed.t + '-' + testMarkedFailed.s);
-                    if (testMarkedFailed.tf.length === 0) {
-                        testMarkedFailed.tf = ['unknown error'];
-                    }
                     _.each(testMarkedFailed.tf, (tf) => {
+                        // Ignore samo fails
+                        // if (testMarkedFailed.t === 'functionaltest' && testMarkedFailed.s === 'tx' &&
+                        //     tf === 'MPD Functional Test (One DUT TX on) less than minimum') {
+                        // } else {
                         failTestsWithCodes.add(testMarkedFailed.t + ' - ' + testMarkedFailed.s + ' - ' + tf);
                         failCodesPerId.add(tf);
+                        res = 'F';
+                        resp = 'F';
+                        //}
                     });
+
+                    let fcpid = [...failCodesPerId].sort();
+
                     Testdata.update({
                         '_id': testMarkedFailed._id
                     }, {
                         $set: {
-                            failCodes: [...failCodesPerId].sort(),
-                            result: 'F'
+                            failCodes: fcpid,
+                            result: resp
                         }
                     }, {
                         multi: true
                     });
                 });
                 let tmf = testsMarkedFailed[0];
-                updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, 'F');
-                updateOverallStatus(tmf.sn, tmf.pnum, doList, 'F');
+                updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, res);
+                updateOverallStatus(tmf.sn, tmf.pnum, doList, res);
                 _.each(doItem.data, (item) => {
                     runTests.add(item.t + '-' + item.s);
                 });
-                insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'F');
+                insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, res);
                 return;
             }
             _.each(doItem.data, (item) => {
@@ -390,7 +397,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
     }
 }
 
-function updateMeasurementStatus(serial, pnum, mid, measstatus) {
+function updateMeasurementStatus (serial, pnum, mid, measstatus) {
     Testdata.update(
         {
             'device.SerialNumber': serial,
@@ -406,7 +413,7 @@ function updateMeasurementStatus(serial, pnum, mid, measstatus) {
     );
 }
 
-function updateOverallStatus(serial, pnum, doList, status) {
+function updateOverallStatus (serial, pnum, doList, status) {
     let mids = _.map(doList, (doItem) => {
         if (doItem.data.length > 0) {
             return doItem.data[0].mid;
@@ -528,11 +535,11 @@ function getFlowsGroupedByOrder (flow, specs) {
 
     for (let i = 0; i < flows.length; i++) {
         flows[i].specs = [];
-       _.each(specs, (spec) => {
+        _.each(specs, (spec) => {
             if (_.contains(flows[i].tests, spec.tst)) {
                 flows[i].specs.push(spec);
             }
-       });
+        });
     }
     return flows;
 }
