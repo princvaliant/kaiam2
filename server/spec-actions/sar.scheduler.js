@@ -85,15 +85,19 @@ function execSar (pnum, snum, calcVars = true) {
             // Loop through the test flow and compile test data
             for (let i = 0; i < serials.length; i++) {
                 let doList = [];
+                let doIgnoreList = [];
                 let containsAtleastOne = false;
                 let dateCursor = moment('2000-01-01').toDate();
                 _.each(flows, (flow) => {
                     // Find last test data for tests
                     let lastData = getLastTestData(pnum, serials[i], ew.toDate(), flow.tests);
                     if (flow.ignoreSeq === 'Y') {
-                        dateCursor = moment('2000-01-01').toDate();
-                    }
-                    if (lastData.length > 0 && lastData[lastData.length - 1].sd > dateCursor) {
+                        doIgnoreList.push({
+                            flow: flow,
+                            data: lastData
+                        });
+                        containsAtleastOne = true;
+                    } else if (lastData.length > 0 && lastData[lastData.length - 1].sd > dateCursor) {
                         doList.push({
                             flow: flow,
                             data: lastData
@@ -109,7 +113,7 @@ function execSar (pnum, snum, calcVars = true) {
                 });
                 // Compile spec and determine pass or fail
                 if (containsAtleastOne === true) {
-                    compileDoList(doList, sarDef, pnum, serials[i], ew);
+                    compileDoList(doList.concat(doIgnoreList), sarDef, pnum, serials[i], ew);
                 }
             }
         }
@@ -238,47 +242,37 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 let tf = item.tf || [];
                 return tf.length > 0;
             });
-
             if (testsMarkedFailed && testsMarkedFailed.length > 0) {
-                let res = 'P';
                 _.each(testsMarkedFailed, (testMarkedFailed) => {
-                    let resp = 'P';
                     let failCodesPerId = new Set();
                     racks.add(testMarkedFailed.rack);
                     duts.add(testMarkedFailed.dut);
                     failTests.add(testMarkedFailed.t + '-' + testMarkedFailed.s);
+                    if (testMarkedFailed.tf.length === 0) {
+                        testMarkedFailed.tf = ['unknown error'];
+                    }
                     _.each(testMarkedFailed.tf, (tf) => {
-                        // Ignore samo fails
-                        // if (testMarkedFailed.t === 'functionaltest' && testMarkedFailed.s === 'tx' &&
-                        //     tf === 'MPD Functional Test (One DUT TX on) less than minimum') {
-                        // } else {
                         failTestsWithCodes.add(testMarkedFailed.t + ' - ' + testMarkedFailed.s + ' - ' + tf);
                         failCodesPerId.add(tf);
-                        res = 'F';
-                        resp = 'F';
-                        //}
                     });
-
-                    let fcpid = [...failCodesPerId].sort();
-
                     Testdata.update({
                         '_id': testMarkedFailed._id
                     }, {
                         $set: {
-                            failCodes: fcpid,
-                            result: resp
+                            failCodes: [...failCodesPerId].sort(),
+                            result: 'F'
                         }
                     }, {
                         multi: true
                     });
                 });
                 let tmf = testsMarkedFailed[0];
-                updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, res);
-                updateOverallStatus(tmf.sn, tmf.pnum, doList, res);
+                updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, 'F');
+                updateOverallStatus(tmf.sn, tmf.pnum, doList, 'F');
                 _.each(doItem.data, (item) => {
                     runTests.add(item.t + '-' + item.s);
                 });
-                insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, res);
+                insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'F');
                 return;
             }
             _.each(doItem.data, (item) => {
