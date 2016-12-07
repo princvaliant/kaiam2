@@ -85,19 +85,12 @@ function execSar (pnum, snum, calcVars = true) {
             // Loop through the test flow and compile test data
             for (let i = 0; i < serials.length; i++) {
                 let doList = [];
-                let doIgnoreList = [];
                 let containsAtleastOne = false;
                 let dateCursor = moment('2000-01-01').toDate();
                 _.each(flows, (flow) => {
                     // Find last test data for tests
                     let lastData = getLastTestData(pnum, serials[i], ew.toDate(), flow.tests);
-                    if (flow.ignoreSeq === 'Y') {
-                        doIgnoreList.push({
-                            flow: flow,
-                            data: lastData
-                        });
-                        containsAtleastOne = true;
-                    } else if (lastData.length > 0 && lastData[lastData.length - 1].sd > dateCursor) {
+                    if (lastData.length > 0 && (lastData[lastData.length - 1].sd > dateCursor || flow.ignoreSeq === 'Y')) {
                         doList.push({
                             flow: flow,
                             data: lastData
@@ -113,7 +106,7 @@ function execSar (pnum, snum, calcVars = true) {
                 });
                 // Compile spec and determine pass or fail
                 if (containsAtleastOne === true) {
-                    compileDoList(doList.concat(doIgnoreList), sarDef, pnum, serials[i], ew);
+                    compileDoList(doList, sarDef, pnum, serials[i], ew);
                 }
             }
         }

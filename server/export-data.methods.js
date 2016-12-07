@@ -89,9 +89,7 @@ Meteor.methods({
             });
             aggrArray.push({
                 $group: {
-                    _id: {
-                        sn: '$device.SerialNumber'
-                    },
+                    _id: '$device.SerialNumber',
                     mid: {
                         $first: '$mid'
                     }
@@ -106,8 +104,7 @@ Meteor.methods({
                 }
             });
             aggrArray.push({
-                $unwind: '$tests',
-                preserveNullAndEmptyArrays: true
+                $unwind: '$tests'
             });
             strTest = '$tests.';
         }
