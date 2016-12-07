@@ -4,7 +4,6 @@
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/export-data.methods.js" afterPath="$PROJECT_DIR$/server/export-data.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -675,14 +674,7 @@
       <workItem from="1481066329646" duration="1000" />
       <workItem from="1481074940979" duration="30000" />
       <workItem from="1481149090888" duration="12000" />
-      <workItem from="1481149119052" duration="4454000" />
-    </task>
-    <task id="LOCAL-00057" summary="- Add check for firmware version in 100GB parts not to be less than 00.09.28">
-      <created>1475103540534</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1475103540534</updated>
+      <workItem from="1481149119052" duration="4855000" />
     </task>
     <task id="LOCAL-00058" summary="- Add check for firmware version in 100GB parts not to be less than 00.09.28">
       <created>1475103797771</created>
@@ -1020,11 +1012,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480991630148</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="- Fix calculations for spec related t ignoreSeq&#10;- Fix export only last test data&#10;&#10;">
+      <created>1481153611046</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1481153611047</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1001256000" />
+    <option name="totallyTimeSpent" value="1001657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1096,7 +1095,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="- Added eprom load from memory dump in eprom module&#10;- Fixed alignement of transceiver locations in treansceiver page" />
     <MESSAGE value="- Fixed spec compiler to handle exponential numbers" />
     <MESSAGE value="- Deployed sequencing for XQX5000" />
     <MESSAGE value="- Fixing eprom import export functionality" />
@@ -1121,7 +1119,8 @@
     <MESSAGE value="- Adding tosa data imported from MySql manufacturing DB to export page&#10;&#10;" />
     <MESSAGE value="- Fix link test with empty serial numbers&#10;- Add test insertion report to be grouped by part number&#10;- Fix export to not display undefined columns&#10;&#10;" />
     <MESSAGE value="- Fix calculations for spec&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fix calculations for spec&#10;&#10;" />
+    <MESSAGE value="- Fix calculations for spec related t ignoreSeq&#10;- Fix export only last test data&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fix calculations for spec related t ignoreSeq&#10;- Fix export only last test data&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1482,8 +1481,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="101" column="40" lean-forward="true" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
+        <state relative-caret-position="1380">
+          <caret line="92" column="28" lean-forward="false" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
           <folding />
         </state>
       </provider>

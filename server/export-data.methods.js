@@ -89,7 +89,11 @@ Meteor.methods({
             });
             aggrArray.push({
                 $group: {
-                    _id: '$device.SerialNumber',
+                    _id: {
+                        sn: '$device.SerialNumber',
+                        t: '$type',
+                        st: '$subtype'
+                    },
                     mid: {
                         $first: '$mid'
                     }
