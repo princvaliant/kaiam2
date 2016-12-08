@@ -95,7 +95,9 @@ function execSar (pnum, snum, calcVars = true) {
                             flow: flow,
                             data: lastData
                         });
-                        dateCursor = lastData[lastData.length - 1].sd;
+                        if (flow.ignoreSeq !== 'Y') {
+                            dateCursor = lastData[lastData.length - 1].sd;
+                        }
                         containsAtleastOne = true;
                     } else {
                         doList.push({
@@ -157,6 +159,16 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 runTests.add(itm.t + '-' + itm.s);
             });
         });
+        // Added this logic because in some cases test rows do not have error status
+        if (errors.length === 0) {
+            errors.push({
+                rack: errorItem.rack,
+                dut: errorItem.dut,
+                t: 'unknown',
+                s: 'unknown',
+                mid: errorItem.mid
+            });
+        }
         if (errors && errors.length > 0) {
             _.each(errors, (testErrored) => {
                 racks.add(testErrored.rack);
