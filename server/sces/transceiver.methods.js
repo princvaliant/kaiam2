@@ -462,10 +462,10 @@ function _getTosaErrors (snum) {
     if (!tests) {
         ret.push({
             d: new Date(),
-            sn: domain.dc.TOSA,
+            sn: snum,
             t: 'tosa',
             st: 'dc',
-            param: 'missing tosa test data',
+            param: 'missing tosa test data for' + domain.dc.TOSA,
             ts: new Date(),
             s: 'E',
             r: 'ERR',
@@ -482,10 +482,10 @@ function _getTosaErrors (snum) {
                 if (calc < -3 || calc > 3) {
                     ret.push({
                         d: test.timestamp,
-                        sn: test.device.SerialNumber,
-                        t: 'tosa',
-                        st: 'dc',
-                        param: 'Single power ' + calc + ' out of range (-3,3) for channel ' +  test.meta.Channel,
+                        sn: snum,
+                        t: 'TOSA',
+                        st: ' ',
+                        param: test.device.SerialNumber + ' single power ' + calc + ' out of range (-3,3) for channel ' +  test.meta.Channel,
                         ts: test.timestamp,
                         s: 'E',
                         r: 'ERR',

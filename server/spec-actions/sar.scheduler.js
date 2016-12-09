@@ -13,7 +13,7 @@ Meteor.startup(function () {
         job: function () {
             let pnums = _.keys(Settings.partNumbers);
             _.each(pnums, (pnum) => {
-                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].primary === true ) {
+                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].primary === true) {
                     execSar(pnum, Settings.partNumbers[pnum].product, null, true);
                 }
             });
@@ -31,7 +31,7 @@ Meteor.methods({
         } else {
             let pnums = _.keys(Settings.partNumbers);
             _.each(pnums, (pnum) => {
-                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].primary === true ) {
+                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].primary === true) {
                     execSar(pnum, Settings.partNumbers[pnum].product, code, true);
                 }
             });
@@ -88,7 +88,7 @@ function execSar (pnum, product, snum, calcVars = true) {
                 let dateCursor = moment('2000-01-01').toDate();
                 _.each(flows, (flow) => {
                     // Find last test data for tests
-                    let lastData = getLastTestData(product, serials[i], ew.toDate(), flow.tests);
+                    let lastData = getLastTestData(product, serials[i], ew.toDate(), flow.tests.concat(['actionstatus - error']));
                     if (lastData.length > 0 && (lastData[lastData.length - 1].sd > dateCursor || flow.ignoreSeq === 'Y')) {
                         doList.push({
                             flow: flow,
@@ -107,7 +107,7 @@ function execSar (pnum, product, snum, calcVars = true) {
                 });
                 // Compile spec and determine pass or fail
                 if (containsAtleastOne === true) {
-                    compileDoList(doList, sarDef, pnum, serials[i], ew);
+                    compileDoList(doList, sarDef, pnum, product, serials[i], ew);
                 }
             }
         }
@@ -133,7 +133,7 @@ function calculateCustomVars (items) {
     SarCalculation.execute();
 }
 
-function compileDoList (doList, sarDef, pnum, sn, ew) {
+function compileDoList (doList, sarDef, pnum, product, sn, ew) {
     let racks = new Set();
     let duts = new Set();
     // List of failed tests
@@ -144,45 +144,6 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
     let missingTests = new Set();
     // List of tests that failed together with parameters that failed
     let failTestsWithCodes = new Set();
-
-    // Determine if there is last error for this measurement
-    let errorItem = getLastTestData(pnum, sn, ew.toDate(), ['actionstatus - error'])[0];
-    if (errorItem) {
-        // Find test items that errored
-        let errors = [];
-        _.each(doList, (doItem) => {
-            _.each(doItem.data, (itm) => {
-                if (itm.r === 'E') {
-                    errors.push(itm);
-                }
-                runTests.add(itm.t + '-' + itm.s);
-            });
-        });
-        // Added this logic because in some cases test rows do not have error status
-        if (errors.length === 0) {
-            errors.push({
-                rack: errorItem.rack,
-                dut: errorItem.dut,
-                t: 'unknown',
-                s: 'unknown',
-                mid: errorItem.mid
-            });
-        }
-        if (errors && errors.length > 0) {
-            _.each(errors, (testErrored) => {
-                racks.add(testErrored.rack);
-                duts.add(testErrored.dut);
-                failTests.add(testErrored.t + '-' + testErrored.s);
-                failTestsWithCodes.add(testErrored.t + ' - ' + testErrored.s + ' - ' + errorItem.data.TestErr[0]);
-            });
-            updateMeasurementStatus(errorItem.sn, errorItem.pnum, errors[0].mid, 'E');
-            updateOverallStatus(errorItem.sn, errorItem.pnum, doList, 'E');
-            insertTestSummary(errorItem.sn, errorItem.pnum, errorItem.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'E');
-            return;
-        } else {
-            runTests.clear();
-        }
-    }
 
     for (let i = 0; i < doList.length; i++) {
         let doItem = doList[i];
@@ -220,6 +181,32 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
         //     }],
         //     tests: ['txtests - channeldata']
         //   }
+
+        // Determine if there is last error for this measurement
+        let errors = [];
+        _.each(doItem.data, (itm) => {
+            if (itm.t === 'actionstatus' && itm.s === 'error') {
+                errors.push(itm);
+            } else {
+                runTests.add(itm.t + '-' + itm.s);
+            }
+        });
+        // Added this logic because in some cases test rows do not have error status
+        if (errors.length > 0) {
+            _.each(errors, (testErrored) => {
+                racks.add(testErrored.rack);
+                duts.add(testErrored.dut);
+                failTests.add(testErrored.data.ActionName + '-' + testErrored.data.ActionName);
+                failTestsWithCodes.add(testErrored.data.ActionName + ' - ' + testErrored.data.ActionName + ' - ' + testErrored.data.TestErr[0]);
+            });
+            updateMeasurementStatus(errors[0].sn, errors[0].pnum, errors[0].mid, 'E');
+            updateOverallStatus(errors[0].sn, errors[0].pnum, doList, 'E');
+            insertTestSummary(errors[0].sn, errors[0].pnum, errors[0].sd, racks, duts, sarDef.name, sarDef.rev,
+                failTests, failTestsWithCodes, runTests, 'E');
+            return;
+        } else {
+            runTests.clear();
+        }
 
         // Check if all tests are present in data
         let tsts = _.map(doItem.data, (d) => {
@@ -714,43 +701,13 @@ function getPartsChangedBetweenDates (product, sw, ew) {
     return _.pluck(list, '_id');
 }
 
-function getPartsForDatesAndSerials (pnum, fromDate, toDate, snList) {
-    let match = {
-        'device.PartNumber': pnum
-    };
-    if (fromDate || toDate) {
-        match.timestamp = {};
-        if (fromDate) {
-            match.timestamp.$gte = moment(fromDate).startOf('day').toDate();
-        }
-        if (toDate) {
-            match.timestamp.$lte = moment(toDate).endOf('day').toDate();
-        }
-    }
-    if (snList) {
-        match['device.SerialNumber'] = {
-            $in: snList.split(',')
-        };
-    }
-
-    let list = Testdata.aggregate([{
-        $match: match
-    }, {
-        $group: {
-            _id: '$device.SerialNumber',
-            cnt: {$sum: 1}
-        }
-    }]);
-    return _.pluck(list, '_id');
-}
-
 HTTP.methods({
     '/calculateSpec': {
         auth: SarHelper.myAuth,
         get: function () {
             let sn = this.query.sn;
             let pnum = this.query.pnum;
-            execSar(pnum, Settings.partNumbers[pnum].product,  snum, true);
+            execSar(pnum, Settings.partNumbers[pnum].product, snum, true);
             return Testsummary.findOne(
                 {
                     sn: sn

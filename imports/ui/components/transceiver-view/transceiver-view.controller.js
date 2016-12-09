@@ -147,7 +147,7 @@ angular.module('kaiamTransceiverView').controller('TransceiverViewController', [
                     (data) => {
                         let strs = [];
                         _.each(data.data, (o) => {
-                            if (o.ignore !== true) {
+                            if (o && o.ignore !== true) {
                                 strs.push({failures: {$regex: o.t + '-' + o.st}});
                             }
                         });
