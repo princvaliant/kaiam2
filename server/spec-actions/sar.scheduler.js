@@ -13,8 +13,8 @@ Meteor.startup(function () {
         job: function () {
             let pnums = _.keys(Settings.partNumbers);
             _.each(pnums, (pnum) => {
-                if (Settings.partNumbers[pnum].device === '100GB') {
-                    execSar(pnum, null, true);
+                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].primary === true ) {
+                    execSar(pnum, Settings.partNumbers[pnum].product, null, true);
                 }
             });
         }
@@ -27,13 +27,12 @@ Meteor.methods({
     'sarcalc': function (code, pnum2) {
         // ScesDomains.getUser(this.userId);
         if (pnum2) {
-            execSar(pnum2, code, true);  // testing with snum
+            execSar(pnum2, Settings.partNumbers[pnum2].product, code, true);  // testing with snum
         } else {
             let pnums = _.keys(Settings.partNumbers);
             _.each(pnums, (pnum) => {
-                // Loop through all part numbers and execute only for 100GB
-                if (Settings.partNumbers[pnum].device === '100GB') {
-                    execSar(pnum, code, true);  // testing with snum
+                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].primary === true ) {
+                    execSar(pnum, Settings.partNumbers[pnum].product, code, true);
                 }
             });
         }
@@ -41,7 +40,7 @@ Meteor.methods({
 });
 
 
-function execSar (pnum, snum, calcVars = true) {
+function execSar (pnum, product, snum, calcVars = true) {
     // Get latest spec revision for the pnum
     let sarDef = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
     // Get latest revision of flow definition
@@ -71,14 +70,14 @@ function execSar (pnum, snum, calcVars = true) {
             if (snum) {
                 serials = [snum];
             } else {
-                serials = getPartsChangedBetweenDates(pnum, sw, ew);
+                serials = getPartsChangedBetweenDates(product, sw, ew);
             }
 
             // Loop through all the serials to calculate custom variables for last measurement
             if (calcVars) {
                 for (let i = 0; i < serials.length; i++) {
                     _.each(flows, (flow) => {
-                        calculateCustomVars(getLastTestData(pnum, serials[i], ew.toDate(), flow.tests));
+                        calculateCustomVars(getLastTestData(product, serials[i], ew.toDate(), flow.tests));
                     });
                 }
             }
@@ -89,7 +88,7 @@ function execSar (pnum, snum, calcVars = true) {
                 let dateCursor = moment('2000-01-01').toDate();
                 _.each(flows, (flow) => {
                     // Find last test data for tests
-                    let lastData = getLastTestData(pnum, serials[i], ew.toDate(), flow.tests);
+                    let lastData = getLastTestData(product, serials[i], ew.toDate(), flow.tests);
                     if (lastData.length > 0 && (lastData[lastData.length - 1].sd > dateCursor || flow.ignoreSeq === 'Y')) {
                         doList.push({
                             flow: flow,
@@ -543,11 +542,13 @@ function getFlowsGroupedByOrder (flow, specs) {
     return flows;
 }
 
-function commonAggregation (pnum, serial, endWeek, tests) {
+function commonAggregation (product, serial, endWeek, tests) {
     return [{
         $match: {
             'device.SerialNumber': serial,
-            'device.PartNumber': pnum,
+            'device.PartNumber': {
+                $regex: '^' + product
+            },
             'timestamp': {
                 $lte: endWeek
             }
@@ -578,8 +579,8 @@ function commonAggregation (pnum, serial, endWeek, tests) {
     }];
 }
 
-function getLastTestData (pnum, serial, ew, tests) {
-    let lastTestAggregation = commonAggregation(pnum, serial, ew, tests).concat([{
+function getLastTestData (product, serial, ew, tests) {
+    let lastTestAggregation = commonAggregation(product, serial, ew, tests).concat([{
         // Group by serial and tests to prepare for finding last tests
         $group: {
             _id: {
@@ -692,11 +693,13 @@ function getSpecRanges (sar) {
 }
 
 
-function getPartsChangedBetweenDates (pnum, sw, ew) {
+function getPartsChangedBetweenDates (product, sw, ew) {
     // First return list of serials that are changed from last sync date
     let list = Testdata.aggregate([{
         $match: {
-            'device.PartNumber': pnum,
+            'device.PartNumber': {
+                $regex: '^' + product
+            },
             timestamp: {
                 $gte: sw.toDate(),
                 $lte: ew.toDate()
@@ -747,7 +750,7 @@ HTTP.methods({
         get: function () {
             let sn = this.query.sn;
             let pnum = this.query.pnum;
-            execSar(pnum, snum, false);
+            execSar(pnum, Settings.partNumbers[pnum].product,  snum, true);
             return Testsummary.findOne(
                 {
                     sn: sn

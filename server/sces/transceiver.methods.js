@@ -444,8 +444,60 @@ function _returnSummary (summ) {
         obj.r = 'ERR';
         ret.push(obj);
     });
+    return ret.concat(_getTosaErrors(summ.sn));
+}
+
+function _getTosaErrors (snum) {
+    let ret = [];
+
+    let domain = Domains.findOne({_id: snum});
+    if (!domain) return;
+
+    let tests = Testdata.find({'device.SerialNumber': domain.dc.TOSA}, {
+        sort: {
+            timestamp: -1,
+            'meta.Channel': -1
+        }
+    }).fetch();
+    if (!tests) {
+        ret.push({
+            d: new Date(),
+            sn: domain.dc.TOSA,
+            t: 'tosa',
+            st: 'dc',
+            param: 'missing tosa test data',
+            ts: new Date(),
+            s: 'E',
+            r: 'ERR',
+            ignore: true
+        });
+    }
+
+    for (let i = 0; i <= 3; i++) {
+        let test = tests[i];
+        if (test) {
+            let power = test.data.single_power_mw;
+            if (_.isNumber(power)) {
+                let calc = 10 * Math.log10(power);
+                if (calc < -3 || calc > 3) {
+                    ret.push({
+                        d: test.timestamp,
+                        sn: test.device.SerialNumber,
+                        t: 'tosa',
+                        st: 'dc',
+                        param: 'Single power ' + calc + ' out of range (-3,3) for channel ' +  test.meta.Channel,
+                        ts: test.timestamp,
+                        s: 'E',
+                        r: 'ERR',
+                        ignore: true
+                    });
+                }
+            }
+        }
+    }
     return ret;
 }
+
 
 function getTosas () {
     let tosas = [
