@@ -253,10 +253,11 @@ angular.module('kaiamSpecActions')
                 pasteSarSpec: function (sar, sarSpec) {
                     Meteor.call('pasteSarSpec', sar, sarSpec);
                 },
-                addSarFlow: function (sar, type, subtype, order, required, ignoreSeq) {
+                addSarFlow: function (sar, step, type, subtype, order, required, ignoreSeq) {
                     if (sar) {
                         SarFlow.insert({
                             sarId: sar._id,
+                            step: step,
                             type: type,
                             subtype: subtype,
                             order: order,
@@ -279,6 +280,7 @@ angular.module('kaiamSpecActions')
                         _id: sarFlow._id
                     }, {
                         $set: {
+                            step: sarFlow.step,
                             type: sarFlow.type,
                             subtype: sarFlow.subtype,
                             order: sarFlow.order !== '' ? parseInt(sarFlow.order) : '',

@@ -57,15 +57,15 @@ function execSar (pnum, product, snum, calcVars = true) {
         let lastDate = getLastSyncDate('SPEC_' + pnum);
         let mom = moment(lastDate);
 
-        // Increment date range weekly
+        // Increment date range weekly and process each week
         for (let m = mom; m.isBefore(moment()); m.add(7, 'days')) {
 
-            // Find start end end of week for that range
+            // Find start and end of week for that range
             let sw = moment(m).startOf('week');
             let ew = moment(m).endOf('week');
 
             // Get all serials for part number that have testdata inserted between dates
-            // or use one from parameter
+            // or use one from parameter if provided
             let serials = [];
             if (snum) {
                 serials = [snum];
@@ -77,18 +77,19 @@ function execSar (pnum, product, snum, calcVars = true) {
             if (calcVars) {
                 for (let i = 0; i < serials.length; i++) {
                     _.each(flows, (flow) => {
-                        calculateCustomVars(getLastTestData(product, serials[i], ew.toDate(), flow.tests));
+                        calculateCustomVars(getLastTestData(product, serials[i], ew.toDate(), flow.step));
                     });
                 }
             }
-            // Loop through the test flow and compile test data
+            // Loop through the serials and populate doList
             for (let i = 0; i < serials.length; i++) {
                 let doList = [];
                 let containsAtleastOne = false;
                 let dateCursor = moment('2000-01-01').toDate();
+                // Loop through the test flow and prepare doList object for compilation
                 _.each(flows, (flow) => {
                     // Find last test data for tests
-                    let lastData = getLastTestData(product, serials[i], ew.toDate(), flow.tests.concat(['actionstatus - error']));
+                    let lastData = getLastTestData(product, serials[i], ew.toDate(), flow.step);
                     if (lastData.length > 0 && (lastData[lastData.length - 1].sd > dateCursor || flow.ignoreSeq === 'Y')) {
                         doList.push({
                             flow: flow,
@@ -105,19 +106,15 @@ function execSar (pnum, product, snum, calcVars = true) {
                         });
                     }
                 });
-                // Compile spec and determine pass or fail
+                // Compile doList containing spec definitions and data and determine pass or fail
                 if (containsAtleastOne === true) {
-                    compileDoList(doList, sarDef, pnum, product, serials[i], ew);
+                    compileDoList(doList, sarDef, pnum, serials[i], ew);
                 }
             }
         }
     } else {
         sar = {_id: ''};
     }
-
-    // Get sars that are forced to calculate
-    // let sars = Sar.find({pnum: pnum, recalcForce: true}).fetch();
-    // Sar.update({_id: s._id}, {$set: {recalcForce: false}});
 }
 
 function calculateCustomVars (items) {
@@ -133,7 +130,7 @@ function calculateCustomVars (items) {
     SarCalculation.execute();
 }
 
-function compileDoList (doList, sarDef, pnum, product, sn, ew) {
+function compileDoList (doList, sarDef, pnum, sn, ew) {
     let racks = new Set();
     let duts = new Set();
     // List of failed tests
@@ -147,6 +144,7 @@ function compileDoList (doList, sarDef, pnum, product, sn, ew) {
 
     for (let i = 0; i < doList.length; i++) {
         let doItem = doList[i];
+        // Following represents data structure of doItem
         // doItem: {
         //   data: [{
         //         channel = 0
@@ -182,8 +180,9 @@ function compileDoList (doList, sarDef, pnum, product, sn, ew) {
         //     tests: ['txtests - channeldata']
         //   }
 
-        // Determine if there is last error for this measurement
+        // Determine if there is last error 'E' for this measurement
         let errors = [];
+        // Loop through the data for this measurement and look for error row
         _.each(doItem.data, (itm) => {
             if (itm.t === 'actionstatus' && itm.s === 'error') {
                 errors.push(itm);
@@ -191,8 +190,9 @@ function compileDoList (doList, sarDef, pnum, product, sn, ew) {
                 runTests.add(itm.t + '-' + itm.s);
             }
         });
-        // Added this logic because in some cases test rows do not have error status
+
         if (errors.length > 0) {
+            // If error found update overall and measurement status to 'E'
             _.each(errors, (testErrored) => {
                 racks.add(testErrored.rack);
                 duts.add(testErrored.dut);
@@ -203,8 +203,10 @@ function compileDoList (doList, sarDef, pnum, product, sn, ew) {
             updateOverallStatus(errors[0].sn, errors[0].pnum, doList, 'E');
             insertTestSummary(errors[0].sn, errors[0].pnum, errors[0].sd, racks, duts, sarDef.name, sarDef.rev,
                 failTests, failTestsWithCodes, runTests, 'E');
+            // Stop processing this serial
             return;
         } else {
+            // clear runTests so we can continue processing
             runTests.clear();
         }
 
@@ -213,9 +215,9 @@ function compileDoList (doList, sarDef, pnum, product, sn, ew) {
             return d.tst;
         });
         let mtsts = _.difference(doItem.flow.tests, tsts || []);
-        // Check first if this flow step is required
+        // Check first if this flow step or measurement is required
         if (doItem.flow.required === 'Y' && mtsts.length > 0) {
-            // Mark measstatus X and status X
+            // There are some tests missing so mark measstatus X and status X
             updateOverallStatus(sn, pnum, doList, 'X');
             _.each(mtsts, (test) => {
                 failTests.add(test.split(' ').join('') + ' - M');
@@ -226,9 +228,10 @@ function compileDoList (doList, sarDef, pnum, product, sn, ew) {
                 runTests.add(test.split(' ').join(''));
             });
             insertTestSummary(sn, pnum, ew.toDate(), racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'X');
+            // Stop processing this serial
             return;
         } else if (doItem.data.length > 0) {
-            // Determine if error is determined by test software
+            // Determine if fail is determined by test software (TestFail contains list of strings - fail descriptions)
             let testsMarkedFailed = _.filter(doItem.data, function (item) {
                 let tf = item.tf || [];
                 return tf.length > 0;
@@ -239,9 +242,6 @@ function compileDoList (doList, sarDef, pnum, product, sn, ew) {
                     racks.add(testMarkedFailed.rack);
                     duts.add(testMarkedFailed.dut);
                     failTests.add(testMarkedFailed.t + '-' + testMarkedFailed.s);
-                    if (testMarkedFailed.tf.length === 0) {
-                        testMarkedFailed.tf = ['unknown error'];
-                    }
                     _.each(testMarkedFailed.tf, (tf) => {
                         failTestsWithCodes.add(testMarkedFailed.t + ' - ' + testMarkedFailed.s + ' - ' + tf);
                         failCodesPerId.add(tf);
@@ -264,20 +264,22 @@ function compileDoList (doList, sarDef, pnum, product, sn, ew) {
                     runTests.add(item.t + '-' + item.s);
                 });
                 insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'F');
+                // Stop processing this serial
                 return;
             }
+
+            // Populate runTest array with type and subtype (for reporting)
             _.each(doItem.data, (item) => {
                 runTests.add(item.t + '-' + item.s);
             });
 
-
-            // If there is no spec just mark test as passed
+            // If there is no spec definition just mark test as passed
             if (doItem.flow.specs.length === 0) {
                 let itm = doItem.data[0];
                 updateMeasurementStatus(itm.sn, itm.pnum, itm.mid, 'P');
             }
 
-            // Loop through each spec item for this serial number if there is no error
+            // Loop through each spec definition item for this measurement and determine fails
             let date = null;
             _.each(doItem.flow.specs, (spec) => {
                 // Get test that contains test, subtest and temperature from spec
@@ -500,6 +502,9 @@ function getFlowsGroupedByOrder (flow, specs) {
     }, {
         $group: {
             _id: '$order',
+            step: {
+                $first: '$step'
+            },
             tests: {
                 $push: {
                     $concat: ['$type', ' - ', '$subtype']
@@ -529,13 +534,14 @@ function getFlowsGroupedByOrder (flow, specs) {
     return flows;
 }
 
-function commonAggregation (product, serial, endWeek, tests) {
+function commonAggregation (product, serial, endWeek, step) {
     return [{
         $match: {
             'device.SerialNumber': serial,
             'device.PartNumber': {
                 $regex: '^' + product
             },
+            step: step,
             'timestamp': {
                 $lte: endWeek
             }
@@ -552,12 +558,6 @@ function commonAggregation (product, serial, endWeek, tests) {
                 volt: '$meta.SetVoltage'
             })
     }, {
-        $match: {
-            tst: {
-                $in: tests
-            }
-        }
-    }, {
         // First sort by serial and date
         $sort: {
             sn: 1,
@@ -566,8 +566,8 @@ function commonAggregation (product, serial, endWeek, tests) {
     }];
 }
 
-function getLastTestData (product, serial, ew, tests) {
-    let lastTestAggregation = commonAggregation(product, serial, ew, tests).concat([{
+function getLastTestData (product, serial, ew, step) {
+    let lastTestAggregation = commonAggregation(product, serial, ew, step).concat([{
         // Group by serial and tests to prepare for finding last tests
         $group: {
             _id: {
@@ -577,6 +577,7 @@ function getLastTestData (product, serial, ew, tests) {
                 $push: {
                     __id: '$__id',
                     mid: '$mid',
+                    step: '$step',
                     tst: '$tst',
                     t: '$t',
                     s: '$s',
@@ -621,6 +622,7 @@ function getLastTestData (product, serial, ew, tests) {
             _id: '$items.__id',
             sn: '$_id.sn',
             mid: '$items.mid',
+            step: '$items.step',
             tst: '$items.tst',
             t: '$items.t',
             s: '$items.s',

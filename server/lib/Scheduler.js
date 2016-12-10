@@ -98,6 +98,7 @@ Scheduler = {
             pnum: '$device.PartNumber',
             sn: '$device.SerialNumber',
             mn: '$device.ManufSn',
+            step: '$step',
             t: '$type',
             tst: {
                 $concat: ['$type', ' - ', '$subtype']

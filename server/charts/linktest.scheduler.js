@@ -61,6 +61,7 @@ function execLinktest () {
                             let firsttest = Testdata.findOne(
                                 {
                                     'device.SerialNumber': obj.data.transceiverSN,
+                                    step: 'link',
                                     type: 'link',
                                     subtype: 'test',
                                     'data.subpath': row.subpath
@@ -76,6 +77,7 @@ function execLinktest () {
                             }
 
                             obj.timestamp = date.toDate();
+                            obj.step = 'link';
                             obj.type = 'link';
                             obj.subtype = 'test';
                             obj.result = 'X';

@@ -274,17 +274,23 @@ angular.module('kaiamSpecActions')
                 },
                 initSarFlows: function (scope) {
                     let coldef = [{
+                        field: 'step',
+                        headerName: 'Step',
+                        enableFiltering: true,
+                        cellEditableCondition: scope.canEdit,
+                        width: '15%'
+                    }, {
                         field: 'type',
                         headerName: 'Test type',
                         enableFiltering: true,
                         cellEditableCondition: scope.canEdit,
-                        width: '25%'
+                        width: '20%'
                     }, {
                         field: 'subtype',
                         headerName: 'Test sub type',
                         enableFiltering: true,
                         cellEditableCondition: scope.canEdit,
-                        width: '25%'
+                        width: '20%'
                     }, {
                         field: 'order',
                         headerName: 'Order',
