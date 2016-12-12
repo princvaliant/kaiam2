@@ -329,8 +329,12 @@ Meteor.methods({
             }
         }])[0];
 
-        if (!testdata) {
+        if (!testdata && !testdata.list) {
             return {status: 'NOID'};
+        }
+
+        if (testdata.list[0].t === 'tosa') {
+            return {status: 'ERR', pnum: '', data: _getTosaErrors(id)};
         }
 
         let pnum = Settings.partNumbers[testdata.pnum];
@@ -449,11 +453,16 @@ function _returnSummary (summ) {
 
 function _getTosaErrors (snum) {
     let ret = [];
-
+    let tosa = '';
     let domain = Domains.findOne({_id: snum});
-    if (!domain) return;
+    if (domain) {
+        tosa = domain.dc.TOSA;
+    } else {
+        tosa = snum;
+    }
 
-    let tests = Testdata.find({'device.SerialNumber': domain.dc.TOSA}, {
+
+    let tests = Testdata.find({'device.SerialNumber': tosa}, {
         sort: {
             timestamp: -1,
             'meta.Channel': -1
@@ -465,9 +474,9 @@ function _getTosaErrors (snum) {
             sn: snum,
             t: 'tosa',
             st: 'dc',
-            param: 'missing tosa test data for' + domain.dc.TOSA,
+            param: 'missing tosa test data for' + tosa,
             ts: new Date(),
-            s: 'E',
+            s: 'F',
             r: 'ERR',
             ignore: true
         });
@@ -487,7 +496,7 @@ function _getTosaErrors (snum) {
                         st: ' ',
                         param: test.device.SerialNumber + ' single power ' + calc + ' out of range (-3,3) for channel ' +  test.meta.Channel,
                         ts: test.timestamp,
-                        s: 'E',
+                        s: 'F',
                         r: 'ERR',
                         ignore: true
                     });
