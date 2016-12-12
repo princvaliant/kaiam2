@@ -171,7 +171,7 @@ angular.module('kaiamTransceiverView').controller('TransceiverViewController', [
                         } else if (data.status === 'NOID') {
                             $scope.scans.splice(0, 0, {
                                 msg: 'Serial# ' + code + ' does not exist or test did not complete',
-                                s: 'F',
+                                s: 'E',
                                 c: code,
                                 pnum: data.pnum
                             });

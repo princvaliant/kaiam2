@@ -329,7 +329,7 @@ Meteor.methods({
             }
         }])[0];
 
-        if (!testdata && !testdata.list) {
+        if (!testdata || !testdata.list) {
             return {status: 'NOID'};
         }
 
