@@ -173,7 +173,8 @@ Meteor.methods({
         if (includeTosa) {
             aggrArray.push({
                 $unwind: {
-                    path: '$tosa'
+                    path: '$tosa',
+                    preserveNullAndEmptyArrays: true
                 }
             });
         }
