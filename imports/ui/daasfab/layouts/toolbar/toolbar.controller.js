@@ -121,6 +121,10 @@ function DefaultToolbarController ($scope, $state, $injector, $rootScope, $mdMed
         $state.go('triangular.settings-rework-codes');
     };
 
+    this.openUploadData = function () {
+        $state.go('triangular.settings-upload-data');
+    };
+
     this.isAdmin = function () {
         return ScesSettings.isAdmin(Meteor.users.findOne(Meteor.userId()));
     };

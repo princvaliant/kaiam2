@@ -334,7 +334,19 @@ Meteor.methods({
         }
 
         if (testdata.list[0].t === 'tosa') {
-            return {status: 'ERR', pnum: '', data: _getTosaErrors(id)};
+            let tosadata =  _getTosaErrors(id);
+            if (tosadata.length > 0) {
+                return {status: 'ERR', pnum: '', data: tosadata};
+            }
+            return {status: 'OK', pnum: ''};
+        }
+
+        if (testdata.list[0].t === 'rosa') {
+            let rosadata =  _getRosaErrors(id);
+            if (rosadata.length > 0) {
+                return {status: 'ERR', pnum: '', data: rosadata};
+            }
+            return {status: 'OK', pnum: ''};
         }
 
         let pnum = Settings.partNumbers[testdata.pnum];
@@ -448,8 +460,54 @@ function _returnSummary (summ) {
         obj.r = 'ERR';
         ret.push(obj);
     });
-    return ret.concat(_getTosaErrors(summ.sn));
+    return ret.concat(_getTosaErrors(summ.sn)).concat(_getRosaErrors(summ.sn));
 }
+
+
+
+function _getRosaErrors (snum) {
+    let ret = [];
+    let rosa = '';
+    let domain = Domains.findOne({_id: snum});
+    if (domain) {
+        rosa = domain.dc.ROSA;
+    } else {
+        rosa = snum;
+    }
+
+    let tests = Testdata.find({'device.SerialNumber': rosa}, {
+        sort: {
+            timestamp: -1,
+            'meta.Channel': -1
+        }
+    }).fetch();
+    if (!tests) {
+        return ret;
+    }
+
+    for (let i = 0; i <= 3; i++) {
+        let test = tests[i];
+        if (test) {
+            let distance = test.data.Distance;
+            if (_.isNumber(distance) && distance !== 50) {
+                ret.push({
+                    d: test.timestamp,
+                    sn: snum,
+                    t: 'ROSA',
+                    st: ' ',
+                    param: test.device.SerialNumber + ' Distance is not equal 50',
+                    ts: test.timestamp,
+                    s: 'F',
+                    r: 'ERR',
+                    ignore: true
+                });
+            }
+        }
+    }
+    return ret;
+}
+
+
 
 function _getTosaErrors (snum) {
     let ret = [];

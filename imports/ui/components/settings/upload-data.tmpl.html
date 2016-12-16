@@ -1,0 +1,13 @@
+<div class="full-container" layout-padding>
+    <md-card>
+        <md-card-content>
+            <h3>Upload ROSA data</h3>
+
+            <md-button class="md-primary md-raised" ngf-select="upload($file)" ng-model="file" name="file">
+                Select .csv file with new rosa data
+            </md-button>
+
+            <h5 style="color:green;">{{importedMessage}}</h5>
+        </md-card-content>
+    </md-card>
+</div>

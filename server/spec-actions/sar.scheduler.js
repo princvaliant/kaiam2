@@ -84,23 +84,29 @@ function execSar (pnum, product, snum, calcVars = true) {
             // Loop through the serials and populate doList
             for (let i = 0; i < serials.length; i++) {
                 let doList = [];
+                let doIgnoreSeqList = [];
+                let doNoDataList = [];
                 let containsAtleastOne = false;
                 let dateCursor = moment('2000-01-01').toDate();
                 // Loop through the test flow and prepare doList object for compilation
                 _.each(flows, (flow) => {
                     // Find last test data for tests
                     let lastData = getLastTestData(product, serials[i], ew.toDate(), flow.step);
-                    if (lastData.length > 0 && (lastData[lastData.length - 1].sd > dateCursor || flow.ignoreSeq === 'Y')) {
+                    if (lastData.length > 0 && lastData[lastData.length - 1].sd > dateCursor && flow.ignoreSeq !== 'Y') {
                         doList.push({
                             flow: flow,
                             data: lastData
                         });
-                        if (flow.ignoreSeq !== 'Y') {
-                            dateCursor = lastData[lastData.length - 1].sd;
-                        }
+                        dateCursor = lastData[lastData.length - 1].sd;
+                        containsAtleastOne = true;
+                    } else if (lastData.length > 0 && flow.ignoreSeq === 'Y') {
+                        doIgnoreSeqList.push({
+                            flow: flow,
+                            data: lastData
+                        });
                         containsAtleastOne = true;
                     } else {
-                        doList.push({
+                        doNoDataList.push({
                             flow: flow,
                             data: []
                         });
@@ -108,7 +114,7 @@ function execSar (pnum, product, snum, calcVars = true) {
                 });
                 // Compile doList containing spec definitions and data and determine pass or fail
                 if (containsAtleastOne === true) {
-                    compileDoList(doList, sarDef, pnum, serials[i], ew);
+                    compileDoList(doList.concat(doIgnoreSeqList).concat(doNoDataList), sarDef, pnum, serials[i], ew);
                 }
             }
         }

@@ -7,6 +7,8 @@ import './companies.controller';
 import './companies.tmpl.html';
 import './rework-codes.controller';
 import './rework-codes.tmpl.html';
+import './upload-data.controller';
+import './upload-data.tmpl.html';
 import './users.controller';
 import './users.tmpl.html';
 import './user.controller';
@@ -37,6 +39,12 @@ angular.module('kaiamSettings')
                 url: '/settings-rework-codes',
                 templateUrl: 'imports/ui/components/settings/rework-codes.tmpl.html',
                 controller: 'SettingsReworkCodesController',
+                controllerAs: 'vm'
+            });
+            $stateProvider.state('triangular.settings-upload-data', {
+                url: '/settings-upload-data',
+                templateUrl: 'imports/ui/components/settings/upload-data.tmpl.html',
+                controller: 'SettingsUploadDataController',
                 controllerAs: 'vm'
             });
         }
