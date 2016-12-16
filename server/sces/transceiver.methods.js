@@ -59,9 +59,10 @@ Meteor.methods({
         ScesDomains.getUser(this.userId);
         // Check if this serial number is already assigned
         let domain = ScesDomains.getDomain(snum);
-        // if (domain && tray.dc.isRma !== true && domain.state.id !== 'AddedToLocation') {
-        //     return ScesDomains.addEvent(tray._id, 'error', 'SCES.ITEM-ALREADY-ASSIGNED', snum);
-        // }
+        if (domain && (domain.state.id === 'AddedToTray' || domain.state.id === 'AddedToOrder') &&
+            tray.dc.isRma !== true && domain.state.id !== 'AddedToLocation') {
+            return ScesDomains.addEvent(tray._id, 'error', 'SCES.ITEM-ALREADY-ASSIGNED', snum);
+        }
         // Check if this serial number successfully passed through packout
         let regsnum = new RegExp(snum, 'i');
 
@@ -546,13 +547,13 @@ function _getTosaErrors (snum) {
             let power = test.data.single_power_mw;
             if (_.isNumber(power)) {
                 let calc = 10 * Math.log10(power);
-                if (calc < -3 || calc > 3) {
+                if (calc <= 0 || calc >= 3) {
                     ret.push({
                         d: test.timestamp,
                         sn: snum,
                         t: 'TOSA',
                         st: ' ',
-                        param: test.device.SerialNumber + ' single power ' + calc + ' out of range (-3,3) for channel ' +  test.meta.Channel,
+                        param: test.device.SerialNumber + ' single power ' + calc + ' out of range (0,3) for channel ' +  test.meta.Channel,
                         ts: test.timestamp,
                         s: 'F',
                         r: 'ERR',
