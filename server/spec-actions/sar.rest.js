@@ -1,5 +1,3 @@
-
-
 HTTP.methods({
     '/getRevisionFile': {
         auth: SarHelper.myAuth,
@@ -42,7 +40,7 @@ HTTP.methods({
         auth: SarHelper.myAuth,
         get: function () {
             let sn = this.query.sn.toUpperCase();
-            let packout =  Testdata.findOne(
+            let packout = Testdata.findOne(
                 {
                     'device.SerialNumber': sn,
                     type: 'packout',
@@ -55,28 +53,17 @@ HTTP.methods({
             if (packout) {
                 sn = packout.device.ManufSn || packout.device.SerialNumber;
             }
-            let summary =  Testsummary.findOne(
+            return Testsummary.findOne(
                 {
-                    sn: sn
+                    sn: sn,
+                    tsts: {
+                        $nin: ['packout - packout']
+                    }
                 }, {
                     sort: {
                         d: -1
                     }
                 });
-            let test =  Testdata.findOne(
-                {
-                    'device.SerialNumber': sn,
-                    type: 'txtests',
-                    subtype: 'channeldata'
-                }, {
-                    sort: {
-                        'meta.StartDateTime': -1
-                    }
-                });
-            if (summary && test) {
-                summary.status = test.measstatus;
-            }
-            return summary;
         }
     }
 });
