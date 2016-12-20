@@ -68,19 +68,27 @@ Meteor.methods({
                         $filter: {
                             input: '$tsts',
                             as: 'ttt',
-                            cond: { $eq: [ '$$ttt', testType ] }
+                            cond: {$eq: ['$$ttt', testType]}
                         }
                     }
                 }
             };
             group.pass = {
                 $sum: {
-                    $subtract: [1, {
+                    $subtract: [{
+                        $size: {
+                            $filter: {
+                                input: '$runs',
+                                as: 'ptt',
+                                cond: {$eq: ['$$ptt', testType]}
+                            }
+                        }
+                    }, {
                         $size: {
                             $filter: {
                                 input: '$tsts',
                                 as: 'ttt',
-                                cond: { $eq: [ '$$ttt', testType ] }
+                                cond: {$eq: ['$$ttt', testType]}
                             }
                         }
                     }]

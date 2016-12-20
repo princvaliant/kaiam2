@@ -148,6 +148,16 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
     // List of tests that failed together with parameters that failed
     let failTestsWithCodes = new Set();
 
+    // Load all last tests that run for this serials number
+    for (let i = 0; i < doList.length; i++) {
+        let doItem = doList[i];
+        _.each(doItem.data, (itm) => {
+            if (itm.t !== 'actionstatus') {
+                runTests.add(itm.t + ' - ' + itm.s);
+            }
+        });
+    }
+
     for (let i = 0; i < doList.length; i++) {
         let doItem = doList[i];
         // Following represents data structure of doItem
@@ -192,8 +202,6 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
         _.each(doItem.data, (itm) => {
             if (itm.t === 'actionstatus' && itm.s === 'error') {
                 errors.push(itm);
-            } else {
-                runTests.add(itm.t + '-' + itm.s);
             }
         });
 
@@ -211,9 +219,6 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 failTests, failTestsWithCodes, runTests, 'E');
             // Stop processing this serial
             return;
-        } else {
-            // clear runTests so we can continue processing
-            runTests.clear();
         }
 
         // Check if all tests are present in data
@@ -228,10 +233,6 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
             _.each(mtsts, (test) => {
                 failTests.add(test.split(' ').join('') + ' - M');
                 failTestsWithCodes.add(test + ' - M');
-            });
-            let vtsts = _.intersection(doItem.flow.tests, tsts || []);
-            _.each(vtsts, (test) => {
-                runTests.add(test.split(' ').join(''));
             });
             insertTestSummary(sn, pnum, ew.toDate(), racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'X');
             // Stop processing this serial
@@ -266,18 +267,10 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                 let tmf = testsMarkedFailed[0];
                 updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, 'F');
                 updateOverallStatus(tmf.sn, tmf.pnum, doList, 'F');
-                _.each(doItem.data, (item) => {
-                    runTests.add(item.t + '-' + item.s);
-                });
                 insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, 'F');
                 // Stop processing this serial
                 return;
             }
-
-            // Populate runTest array with type and subtype (for reporting)
-            _.each(doItem.data, (item) => {
-                runTests.add(item.t + '-' + item.s);
-            });
 
             // If there is no spec definition just mark test as passed
             if (doItem.flow.specs.length === 0) {
@@ -349,7 +342,6 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
                                 failTestsWithCodes.add(testItem.t + ' - ' + testItem.s + ' - ' + failCode);
                             });
                         }
-                        runTests.add(testItem.t + '-' + testItem.s);
 
                         // Flag testdata record with the proper fail status
                         Testdata.update({
@@ -433,7 +425,7 @@ function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, fa
         return ft.replace('-', ' - ');
     })).sort();
     let runs = _.uniq(_.map([...runTests], function (ft) {
-        return ft.replace('-', ' - ');
+        return ft;
     })).sort();
     let d = moment(date).format('YYYY-MM-DD');
     let nd = moment(date).format('YYYYDDD');
