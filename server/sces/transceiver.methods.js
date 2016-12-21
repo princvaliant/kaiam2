@@ -485,7 +485,7 @@ function _returnSummary (summ) {
             ret.push(obj);
         });
     } else {
-        return [{status: 'P', snum: summ.sn, pnum: summ.pnum, msg: 'Serial# ' + snum + ' last measurement OK'}];
+        return [{status: 'P', snum: summ.sn, pnum: summ.pnum, msg: 'Serial# ' + summ.sn + ' last measurement OK'}];
     }
     return ret;
 }
@@ -508,7 +508,16 @@ function _getRosaErrors (snum, checkDevice) {
             'meta.Channel': -1
         }
     }).fetch();
-    if (tests.length > 0) {
+    if (tests.length === 0 && !checkDevice) {
+        ret.push({
+            ts: new Date(),
+            status: 'E',
+            snum: snum,
+            pnum: '',
+            msg: 'ROSA ' + snum + ' missing test data'
+        });
+    } else {
+        let isFail = false;
         for (let i = 0; i <= 3; i++) {
             let test = tests[i];
             if (test) {
@@ -521,8 +530,18 @@ function _getRosaErrors (snum, checkDevice) {
                         status: 'F',
                         msg: 'ROSA' + test.device.SerialNumber + ' distance is not equal 50'
                     });
+                    isFail = true;
                 }
             }
+        }
+        if (!isFail) {
+            ret.push({
+                ts: new Date(),
+                status: 'P',
+                snum: snum,
+                pnum: '',
+                msg: 'ROSA ' + snum + ' all test data OK'
+            });
         }
     }
     return ret;
@@ -544,15 +563,16 @@ function _getTosaErrors (snum, checkDevice) {
             'meta.Channel': -1
         }
     }).fetch();
-    if (!tests) {
+    if (tests.length === 0  &&  !checkDevice) {
         ret.push({
             ts: new Date(),
             status: 'E',
             snum: snum,
             pnum: '',
-            msg: 'TOSA missing test data for ' + snum
+            msg: 'TOSA ' + snum + ' missing test data'
         });
     } else {
+        let isFail = false;
         for (let i = 0; i <= 3; i++) {
             let test = tests[i];
             if (test) {
@@ -567,9 +587,19 @@ function _getTosaErrors (snum, checkDevice) {
                             status: 'F',
                             msg: 'TOSA ' + test.device.SerialNumber + ' single power ' + calc + ' out of range (0,3) for channel ' + test.meta.Channel
                         });
+                        isFail = true;
                     }
                 }
             }
+        }
+        if (!isFail) {
+            ret.push({
+                ts: new Date(),
+                status: 'P',
+                snum: snum,
+                pnum: '',
+                msg: 'TOSA ' + snum + ' all test data OK'
+            });
         }
     }
     return ret;
