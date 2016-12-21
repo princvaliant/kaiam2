@@ -146,10 +146,18 @@ angular.module('kaiamTransceiverView').controller('TransceiverViewController', [
                 $meteor.call('getFailedTestdata', code).then(
                     (data) => {
                         let strs = [];
-                        _.each(data.data, (o) => {
-                            if (o && o.ignore !== true) {
+                        let sdata = [];
+                        _.each(data, (o) => {
+                            if (o.t && o.st) {
                                 strs.push({failures: {$regex: o.t + '-' + o.st}});
                             }
+                            sdata.push({
+                                status: o.status,
+                                msg: o.msg,
+                                ts: o.ts,
+                                snum: o.snum,
+                                pnum: o.pnum
+                            });
                         });
                         let rework = '-';
                         if (strs.length > 0) {
@@ -160,37 +168,11 @@ angular.module('kaiamTransceiverView').controller('TransceiverViewController', [
                                 rework = rework.rework;
                             }
                         }
-                        if (data.status === 'ERR') {
-                            $scope.scans.splice(0, 0, {
-                                s: 'E',
-                                msg: data.data.length === 0 ? ['Test error'] : '',
-                                data: data.data,
-                                c: code,
-                                pnum: data.pnum
-                            });
-                        } else if (data.status === 'NOID') {
-                            $scope.scans.splice(0, 0, {
-                                msg: 'Serial# ' + code + ' does not exist or test did not complete',
-                                s: 'E',
-                                c: code,
-                                pnum: data.pnum
-                            });
-                        } else if (_.isArray(data.data) && data.data.length > 0) {
-                            $scope.scans.splice(0, 0, {
-                                data: data.data,
-                                pnum: data.pnum,
-                                rework: rework,
-                                rosa: code === data.data[0].rosa ? 'ROSA: ' + code : '',
-                                tosa: code === data.data[0].tosa ? 'TOSA: ' + code : ''
-                            });
-                        } else {
-                            $scope.scans.splice(0, 0, {
-                                msg: 'Serial# ' + code + ' last measurement ' + data.data + ' OK',
-                                s: 'P',
-                                c: code,
-                                pnum: data.pnum
-                            });
-                        }
+                        $scope.scans.splice(0, 0, {
+                            data: sdata,
+                            rework: rework,
+                            code: code
+                        });
                         $scope.showProgress = false;
                     }
                 );

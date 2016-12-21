@@ -19,6 +19,18 @@ let sequenceConfig = {
     XQX5000: {
         seq: 'SEQ3'
     },
+    XQX2408: {
+        seq: 'SEQ2408',
+        reset: 'isoWeek' // Monday
+    },
+    XQX2508: {
+        seq: 'SEQ2508',
+        reset: 'isoWeek' // Monday
+    },
+    XQX3208: {
+        seq: 'SEQ3208',
+        reset: 'isoWeek' // Monday
+    },
     DEFAULT: {
         seq: 'SEQ',
         reset: 'week'  //Sunday
@@ -51,6 +63,12 @@ HTTP.methods({
         }
     }
 });
+
+Meteor.publish('reworkCodes', function (options, search, filter) {
+    ScesDomains.getUser(this.userId);
+    return ReworkCode.find();
+});
+
 
 Meteor.methods({
 
@@ -262,7 +280,7 @@ Meteor.methods({
         ScesDomains.isLoggedIn(this.userId);
 
         let manufSn = id;
-        let packout =  Testdata.findOne(
+        let packout = Testdata.findOne(
             {
                 'device.SerialNumber': id,
                 type: 'packout',
@@ -291,118 +309,21 @@ Meteor.methods({
     getFailedTestdata: function (id) {
         check(id, String);
         ScesDomains.isLoggedIn(this.userId);
-        let testdata = Testdata.aggregate([{
-            $match: {
-                $or: [{
-                    'device.SerialNumber': id
-                }, {
-                    'device.TOSA': id
-                }, {
-                    'device.ROSA': id
-                }]
-            }
-        }, {
-            $group: {
-                _id: {
-                    d: '$meta.StartDateTime',
-                    sn: '$device.SerialNumber'
-                },
-                list: {
-                    $push: {
-                        d: '$meta.StartDateTime',
-                        sn: '$device.SerialNumber',
-                        t: '$type',
-                        st: '$subtype',
-                        ts: '$timestamp',
-                        s: '$status',
-                        r: '$result',
-                        rosa: '$device.ROSA',
-                        tosa: '$device.TOSA'
-                    }
-                },
-                pnum: {
-                    $last: '$device.PartNumber'
-                }
-            }
-        }, {
-            $sort: {
-                '_id.d': -1
-            }
-        }])[0];
-
-        if (!testdata || !testdata.list) {
-            return {status: 'NOID'};
+        let ret = [];
+        ret = ret.concat(_getTransceiverErrors(id, true));
+        if (ret.length === 0) {
+            ret = ret.concat(_getTosaErrors(id, true));
+            ret = ret.concat(_getRosaErrors(id, true));
         }
-
-        if (testdata.list[0].t === 'tosa') {
-            let tosadata =  _getTosaErrors(id);
-            if (tosadata.length > 0) {
-                return {status: 'ERR', pnum: '', data: tosadata};
-            }
-            return {status: 'OK', pnum: ''};
+        if (ret.length === 0) {
+            return [{
+                status: 'E',
+                snum: id,
+                pnum: '',
+                msg: 'Serial number ' + id + ' not defined in the system'
+            }];
         }
-
-        if (testdata.list[0].t === 'rosa') {
-            let rosadata =  _getRosaErrors(id);
-            if (rosadata.length > 0) {
-                return {status: 'ERR', pnum: '', data: rosadata};
-            }
-            return {status: 'OK', pnum: ''};
-        }
-
-        let pnum = Settings.partNumbers[testdata.pnum];
-        if (!pnum) {
-            return {status: 'NOID', pnum: testdata.pnum};
-        }
-
-        if (pnum.device === '100GB') {
-            // If this is 100GB device
-            let summ = Testsummary.find({sn: id}, {sort: {timestamp: -1}}).fetch()[0];
-            if (summ) {
-                if (summ.e > 0) {
-                    return {status: 'ERR', pnum: testdata.pnum, data: _returnSummary(summ)};
-                }
-                return {status: 'OK', pnum: testdata.pnum, data: _returnSummary(summ)};
-            }
-            return {status: 'NOID', pnum: testdata.pnum};
-        } else {
-            let filtered = _.filter(testdata.list, (o) => {
-                return o.r === 'ERR' || o.s === 'E';
-            });
-            let ret = _.uniq(filtered, function (o) {
-                return o.t + o.st;
-            });
-            if (ret.length > 0) {
-                return {status: 'OK', pnum: testdata.pnum, data: ret};
-            }
-            ret = _.where(testdata.list, {
-                r: 'OK',
-                s: 'F'
-            });
-            let retf;
-            if (ret.length > 0) {
-                retf = {
-                    status: 'OK',
-                    pnum: testdata.pnum,
-                    data: [{
-                        d: ret[0].d,
-                        sn: id,
-                        t: 'unknown',
-                        st: '',
-                        ts: ret[0].ts,
-                        s: 'F',
-                        r: 'OK'
-                    }]
-                };
-            } else {
-                retf = {
-                    status: 'OK',
-                    pnum: testdata.pnum,
-                    data: testdata.list[testdata.list.length - 1].t
-                };
-            }
-            return retf;
-        }
+        return ret;
     },
 
     getEyeImages: function (code) {
@@ -440,125 +361,213 @@ Meteor.methods({
     }
 });
 
-Meteor.publish('reworkCodes', function (options, search, filter) {
-    ScesDomains.getUser(this.userId);
-    return ReworkCode.find();
-});
+
+
+function _getTransceiverErrors (snum, checkTosas) {
+
+    let domain = Domains.findOne({_id: snum, 'dc.PartNumber': {$regex: '^XQX'}});
+    if (!domain) {
+        return [];
+    }
+
+    let testdata = Testdata.aggregate([{
+        $match: {
+            'device.SerialNumber': snum
+        }
+    }, {
+        $group: {
+            _id: {
+                d: '$meta.StartDateTime',
+                sn: '$device.SerialNumber'
+            },
+            list: {
+                $push: {
+                    d: '$meta.StartDateTime',
+                    sn: '$device.SerialNumber',
+                    t: '$type',
+                    st: '$subtype',
+                    ts: '$timestamp',
+                    s: '$status',
+                    r: '$result',
+                    rosa: '$device.ROSA',
+                    tosa: '$device.TOSA'
+                }
+            },
+            pnum: {
+                $last: '$device.PartNumber'
+            }
+        }
+    }, {
+        $sort: {
+            '_id.d': -1
+        }
+    }])[0];
+
+    if (!testdata || !testdata.list) {
+        return [{status: 'E', snum: snum, pnum: domain.dc.PartNumber, msg: 'Test data do not exists for ' + snum}];
+    }
+
+    let pnum = Settings.partNumbers[testdata.pnum];
+    if (!pnum) {
+        return [{
+            status: 'E',
+            snum: snum,
+            pnum: testdata.pnum,
+            msg: 'Part number for ' + snum + ' not defined in the system'
+        }];
+    }
+
+    let ret = [];
+
+    if (pnum.device === '100GB') {
+        // If this is 100GB device
+        let summ = Testsummary.findOne({sn: snum}, {sort: {timestamp: -1}});
+        if (summ) {
+            ret = ret.concat(_returnSummary(summ));
+        } else {
+            ret.push({
+                status: 'E',
+                snum: snum,
+                pnum: testdata.pnum,
+                msg: 'Test data for ' + snum + ' not processed yet'
+            });
+        }
+    } else {
+        let filtered = _.filter(testdata.list, (o) => {
+            return o.r === 'ERR';
+        });
+        let uniqs = _.uniq(filtered, function (o) {
+            return o.t + o.st;
+        });
+        if (uniqs.length === 0) {
+            ret.push({status: 'P', snum: snum, pnum: testdata.pnum, msg: 'TRANSCEIVER ' + snum + ' last measurement OK'});
+        } else {
+            _.each(uniqs, (u) => {
+                ret.push({
+                    t: u.t,
+                    st: u.st,
+                    param: '',
+                    ts: u.ts,
+
+                    status: 'F',
+                    pnum: testdata.pnum,
+                    snum: snum,
+                    msg: 'TRANSCEIVER ' + snum + ' failed at ' + u.t + ' ' + u.st
+                });
+            });
+        }
+    }
+    if (checkTosas) {
+        ret = ret.concat(_getTosaErrors(domain.dc.TOSA, false));
+        ret = ret.concat(_getRosaErrors(domain.dc.ROSA, false));
+    }
+    return ret;
+}
+
 
 function _returnSummary (summ) {
     let ret = [];
     let fts = summ.tstparams.length > 0 ? summ.tstparams : summ.tsts;
-    _.each(fts, (tstparam) => {
-        let obj = {};
-        let tstp = tstparam.split(' - ');
-        obj.d = summ.timestamp;
-        obj.sn = summ.sn;
-        obj.t = tstp[0];
-        obj.st = tstp[1];
-        obj.param = tstp[2] || '';
-        obj.ts = summ.timestamp;
-        obj.s = summ.status;
-        obj.r = 'ERR';
-        ret.push(obj);
-    });
-    return ret.concat(_getTosaErrors(summ.sn)).concat(_getRosaErrors(summ.sn));
+    if (fts.length > 0) {
+        _.each(fts, (tstparam) => {
+            let obj = {};
+            let tstp = tstparam.split(' - ');
+
+            obj.t = tstp[0];
+            obj.st = tstp[1];
+            obj.param = tstp[2] || '';
+            obj.ts = summ.timestamp;
+
+            obj.snum = summ.sn;
+            obj.status = summ.status;
+            obj.pnum = summ.pnum;
+            obj.msg = 'TRANSCEIVER ' + summ.sn + ' - ' + tstp[0] + ' ' + tstp[1] + ' ' + tstp[2] || '';
+            ret.push(obj);
+        });
+    } else {
+        return [{status: 'P', snum: summ.sn, pnum: summ.pnum, msg: 'Serial# ' + snum + ' last measurement OK'}];
+    }
+    return ret;
 }
 
 
+function _getRosaErrors (snum, checkDevice) {
 
-function _getRosaErrors (snum) {
     let ret = [];
-    let rosa = '';
-    let domain = Domains.findOne({_id: snum});
-    if (domain) {
-        rosa = domain.dc.ROSA;
-    } else {
-        rosa = snum;
+
+    if (checkDevice) {
+        let domain = Domains.findOne({'dc.ROSA': snum});
+        if (domain) {
+            ret = _getTransceiverErrors(domain._id, false);
+        }
     }
 
-    let tests = Testdata.find({'device.SerialNumber': rosa}, {
+    let tests = Testdata.find({'device.SerialNumber': snum, type: 'rosa', subtype: 'dc'}, {
         sort: {
-            timestamp: -1,
+            'meta.StartDateTime': -1,
             'meta.Channel': -1
         }
     }).fetch();
-    if (!tests) {
-        return ret;
-    }
-
-    for (let i = 0; i <= 3; i++) {
-        let test = tests[i];
-        if (test) {
-            let distance = test.data.Distance;
-            if (_.isNumber(distance) && distance !== 50) {
-                ret.push({
-                    d: test.timestamp,
-                    sn: snum,
-                    t: 'ROSA',
-                    st: ' ',
-                    param: test.device.SerialNumber + ' Distance is not equal 50',
-                    ts: test.timestamp,
-                    s: 'F',
-                    r: 'ERR',
-                    ignore: true
-                });
+    if (tests.length > 0) {
+        for (let i = 0; i <= 3; i++) {
+            let test = tests[i];
+            if (test) {
+                let distance = test.data.Distance;
+                if (_.isNumber(distance) && distance !== 50) {
+                    ret.push({
+                        ts: test.timestamp,
+                        snum: snum,
+                        pnum: '',
+                        status: 'F',
+                        msg: 'ROSA' + test.device.SerialNumber + ' distance is not equal 50'
+                    });
+                }
             }
         }
     }
     return ret;
 }
 
+function _getTosaErrors (snum, checkDevice) {
 
-
-function _getTosaErrors (snum) {
     let ret = [];
-    let tosa = '';
-    let domain = Domains.findOne({_id: snum});
-    if (domain) {
-        tosa = domain.dc.TOSA;
-    } else {
-        tosa = snum;
+    if (checkDevice) {
+        let domain = Domains.findOne({'dc.TOSA': snum});
+        if (domain) {
+            ret = _getTransceiverErrors(domain._id, false);
+        }
     }
 
-
-    let tests = Testdata.find({'device.SerialNumber': tosa}, {
+    let tests = Testdata.find({'device.SerialNumber': snum, type: 'tosa', subtype: 'dc'}, {
         sort: {
-            timestamp: -1,
+            'meta.StartDateTime': -1,
             'meta.Channel': -1
         }
     }).fetch();
     if (!tests) {
         ret.push({
-            d: new Date(),
-            sn: snum,
-            t: 'tosa',
-            st: 'dc',
-            param: 'missing tosa test data for' + tosa,
             ts: new Date(),
-            s: 'F',
-            r: 'ERR',
-            ignore: true
+            status: 'E',
+            snum: snum,
+            pnum: '',
+            msg: 'TOSA missing test data for ' + snum
         });
-    }
-
-    for (let i = 0; i <= 3; i++) {
-        let test = tests[i];
-        if (test) {
-            let power = test.data.single_power_mw;
-            if (_.isNumber(power)) {
-                let calc = 10 * Math.log10(power);
-                if (calc <= 0 || calc >= 3) {
-                    ret.push({
-                        d: test.timestamp,
-                        sn: snum,
-                        t: 'TOSA',
-                        st: ' ',
-                        param: test.device.SerialNumber + ' single power ' + calc + ' out of range (0,3) for channel ' +  test.meta.Channel,
-                        ts: test.timestamp,
-                        s: 'F',
-                        r: 'ERR',
-                        ignore: true
-                    });
+    } else {
+        for (let i = 0; i <= 3; i++) {
+            let test = tests[i];
+            if (test) {
+                let power = test.data.single_power_mw;
+                if (_.isNumber(power)) {
+                    let calc = 10 * Math.log10(power);
+                    if (calc <= 0 || calc >= 3) {
+                        ret.push({
+                            ts: test.timestamp,
+                            snum: snum,
+                            pnum: '',
+                            status: 'F',
+                            msg: 'TOSA ' + test.device.SerialNumber + ' single power ' + calc + ' out of range (0,3) for channel ' + test.meta.Channel
+                        });
+                    }
                 }
             }
         }
