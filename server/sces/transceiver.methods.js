@@ -33,7 +33,7 @@ let sequenceConfig = {
     },
     XQX5003: {
         seq: 'SEQ5003',
-        reset: 'isoWeek' // Monday
+        reset: 'week' // Monday
     },
     DEFAULT: {
         seq: 'SEQ',
