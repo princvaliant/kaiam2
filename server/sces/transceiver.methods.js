@@ -101,9 +101,7 @@ Meteor.methods({
             }
             // Check if successfuly passed through packout
             let packout = Testdata.findOne({
-                'device.SerialNumber': {
-                    $regex: regsnum
-                },
+                'device.SerialNumber': snum.toUpperCase(),
                 type: 'packout',
                 subtype: 'packout'
             }, {
@@ -123,9 +121,7 @@ Meteor.methods({
             }
             // Custom check for script names
             let td = Testdata.findOne({
-                'device.SerialNumber': {
-                    $regex: regsnum
-                },
+                'device.SerialNumber': snum.toUpperCase(),
                 type: 'txtests',
                 subtype: 'channeldata',
                 result: {$in: ['OK', 'P']}
@@ -161,6 +157,15 @@ Meteor.methods({
                 }
             }
 
+            let ppn = packout.device.PartNumber.substring(0, packout.device.PartNumber.length - 2);
+            if (ppn === 'XQX43') {
+                if (testsumm.pnum !== 'XQX4000') {
+                    return ScesDomains.addEvent(tray._id, 'error', 'Test part number does not match packout part number');
+                } else {
+                    testsumm.pnum = packout.device.PartNumber;
+                }
+            }
+
             // Check if tranceiver serial number is less than 3000 (< Q3000)
             let num = parseInt(snum.match(/\d+/)[0]);
             if (num < 3000) {
@@ -182,7 +187,7 @@ Meteor.methods({
             let tot = tray.dc.type.split('x');
             let totl = parseInt(tot[0]) * parseInt(tot[1]);
             if (Domains.find({
-                    parents: tray._id
+                parents: tray._id
                 }).length >= totl) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.TRAY-IS-FULL', snum);
             }
@@ -205,9 +210,7 @@ Meteor.methods({
                 return ScesDomains.addEvent(tray._id, 'error', 'Invalid serial number', snum);
             }
             let td = Testdata.findOne({
-                'device.SerialNumber': {
-                    $regex: regsnum
-                },
+                'device.SerialNumber': snum.toUpperCase(),
                 type: 'packout',
             }, {
                 fields: {
@@ -306,26 +309,6 @@ Meteor.methods({
         }).fetch();
     },
 
-    getFailedTestdata: function (id) {
-        check(id, String);
-        ScesDomains.isLoggedIn(this.userId);
-        let ret = [];
-        ret = ret.concat(_getTransceiverErrors(id, true));
-        if (ret.length === 0) {
-            ret = ret.concat(_getTosaErrors(id, true));
-            ret = ret.concat(_getRosaErrors(id, true));
-        }
-        if (ret.length === 0) {
-            return [{
-                status: 'E',
-                snum: id,
-                pnum: '',
-                msg: 'Serial number ' + id + ' not defined in the system'
-            }];
-        }
-        return ret;
-    },
-
     getEyeImages: function (code) {
         check(code, String);
         ScesDomains.isLoggedIn(this.userId);
@@ -358,21 +341,35 @@ Meteor.methods({
             }
         });
         return testdata.fetch();
+    },
+
+    getFailedTestdata: function (id) {
+        check(id, String);
+        ScesDomains.isLoggedIn(this.userId);
+        let ret = [];
+        ret = ret.concat(_getTransceiverErrors(id, true));
+        if (ret.length === 0) {
+            ret = ret.concat(_getTosaErrors(id, true));
+            ret = ret.concat(_getRosaErrors(id, true));
+        }
+        if (ret.length === 0) {
+            return [{
+                status: 'E',
+                snum: id,
+                pnum: '',
+                msg: 'Serial number ' + id + ' not defined in the system'
+            }];
+        }
+        return ret;
     }
 });
 
 
-
 function _getTransceiverErrors (snum, checkTosas) {
-
-    let domain = Domains.findOne({_id: snum, 'dc.PartNumber': {$regex: '^XQX'}});
-    if (!domain) {
-        return [];
-    }
 
     let testdata = Testdata.aggregate([{
         $match: {
-            'device.SerialNumber': snum
+            'device.SerialNumber': snum.toUpperCase()
         }
     }, {
         $group: {
@@ -403,61 +400,72 @@ function _getTransceiverErrors (snum, checkTosas) {
         }
     }])[0];
 
-    if (!testdata || !testdata.list) {
-        return [{status: 'E', snum: snum, pnum: domain.dc.PartNumber, msg: 'Test data do not exists for ' + snum}];
-    }
-
+    let ret = [];
     let pnum = Settings.partNumbers[testdata.pnum];
-    if (!pnum) {
-        return [{
+
+    if (!testdata || !testdata.list) {
+        ret.push({
+            status: 'E',
+            snum: snum,
+            pnum: testdata.PartNumber,
+            msg: 'TRANSCEIVER ' + snum + ' missing test data'
+        });
+    } else if (!pnum) {
+        ret.push({
             status: 'E',
             snum: snum,
             pnum: testdata.pnum,
             msg: 'Part number for ' + snum + ' not defined in the system'
-        }];
-    }
-
-    let ret = [];
-
-    if (pnum.device === '100GB') {
-        // If this is 100GB device
-        let summ = Testsummary.findOne({sn: snum}, {sort: {timestamp: -1}});
-        if (summ) {
-            ret = ret.concat(_returnSummary(summ));
-        } else {
-            ret.push({
-                status: 'E',
-                snum: snum,
-                pnum: testdata.pnum,
-                msg: 'Test data for ' + snum + ' not processed yet'
-            });
-        }
+        });
     } else {
-        let filtered = _.filter(testdata.list, (o) => {
-            return o.r === 'ERR';
-        });
-        let uniqs = _.uniq(filtered, function (o) {
-            return o.t + o.st;
-        });
-        if (uniqs.length === 0) {
-            ret.push({status: 'P', snum: snum, pnum: testdata.pnum, msg: 'TRANSCEIVER ' + snum + ' last measurement OK'});
-        } else {
-            _.each(uniqs, (u) => {
+        if (pnum.device === '100GB') {
+            // If this is 100GB device
+            let summ = Testsummary.findOne({sn: snum}, {sort: {timestamp: -1}});
+            if (summ) {
+                ret = ret.concat(_returnSummary(summ));
+            } else {
                 ret.push({
-                    t: u.t,
-                    st: u.st,
-                    param: '',
-                    ts: u.ts,
-
-                    status: 'F',
-                    pnum: testdata.pnum,
+                    status: 'E',
                     snum: snum,
-                    msg: 'TRANSCEIVER ' + snum + ' failed at ' + u.t + ' ' + u.st
+                    pnum: testdata.pnum,
+                    msg: 'Test data for ' + snum + ' not processed yet'
                 });
+            }
+        } else {
+            let filtered = _.filter(testdata.list, (o) => {
+                return o.r === 'ERR';
             });
+            let uniqs = _.uniq(filtered, function (o) {
+                return o.t + o.st;
+            });
+            if (uniqs.length === 0) {
+                ret.push({
+                    status: 'P',
+                    snum: snum,
+                    pnum: testdata.pnum,
+                    msg: 'TRANSCEIVER ' + snum + ' last measurement OK'
+                });
+            } else {
+                _.each(uniqs, (u) => {
+                    ret.push({
+                        t: u.t,
+                        st: u.st,
+                        param: '',
+                        ts: u.ts,
+
+                        status: 'F',
+                        pnum: testdata.pnum,
+                        snum: snum,
+                        msg: 'TRANSCEIVER ' + snum + ' failed at ' + u.t + ' ' + u.st
+                    });
+                });
+            }
         }
     }
-    if (checkTosas) {
+
+
+    let domain = Domains.findOne({_id: snum, 'dc.PartNumber': {$regex: '^XQX'}});
+    if (domain && checkTosas) {
         ret = ret.concat(_getTosaErrors(domain.dc.TOSA, false));
         ret = ret.concat(_getRosaErrors(domain.dc.ROSA, false));
     }
@@ -508,7 +516,7 @@ function _getRosaErrors (snum, checkDevice) {
             'meta.Channel': -1
         }
     }).fetch();
-    if (tests.length === 0 && !checkDevice) {
+    if (tests.length === 0) {
         ret.push({
             ts: new Date(),
             status: 'E',
@@ -516,7 +524,7 @@ function _getRosaErrors (snum, checkDevice) {
             pnum: '',
             msg: 'ROSA ' + snum + ' missing test data'
         });
-    } else {
+    } else if (tests.length > 0) {
         let isFail = false;
         for (let i = 0; i <= 3; i++) {
             let test = tests[i];
@@ -528,7 +536,7 @@ function _getRosaErrors (snum, checkDevice) {
                         snum: snum,
                         pnum: '',
                         status: 'F',
-                        msg: 'ROSA' + test.device.SerialNumber + ' distance is not equal 50'
+                        msg: 'ROSA ' + test.device.SerialNumber + ' distance is not equal 50'
                     });
                     isFail = true;
                 }
@@ -563,7 +571,7 @@ function _getTosaErrors (snum, checkDevice) {
             'meta.Channel': -1
         }
     }).fetch();
-    if (tests.length === 0  &&  !checkDevice) {
+    if (tests.length === 0) {
         ret.push({
             ts: new Date(),
             status: 'E',
@@ -571,7 +579,7 @@ function _getTosaErrors (snum, checkDevice) {
             pnum: '',
             msg: 'TOSA ' + snum + ' missing test data'
         });
-    } else {
+    } else if (tests.length > 0) {
         let isFail = false;
         for (let i = 0; i <= 3; i++) {
             let test = tests[i];
