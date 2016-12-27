@@ -31,6 +31,10 @@ let sequenceConfig = {
         seq: 'SEQ3208',
         reset: 'isoWeek' // Monday
     },
+    XQX5003: {
+        seq: 'SEQ5003',
+        reset: 'isoWeek' // Monday
+    },
     DEFAULT: {
         seq: 'SEQ',
         reset: 'week'  //Sunday
@@ -53,13 +57,19 @@ HTTP.methods({
             let vendorSequence = VendorSequence.findOne({name: config.seq, weekStart: startDayOfWeek});
 
             if (!vendorSequence) {
-                VendorSequence.insert({name: config.seq, weekStart: startDayOfWeek, cnt: 1});
+                VendorSequence.insert({name: config.seq, pnums: [pnum], weekStart: startDayOfWeek, cnt: 1});
                 return 1;
             }
             vendorSequence.cnt += 1;
+            if (vendorSequence.pnums === undefined) {
+                vendorSequence.pnums = [];
+            }
+            if (_.indexOf(vendorSequence.pnums, pnum) === -1) {
+                vendorSequence.pnums.push(pnum);
+            }
+
             VendorSequence.update(vendorSequence._id, vendorSequence);
             return vendorSequence.cnt;
-
         }
     }
 });
@@ -187,7 +197,7 @@ Meteor.methods({
             let tot = tray.dc.type.split('x');
             let totl = parseInt(tot[0]) * parseInt(tot[1]);
             if (Domains.find({
-                parents: tray._id
+                    parents: tray._id
                 }).length >= totl) {
                 return ScesDomains.addEvent(tray._id, 'error', 'SCES.TRAY-IS-FULL', snum);
             }
@@ -278,7 +288,7 @@ Meteor.methods({
         return '';
     },
 
-    getTestdata: function (id) {
+    getTestdata: function (id, grouping) {
         check(id, String);
         ScesDomains.isLoggedIn(this.userId);
 
@@ -297,12 +307,20 @@ Meteor.methods({
             manufSn = packout.device.ManufSn;
         }
 
-        return Testdata.find({
+        let query = {
             $or: [
                 {'device.SerialNumber': {$in: [id, manufSn]}},
                 {'device.ManufSn': manufSn},
             ]
-        }, {
+        };
+        if (grouping === 'testData') {
+            query.type = {$ne: 'link'};
+        }
+        if (grouping === 'linkTest') {
+            query.type = 'link';
+        }
+
+        return Testdata.find(query, {
             sort: {
                 'meta.StartDateTime': -1
             }
@@ -347,11 +365,45 @@ Meteor.methods({
         check(id, String);
         ScesDomains.isLoggedIn(this.userId);
         let ret = [];
-        ret = ret.concat(_getTransceiverErrors(id, true));
-        if (ret.length === 0) {
-            ret = ret.concat(_getTosaErrors(id, true));
-            ret = ret.concat(_getRosaErrors(id, true));
+        let rosa;
+        let tosa;
+        // Get tosa, rosa and transceiver serial numbers
+        let transceiver = Domains.findOne({_id: id});
+        if (transceiver) {
+            tosa = transceiver.dc.TOSA;
+            rosa = transceiver.dc.ROSA;
         }
+        if (!transceiver) {
+            transceiver = Domains.findOne({'dc.ROSA': id});
+            if (transceiver) {
+                rosa = id;
+                tosa = transceiver.dc.TOSA;
+            }
+        }
+        if (!transceiver) {
+            transceiver = Domains.findOne({'dc.TOSA': id});
+            if (transceiver) {
+                tosa = id;
+                rosa = transceiver.dc.ROSA;
+            }
+        }
+
+        if (!transceiver) {
+            // If transceiver not retrieved from domains table check test data anyway
+            ret = ret.concat(_getTransceiverSummary(id, false));
+            ret = ret.concat(_getRosaErrors(id, false));
+            ret = ret.concat(_getTosaErrors(id, false));
+        } else {
+            // Check test data for transceiver retrieved from domains table
+            ret = ret.concat(_getTransceiverSummary(transceiver._id, true));
+            if (rosa) {
+                ret = ret.concat(_getRosaErrors(rosa, true));
+            }
+            if (tosa) {
+                ret = ret.concat(_getTosaErrors(tosa, true));
+            }
+        }
+
         if (ret.length === 0) {
             return [{
                 status: 'E',
@@ -365,11 +417,11 @@ Meteor.methods({
 });
 
 
-function _getTransceiverErrors (snum, checkTosas) {
-
+function _getTransceiverSummary (snum, missingCheck) {
     let testdata = Testdata.aggregate([{
         $match: {
-            'device.SerialNumber': snum.toUpperCase()
+            'device.SerialNumber': snum.toUpperCase(),
+            type: {$ne: 'link'}
         }
     }, {
         $group: {
@@ -401,15 +453,20 @@ function _getTransceiverErrors (snum, checkTosas) {
     }])[0];
 
     let ret = [];
-    let pnum = Settings.partNumbers[testdata.pnum];
+    let pnum;
+    if (testdata) {
+        pnum = Settings.partNumbers[testdata.pnum];
+    }
 
     if (!testdata || !testdata.list) {
-        ret.push({
-            status: 'E',
-            snum: snum,
-            pnum: testdata.PartNumber,
-            msg: 'TRANSCEIVER ' + snum + ' missing test data'
-        });
+        if (missingCheck === true) {
+            ret.push({
+                status: 'E',
+                snum: snum,
+                pnum: '',
+                msg: 'TRANSCEIVER ' + snum + ' missing test data'
+            });
+        }
     } else if (!pnum) {
         ret.push({
             status: 'E',
@@ -462,13 +519,6 @@ function _getTransceiverErrors (snum, checkTosas) {
             }
         }
     }
-
-
-    let domain = Domains.findOne({_id: snum, 'dc.PartNumber': {$regex: '^XQX'}});
-    if (domain && checkTosas) {
-        ret = ret.concat(_getTosaErrors(domain.dc.TOSA, false));
-        ret = ret.concat(_getRosaErrors(domain.dc.ROSA, false));
-    }
     return ret;
 }
 
@@ -499,17 +549,8 @@ function _returnSummary (summ) {
 }
 
 
-function _getRosaErrors (snum, checkDevice) {
-
+function _getRosaErrors (snum, missingCheck) {
     let ret = [];
-
-    if (checkDevice) {
-        let domain = Domains.findOne({'dc.ROSA': snum});
-        if (domain) {
-            ret = _getTransceiverErrors(domain._id, false);
-        }
-    }
-
     let tests = Testdata.find({'device.SerialNumber': snum, type: 'rosa', subtype: 'dc'}, {
         sort: {
             'meta.StartDateTime': -1,
@@ -517,13 +558,15 @@ function _getRosaErrors (snum, checkDevice) {
         }
     }).fetch();
     if (tests.length === 0) {
-        ret.push({
-            ts: new Date(),
-            status: 'E',
-            snum: snum,
-            pnum: '',
-            msg: 'ROSA ' + snum + ' missing test data'
-        });
+        if (missingCheck === true) {
+            ret.push({
+                ts: new Date(),
+                status: 'E',
+                snum: snum,
+                pnum: '',
+                msg: 'ROSA ' + snum + ' missing test data'
+            });
+        }
     } else if (tests.length > 0) {
         let isFail = false;
         for (let i = 0; i <= 3; i++) {
@@ -555,16 +598,8 @@ function _getRosaErrors (snum, checkDevice) {
     return ret;
 }
 
-function _getTosaErrors (snum, checkDevice) {
-
+function _getTosaErrors (snum, missingCheck) {
     let ret = [];
-    if (checkDevice) {
-        let domain = Domains.findOne({'dc.TOSA': snum});
-        if (domain) {
-            ret = _getTransceiverErrors(domain._id, false);
-        }
-    }
-
     let tests = Testdata.find({'device.SerialNumber': snum, type: 'tosa', subtype: 'dc'}, {
         sort: {
             'meta.StartDateTime': -1,
@@ -572,13 +607,15 @@ function _getTosaErrors (snum, checkDevice) {
         }
     }).fetch();
     if (tests.length === 0) {
-        ret.push({
-            ts: new Date(),
-            status: 'E',
-            snum: snum,
-            pnum: '',
-            msg: 'TOSA ' + snum + ' missing test data'
-        });
+        if (missingCheck === true) {
+            ret.push({
+                ts: new Date(),
+                status: 'E',
+                snum: snum,
+                pnum: '',
+                msg: 'TOSA ' + snum + ' missing test data'
+            });
+        }
     } else if (tests.length > 0) {
         let isFail = false;
         for (let i = 0; i <= 3; i++) {

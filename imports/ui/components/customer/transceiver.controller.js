@@ -130,7 +130,7 @@ angular.module('kaiamCustomer').controller('TransceiverController', [
         // Key press calback used by barcode scanner
         function retrieve () {
             if ($scope.grouping === 'testData') {
-                $meteor.call('getTestdata', $scope.code).then(
+                $meteor.call('getTestdata', $scope.code, 'testData').then(
                     (data) => {
                         initTestData(data);
                     }

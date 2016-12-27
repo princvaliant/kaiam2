@@ -32,8 +32,8 @@ angular.module('kaiamTransceiverView').controller('TransceiverViewController', [
             $cookies.put('transceiverGrouping', grouping);
             $scope.grouping = grouping;
             if ($scope.code) {
-                if ($scope.grouping === 'testData') {
-                    $meteor.call('getTestdata', $scope.code).then(
+                if ($scope.grouping === 'testData' || $scope.grouping === 'linkTest') {
+                    $meteor.call('getTestdata', $scope.code, $scope.grouping).then(
                         (data) => {
                             initTestData(data);
                         }
@@ -192,8 +192,8 @@ angular.module('kaiamTransceiverView').controller('TransceiverViewController', [
         $scope.onKeyPressed = function (e) {
             if (e.which === 13) {
                 $scope.code = $scope.tr;
-                if ($scope.grouping === 'testData') {
-                    $meteor.call('getTestdata', $scope.code).then(
+                if ($scope.grouping === 'testData' || $scope.grouping === 'linkTest') {
+                    $meteor.call('getTestdata', $scope.code, $scope.grouping).then(
                         (data) => {
                             initTestData(data);
                         }

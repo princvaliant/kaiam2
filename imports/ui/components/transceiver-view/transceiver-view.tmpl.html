@@ -12,6 +12,7 @@
                     <md-radio-button value="errorCheck" class="md-primary">Error check</md-radio-button>
                     <md-radio-button value="eyeImages">Eye Images</md-radio-button>
                     <md-radio-button value="testData">Test data</md-radio-button>
+                    <md-radio-button value="linkTest">Link test</md-radio-button>
                     <md-radio-button value="sensitivityCharts">Sensitivity charts</md-radio-button>
                 </md-radio-group>
             </form>
@@ -60,8 +61,8 @@
                 </md-grid-tile>
             </md-grid-list>
         </md-content>
-        <md-subheader class="md-no-sticky" ng-show="grouping === 'testData'">Test data for {{code}}</md-subheader>
-        <md-content layout="row" ng-show="grouping === 'testData'" style="height:800px">
+        <md-subheader class="md-no-sticky" ng-show="grouping === 'testData' || grouping === 'linkTest'">{{grouping}} for {{code}}</md-subheader>
+        <md-content layout="row" ng-show="grouping === 'testData' || grouping === 'linkTest'" style="height:800px">
             <div flex="60" style="overflow:scroll">
                 <md-card ng-repeat="(key, data) in testdata">
                     <md-card-title>

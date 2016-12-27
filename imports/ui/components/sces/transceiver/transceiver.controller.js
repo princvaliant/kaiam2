@@ -31,7 +31,7 @@ angular.module('kaiamSces').controller('ScesTransceiverController', [
                     initData(data);
                 }
             });
-            Meteor.call('getTestdata', unitId, (err, data) => {
+            Meteor.call('getTestdata', unitId, 'testData', (err, data) => {
                 if (err) {
                     $mdToast.show(
                         $mdToast.simple()
