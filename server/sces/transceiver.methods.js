@@ -573,13 +573,13 @@ function _getRosaErrors (snum, missingCheck) {
             let test = tests[i];
             if (test) {
                 let distance = test.data.Distance;
-                if (_.isNumber(distance) && distance !== 50) {
+                if (_.isNumber(distance) && distance > 50) {
                     ret.push({
                         ts: test.timestamp,
                         snum: snum,
                         pnum: '',
                         status: 'F',
-                        msg: 'ROSA ' + test.device.SerialNumber + ' distance is not equal 50'
+                        msg: 'ROSA ' + test.device.SerialNumber + ' distance is more than 50'
                     });
                     isFail = true;
                 }

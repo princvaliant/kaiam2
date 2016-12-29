@@ -55,7 +55,7 @@ function execSar (pnum, product, snum, calcVars = true) {
 
         // Get list of serials that are changed from last compilation
         let lastDate = getLastSyncDate('SPEC_' + pnum);
-        let mom = moment(lastDate);
+        let mom = moment(lastDate );
 
         // Increment date range weekly and process each week
         for (let m = mom; m.isBefore(moment()); m.add(7, 'days')) {
@@ -149,11 +149,15 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
     let failTestsWithCodes = new Set();
 
     // Load all last tests that run for this serials number
+    let latestDate = moment('2000-01-01').toDate();
     for (let i = 0; i < doList.length; i++) {
         let doItem = doList[i];
         _.each(doItem.data, (itm) => {
             if (itm.t !== 'actionstatus') {
                 runTests.add(itm.t + ' - ' + itm.s);
+                if (latestDate < itm.sd) {
+                    latestDate = itm.sd;
+                }
             }
         });
     }
@@ -378,7 +382,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew) {
             status = 'P';
         }
         updateOverallStatus(itm.sn, itm.pnum, doList, status);
-        insertTestSummary(itm.sn, itm.pnum, itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, status);
+        insertTestSummary(itm.sn, itm.pnum, latestDate || itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, status);
     }
 }
 
