@@ -7,7 +7,7 @@ HTTP.methods({
                 return query;
             }
             let ret = Sar.findOne(query, {sort: {rev: -1}});
-            if (ret) {
+            if (ret && ret.class !== 'OBSOLETE') {
                 return ret.fileContent;
             } else {
                 return 'ERROR: Not found';

@@ -12,8 +12,8 @@ Meteor.methods({
         // Date and week range values
         ScesDomains.getUser(this.userId);
         let drange = moment().subtract(interval - 1000, 'days').format('YYYY-MM-DD');
-        let wrange = moment().week() - interval - 1;
-        if (wrange <= 1) {
+        let wrange = moment().week() - interval;
+        if (wrange < 1) {
             wrange = 53 - interval;
         }
         let match = {};
