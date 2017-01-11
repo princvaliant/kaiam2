@@ -33,7 +33,15 @@ let sequenceConfig = {
     },
     XQX5003: {
         seq: 'SEQ5003',
-        reset: 'week' // Monday
+        reset: 'week' // Sunday
+    },
+    LS1: {
+        seq: 'LS1',
+        reset: 'week' // Sunday
+    },
+    LS2: {
+        seq: 'LS2',
+        reset: 'week' // Sunday
     },
     DEFAULT: {
         seq: 'SEQ',
@@ -70,6 +78,21 @@ HTTP.methods({
 
             VendorSequence.update(vendorSequence._id, vendorSequence);
             return vendorSequence.cnt;
+        }
+    },
+    '/getCurrentVendorSequence': {
+        auth: SarHelper.myAuth,
+        get: function () {
+            let pnum = this.query.pnum;
+            if (!pnum) {
+                return 'ERROR - parameter missing: pnum';
+            }
+            let v = VendorSequence.findOne({pnums: pnum}, {
+                sort: {
+                    'weekStart': -1
+                }
+            });
+            return v ? v.cnt : 'EMPTY';
         }
     }
 });
