@@ -142,7 +142,7 @@ Meteor.methods({
             $match: {
                 'audit.id': 'AddedToLocation',
                 'audit.when': {
-                    '$gt': new Date(new Date().getTime() - (1000 * 60 * 60 * 24 * 60))
+                    '$gt': new Date(new Date().getTime() - (1000 * 60 * 60 * 24 * 30))
                 }
             }
         }, {

@@ -42,6 +42,13 @@
                     <div ng-message="required">PCBA required</div>
                 </div>
             </md-input-container>
+            <md-input-container md-is-error="form.cm.$invalid">
+                <label for="cm">{{'OPTIONS_MANUFACTURERS' | translate}}</label>
+                <md-select name="cm" ng-model="transceiver.cm" ng-required="true">
+                    <md-option ng-repeat="manufacturer in manufacturers | orderBy"
+                               value="{{manufacturer}}">{{manufacturer}}</md-option>
+                </md-select>
+            </md-input-container>
         </md-dialog-content>
         <md-dialog-actions>
             <span flex></span>

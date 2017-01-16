@@ -19,6 +19,7 @@ Meteor.methods({
                 TOSA: transceiver.TOSA,
                 ROSA: transceiver.ROSA,
                 PCBA: transceiver.PCBA,
+                cm: transceiver.cm,
                 state: 'AddedToLocation',
                 SerialNumber: transceiver._id
             }, [transceiver.TOSA, transceiver.ROSA, transceiver.PCBA]);

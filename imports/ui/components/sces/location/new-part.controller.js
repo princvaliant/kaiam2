@@ -16,6 +16,7 @@ angular.module('kaiamSces').controller('ScesNewPartController', ['$timeout', '$t
         $scope.partNumbers = _.keys(Settings.partNumbers);
         $scope.locationId = locationId;
         $scope.transceiver = {};
+        $scope.manufacturers = ['Rocket', 'Kaiam'];
         $scope.transceiver._id = transceiverId;
         $scope.transceiver.pnum = $cookies.get('partNumberInAssembly') || '';
 
