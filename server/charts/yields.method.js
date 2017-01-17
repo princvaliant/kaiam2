@@ -144,7 +144,7 @@ Meteor.methods({
                 result.push(obj);
             });
             result = _.sortBy(result, (srt) => {
-                return srt._id.nw ? srt._id.nw : (srt._id.nd ? srt._id.nd : srt._id.nm );
+                return srt._id.nw ? srt._id.nw : (srt._id.d ? srt._id.d : srt._id.nm );
             });
         }
 
