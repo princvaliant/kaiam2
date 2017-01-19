@@ -67,6 +67,18 @@ HTTP.methods({
         }
     },
 
+    '/getConvBin': {
+        auth: SarHelper.myAuth,
+        get: function () {
+            let pnum = this.query.pnum.toUpperCase();
+            let sarSpecBin = SarSpecBin.findOne({pnumLink: pnum});
+            if (sarSpecBin) {
+                return [sarSpecBin.class, sarSpecBin.pnum];
+            }
+            return [];
+        }
+    },
+
     '/postAssembly': {
         auth: SarHelper.myAuth,
         post: function (postData) {

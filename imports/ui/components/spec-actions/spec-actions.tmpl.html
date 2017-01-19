@@ -31,10 +31,12 @@
                     Revisions
                 </div>
                 <span flex></span>
-                <md-button class="md-icon-button tool-btn" aria-label="add" ng-click="exportSarClick()" ng-show="selectedSar.class === 'ACTION' || selectedSar.class === 'SPEC' || selectedSar.class === 'FILE'">
+                <md-button class="md-icon-button tool-btn" aria-label="add" ng-click="exportSarClick()"
+                           ng-show="selectedSar.class === 'ACTION' || selectedSar.class === 'SPEC' || selectedSar.class === 'FILE'">
                     <md-icon md-font-icon="zmdi zmdi-download"></md-icon>
                 </md-button>
-                <md-button class="md-icon-button tool-btn" aria-label="lock" ng-click="lockSarClick()" ng-show="selectedSarLock !== 'Y'">
+                <md-button class="md-icon-button tool-btn" aria-label="lock" ng-click="lockSarClick()"
+                           ng-show="selectedSarLock !== 'Y'">
                     <md-icon md-font-icon="zmdi zmdi-lock"></md-icon>
                 </md-button>
                 <md-button class="md-icon-button tool-btn" aria-label="copy" ng-click="copySarClick()">
@@ -67,14 +69,17 @@
                                 Actions
                             </div>
                             <span flex></span>
-                            <md-button class="md-icon-button tool-btn" aria-label="copy" ng-click="renumberSarActionClick()"
+                            <md-button class="md-icon-button tool-btn" aria-label="copy"
+                                       ng-click="renumberSarActionClick()"
                                        ng-show="selectedSarLock !== 'Y'">
                                 <md-icon md-font-icon="zmdi zmdi-format-line-spacing"></md-icon>
                             </md-button>
-                            <md-button class="md-icon-button tool-btn" aria-label="copy" ng-click="copySarActionClick()">
+                            <md-button class="md-icon-button tool-btn" aria-label="copy"
+                                       ng-click="copySarActionClick()">
                                 <md-icon md-font-icon="zmdi zmdi-copy"></md-icon>
                             </md-button>
-                            <md-button class="md-icon-button tool-btn" aria-label="paste" ng-click="pasteSarActionClick()"
+                            <md-button class="md-icon-button tool-btn" aria-label="paste"
+                                       ng-click="pasteSarActionClick()"
                                        ng-show="selectedSarLock !== 'Y'">
                                 <md-icon md-font-icon="zmdi zmdi-paste"></md-icon>
                             </md-button>
@@ -88,7 +93,7 @@
                             </md-button>
                         </div>
                         <div ui-grid="gridSarActions" ui-grid-selection ui-grid-edit
-                            ui-grid-auto-resize
+                             ui-grid-auto-resize
                              style="position:absolute;height: auto;top:40px;left:5px;right:5px;bottom:10px;"></div>
                     </md-content>
                     <md-content layout-align="top center" flex="60">
@@ -205,6 +210,56 @@
                     </md-button>
                     <md-progress-circular md-mode="indeterminate" ng-show="recalcShowProgress"></md-progress-circular>
                 </div>
+            </md-tab>
+            <md-tab md-on-select="tabSelected(7, 'partConversion')" label="Conversions and Bins"
+                    ng-if="class == 'SPEC'">
+                <div layout="row" layout-align="start start">
+                    <div layout="column" flex="50" layout-align="start start">
+                        <div layout="row" flex="50" layout-align="start center" style="margin-top:20px;">
+                            <form>
+                                <md-input-container style="width:120px;margin-left:10px;">
+                                    <label for="conversionPart">New part#</label>
+                                    <input id="conversionPart" ng-model="newPart.conversion" aria-label="New part"
+                                           ng-required="true"/>
+                                </md-input-container>
+                                <md-button class="md-raised" style="width:150px;" aria-label="button"
+                                           ng-click="addConversionClicked()">Add conversion
+                                </md-button>
+                            </form>
+                        </div>
+                        <md-list ng-cloak="" class="listdemoListControls">
+                            <md-subheader class="md-no-sticky">Conversions</md-subheader>
+                            <md-list-item ng-repeat="conversion in convbins.conversions">
+                                <p> {{ conversion }} </p>
+                                <md-icon class="md-secondary" ng-click="removeConversionClicked(conversion)"
+                                         aria-label="Remove" md-font-icon="zmdi zmdi-delete"></md-icon>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                    <div layout="column" flex="50" layout-align="start start">
+                        <div layout="row" flex="50" layout-align="start center" style="margin-top:20px;">
+                            <form>
+                                <md-input-container style="width:120px;margin-left:10px;">
+                                    <label for="binPart">New part#</label>
+                                    <input id="binPart" ng-model="newPart.bin" aria-label="New part" ng-required="true"/>
+                                </md-input-container>
+                                <md-button class="md-raised" style="width:150px;" aria-label="button"
+                                           ng-click="addBinClicked()">Add bin
+                                </md-button>
+                            </form>
+                        </div>
+                        <md-list ng-cloak="" class="listdemoListControls">
+                            <md-subheader class="md-no-sticky">Bins</md-subheader>
+                            <md-list-item ng-repeat="bin in convbins.bins">
+                                <p> {{ bin }} </p>
+                                <md-icon class="md-secondary" ng-click="removeBinClicked(bin)" aria-label="Remove"
+                                         md-font-icon="zmdi zmdi-delete"></md-icon>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                </div>
+                <md-progress-circular md-mode="indeterminate"
+                                      ng-show="partConversionShowProgress"></md-progress-circular>
             </md-tab>
             <md-tab md-on-select="tabSelected(5, 'upload')" label="Upload file" ng-if="class == 'FILE'">
                 <div layout="column" flex="100">

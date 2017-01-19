@@ -15,19 +15,29 @@ import './spec-actions.service';
 
 angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootScope', '$q', '$document', '$scope', '$filter',
     '$reactive', '$cookies', '$timeout', '$location', '$state', '$mdMedia', '$mdBottomSheet', '$stateParams', '$mdDialog',
-    '$mdToast', '$window', 'Upload', 'SpecActionsInitService', 'SpecActionsService','ExportDataService',
+    '$mdToast', '$window', 'Upload', 'SpecActionsInitService', 'SpecActionsService', 'ExportDataService',
     function ($rootScope, $q, $document, $scope, $filter, $reactive, $cookies, $timeout, $location, $state, $mdMedia,
               $mdBottomSheet, $stateParams, $mdDialog, $mdToast, $window, Upload, SpecActionsInitService, SpecActionsService, ExportDataService) {
         $reactive(this).attach($scope);
 
         $scope.class = $stateParams.class;
         $scope.isAction = false;
+        $scope.newPart = {};
+        $scope.convbins = {};
 
         $scope.importedMessage = '';
         //   $scope.uploader = new FileUploader();
         $scope.selectedTab = $cookies.get('specActionsTabSelected') || 0;
-        $scope.partNumbers = [''].concat(_.keys(Settings.partNumbers));
+        $scope.partNumbers = [''];
+        _.each(_.keys(Settings.partNumbers), (key) => {
+            if (Settings.partNumbers[key].primary === true) {
+                $scope.partNumbers.push(key);
+            }
+        });
         $scope.partNumber = $cookies.get('specActionsPartNumber') || 'XQX4000';
+
+        refreshBins();
+        refreshConversions();
 
         // Initialize all grids
         SpecActionsInitService.initSars($scope);
@@ -228,6 +238,51 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             SpecActionsService.addExecution($scope.selectedSarAction);
         };
 
+        $scope.addConversionClicked = function () {
+            Meteor.call('addConversion', $scope.partNumber, $scope.newPart.conversion, (err) => {
+                if (err) {
+                    showToast($scope.newPart.conversion + ' part number already assigned somewhere else');
+                } else {
+                    refreshConversions();
+                    $scope.newPart.conversion = '';
+                    $window.document.getElementById('conversionPart').focus();
+                }
+            });
+        };
+
+        $scope.addBinClicked = function () {
+            Meteor.call('addBin', $scope.partNumber, $scope.newPart.bin, (err) => {
+                if (err) {
+                    showToast($scope.newPart.bin + ' part number already assigned somewhere else');
+                } else {
+                    refreshBins();
+                    $scope.newPart.bin = '';
+                    $window.document.getElementById('binPart').focus();
+                }
+            });
+        };
+
+        $scope.removeConversionClicked = function (conversion) {
+            Meteor.call('removeConversion', $scope.partNumber, conversion, (err) => {
+                if (err) {
+                    showToast(err);
+                } else {
+                    refreshConversions();
+                }
+            });
+        };
+
+        $scope.removeBinClicked = function (bin) {
+            Meteor.call('removeBin', $scope.partNumber, bin, (err) => {
+                if (err) {
+                    showToast(err);
+                } else {
+                    refreshBins();
+                }
+            });
+        };
+
+
         $scope.upload = function (file) {
             Upload.upload({
                 url: 'upload/url',
@@ -254,7 +309,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             return [$scope.getReactively('partNumber'), $scope.getReactively('class')];
         });
         $scope.autorun(() => {
-            $scope.gridSars.data  = $scope.getReactively('sars');
+            $scope.gridSars.data = $scope.getReactively('sars');
             $timeout(function () {
                 let isSel = false;
                 $scope.sarApi.grid.rows.forEach(function (row) {
@@ -316,7 +371,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         });
 
         $scope.autorun(() => {
-            let selectedSar  = $scope.getReactively('selectedSar') || {};
+            let selectedSar = $scope.getReactively('selectedSar') || {};
             $scope.subscribe('sar-actions', () => {
                 return [selectedSar._id];
             });
@@ -346,7 +401,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         });
 
         $scope.autorun(() => {
-            $scope.gridSarSpecs.data =  $scope.getReactively('sarSpecs') || [];
+            $scope.gridSarSpecs.data = $scope.getReactively('sarSpecs') || [];
             $timeout(function () {
                 if ($scope.sarSpecApi && $scope.sarSpecApi.selection && $scope.gridSarSpecs.data[0]) {
                     $scope.sarSpecApi.selection.selectRow($scope.gridSarSpecs.data[0]);
@@ -357,7 +412,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         });
 
         $scope.autorun(() => {
-            $scope.gridSarFlows.data =  $scope.getReactively('sarFlows') || [];
+            $scope.gridSarFlows.data = $scope.getReactively('sarFlows') || [];
             $timeout(function () {
                 if ($scope.sarFlowApi && $scope.sarFlowApi.selection && $scope.gridSarFlows.data[0]) {
                     $scope.sarFlowApi.selection.selectRow($scope.gridSarFlows.data[0]);
@@ -366,11 +421,11 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         });
 
         $scope.autorun(() => {
-            $scope.gridSarActionParams.data =  $scope.getReactively('sarActionParams') || [];
+            $scope.gridSarActionParams.data = $scope.getReactively('sarActionParams') || [];
         });
 
         $scope.autorun(() => {
-            $scope.gridSarSpecRanges.data =  $scope.getReactively('sarSpecRanges') || [];
+            $scope.gridSarSpecRanges.data = $scope.getReactively('sarSpecRanges') || [];
         });
 
 
@@ -395,40 +450,54 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         };
         function initTab (field) {
             switch (field) {
-            case 'specCalc':
-                $scope.autorun(() => {
-                    if ($scope.getReactively('selectedSar')) {
-                        $scope.recalcSnList = $scope.selectedSar.recalcSnList;
-                        $scope.recalcFromDate = $scope.selectedSar.recalcFromDate;
-                        $scope.recalcToDate = $scope.selectedSar.recalcToDate;
-                        $scope.recalcShowProgress = $scope.selectedSar.recalcForce;
-                    }
-                });
-                break;
-            case 'actionView':
-                $scope.autorun(() => {
-                    Meteor.call('getActions', $scope.getReactively('selectedSar'), (err, data) => {
-                        $scope.actions = data;
+                case 'specCalc':
+                    $scope.autorun(() => {
+                        if ($scope.getReactively('selectedSar')) {
+                            $scope.recalcSnList = $scope.selectedSar.recalcSnList;
+                            $scope.recalcFromDate = $scope.selectedSar.recalcFromDate;
+                            $scope.recalcToDate = $scope.selectedSar.recalcToDate;
+                            $scope.recalcShowProgress = $scope.selectedSar.recalcForce;
+                        }
                     });
-                });
-                break;
-            case 'specView':
-                $scope.autorun(() => {
-                    Meteor.call('getSpecs', $scope.getReactively('selectedSar'), (err, data) => {
-                        $scope.specs = data;
+                    break;
+                case 'actionView':
+                    $scope.autorun(() => {
+                        Meteor.call('getActions', $scope.getReactively('selectedSar'), (err, data) => {
+                            $scope.actions = data;
+                        });
                     });
-                });
-                break;
-            case 'log':
-                $scope.autorun(() => {
-                    Meteor.call('getLogs', $scope.getReactively('selectedSar'), (err, data) => {
-                        $scope.logs = data;
+                    break;
+                case 'specView':
+                    $scope.autorun(() => {
+                        Meteor.call('getSpecs', $scope.getReactively('selectedSar'), (err, data) => {
+                            $scope.specs = data;
+                        });
                     });
-                });
-                break;
-            default:
-                break;
+                    break;
+                case 'log':
+                    $scope.autorun(() => {
+                        Meteor.call('getLogs', $scope.getReactively('selectedSar'), (err, data) => {
+                            $scope.logs = data;
+                        });
+                    });
+                    break;
+                default:
+                    break;
             }
+        }
+
+        function refreshConversions () {
+            Meteor.call('getConversions', $scope.partNumber, (err, data) => {
+                $scope.convbins.conversions = _.pluck(data, 'pnumLink');
+                $scope.$apply();
+            });
+        }
+
+        function refreshBins() {
+            Meteor.call('getBins', $scope.partNumber, (err, data) => {
+                $scope.convbins.bins = _.pluck(data, 'pnumLink');
+                $scope.$apply();
+            });
         }
 
         function showToast (msg) {

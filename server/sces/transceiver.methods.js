@@ -331,10 +331,7 @@ Meteor.methods({
         }
 
         let query = {
-            $or: [
-                {'device.SerialNumber': {$in: [id, manufSn]}},
-                {'device.ManufSn': manufSn},
-            ]
+            'device.SerialNumber': {$in: [id, manufSn]}
         };
         if (grouping === 'testData') {
             query.type = {$ne: 'link'};

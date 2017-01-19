@@ -183,6 +183,46 @@ Meteor.methods({
                 _id: id
             }
         }]);
+    },
+
+    getConversions: function (pnum) {
+        return SarSpecBin.find({pnum: pnum, class: 'conv'}).fetch();
+    },
+
+    getBins: function (pnum) {
+        return SarSpecBin.find({pnum: pnum, class: 'bin'}).fetch();
+    },
+
+    addConversion: function (pnum, pnumConversion) {
+        return SarSpecBin.insert({
+            pnum: pnum,
+            pnumLink: pnumConversion,
+            class: 'conv'
+        });
+    },
+
+    addBin: function (pnum, pnumBin) {
+        return SarSpecBin.insert({
+            pnum: pnum,
+            pnumLink: pnumBin,
+            class: 'bin'
+        });
+    },
+
+    removeConversion: function (pnum, pnumConversion) {
+        SarSpecBin.remove({
+            pnum: pnum,
+            pnumLink: pnumConversion,
+            class: 'conv'
+        });
+    },
+
+    removeBin: function (pnum, pnumBin) {
+        SarSpecBin.remove({
+            pnum: pnum,
+            pnumLink: pnumBin,
+            class: 'bin'
+        });
     }
 });
 
