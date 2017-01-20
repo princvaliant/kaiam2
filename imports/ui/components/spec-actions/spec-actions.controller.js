@@ -49,6 +49,8 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
 
         $scope.changePartNumber = function (pn) {
             $scope.partNumber = pn;
+            refreshBins();
+            refreshConversions();
             $cookies.put('specActionsPartNumber', pn);
         };
 
