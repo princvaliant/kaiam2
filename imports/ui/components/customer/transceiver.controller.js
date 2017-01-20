@@ -4,7 +4,6 @@ import angular from 'angular';
 import '../transceiver-view/gallery-dialog.controller';
 import '../transceiver-view/gallery-dialog.tmpl.html';
 
-
 /**
  * @ngdoc function
  * @name TransceiverController
@@ -15,14 +14,12 @@ import '../transceiver-view/gallery-dialog.tmpl.html';
  */
 angular.module('kaiamCustomer').controller('TransceiverController', [
     '$scope', '$rootScope', '$log', '$state', '$mdToast', '$cookies', '$meteor', '$mdDialog', '$location', '$window',
-    '$translate', '$translatePartialLoader', '$timeout',
+    '$translate', '$translatePartialLoader',
     ($scope, $rootScope, $log, $state, $mdToast, $cookies, $meteor, $mdDialog, $location, $window,
-     $translate, $translatePartialLoader, $timeout) => {
+     $translate, $translatePartialLoader) => {
         $translatePartialLoader.addPart('customer');
         $translate.refresh();
         $scope.code = $location.search().id;
-
-        let keys = '';
         $scope.scans = [];
         $scope.showProgress = false;
 
@@ -33,10 +30,52 @@ angular.module('kaiamCustomer').controller('TransceiverController', [
             $scope.grouping = grouping;
             retrieve();
         };
-        retrieve();
 
-        $scope.$meteorSubscribe('reworkCodes').then(function () {
-        });
+        // Grid for test parameters
+        $scope.gridOptions = {
+            enableFiltering: false,
+            enableSorting: false,
+            useExternalSorting: false,
+            showGridFooter: false,
+            columnDefs: [{
+                name: 'SerialNumber',
+                enableFiltering: false
+            }, {
+                name: 'SetTemperature_C',
+                enableFiltering: false,
+                cellClass: 'grid-align-center'
+            }, {
+                name: 'Channel',
+                enableFiltering: false,
+                cellClass: 'grid-align-center'
+            }, {
+                name: 'Er_in_dB',
+                enableFiltering: false,
+                cellClass: 'grid-align-center'
+            }, {
+                name: 'MM_in_percent',
+                enableFiltering: false,
+                cellClass: 'grid-align-center'
+            }, {
+                name: 'OMA_in_dBm',
+                enableFiltering: false,
+                cellClass: 'grid-align-center'
+            }, {
+                name: 'Pavg_in_dBm',
+                enableFiltering: false,
+                cellClass: 'grid-align-center'
+            }, {
+                name: 'Sensitivity_dBm',
+                enableFiltering: false,
+                cellClass: 'grid-align-center'
+            }],
+            data: [],
+            onRegisterApi: function (gridApi) {
+                $scope.gridApi = gridApi;
+            }
+        };
+
+        retrieve();
 
         $scope.select = function (obj) {
             $scope.selected = obj;
@@ -130,9 +169,9 @@ angular.module('kaiamCustomer').controller('TransceiverController', [
         // Key press calback used by barcode scanner
         function retrieve () {
             if ($scope.grouping === 'testData') {
-                $meteor.call('getTestdata', $scope.code, 'testData').then(
+                $meteor.call('getTestParameters', [$scope.code]).then(
                     (data) => {
-                        initTestData(data);
+                        $scope.gridOptions.data = data;
                     }
                 );
             } else if ($scope.grouping === 'sensitivityCharts') {
@@ -145,7 +184,7 @@ angular.module('kaiamCustomer').controller('TransceiverController', [
                 findTransceiver($scope.code);
             }
             $scope.tr = '';
-        };
+        }
 
         $scope.openImage = function (eye, $event) {
             $mdDialog.show({

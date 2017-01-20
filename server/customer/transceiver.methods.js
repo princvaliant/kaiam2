@@ -16,22 +16,92 @@ Meteor.methods({
     getSaleOrders: function () {
         let user = ScesDomains.isLoggedIn(this.userId);
         return _.map(saleOrdersForUser(user), function (item) {
-            return item._id;
+            return item._id + ' (' + item.cnt + ')';
         });
     },
 
-    getTestdataForCustomer: function (saleOrder, id) {
-        let user = ScesDomains.isLoggedIn(this.userId);
+    getTestParameters: function (serials) {
         ScesDomains.isLoggedIn(this.userId);
-        return Testdata.find({
-            'device.SerialNumber': id
-        }, {
-            sort: {
-                'meta.StartDateTime': -1
-            }
-        }).fetch();
-    },
 
+        let td = Testdata.aggregate([{
+            $match: {
+                'device.SerialNumber': {
+                    $in: serials
+                },
+                $or: [
+                    {type: 'txtests', subtype: 'channeldata'},
+                    {type: 'rxtests', subtype: 'sensitivity'}
+                ]
+            }
+        }, {
+            $sort: {
+                'timestamp': -1
+            }
+        }, {
+            $group: {
+                _id: {
+                    sn: '$device.SerialNumber',
+                    t: '$type',
+                    st: '$subtype'
+                },
+                mid: {
+                    $first: '$mid'
+                }
+            }
+        }, {
+            $lookup: {
+                from: 'testdata',
+                localField: 'mid',
+                foreignField: 'mid',
+                as: 'tests'
+            }
+        }, {
+            $unwind: '$tests'
+        }, {
+            $match: {
+                $or: [
+                    {'tests.type': 'txtests', 'tests.subtype': 'channeldata'},
+                    {'tests.type': 'rxtests', 'tests.subtype': 'sensitivity'}
+                ]
+            }
+        }, {
+            $sort: {
+                '_id.sn': 1,
+                'tests.meta.SetTemperature_C': 1,
+                'tests.meta.Channel': 1
+            }
+    }]);
+
+        let map = new Map();
+        _.each(td, (row) => {
+            let key = row._id.sn + row.tests.meta.SetTemperature_C + row.tests.meta.Channel;
+            if (!map.get(key)) {
+                map.set(key, {
+                    SerialNumber: row._id.sn,
+                    SetTemperature_C: row.tests.meta.SetTemperature_C,
+                    Channel: row.tests.meta.Channel
+                });
+            }
+            if (row.tests.type === 'txtests' && row.tests.subtype === 'channeldata') {
+                let obj = {
+                    Er_in_dB: row.tests.data.Er_in_dB.toFixed(2),
+                    OMA_in_dBm: row.tests.data.OMA_in_dBm.toFixed(2),
+                    Pavg_in_dBm: row.tests.data.Pavg_in_dBm.toFixed(2),
+                    MM_in_percent: row.tests.data.MM_in_percent || row.tests.data.CwdmMaskMargin
+                };
+                obj.MM_in_percent = obj.MM_in_percent.toFixed(2);
+                map[key] = _.extend(map.get(key), obj);
+            }
+            if (row.tests.type === 'rxtests' && row.tests.subtype === 'sensitivity') {
+                let obj = {
+                    Sensitivity_dBm: row.tests.data.CWDM4_sens || row.tests.data.ExtrapolatedPower_dBm
+                };
+                obj.Sensitivity_dBm = obj.Sensitivity_dBm.toFixed(2);
+                map[key] = _.extend(map.get(key), obj);
+            }
+        });
+        return [...map.values()];
+    }
 });
 
 function constructQuery (user, search, saleOrder) {
@@ -67,7 +137,10 @@ function getOnlyForCompany (user, query, saleOrder) {
             return item._id;
         });
     } else {
-        ids.push(saleOrder);
+        if (saleOrder) {
+            let so = saleOrder.split('(')[0].trim();
+            ids.push(so);
+        }
     }
     query.$and.push({
         $or: [{parents: {$in: ids}}, {parents: user.profile.company}]

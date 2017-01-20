@@ -4,8 +4,8 @@
         <md-card-content>
             <form name="transForm">
                 <md-radio-group ng-model="grouping" layout="row" ng-change="changeGrouping(grouping)" flex="100">
+                    <md-radio-button value="testData">Parameters</md-radio-button>
                     <md-radio-button value="eyeImages" class="md-primary">Eye Images</md-radio-button>
-                    <md-radio-button value="testData">Test data</md-radio-button>
                     <md-radio-button value="sensitivityCharts">Sensitivity charts</md-radio-button>
                 </md-radio-group>
             </form>
@@ -13,6 +13,11 @@
     </md-card>
 
     <md-card>
+        <md-subheader class="md-no-sticky" ng-show="grouping === 'testData'">Parameters for {{code}}</md-subheader>
+        <md-content layout="row" ng-show="grouping === 'testData'" style="height:800px">
+            <div ui-grid="gridOptions" ui-grid-resize-columns ui-grid-move-columns
+                 ui-grid-save-state  ui-grid-auto-resize style="position:absolute;height:calc(100% - 100px) !important;top:20px;left:8px;right:8px;bottom:20px;"></div>
+        </md-content>
         <md-content ng-show="grouping === 'eyeImages'">
             <md-subheader class="md-no-sticky">Eye images for {{code}}</md-subheader>
             <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
@@ -26,54 +31,6 @@
                     </md-grid-tile-footer>
                 </md-grid-tile>
             </md-grid-list>
-        </md-content>
-        <md-subheader class="md-no-sticky" ng-show="grouping === 'testData'">Test data for {{code}}</md-subheader>
-        <md-content layout="row" ng-show="grouping === 'testData'" style="height:800px">
-            <div flex="60" style="overflow:scroll">
-                <md-card ng-repeat="(key, data) in testdata">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span style="font-size:14px;">Meas ID '{{key}}'</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <div ng-repeat="obj in data  | orderBy : '-timestamp' "
-                             style="font-size:11px;padding-left:15px;">
-                          <span class="meas_status_{{obj.status}}">All: {{obj.status}}
-                              <span class="meas_status_{{obj.measstatus}}">Meas: {{obj.measstatus}}
-                                  <span class="meas_status_{{obj.result}}">Row: {{obj.result}}
-                                    </span>
-                                </span>
-                            </span>
-                            {{obj.timestamp | date:'MM/dd/yyyy HH:mm:ss'}} {{obj.type}} {{obj.subtype}} -
-                            <md-button class="md-primary btn-view-data" ng-click="select(obj)">view data
-                            </md-button>
-                        </div>
-                    </md-card-content>
-                </md-card>
-            </div>
-            <div flex="40" style="height:800px;">
-                <md-card style="overflow:scroll">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span style="font-size:14px;">{{selected._id}}</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content ng-repeat="(key, value) in selected"
-                                     style="font-size:11px;padding-left:25px;margin-top:-1px;margin-bottom:-25px;">
-                  <span ng-if="['data','meta','device'].indexOf(key) >= 0">
-                      <b>{{key}}</b><br/>
-                      <span ng-repeat="(key2, value2) in value">
-                         <span style="font-size:11px;padding-left:65px;margin-top:-15px;margin-bottom:-15px;">{{key2}}
-                             : {{value2}}</span><br/>
-                      </span>
-                  </span>
-                        <span ng-if="['data','meta','device'].indexOf(key) === -1">
-                    <span>{{key}}</span>: {{value}}
-                  </span>
-                    </md-card-content>
-                </md-card>
-            </div>
         </md-content>
         <md-content ng-show="grouping === 'sensitivityCharts'">
             <md-subheader class="md-no-sticky" ng-show="grouping === 'sensitivityCharts'">Sensitivity charts
