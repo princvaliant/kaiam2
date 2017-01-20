@@ -135,5 +135,58 @@ angular.module('kaiamCustomer').controller('TransceiversController', [
                 id: row.entity.dc.ManufSn || row.entity._id
             });
         };
+
+        $scope.export = () => {
+            $scope.showExportProgress = true;
+            Meteor.call('getTransceivers', {
+                    fields: fields,
+                    skip: 0,
+                    limit: 100000,
+                    sort: $scope.getReactively('sort')
+                },
+                $scope.getReactively('searchDebounce'),
+                $scope.getReactively('saleOrder'), (err, list) => {
+                    let serials = _.map(list, (item) => {
+                        return item.dc.ManufSn || item._id;
+                    });
+                    $meteor.call('getTestParameters', serials).then(
+                        (data) => {
+                            let ret = '';
+                            _.each(data, (item) => {
+                                let row = '';
+                                let head = '';
+                                head += 'SerialNumber,';
+                                row += item.SerialNumber + ',';
+                                head += 'SetTemperature_C,';
+                                row += item.SetTemperature_C + ',';
+                                head += 'Channel,';
+                                row += item.Channel + ',';
+                                head += 'Er_in_dB,';
+                                row += item.Er_in_dB + ',';
+                                head += 'MM_in_percent,';
+                                row += item.MM_in_percent + ',';
+                                head += 'OMA_in_dBm,';
+                                row += item.OMA_in_dBm + ',';
+                                head += 'Pavg_in_dBm,';
+                                row += item.Pavg_in_dBm + ',';
+                                head += 'Sensitivity_dBm,';
+                                row += item.Sensitivity_dBm + ',';
+                                if (ret === '') {
+                                    ret += ',' + head + '\n';
+                                }
+                                ret += row + '\n';
+                            });
+                            let a = document.createElement('a');
+                            document.body.appendChild(a);
+                            a.style.display = 'none';
+                            a.href = encodeURI('data:text/csv;' + ret);
+                            a.download = 'exports.csv';
+                            a.click();
+                            $scope.showExportProgress = false;
+                        }
+                    );
+                }
+            );
+        };
     }
 ]);

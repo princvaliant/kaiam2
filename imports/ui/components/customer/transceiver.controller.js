@@ -22,6 +22,7 @@ angular.module('kaiamCustomer').controller('TransceiverController', [
         $scope.code = $location.search().id;
         $scope.scans = [];
         $scope.showProgress = false;
+        $scope.grouping = $cookies.get('transceiversGrouping') || 'testData';
 
         // Grouping radio button
         $scope.grouping = $cookies.get('transceiversGrouping') || 'errorCheck';
@@ -148,12 +149,6 @@ angular.module('kaiamCustomer').controller('TransceiverController', [
             }, 200);
         }
 
-        function initTestData (testdata) {
-            $scope.testdata = _.groupBy(testdata, (o) => {
-                return o.mid.toUpperCase();
-            });
-        }
-
         function findTransceiver (code) {
             $scope.showProgress = true;
             if ($scope.grouping === 'eyeImages') {
@@ -198,6 +193,45 @@ angular.module('kaiamCustomer').controller('TransceiverController', [
                 }
             });
         };
+
+        $scope.export = () => {
+            $meteor.call('getTestParameters', [$scope.code]).then(
+                (data) => {
+                    let ret = '';
+                    _.each(data, (item) => {
+                        let row = '';
+                        let head = '';
+                        head += 'SerialNumber,';
+                        row += item.SerialNumber + ',';
+                        head += 'SetTemperature_C,';
+                        row += item.SetTemperature_C + ',';
+                        head += 'Channel,';
+                        row += item.Channel + ',';
+                        head += 'Er_in_dB,';
+                        row += item.Er_in_dB + ',';
+                        head += 'MM_in_percent,';
+                        row += item.MM_in_percent + ',';
+                        head += 'OMA_in_dBm,';
+                        row += item.OMA_in_dBm + ',';
+                        head += 'Pavg_in_dBm,';
+                        row += item.Pavg_in_dBm + ',';
+                        head += 'Sensitivity_dBm,';
+                        row += item.Sensitivity_dBm + ',';
+                        if (ret === '') {
+                            ret += ',' + head + '\n';
+                        }
+                        ret += row + '\n';
+                    });
+                    let a = document.createElement('a');
+                    document.body.appendChild(a);
+                    a.style.display = 'none';
+                    a.href = encodeURI('data:text/csv;' + ret);
+                    a.download = 'exports.csv';
+                    a.click();
+                }
+            );
+        };
+
     }
 ]);
 

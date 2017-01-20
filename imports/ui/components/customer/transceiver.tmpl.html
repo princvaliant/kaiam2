@@ -1,14 +1,19 @@
 <md-content layout="column" class="overlay-10" flex="100">
 
     <md-card style="height:80px !important;min-height:80px !important">
-        <md-card-content>
+        <md-card-content layout="row" >
             <form name="transForm">
                 <md-radio-group ng-model="grouping" layout="row" ng-change="changeGrouping(grouping)" flex="100">
-                    <md-radio-button value="testData">Parameters</md-radio-button>
-                    <md-radio-button value="eyeImages" class="md-primary">Eye Images</md-radio-button>
+                    <md-radio-button value="testData" class="md-primary" >Parameters</md-radio-button>
+                    <md-radio-button value="eyeImages" >Eye Images</md-radio-button>
                     <md-radio-button value="sensitivityCharts">Sensitivity charts</md-radio-button>
                 </md-radio-group>
             </form>
+            <span flex></span>
+            <md-button aria-label="Export test parameters" ng-click="export()" class="md-primary" style="width:230px;">
+                <ng-md-icon icon="get_app" size="22"></ng-md-icon>
+                Export test parameters
+            </md-button>
         </md-card-content>
     </md-card>
 

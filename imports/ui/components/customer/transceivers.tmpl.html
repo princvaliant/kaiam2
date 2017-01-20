@@ -1,5 +1,5 @@
 
-<div layout="row" style="width:700px;position:absolute;height:120px !important;top:15px;left:8px;right:8px;bottom:0px;">
+<div layout="row" style="position:absolute;height:120px !important;top:15px;left:8px;right:8px;bottom:0px;">
     <md-input-container>
         <label>Sales orders</label>
         <md-select ng-model="saleOrder" ng-change="changeSaleOrder(saleOrder)" style="width:240px">
@@ -11,8 +11,14 @@
         <label for="search">Search transceivers</label>
         <input type="text" name="search" ng-model="search" aria-label="{{'SCES.SEARCH-TEXT' | translate}}">
     </md-input-container>
-
+    <span flex></span>
+    <md-button aria-label="Export test parameters" ng-click="export()" class="md-primary" style="height:25px;width:280px;">
+        <ng-md-icon icon="get_app" size="22"></ng-md-icon>
+        Export with test parameters
+    </md-button>
+    <md-progress-circular md-mode="indeterminate" ng-show="showExportProgress"></md-progress-circular>
 </div>
+
 <div ui-grid="gridOptions" ui-grid-resize-columns ui-grid-move-columns
      ui-grid-save-state ui-grid-pagination
      ui-grid-auto-resize style="position:absolute;height:calc(100% - 70px) !important;top:70px;left:8px;right:8px;bottom:0px;"></div>
