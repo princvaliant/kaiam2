@@ -424,6 +424,8 @@ Meteor.methods({
             }
         }
 
+        ret = ret.concat(_getBinning(id));
+
         if (ret.length === 0) {
             return [{
                 status: 'E',
@@ -436,6 +438,21 @@ Meteor.methods({
     }
 });
 
+function _getBinning (id) {
+    let ret = [];
+    let summ = Testsummary.findOne({sn: id}, {sort: {timestamp: -1}});
+    if (summ) {
+        _.each (summ.bins, (bin) => {
+            ret.push({
+                status: bin.status,
+                snum: id,
+                pnum: bin.pnum,
+                msg: 'BINNING ' + bin.pnum,
+            });
+        });
+    }
+    return ret;
+}
 
 function _getTransceiverSummary (snum, missingCheck) {
     let testdata = Testdata.aggregate([{
@@ -505,7 +522,7 @@ function _getTransceiverSummary (snum, missingCheck) {
                     status: 'E',
                     snum: snum,
                     pnum: testdata.pnum,
-                    msg: 'Test data for ' + snum + ' not processed yet'
+                    msg: 'Test data for ' + snum + ' not processed yet',
                 });
             }
         } else {
@@ -529,7 +546,6 @@ function _getTransceiverSummary (snum, missingCheck) {
                         st: u.st,
                         param: '',
                         ts: u.ts,
-
                         status: 'F',
                         pnum: testdata.pnum,
                         snum: snum,

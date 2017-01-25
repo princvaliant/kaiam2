@@ -271,7 +271,8 @@ function _pasteSarFlow (sarId, ss) {
         subtype: ss.subtype,
         order: ss.order,
         required: ss.required,
-        ignoreSeq: ss.ignoreSeq
+        ignoreSeq: ss.ignoreSeq,
+        step: ss.step
     });
 }
 
