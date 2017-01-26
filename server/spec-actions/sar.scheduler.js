@@ -135,7 +135,7 @@ function _execSar (pnum, snum, calcVars, origPnum) {
                 });
                 // Compile doList containing spec definitions and data and determine pass or fail
                 if (containsAtleastOne === true) {
-                    compileDoList(doList.concat(doIgnoreSeqList).concat(doNoDataList), sarDef, origPnum, serials[i], ew, pnum);
+                    compileDoList(doList.concat(doIgnoreSeqList).concat(doNoDataList), sarDef, origPnum, serials[i], ew, pnum, product);
                 }
             }
         }
@@ -157,7 +157,7 @@ function calculateCustomVars (items) {
     SarCalculation.execute();
 }
 
-function compileDoList (doList, sarDef, pnum, sn, ew, binPnum) {
+function compileDoList (doList, sarDef, pnum, sn, ew, binPnum, product) {
     let racks = new Set();
     let duts = new Set();
     // List of failed tests
@@ -239,10 +239,10 @@ function compileDoList (doList, sarDef, pnum, sn, ew, binPnum) {
                 failTestsWithCodes.add(testErrored.data.ActionName + ' - ' + testErrored.data.ActionName + ' - ' + testErrored.data.TestErr[0]);
             });
             if (pnum === binPnum) {
-                updateMeasurementStatus(errors[0].sn, errors[0].pnum, errors[0].mid, 'E');
-                updateOverallStatus(errors[0].sn, errors[0].pnum, doList, 'E');
+                updateMeasurementStatus(errors[0].sn, product, errors[0].mid, 'E');
+                updateOverallStatus(errors[0].sn, product, doList, 'E');
             }
-            insertTestSummary(errors[0].sn, errors[0].pnum, errors[0].sd, racks, duts, sarDef.name, sarDef.rev,
+            insertTestSummary(errors[0].sn, pnum, errors[0].sd, racks, duts, sarDef.name, sarDef.rev,
                 failTests, failTestsWithCodes, runTests, binPnum, 'E');
             // Stop processing this serial
             return;
@@ -257,7 +257,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew, binPnum) {
         if (doItem.flow.required === 'Y' && mtsts.length > 0) {
             // There are some tests missing so mark measstatus X and status X
             if (pnum === binPnum) {
-                updateOverallStatus(sn, pnum, doList, 'X');
+                updateOverallStatus(sn, product, doList, 'X');
             }
             _.each(mtsts, (test) => {
                 failTests.add(test.split(' ').join('') + ' - M');
@@ -298,10 +298,10 @@ function compileDoList (doList, sarDef, pnum, sn, ew, binPnum) {
                 });
                 let tmf = testsMarkedFailed[0];
                 if (pnum === binPnum) {
-                    updateMeasurementStatus(tmf.sn, tmf.pnum, tmf.mid, 'F');
-                    updateOverallStatus(tmf.sn, tmf.pnum, doList, 'F');
+                    updateMeasurementStatus(tmf.sn, product, tmf.mid, 'F');
+                    updateOverallStatus(tmf.sn, product, doList, 'F');
                 }
-                insertTestSummary(tmf.sn, tmf.pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, binPnum, 'F');
+                insertTestSummary(tmf.sn, pnum, tmf.sd, racks, duts, sarDef.name, sarDef.rev, failTests, failTestsWithCodes, runTests, binPnum, 'F');
                 // Stop processing this serial
                 return;
             }
@@ -310,7 +310,7 @@ function compileDoList (doList, sarDef, pnum, sn, ew, binPnum) {
             if (doItem.flow.specs.length === 0) {
                 let itm = doItem.data[0];
                 if (pnum === binPnum) {
-                    updateMeasurementStatus(itm.sn, itm.pnum, itm.mid, 'P');
+                    updateMeasurementStatus(itm.sn, product, itm.mid, 'P');
                 }
             }
 
@@ -400,10 +400,10 @@ function compileDoList (doList, sarDef, pnum, sn, ew, binPnum) {
             let itm = doItem.data[0];
             if (pnum === binPnum) {
                 if (missingTests.size > 0 || failTests.size > 0) {
-                    updateMeasurementStatus(itm.sn, itm.pnum, itm.mid, 'F');
+                    updateMeasurementStatus(itm.sn, product, itm.mid, 'F');
                     break;
                 } else {
-                    updateMeasurementStatus(itm.sn, itm.pnum, itm.mid, 'P');
+                    updateMeasurementStatus(itm.sn, product, itm.mid, 'P');
                 }
             }
         }
@@ -418,18 +418,20 @@ function compileDoList (doList, sarDef, pnum, sn, ew, binPnum) {
             status = 'P';
         }
         if (pnum === binPnum) {
-            updateOverallStatus(itm.sn, itm.pnum, doList, status);
+            updateOverallStatus(itm.sn, product, doList, status);
         }
-        insertTestSummary(itm.sn, itm.pnum, latestDate || itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests,
+        insertTestSummary(itm.sn, pnum, latestDate || itm.sd, racks, duts, sarDef.name, sarDef.rev, failTests,
             failTestsWithCodes, runTests, binPnum, status);
     }
 }
 
-function updateMeasurementStatus (serial, pnum, mid, measstatus) {
+function updateMeasurementStatus (serial, product, mid, measstatus) {
     Testdata.update(
         {
             'device.SerialNumber': serial,
-            'device.PartNumber': pnum,
+            'device.PartNumber': {
+                $regex: '^' + product
+            },
             'mid': mid
         }, {
             $set: {
@@ -441,7 +443,7 @@ function updateMeasurementStatus (serial, pnum, mid, measstatus) {
     );
 }
 
-function updateOverallStatus (serial, pnum, doList, status) {
+function updateOverallStatus (serial, product, doList, status) {
     let mids = _.map(doList, (doItem) => {
         if (doItem.data.length > 0) {
             return doItem.data[0].mid;
@@ -451,7 +453,9 @@ function updateOverallStatus (serial, pnum, doList, status) {
     Testdata.update(
         {
             'device.SerialNumber': serial,
-            'device.PartNumber': pnum,
+            'device.PartNumber': {
+                $regex: '^' + product
+            },
             'mid': {$in: mids}
         }, {
             $set: {
@@ -468,17 +472,17 @@ function insertTestSummary (serial, pnum, date, racks, duts, revname, revnum, fa
         return ft.replace('-', ' - ');
     })).sort();
     let failCodes = [...failTestsWithCodes].sort();
+    let d = moment(date).format('YYYY-MM-DD');
+    let nd = moment(date).format('YYYYDDD');
+    let w = parseInt(moment(date).format('WW'));
+    let nw = moment(date).format('YYYYWW');
+    let m = parseInt(moment(date).format('MM'));
+    let nm = moment(date).format('YYYYMM');
 
     if (pnum === binPnum) {
         let runs = _.uniq(_.map([...runTests], function (ft) {
             return ft;
         })).sort();
-        let d = moment(date).format('YYYY-MM-DD');
-        let nd = moment(date).format('YYYYDDD');
-        let w = parseInt(moment(date).format('WW'));
-        let nw = moment(date).format('YYYYWW');
-        let m = parseInt(moment(date).format('MM'));
-        let nm = moment(date).format('YYYYMM');
         let set = {
             sn: serial,
             w: w,
