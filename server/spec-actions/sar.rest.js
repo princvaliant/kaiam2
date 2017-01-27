@@ -40,20 +40,8 @@ HTTP.methods({
         auth: SarHelper.myAuth,
         get: function () {
             let sn = this.query.sn.toUpperCase();
-            let packout = Testdata.findOne(
-                {
-                    'device.SerialNumber': sn,
-                    type: 'packout',
-                    subtype: 'packout'
-                }, {
-                    sort: {
-                        'meta.StartDateTime': -1
-                    }
-                });
-            if (packout) {
-                sn = packout.device.ManufSn || packout.device.SerialNumber;
-            }
-            return Testsummary.findOne(
+
+            let testSumm = Testsummary.findOne(
                 {
                     sn: sn,
                     tsts: {
@@ -64,6 +52,35 @@ HTTP.methods({
                         d: -1
                     }
                 });
+
+            if (testSumm) {
+                return testSumm;
+            } else {
+                let packout = Testdata.findOne(
+                    {
+                        'device.SerialNumber': sn,
+                        type: 'packout',
+                        subtype: 'packout'
+                    }, {
+                        sort: {
+                            'meta.StartDateTime': -1
+                        }
+                    });
+                if (packout) {
+                    sn = packout.device.ManufSn || packout.device.SerialNumber;
+                }
+                return Testsummary.findOne(
+                    {
+                        sn: sn,
+                        tsts: {
+                            $nin: ['packout - packout']
+                        }
+                    }, {
+                        sort: {
+                            d: -1
+                        }
+                    });
+            }
         }
     },
 
@@ -102,7 +119,7 @@ HTTP.methods({
             //     }, ...
             // ]
 
-            _.each (data, (row) => {
+            _.each(data, (row) => {
                 let domain = Domains.findOne({_id: row.sn});
                 if (domain) {
                     returnErrors.push({
@@ -110,7 +127,7 @@ HTTP.methods({
                         error: 'ALREADY_EXISTS'
                     });
                 } else if (action === 'INSERT') {
-                    let retId = ScesDomains.create('transceiver', user, row.sn, [ASSEMBLY_LOCATION_ID], {
+                    ScesDomains.create('transceiver', user, row.sn, [ASSEMBLY_LOCATION_ID], {
                         pnum: row.pnum,
                         PartNumber: row.pnum,
                         TOSA: row.TOSA,
