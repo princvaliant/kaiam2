@@ -200,10 +200,10 @@ Meteor.methods({
             }
 
             // Check if tranceiver serial number is less than 3000 (< Q3000)
-            let num = parseInt(snum.match(/\d+/)[0]);
-            if (num < 3000) {
-                return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-SERIAL-NUMBER-NOT-ALLOWED', snum);
-            }
+            // let num = parseInt(snum.match(/\d+/)[0]);
+            // if (num < 3000) {
+            //     return ScesDomains.addEvent(tray._id, 'error', 'SCES.ERROR-SERIAL-NUMBER-NOT-ALLOWED', snum);
+            // }
             // Check if tray family number matches test family number
             let s1 = testsumm.pnum.substring(0, testsumm.pnum.length - 2);
             let s2 = tray.dc.pnum.substring(0, tray.dc.pnum.length - 2);
