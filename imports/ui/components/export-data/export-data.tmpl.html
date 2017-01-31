@@ -51,6 +51,10 @@
                          ng-change="exportTosaClicked(exportTosa)">
                 Export TOSA data
             </md-checkbox>
+            <md-checkbox ng-model="exportRosa" aria-label="Export ROSA" ng-show="testType !== 'ALL - ALL'"
+                         ng-change="exportRosaClicked(exportRosa)">
+                Export ROSA data
+            </md-checkbox>
             <md-button class="md-primary md-raised" aria-label="button" ng-click="exportClicked()" style="width:300px;">Export</md-button>
             <md-progress-circular md-mode="indeterminate" ng-show="showProgress"></md-progress-circular>
         </md-card-content>

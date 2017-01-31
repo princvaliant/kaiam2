@@ -16,6 +16,7 @@ angular.module('kaiamCharts')
             let service = {
                 exportData: function (data, exportDetails, pnum, device) {
                     let ret = '';
+                    let isRosa = false;
                     _.each(data, function (item) {
                         let row = '';
                         let head = ',';
@@ -92,6 +93,15 @@ angular.module('kaiamCharts')
                                     }
                                 }
                             }
+                            if (item.rosa) {
+                                isRosa = true;
+                                let v2 = 'I_mA_ch' + item.c;
+                                row += (item.rosa.data[v2] || '') + ' ,';
+                                v2 = 'Idark_nA_ch' + item.c;
+                                row += (item.rosa.data[v2] || '') + ' ,';
+                                row += (item.rosa.data.Distance || '') + ' ,';
+                            }
+                            head += 'rosa I_mA,rosa Idark_nA,rosa Distance';
                         }
                         if (ret === '') {
                             ret += head + '\n';
@@ -115,6 +125,9 @@ angular.module('kaiamCharts')
                             ret += row + '\n';
                         }
                     });
+                    if (isRosa === false) {
+                        ret.replace('rosa I_mA,rosa Idark_nA,rosa Distance', '');
+                    }
                     return ret;
                 },
 

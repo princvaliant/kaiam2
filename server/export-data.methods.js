@@ -6,7 +6,7 @@
  * @type {meteor.methods}
  */
 Meteor.methods({
-    exportData: function (serial, testType, partNumber, dateFrom, dateTo, errorStatus, ignorePnum, ignoreDate, onlyLast, includeTosa) {
+    exportData: function (serial, testType, partNumber, dateFrom, dateTo, errorStatus, ignorePnum, ignoreDate, onlyLast, includeTosa, includeRosa) {
         // Construct field collection to be returned
         ScesDomains.getUser(this.userId);
         let query = {$and: []};
@@ -137,6 +137,30 @@ Meteor.methods({
             });
         }
 
+        if (includeRosa) {
+            aggrArray.push({
+                $lookup: {
+                    from: 'domains',
+                    localField: 'device.SerialNumber',
+                    foreignField: '_id',
+                    as: 'domsr'
+                }
+            });
+            aggrArray.push({
+                $unwind: {
+                    path: '$domsr'
+                }
+            });
+            aggrArray.push({
+                $lookup: {
+                    from: 'testdata',
+                    localField: 'domsr.dc.ROSA',
+                    foreignField: 'device.SerialNumber',
+                    as: 'rosa'
+                }
+            });
+        }
+
         aggrArray.push({
             $project: {
                 data: strTest + 'data',
@@ -166,7 +190,8 @@ Meteor.methods({
                             $eq: ['$$tsa.meta.Channel', strTest + 'meta.Channel']
                         }
                     }
-                }
+                },
+                rosa: '$rosa'
             }
         });
 
@@ -174,6 +199,14 @@ Meteor.methods({
             aggrArray.push({
                 $unwind: {
                     path: '$tosa',
+                    preserveNullAndEmptyArrays: true
+                }
+            });
+        }
+        if (includeRosa) {
+            aggrArray.push({
+                $unwind: {
+                    path: '$rosa',
                     preserveNullAndEmptyArrays: true
                 }
             });
