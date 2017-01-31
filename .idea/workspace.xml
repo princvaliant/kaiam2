@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/settings.js" afterPath="$PROJECT_DIR$/lib/settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/export-data.methods.js" afterPath="$PROJECT_DIR$/server/export-data.methods.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -866,14 +861,7 @@
       <workItem from="1485494779383" duration="882000" />
       <workItem from="1485568644473" duration="14000" />
       <workItem from="1485568675286" duration="244000" />
-      <workItem from="1485831259409" duration="4106000" />
-    </task>
-    <task id="LOCAL-00092" summary="- Fixing loss charts labels&#10;- Fixing export data per part number in loss charts&#10;- Improving customer portal with additional functionality&#10;&#10;">
-      <created>1478908088519</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1478908088520</updated>
+      <workItem from="1485831259409" duration="4129000" />
     </task>
     <task id="LOCAL-00093" summary="- Fix spec var calculation&#10;&#10;">
       <created>1478930314372</created>
@@ -1211,11 +1199,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485569490701</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="Fixing compiler for test data. Some transceivers didn't update status&#10;Adding transceivers">
+      <created>1485835423193</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1485835423194</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1171634000" />
+    <option name="totallyTimeSpent" value="1171657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
