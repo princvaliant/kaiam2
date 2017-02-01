@@ -94,9 +94,11 @@ Meteor.methods({
             }
             if (row.tests.type === 'rxtests' && row.tests.subtype === 'sensitivity') {
                 let obj = {
-                    Sensitivity_dBm: row.tests.data.CWDM4_sens || row.tests.data.ExtrapolatedPower_dBm
+                    Sensitivity_dBm: row.tests.data.CWDM4_sens || row.tests.data.ExtrapolatedPower_dBm,
+                    Sensitivity_alt1_dBm: row.tests.data.CWDM4_sens_alt1 || row.tests.data.ExtrapolatedPower_dBm
                 };
                 obj.Sensitivity_dBm = obj.Sensitivity_dBm.toFixed(2);
+                obj.Sensitivity_alt1_dBm = obj.Sensitivity_alt1_dBm.toFixed(2);
                 map[key] = _.extend(map.get(key), obj);
             }
         });

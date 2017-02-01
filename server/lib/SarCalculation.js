@@ -237,6 +237,8 @@ SarCalculation = {
                         let regression = Meteor.linearRegression(xArr, yArr);
                         set.$set['data.R2_sens'] = regression.rSquared;
                         set.$set['data.CWDM4_sens'] = regression.evaluateX([-0.63357])[0];
+                        set.$set['data.CWDM4_sens_alt1'] = regression.evaluateX([-0.67004])[0];
+                        set.$set['data.CLR4'] = regression.evaluateX([-1.07918])[0];
                         hasUpdate = true;
                     }
 
