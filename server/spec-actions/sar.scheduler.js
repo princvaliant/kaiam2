@@ -13,7 +13,7 @@ Meteor.startup(function () {
         job: function () {
             let pnums = _.keys(Settings.partNumbers);
             _.each(pnums, (pnum) => {
-                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].primary === true) {
+                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].calc === true) {
                     execSar(pnum, null);
                 }
             });
@@ -31,7 +31,7 @@ Meteor.methods({
         } else {
             let pnums = _.keys(Settings.partNumbers);
             _.each(pnums, (pnum) => {
-                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].primary === true) {
+                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].calc === true) {
                     execSar(pnum, code);
                 }
             });
