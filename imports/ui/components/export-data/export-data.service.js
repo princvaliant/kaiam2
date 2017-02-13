@@ -34,7 +34,7 @@ angular.module('kaiamCharts')
                         _.each(data, processItem);
                     }
                     if (isRosa === false) {
-                        ret = ret.replace('rosa I_mA,rosa Idark_nA,rosa Distance', '');
+                        ret = ret.replace('rosa Serial,rosa I_mA,rosa Idark_nA,rosa Distance', '');
                     }
                     return ret;
                 },
@@ -161,21 +161,23 @@ angular.module('kaiamCharts')
                     }
                     if (item.tosa) {
                         let tosa = Settings.getTestConfigVariablesForPartNumber('', 'tosa', 'dc');
+                        head += 'tosa Serial,';
                         for (let t1 in tosa) {
                             head += 'tosa ' + tosa[t1].v + ',';
                         }
                         let tosaData = item.tosa[item.tosa.length - 1];
                         if (tosaData) {
+                            row +=  tosaData.device.SerialNumber + ',';
                             for (let t1 in tosa) {
                                 let v2 = tosa[t1].v;
                                 if (tosaData.data[v2] instanceof Array) {
                                     if (tosaData.data[v2].length > 0) {
                                         row += tosaData.data[v2].toString().replace(/,/g, '|').replace(/[\n\r,]/g, '') + ',';
                                     } else {
-                                        row += ' ,';
+                                        row += ',';
                                     }
                                 } else {
-                                    row += (tosaData.data[v2] || ' ') + ' ,';
+                                    row += (tosaData.data[v2] || ' ') + ',';
                                 }
                             }
                         }
@@ -183,13 +185,14 @@ angular.module('kaiamCharts')
                     if (item.rosa && item.rosa.length > 0) {
                         isRosa = true;
                         let r = item.rosa[0];
+                        row += r.device.SerialNumber + ',';
                         let v2 = 'I_mA_ch' + item.c;
-                        row += (r.data[v2] || '') + ' ,';
+                        row += (r.data[v2] || '') + ',';
                         v2 = 'Idark_nA_ch' + item.c;
-                        row += (r.data[v2] || '') + ' ,';
-                        row += (r.data.Distance || '') + ' ,';
+                        row += (r.data[v2] || '') + ',';
+                        row += (r.data.Distance || '') + ',';
                     }
-                    head += 'rosa I_mA,rosa Idark_nA,rosa Distance';
+                    head += 'rosa Serial,rosa I_mA,rosa Idark_nA,rosa Distance';
                 }
                 if (ret === '') {
                     ret += head + '\n';
