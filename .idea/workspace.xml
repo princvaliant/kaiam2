@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/settings.js" afterPath="$PROJECT_DIR$/lib/settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/release" afterPath="$PROJECT_DIR$/.meteor/release" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/export-data.methods.js" afterPath="$PROJECT_DIR$/server/export-data.methods.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -24,48 +28,7 @@
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="domain-transceiver.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/domain-transceiver.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="transceiver.methods.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-747">
-              <caret line="376" column="22" lean-forward="false" selection-start-line="376" selection-start-column="22" selection-end-line="376" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sar.scheduler.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/settings.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="53" column="23" lean-forward="true" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,18 +40,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getTestdataForCustomer</find>
-      <find>Sensitivity_dBm</find>
-      <find>Testdata.aggregate</find>
-      <find>retrieve</find>
-      <find>...</find>
-      <find>er_in</find>
-      <find>MM_</find>
-      <find>CWDM4</find>
-      <find>export</find>
-      <find>snum</find>
-      <find>getPartsChangedBetweenDates</find>
-      <find>specs</find>
       <find>insertTestSummary</find>
       <find>summary</find>
       <find>bins</find>
@@ -99,7 +50,6 @@
       <find>updateOv</find>
       <find>updateMe</find>
       <find>updateOve</find>
-      <find>tosa</find>
       <find>Cwdm4ExtraploatedOma</find>
       <find>Clr4ExtraploatedOma</find>
       <find>CWDM4_sens</find>
@@ -107,6 +57,19 @@
       <find>CWDM4_sens_alt1</find>
       <find>bin</find>
       <find>&quot;</find>
+      <find>Post assembly</find>
+      <find>Postassembly</find>
+      <find>testData</find>
+      <find>HTTP.methods</find>
+      <find>calibration</find>
+      <find>timeTrendShortNames</find>
+      <find>strTest</find>
+      <find>rosa Distance</find>
+      <find>tosa</find>
+      <find>Raw</find>
+      <find>extend</find>
+      <find>srtest</find>
+      <find>last</find>
     </findStrings>
     <replaceStrings>
       <replace>company</replace>
@@ -120,8 +83,8 @@
       <dir>$PROJECT_DIR$/model</dir>
       <dir>$PROJECT_DIR$/server/test-speed</dir>
       <dir>$PROJECT_DIR$/server/sces</dir>
-      <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/imports/ui/components/sces</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -130,7 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="localhost:3000/packages/ddp-client.js?hash=bc32a166cd269e06a394f9418e0024d805bab379" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/test-insertions.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions-init.service.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" />
@@ -148,7 +110,6 @@
         <option value="$PROJECT_DIR$/server/charts/loss.method.js" />
         <option value="$PROJECT_DIR$/server/dashboard/dashboard.publish.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js" />
-        <option value="packages/underscore.js" />
         <option value="packages/cfs_http-methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/location/new-part.controller.js" />
         <option value="$PROJECT_DIR$/server/sces/location.methods.js" />
@@ -161,8 +122,6 @@
         <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/_spec-actions.tmpl.scss" />
         <option value="$PROJECT_DIR$/model/sarspecbins.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
-        <option value="localhost:3000/packages/meteor.js?hash=e3f53db3be730057fed1a5f709ecd5fc7cae1229" />
-        <option value="packages/meteor.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" />
         <option value="$PROJECT_DIR$/imports/ui/components/customer/transceiver.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/customer/transceiver.controller.js" />
@@ -171,16 +130,20 @@
         <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" />
         <option value="$PROJECT_DIR$/lib/domain-transceiver.js" />
         <option value="$PROJECT_DIR$/server/spec-actions/sar.methods.js" />
-        <option value="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
         <option value="$PROJECT_DIR$/server/sces/transceiver.methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.controller.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html" />
-        <option value="$PROJECT_DIR$/server/export-data.methods.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
         <option value="$PROJECT_DIR$/server/customer/transceiver.methods.js" />
         <option value="$PROJECT_DIR$/server/lib/SarCalculation.js" />
         <option value="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
         <option value="$PROJECT_DIR$/lib/settings.js" />
+        <option value="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
+        <option value="packages/underscore.js" />
+        <option value="packages/meteor.js" />
+        <option value="localhost:3000/packages/meteor.js?hash=e3f53db3be730057fed1a5f709ecd5fc7cae1229" />
+        <option value="$PROJECT_DIR$/server/charts/yields.scheduler.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
+        <option value="$PROJECT_DIR$/server/export-data.methods.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html" />
       </list>
     </option>
   </component>
@@ -207,10 +170,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3116" />
-    <option name="y" value="-688" />
-    <option name="width" value="1501" />
-    <option name="height" value="999" />
+    <option name="x" value="2823" />
+    <option name="y" value="-826" />
+    <option name="width" value="1595" />
+    <option name="height" value="1270" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -244,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -302,24 +266,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="settings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="sces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -338,7 +284,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="charts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -418,7 +364,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="spec-actions" />
+              <option name="myItemId" value="export-data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -433,12 +379,25 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".meteor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -448,7 +407,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="enabled" />
     <property name="js.meteor.project" value="true" />
     <property name="js.meteor.library.was.enabled" value="true" />
-    <property name="settings.editor.selected.configurable" value="settings.meteor" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
@@ -622,11 +581,16 @@
     </list>
   </component>
   <component name="RuntimeDashboard">
-    <groupers>
-      <grouper name="TypeGroupingRule" enabled="true" />
-      <grouper name="StatusGroupingRule" enabled="true" />
-      <grouper name="FolderGroupingRule" enabled="true" />
-    </groupers>
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -979,14 +943,17 @@
       <workItem from="1485831259409" duration="4742000" />
       <workItem from="1485917256166" duration="3778000" />
       <workItem from="1485978742586" duration="560000" />
-      <workItem from="1486072366868" duration="2616000" />
-    </task>
-    <task id="LOCAL-00095" summary="- Adding re-numbering for action column&#10;- Fixing favicon to display Kaiam logo&#10;&#10;">
-      <created>1479164437776</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1479164437776</updated>
+      <workItem from="1486072366868" duration="2665000" />
+      <workItem from="1486184241547" duration="836000" />
+      <workItem from="1486354153858" duration="236000" />
+      <workItem from="1486354411725" duration="341000" />
+      <workItem from="1486446519322" duration="291000" />
+      <workItem from="1486497908947" duration="2108000" />
+      <workItem from="1486723757513" duration="546000" />
+      <workItem from="1486866103997" duration="105000" />
+      <workItem from="1486866227564" duration="251000" />
+      <workItem from="1486867224777" duration="1324000" />
+      <workItem from="1486925290319" duration="14330000" />
     </task>
     <task id="LOCAL-00096" summary="- Fixing getTransceiverStatus and getTestData to look alsi in manufSn.&#10;&#10;">
       <created>1479174215958</created>
@@ -1324,11 +1291,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485979157004</updated>
     </task>
-    <option name="localTasksCounter" value="144" />
+    <task id="LOCAL-00144" summary="- Add longdistance variables to export&#10;- Fix problem with XQX4095">
+      <created>1486097580133</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1486097580134</updated>
+    </task>
+    <option name="localTasksCounter" value="145" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1179224000" />
+    <option name="totallyTimeSpent" value="1199641000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1340,19 +1314,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3116" y="-688" width="1501" height="999" extended-state="0" />
+    <frame x="2823" y="-826" width="1595" height="1270" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28986487" sideWeight="0.7962963" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2166455" sideWeight="0.70365995" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847342" sideWeight="0.4923717" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2855568" sideWeight="0.5202703" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28098473" sideWeight="0.54129606" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32545045" sideWeight="0.694997" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28986487" sideWeight="0.2037037" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45925298" sideWeight="0.3970775" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32505643" sideWeight="0.69121623" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2166455" sideWeight="0.29634002" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23697068" sideWeight="0.4896074" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23589166" sideWeight="0.48445946" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2855568" sideWeight="0.47972974" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28098473" sideWeight="0.45870394" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1360,7 +1335,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Runtime Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48554912" sideWeight="0.40788624" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1401,7 +1375,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="- Fix link test with empty serial numbers&#10;- Add test insertion report to be grouped by part number&#10;- Fix export to not display undefined columns&#10;&#10;" />
     <MESSAGE value="- Fix calculations for spec&#10;&#10;" />
     <MESSAGE value="- Fix calculations for spec related t ignoreSeq&#10;- Fix export only last test data&#10;&#10;" />
     <MESSAGE value="- Fix calculations for spec with more logic improvements&#10;" />
@@ -1426,46 +1399,19 @@
     <MESSAGE value="Fixing compiler for test data. Some transceivers didn't update status&#10;Adding transceivers" />
     <MESSAGE value="Added ROSA export" />
     <MESSAGE value="- Add XQX4300 and XQX4400&#10;- Add sensitivity calculation for CWDM and CLR4&#10;- Import DC files from Scotland" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Add XQX4300 and XQX4400&#10;- Add sensitivity calculation for CWDM and CLR4&#10;- Import DC files from Scotland" />
+    <MESSAGE value="- Add longdistance variables to export&#10;- Fix problem with XQX4095" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add longdistance variables to export&#10;- Fix problem with XQX4095" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="2115" />
+      <option name="time" value="2183" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/charts/spcs.method.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/spcs.publish.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/admin/service.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/eprom/eprom.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/sces/transceiver.scheduler.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1484,13 +1430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/yields.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1380">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1578,11 +1517,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="http://localhost:3000/packages/meteor.js?hash=e3f53db3be730057fed1a5f709ecd5fc7cae1229">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/sces/domain.core.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1660,54 +1594,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/rosa-import.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="47" lean-forward="true" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/accounts.methods.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="45" column="71" lean-forward="true" selection-start-line="45" selection-start-column="71" selection-end-line="45" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-41">
-          <caret line="182" column="45" lean-forward="true" selection-start-line="182" selection-start-column="45" selection-end-line="182" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-203">
-          <caret line="53" column="51" lean-forward="true" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="119" column="65" lean-forward="true" selection-start-line="119" selection-start-column="65" selection-end-line="119" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1760,41 +1650,127 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/lib/SarCalculation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="239" column="39" lean-forward="false" selection-start-line="239" selection-start-column="39" selection-end-line="239" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/domain-transceiver.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
+    <entry file="file://$PROJECT_DIR$/server/rosa-import.scheduler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-747">
-          <caret line="376" column="22" lean-forward="false" selection-start-line="376" selection-start-column="22" selection-end-line="376" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="-1">
+          <caret line="28" column="64" lean-forward="true" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/settings.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="53" column="23" lean-forward="true" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
-          <folding />
+        <state relative-caret-position="505">
+          <caret line="34" column="22" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state relative-caret-position="157">
+          <caret line="51" column="7" lean-forward="false" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/lib/SarCalculation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3720">
+          <caret line="248" column="24" lean-forward="false" selection-start-line="248" selection-start-column="24" selection-end-line="248" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/testlog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/test-insertions.method.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-368">
+          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="135" column="21" lean-forward="false" selection-start-line="135" selection-start-column="21" selection-end-line="135" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/packages">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://localhost:3000/packages/meteor.js?hash=e3f53db3be730057fed1a5f709ecd5fc7cae1229">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="212" column="39" lean-forward="true" selection-start-line="212" selection-start-column="39" selection-end-line="212" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/charts/yields.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="92" column="6" lean-forward="false" selection-start-line="78" selection-start-column="7" selection-end-line="92" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="102" column="26" lean-forward="true" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="44" column="26" lean-forward="true" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="53" column="51" lean-forward="true" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
           <folding />
         </state>
       </provider>

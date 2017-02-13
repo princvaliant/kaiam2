@@ -1,6 +1,7 @@
 'use strict';
 
 
+let localCollection;
 /**
  * Account Methods
  * @type {meteor.methods}
@@ -8,7 +9,7 @@
 Meteor.methods({
     exportData: function (serial, testType, partNumber, dateFrom, dateTo, errorStatus, ignorePnum, ignoreDate, onlyLast, includeTosa, includeRosa) {
         // Construct field collection to be returned
-        ScesDomains.getUser(this.userId);
+        let user = ScesDomains.getUser(this.userId);
         let query = {$and: []};
 
         if (_.isArray(serial)) {
@@ -37,6 +38,9 @@ Meteor.methods({
                 }
             });
         }
+
+        let fields  = [];
+
         if (_.isArray(testType) && testType[0] !== 'ALL - ALL') {
             _.each(testType, (o) => {
                 if (o) {
@@ -47,7 +51,11 @@ Meteor.methods({
                         st = st.split('|')[0];
                         query.$and.push({type: tt[0], subtype: st});
                     } else {
-                        query.$and.push({type: tt[0], subtype: tt[1]});
+                        query.$and.push({type: tt[0], subtype: st});
+                    }
+                    let parms = Settings.getTestConfigVariablesForPartNumber(partNumber, tt[0], st);
+                    if (parms.length > 0) {
+                        fields  = _.union(fields, parms);
                     }
                 }
             });
@@ -56,7 +64,11 @@ Meteor.methods({
             query.$and.push();
             _.each(_.keys(Settings.timeTrendShortNames), (key) => {
                 _.each(_.keys(Settings.timeTrendShortNames[key]).sort(), (key2) => {
-                    orcmd.$or.push({type: key, subtype: key2});
+                    let parms = Settings.getTestConfigVariablesForPartNumber(partNumber, key, key2);
+                    if (parms.length > 0) {
+                        orcmd.$or.push({type: key, subtype: key2});
+                        fields  = _.union(fields, parms);
+                    }
                 });
             });
             query.$and.push(orcmd);
@@ -76,7 +88,6 @@ Meteor.methods({
             });
         }
 
-        let strTest = '$';
         let aggrArray = [{
             $match: query
         }];
@@ -84,7 +95,7 @@ Meteor.methods({
         if (onlyLast) {
             aggrArray.push({
                 $sort: {
-                    'timestamp': -1
+                    'timestamp': 1
                 }
             });
             aggrArray.push({
@@ -94,8 +105,8 @@ Meteor.methods({
                         t: '$type',
                         st: '$subtype'
                     },
-                    mid: {
-                        $first: '$mid'
+                    lastmid: {
+                        $last: '$mid'
                     }
                 }
             });
@@ -108,9 +119,19 @@ Meteor.methods({
                 }
             });
             aggrArray.push({
-                $unwind: '$tests'
+                // Create final document to be exported to yields collection
+                $project: {
+                    lasttest: {
+                        $filter: {
+                            input: '$tests',
+                            as: 'tst',
+                            cond: {
+                                $eq: ['$tst.mid', '$lastmid']
+                            }
+                        }
+                    }
+                }
             });
-            strTest = '$tests.';
         }
 
         if (includeTosa) {
@@ -161,56 +182,55 @@ Meteor.methods({
             });
         }
 
-        aggrArray.push({
-            $project: {
-                data: strTest + 'data',
-                date: strTest + 'meta.StartDateTime',
-                mid: strTest + 'mid',
-                snum: strTest + 'device.SerialNumber',
-                test: strTest + 'type',
-                subtest: strTest + 'subtype',
-                all: strTest + 'status',
-                meas: strTest + 'measstatus',
-                row: strTest + 'result',
-                manuf: {$concat: ['', strTest + 'device.ContractManufacturer']},
-                pnum: strTest + 'device.PartNumber',
-                t: {$ifNull: [strTest + 'meta.SetTemperature_C', '']},
-                v: {$ifNull: [strTest + 'meta.SetVoltage', '']},
-                c: {$ifNull: [strTest + 'meta.Channel', '']},
-                d: strTest + 'meta.DUT',
-                r: strTest + 'meta.Rack',
-                swver: {$concat: ['', strTest + 'meta.SwVer']},
-                fails: strTest + 'failCodes',
-                failsrt: strTest + 'TestFail',
-                tosa: {
-                    $filter: {
-                        input: '$tosa',
-                        as: 'tsa',
-                        cond: {
-                            $eq: ['$$tsa.meta.Channel', strTest + 'meta.Channel']
-                        }
+        let project = {
+            date: '$meta.StartDateTime',
+            mid: '$mid',
+            snum: '$device.SerialNumber',
+            test: '$type',
+            subtest: '$subtype',
+            all: '$status',
+            meas: '$measstatus',
+            row: '$result',
+            manuf: {$concat: ['', '$device.ContractManufacturer']},
+            pnum: '$device.PartNumber',
+            t: {$ifNull: ['$meta.SetTemperature_C', '']},
+            v: {$ifNull: ['$meta.SetVoltage', '']},
+            c: {$ifNull: ['$meta.Channel', '']},
+            d: '$meta.DUT',
+            r: '$meta.Rack',
+            swver: {$concat: ['', '$meta.SwVer']},
+            fails: '$failCodes',
+            failsrt: '$TestFail',
+            tosa: {
+                $filter: {
+                    input: '$tosa',
+                    as: 'tsa',
+                    cond: {
+                        $and: [
+                            {$eq: ['$$tsa.meta.Channel', '$meta.Channel']},
+                            {$eq: ['$$tsa.type', 'tosa']}
+                        ]
                     }
-                },
-                rosa: '$rosa'
-            }
+                }
+            },
+            rosa:  {
+                $filter: {
+                    input: '$rosa',
+                    as: 'rsa',
+                    cond: {
+                        $eq: ['$$rsa.type', 'rosa']
+                    }
+                }
+            },
+            lasttest: '$lasttest'
+        };
+        _.each(fields, (field) => {
+            project['data.' + field.v] = '$data.' + field.v;
         });
 
-        if (includeTosa) {
-            aggrArray.push({
-                $unwind: {
-                    path: '$tosa',
-                    preserveNullAndEmptyArrays: true
-                }
-            });
-        }
-        if (includeRosa) {
-            aggrArray.push({
-                $unwind: {
-                    path: '$rosa',
-                    preserveNullAndEmptyArrays: true
-                }
-            });
-        }
+        aggrArray.push({
+            $project: project
+        });
 
         aggrArray.push({
             $sort: {
@@ -221,12 +241,23 @@ Meteor.methods({
         });
 
         aggrArray.push({
-            $limit: 12000
+            $limit: 50000
         });
 
-        return Testdata.aggregate(aggrArray, {
+        let coll = user.username.replace(' ', '_');
+
+        aggrArray.push({
+            $out: 'export' + coll
+        });
+
+        Testdata.aggregate(aggrArray, {
             allowDiskUse: true
         });
+
+        if (!localCollection) {
+            localCollection = new Mongo.Collection('export' + coll);
+        }
+        return localCollection.find().fetch();
     }
 });
 

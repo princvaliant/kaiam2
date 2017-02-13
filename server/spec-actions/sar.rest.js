@@ -145,5 +145,18 @@ HTTP.methods({
             });
             return returnErrors.length > 0 ? returnErrors : 'OK';
         }
+    },
+
+    '/postTestdata': {
+        auth: SarHelper.myAuth,
+        post: function (postData) {
+        }
+    },
+
+    '/postTestlog': {
+        auth: SarHelper.myAuth,
+        post: function (postData) {
+        }
     }
+
 });
