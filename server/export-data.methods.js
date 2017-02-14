@@ -1,7 +1,7 @@
 'use strict';
 
 
-let localCollection;
+let localCollection = {};
 /**
  * Account Methods
  * @type {meteor.methods}
@@ -254,10 +254,10 @@ Meteor.methods({
             allowDiskUse: true
         });
 
-        if (!localCollection) {
-            localCollection = new Mongo.Collection('export' + coll);
+        if (!localCollection[coll]) {
+            localCollection[coll] = new Mongo.Collection('export' + coll);
         }
-        return localCollection.find().fetch();
+        return localCollection[coll].find().fetch();
     }
 });
 

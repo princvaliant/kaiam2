@@ -150,12 +150,46 @@ HTTP.methods({
     '/postTestdata': {
         auth: SarHelper.myAuth,
         post: function (postData) {
+            function parse (obj) {
+                obj.timestamp = moment(obj.timestamp).toDate();
+                obj.meta.StartDateTime = moment( obj.meta.StartDateTime).toDate();
+                obj.meta.EndDateTime = moment( obj.meta.EndtDateTime).toDate();
+            }
+
+            let data = JSON.parse(postData);
+            if (!Array.isArray(data)) {
+                data = [data];
+            }
+            _.each(data, (obj) => {
+                parse(obj);
+            });
+            _.each(data, (obj) => {
+                Testdata.upsert({_id: obj._id}, obj);
+            });
+            return 'OK';
         }
     },
 
     '/postTestlog': {
         auth: SarHelper.myAuth,
         post: function (postData) {
+            function parse (obj) {
+                obj.timestamp = moment(obj.timestamp).toDate();
+                obj.StartDateTime = moment( obj.StartDateTime).toDate();
+                obj.EndDateTime = moment( obj.EndtDateTime).toDate();
+            }
+
+            let data = JSON.parse(postData);
+            if (!Array.isArray(data)) {
+                data = [data];
+            }
+            _.each(data, (obj) => {
+                parse(obj);
+            });
+            _.each(data, (obj) => {
+                Testlog.upsert({_id: obj._id}, obj);
+            });
+            return 'OK';
         }
     }
 
