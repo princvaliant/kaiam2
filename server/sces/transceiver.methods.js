@@ -43,6 +43,30 @@ let sequenceConfig = {
         seq: 'LS2',
         reset: 'week' // Sunday
     },
+    LS1LIVINGSTON: {
+        seq: 'LS1LIVINGSTON'
+    },
+    LS2LIVINGSTON: {
+        seq: 'LS2LIVINGSTON'
+    },
+    LS1BROADEX: {
+        seq: 'LS1BROADEX'
+    },
+    LS2BROADEX: {
+        seq: 'LS2BROADEX'
+    },
+    LS1NEWARK: {
+        seq: 'LS1NEWARK'
+    },
+    LS2NEWARK: {
+        seq: 'LS2NEWARK'
+    },
+    LS1ROCKET: {
+        seq: 'LS1ROCKET'
+    },
+    LS2ROCKET: {
+        seq: 'LS2ROCKET'
+    },
     DEFAULT: {
         seq: 'SEQ',
         reset: 'week'  //Sunday
@@ -57,7 +81,9 @@ HTTP.methods({
             if (!pnum) {
                 return 'ERROR - parameter missing: pnum';
             }
-            let config = sequenceConfig[pnum] || sequenceConfig.DEFAULT;
+            let config = sequenceConfig[pnum] || {
+                seq: pnum
+            };
             let startDayOfWeek = 'NORESET';
             if (config.reset) {
                 startDayOfWeek = moment().startOf(config.reset).format('YYYY-MM-DD');
