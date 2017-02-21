@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/sces/transceiver.methods.js" afterPath="$PROJECT_DIR$/server/sces/transceiver.methods.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -27,8 +26,8 @@
       <file leaf-file-name="transceiver.methods.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="99" column="13" lean-forward="true" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
+            <state relative-caret-position="189">
+              <caret line="82" column="13" lean-forward="true" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -823,14 +822,7 @@
       <workItem from="1487310110683" duration="110000" />
       <workItem from="1487452473954" duration="1204000" />
       <workItem from="1487545713178" duration="582000" />
-      <workItem from="1487645188480" duration="678000" />
-    </task>
-    <task id="LOCAL-00100" summary="- Adding tosa data imported from MySql manufacturing DB to export page&#10;&#10;">
-      <created>1480374085636</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1480374085636</updated>
+      <workItem from="1487645188480" duration="1287000" />
     </task>
     <task id="LOCAL-00101" summary="- Adding tosa data imported from MySql manufacturing DB to export page&#10;&#10;">
       <created>1480381290973</created>
@@ -1168,11 +1160,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487453635140</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="- Add 8 new vendor sequences&#10;- Also create flexible sequencing">
+      <created>1487645871812</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1487645871813</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1206187000" />
+    <option name="totallyTimeSpent" value="1206796000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1634,8 +1633,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/sces/transceiver.methods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="99" column="13" lean-forward="true" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
+        <state relative-caret-position="189">
+          <caret line="82" column="13" lean-forward="true" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
           <folding />
         </state>
       </provider>
