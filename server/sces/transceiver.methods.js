@@ -77,7 +77,7 @@ HTTP.methods({
     '/getVendorSequence': {
         auth: SarHelper.myAuth,
         get: function () {
-            let pnum = this.query.pnum;
+            let pnum = this.query.pnum.replace(/"/g, '');
             if (!pnum) {
                 return 'ERROR - parameter missing: pnum';
             }
