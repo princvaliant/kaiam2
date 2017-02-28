@@ -72,8 +72,9 @@ angular.module('kaiamCharts')
                     });
                     if (series === undefined) {
                         let color = 'red';
-                        if (Settings.partNumbers[doc._id.pnum] && Settings.partNumbers[doc._id.pnum].color) {
-                            color = Settings.partNumbers[doc._id.pnum].color;
+                        let pnumm = PartNumbers.findOne({name: doc._id.pnum});
+                        if (pnumm && pnumm.color) {
+                            color = pnumm.color;
                         }
 
                         series = {

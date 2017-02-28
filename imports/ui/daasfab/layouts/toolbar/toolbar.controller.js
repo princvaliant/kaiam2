@@ -121,6 +121,10 @@ function DefaultToolbarController ($scope, $state, $injector, $rootScope, $mdMed
         $state.go('triangular.settings-rework-codes');
     };
 
+    this.openPartNumbers = function () {
+        $state.go('triangular.settings-part-numbers');
+    };
+
     this.openUploadData = function () {
         $state.go('triangular.settings-upload-data');
     };

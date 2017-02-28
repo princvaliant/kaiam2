@@ -11,10 +11,10 @@ Meteor.startup(function () {
             return parser.text('every 1 hour');
         },
         job: function () {
-            let pnums = _.keys(Settings.partNumbers);
+            let pnums = PartNumbers.find().fetch();
             _.each(pnums, (pnum) => {
-                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].calc === true) {
-                    execSar(pnum, null);
+                if (pnum.device === '100GB' && pnum.calc === true) {
+                    execSar(pnum.name, null);
                 }
             });
         }
@@ -29,10 +29,10 @@ Meteor.methods({
         if (pnum2) {
             execSar(pnum2, code);  // testing with snum
         } else {
-            let pnums = _.keys(Settings.partNumbers);
+            let pnums = PartNumbers.find().fetch();
             _.each(pnums, (pnum) => {
-                if (Settings.partNumbers[pnum].device === '100GB' && Settings.partNumbers[pnum].calc === true) {
-                    execSar(pnum, code);
+                if (pnum.device === '100GB' && pnum.calc === true) {
+                    execSar(pnum.name, code);
                 }
             });
         }
@@ -64,7 +64,7 @@ function _execSar (pnum, snum, calcVars, origPnum) {
     // Get latest revision of flow definition
     let flowDef = Sar.findOne({pnum: pnum, class: 'FLOW', active: 'Y'}, {sort: {rev: -1}});
     // Determin product
-    let product = Settings.partNumbers[origPnum].product;
+    let product = PartNumbers.findOne({name: origPnum}).product;
 
     if (sarDef && flowDef) {
         // Get valid spec ranges for sar named 'Spec'
@@ -792,7 +792,8 @@ HTTP.methods({
         get: function () {
             let sn = this.query.sn;
             let pnum = this.query.pnum;
-            execSar(pnum, Settings.partNumbers[pnum].product, snum, true);
+            let prod = PartNumbers.findOne({name: origPnum}).product;
+            execSar(pnum, prod, snum, true);
             return Testsummary.findOne(
                 {
                     sn: sn

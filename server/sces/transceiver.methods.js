@@ -128,6 +128,11 @@ Meteor.publish('reworkCodes', function (options, search, filter) {
     return ReworkCode.find();
 });
 
+Meteor.publish('partNumbers', function (options, search, filter) {
+    ScesDomains.getUser(this.userId);
+    return PartNumbers.find();
+});
+
 
 Meteor.methods({
 
@@ -518,7 +523,7 @@ function _getTransceiverSummary (snum, missingCheck) {
     let ret = [];
     let pnum;
     if (testdata) {
-        pnum = Settings.partNumbers[testdata.pnum];
+        pnum = PartNumbers.findOne({name: testdata.pnum});
     }
 
     if (!testdata || !testdata.list) {

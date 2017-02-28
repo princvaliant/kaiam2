@@ -23,11 +23,12 @@ angular.module('kaiamCharts').controller('TimetrendChartsController', [
         // Select first tab
         $scope.selectedIndex = 0;
         // Interval for the data
+        let pnumms = _.map(PartNumbers.find().fetch(), (p) => {return p.name;});
         $scope.intervals = $scope.intervals = _.keys(Settings.lossintervals);
         $scope.interval = $cookies.get('timeTrendInterval') || $scope.intervals[0];
         $scope.partNumber = $cookies.get('timeTrendPartNumber') || '-all-';
         $scope.manufacturer = '-all-';
-        $scope.partNumbers = ['-all-'].concat(_.keys(Settings.partNumbers));
+        $scope.partNumbers = ['-all-'].concat(pnumms);
         $scope.manufacturers = _.union(['-all-'], Settings.manufacturers);
 
         // Event handler when interval changed

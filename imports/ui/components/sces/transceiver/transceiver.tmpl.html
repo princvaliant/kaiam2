@@ -16,7 +16,7 @@
                 </div>
                 <div layout="row" layout-align="space-between center" class="scesPadding">
                     <span>{{'SCES.PART-NUMBER' | translate}}</span>
-                    <b>{{unit.dc.PartNumber}}</b>
+                    <b>{{unit.dc.PartNumber || unit.dc.pnum}}</b>
                 </div>
                 <div layout="row" layout-align="space-between center" class="scesPadding">
                     <span>TOSA</span>
@@ -39,9 +39,9 @@
                 <md-subheader>{{'location' | translate}}</md-subheader>
                 <md-list>
                     <md-list-item ng-repeat="location in locations" layout="row" layout-align="start start">
-                        <div class="scesPadding" am-time-ago="location.state.when" style="white-space: nowrap;"></div>
+                        <div class="scesPadding" am-time-ago="location.when" style="white-space: nowrap;"></div>
                         <p><a href="/sces/location?id={{location._id}}"
-                              class="text-ellipsis scesPadding">{{location.dc.name}}</a></p>
+                              class="text-ellipsis scesPadding">{{location.name}}</a></p>
                     </md-list-item>
                 </md-list>
             </md-card>

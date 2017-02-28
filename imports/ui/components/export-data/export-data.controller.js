@@ -18,7 +18,7 @@ angular.module('kaiamExportData').controller('ExportdataController', [
         $translatePartialLoader.addPart('exportdata');
         $translate.refresh();
 
-        $scope.partNumbers = _.keys(Settings.partNumbers);
+        $scope.partNumbers = _.map(PartNumbers.find().fetch(), (p) => {return p.name;});
         $scope.partNumber = $cookies.get('exportDataPartNumber') || $scope.partNumbers[0];
         $scope.errorStatuses = ['ALL', 'P', 'F'];
         $scope.errorStatus = $cookies.get('exportDataErrorStatus') || $scope.errorStatuses[0];

@@ -35,6 +35,7 @@ angular.module('kaiamSettings').controller('SettingsCompaniesController', ['$mdD
 
         $scope.gridOptions = {
             enableGridMenu: true,
+            enableCellEditOnFocus: true,
             enableSorting: true,
             noUnselect: true,
             multiSelect: false,

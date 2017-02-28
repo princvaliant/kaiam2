@@ -5,6 +5,8 @@ import '../../daasfab/triangular/components/widget/widget-chart.directive';
 import './settings.module';
 import './companies.controller';
 import './companies.tmpl.html';
+import './part-numbers.controller';
+import './part-numbers.tmpl.html';
 import './rework-codes.controller';
 import './rework-codes.tmpl.html';
 import './upload-data.controller';
@@ -45,6 +47,12 @@ angular.module('kaiamSettings')
                 url: '/settings-upload-data',
                 templateUrl: 'imports/ui/components/settings/upload-data.tmpl.html',
                 controller: 'SettingsUploadDataController',
+                controllerAs: 'vm'
+            });
+            $stateProvider.state('triangular.settings-part-numbers', {
+                url: '/settings-part-numbers',
+                templateUrl: 'imports/ui/components/settings/part-numbers.tmpl.html',
+                controller: 'SettingsPartNumbersController',
                 controllerAs: 'vm'
             });
         }

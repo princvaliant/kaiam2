@@ -19,7 +19,7 @@ angular.module('kaiamSces').controller('ScesTrayController', [
         $translate.refresh();
         $scope.trayTypes = ScesSettings.trayTypes;
         $scope.trayType = $cookies.get('trayType') || $scope.trayTypes[0];
-        $scope.partNumbers = _.keys(Settings.partNumbers);
+        $scope.partNumbers = _.map(PartNumbers.find().fetch(), (p) => {return p.name;});
         $scope.partNumber = $cookies.get('trayPartNumber') || $scope.partNumbers[0];
         $scope.trayShips = ['', 'RMA'];
         $scope.trayShip = '';

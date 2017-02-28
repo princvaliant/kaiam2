@@ -36,7 +36,7 @@ function getPipeline () {
                 }
             }, {
                 'device.PartNumber': {
-                    $in: _.keys(Settings.partNumbers)
+                    $in: _.map(PartNumbers.find().fetch(), (p) => {return p.name;})
                 }
             }, {
                 'timestamp': {

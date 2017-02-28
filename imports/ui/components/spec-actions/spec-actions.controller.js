@@ -29,10 +29,9 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         //   $scope.uploader = new FileUploader();
         $scope.selectedTab = $cookies.get('specActionsTabSelected') || 0;
         $scope.partNumbers = [''];
-        _.each(_.keys(Settings.partNumbers), (key) => {
-            if (Settings.partNumbers[key].primary === true) {
-                $scope.partNumbers.push(key);
-            }
+        let pnumms = PartNumbers.find({primary: true}).fetch();
+        _.each(pnumms, (pnumm) => {
+            $scope.partNumbers.push(pnumm.name);
         });
         $scope.partNumber = $cookies.get('specActionsPartNumber') || 'XQX4000';
 

@@ -12,8 +12,8 @@ import '../sces.service';
  *
  */
 angular.module('kaiamSces').controller('ScesTransceiverController', [
-    '$rootScope', '$scope', '$log', '$meteor', '$location', '$translate', '$translatePartialLoader',
-    ($rootScope, $scope, $log, $meteor, $location, $translate, $translatePartialLoader) => {
+    '$rootScope', '$scope', '$log', '$meteor', '$location', '$translate', '$timeout', '$translatePartialLoader',
+    ($rootScope, $scope, $log, $meteor, $location, $translate, $timeout, $translatePartialLoader) => {
         $translatePartialLoader.addPart('sces');
         $translate.refresh();
         let unitId = $location.search().id;
@@ -53,6 +53,24 @@ angular.module('kaiamSces').controller('ScesTransceiverController', [
             $scope.subscribe('domainParents', () => {
                 return [domain._id];
             });
+
+            $timeout(() => {
+                let locations = [];
+                _.each(domain.audit, (aud) => {
+                    if (aud.id === 'AddedToLocation') {
+                        let dd = Domains.findOne({_id: aud.parentId});
+                        if (dd) {
+                            locations.push({
+                                _id: aud.parentId,
+                                name: dd.dc.name,
+                                when: aud.when
+                            });
+                        }
+                    }
+                });
+                $scope.locations = locations;
+            }, 1000);
+
             $scope.helpers({
                 shipments: () => {
                     return Domains.find({
@@ -84,15 +102,6 @@ angular.module('kaiamSces').controller('ScesTransceiverController', [
                 rmas: () => {
                     return Domains.find({
                         type: 'rma'
-                    }, {
-                        sort: {
-                            'state.when': -1
-                        }
-                    });
-                },
-                locations: () => {
-                    return Domains.find({
-                        type: 'location'
                     }, {
                         sort: {
                             'state.when': -1

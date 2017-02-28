@@ -13,7 +13,7 @@ angular.module('kaiamSces').controller('ScesNewPartController', ['$timeout', '$t
     '$mdToast', '$window', '$mdDialog', 'locationId', 'transceiverId', 'position',
     function ($timeout, $translate, $rootScope, $scope, $cookies,
               $mdToast, $window, $mdDialog, locationId, transceiverId, position) {
-        $scope.partNumbers = _.keys(Settings.partNumbers);
+        $scope.partNumbers = _.map(PartNumbers.find().fetch(), (p) => {return p.name;});
         $scope.locationId = locationId;
         $scope.transceiver = {};
         $scope.manufacturers = ['Rocket', 'Kaiam'];

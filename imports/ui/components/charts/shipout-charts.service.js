@@ -63,10 +63,11 @@ angular.module('kaiamCharts')
                         return item.legendText === doc.pnum;
                     });
                     if (series === undefined) {
+                        let pnumm = PartNumbers.findOne({name: doc.pnum});
                         series = {
                             type: 'stackedColumn',
                             legendText: doc.pnum,
-                            color: (Settings.partNumbers[doc.pnum] && Settings.partNumbers[doc.pnum].color) ? Settings.partNumbers[doc.pnum].color : 'red',
+                            color: (pnumm && pnumm.color) ? pnumm.color : 'red',
                             showInLegend: true,
                             toolTipContent: "<span style='\"'color: {color};'\"'><strong>{pn}</strong><br/><br/>Date: {label}<br/>Value: {y}</strong></span>",
                             dataPoints: []
