@@ -5,6 +5,8 @@ Meteor.startup(function () {
      * Account Methods
      * @type {meteor.methods}
      */
+
+
     Meteor.methods({
         getTestSummaries: function (status) {
             let query = {
