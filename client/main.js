@@ -14,13 +14,14 @@ import '../imports/ui/daasfab/daasfab.run';
 Meteor.startup(function () {
 
     function onReady () {
-        Meteor.subscribe('partNumbers', function() {
+        Meteor.subscribe('partNumbers');
+        setTimeout(() => {
             angular.bootstrap(document, [
                 KaiamCloud
             ], {
                 strictDi: true
             });
-        });
+        }, 500);
     }
 
     if (Meteor.isCordova) {
