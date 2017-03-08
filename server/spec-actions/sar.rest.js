@@ -84,6 +84,30 @@ HTTP.methods({
         }
     },
 
+
+    '/getDomain': {
+        auth: SarHelper.myAuth,
+        get: function () {
+            let domain = Domains.findOne({_id: this.query.id}, {fields: {audit: 0}});
+            return domain;
+        }
+    },
+
+    '/getRosaRework': {
+        auth: SarHelper.myAuth,
+        get: function () {
+            let domain = Domains.findOne({'dc.ROSA': this.query.id}, {fields: {audit: 0}});
+            if (!domain) {
+                return 'not_found';
+            }
+            if (domain.dc.rosaRework === true) {
+                return 'true';
+            } else {
+                return 'false';
+            }
+        }
+    },
+
     '/getConvBin': {
         auth: SarHelper.myAuth,
         get: function () {
@@ -95,6 +119,8 @@ HTTP.methods({
             return [];
         }
     },
+
+
 
     '/postAssembly': {
         auth: SarHelper.myAuth,
