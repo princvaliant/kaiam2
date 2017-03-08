@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/main.js" afterPath="$PROJECT_DIR$/client/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/settings.js" afterPath="$PROJECT_DIR$/lib/settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/main.scheduler.js" afterPath="$PROJECT_DIR$/server/main.scheduler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/test-summary.methods.js" afterPath="$PROJECT_DIR$/server/test-summary.methods.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/rosa-import.scheduler.js" afterPath="$PROJECT_DIR$/server/rosa-import.scheduler.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -25,7 +27,7 @@
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -37,14 +39,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Post assembly</find>
-      <find>Postassembly</find>
-      <find>testData</find>
-      <find>HTTP.methods</find>
-      <find>calibration</find>
-      <find>timeTrendShortNames</find>
-      <find>strTest</find>
-      <find>rosa Distance</find>
       <find>tosa</find>
       <find>Raw</find>
       <find>extend</find>
@@ -65,8 +59,16 @@
       <find>partNumbers</find>
       <find>partNumber</find>
       <find>domainParents</find>
-      <find>subscribe</find>
       <find>Meteor.subscribe</find>
+      <find>ew</find>
+      <find>rework</find>
+      <find>summary</find>
+      <find>mail</find>
+      <find>partnumbers</find>
+      <find>subscribe</find>
+      <find>Partnumbers.find</find>
+      <find>exportData</find>
+      <find>data</find>
     </findStrings>
     <replaceStrings>
       <replace>company</replace>
@@ -90,8 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/_spec-actions.tmpl.scss" />
-        <option value="$PROJECT_DIR$/model/sarspecbins.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/_sces.tmpl.scss" />
         <option value="$PROJECT_DIR$/imports/ui/components/customer/transceiver.tmpl.html" />
@@ -105,7 +105,6 @@
         <option value="packages/meteor.js" />
         <option value="$PROJECT_DIR$/server/charts/yields.scheduler.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.tmpl.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
         <option value="$PROJECT_DIR$/server/export-data.methods.js" />
         <option value="packages/underscore.js" />
         <option value="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
@@ -133,14 +132,17 @@
         <option value="$PROJECT_DIR$/server/sces/transceiver.methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/tray/tray.controller.js" />
         <option value="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
-        <option value="localhost:3000/packages/meteor.js?hash=e3f53db3be730057fed1a5f709ecd5fc7cae1229" />
         <option value="localhost:3000/packages/tracker.js?hash=9f8a0cec09c662aad5a5e224447b2d4e88d011ef" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.controller.js" />
         <option value="$PROJECT_DIR$/server/test-summary.methods.js" />
-        <option value="$PROJECT_DIR$/client/main.js" />
         <option value="$PROJECT_DIR$/server/main.scheduler.js" />
+        <option value="$PROJECT_DIR$/server/rosa-import.scheduler.js" />
         <option value="$PROJECT_DIR$/lib/settings.js" />
+        <option value="$PROJECT_DIR$/client/main.js" />
+        <option value="localhost:3000/packages/meteor.js?hash=e3f53db3be730057fed1a5f709ecd5fc7cae1229" />
+        <option value="$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js" />
       </list>
     </option>
   </component>
@@ -167,9 +169,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
-    <option name="width" value="1680" />
-    <option name="height" value="978" />
+    <option name="x" value="2755" />
+    <option name="y" value="-847" />
+    <option name="width" value="1646" />
+    <option name="height" value="1339" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -244,21 +247,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="charts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
+              <option name="myItemId" value="spec-actions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -286,69 +275,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaiam2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".meteor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -934,14 +875,10 @@
       <workItem from="1488250858948" duration="9970000" />
       <workItem from="1488343898082" duration="703000" />
       <workItem from="1488345867405" duration="670000" />
-      <workItem from="1488515277600" duration="1814000" />
-    </task>
-    <task id="LOCAL-00103" summary="- Fix link test with empty serial numbers&#10;- Add test insertion report to be grouped by part number&#10;- Fix export to not display undefined columns&#10;&#10;">
-      <created>1480558851629</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1480558851630</updated>
+      <workItem from="1488515277600" duration="1838000" />
+      <workItem from="1488860493066" duration="354000" />
+      <workItem from="1488916370811" duration="1353000" />
+      <workItem from="1488948461279" duration="3369000" />
     </task>
     <task id="LOCAL-00104" summary="- Fix link test with empty serial numbers&#10;- Add test insertion report to be grouped by part number&#10;- Fix export to not display undefined columns&#10;&#10;">
       <created>1480983141775</created>
@@ -1279,11 +1216,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488260850635</updated>
     </task>
-    <option name="localTasksCounter" value="152" />
+    <task id="LOCAL-00152" summary="- Move prat numbers from ssettings to mongo db&#10;- Fix locations dates&#10;- Fix pnum partNumber in domain table">
+      <created>1488517897840</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1488517897841</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1220699000" />
+    <option name="totallyTimeSpent" value="1225799000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1295,20 +1239,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="978" extended-state="6" />
+    <frame x="2755" y="-847" width="1646" height="1339" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18083182" sideWeight="0.70365995" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18030769" sideWeight="0.70365995" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847342" sideWeight="0.4923717" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28098473" sideWeight="0.54129606" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4582393" sideWeight="0.3970775" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25501204" sideWeight="0.3970775" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32505643" sideWeight="0.69121623" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2166455" sideWeight="0.29634002" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23589166" sideWeight="0.48445946" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24379233" sideWeight="0.45870394" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19486769" sideWeight="0.45870394" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1390,46 +1334,11 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="2254" />
+      <option name="time" value="2289" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/settings.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="78" column="31" lean-forward="false" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/toolbar/toolbar.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="117" column="6" lean-forward="true" selection-start-line="117" selection-start-column="6" selection-end-line="117" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/settings/companies.publish.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/settings/upload-data.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/reworkcode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1503,13 +1412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/part-numbers.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="87" column="40" lean-forward="false" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/shipout-charts.service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -1566,27 +1468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2405">
-          <caret line="788" column="14" lean-forward="true" selection-start-line="788" selection-start-column="14" selection-end-line="788" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="107" column="68" lean-forward="false" selection-start-line="107" selection-start-column="59" selection-end-line="107" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="128" column="41" lean-forward="false" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/location/new-part.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1599,11 +1480,6 @@
         <state relative-caret-position="222">
           <caret line="22" column="69" lean-forward="false" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
         </state>
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/packages/meteor.js?hash=e3f53db3be730057fed1a5f709ecd5fc7cae1229">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/sces/domain.methods.js">
@@ -1674,14 +1550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/domains.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1714,7 +1582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1722,7 +1589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1730,15 +1596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="41" column="16" lean-forward="false" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="259" column="47" lean-forward="true" selection-start-line="259" selection-start-column="47" selection-end-line="259" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1746,6 +1603,98 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/transceiver-view/transceiver-view.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="171" column="40" lean-forward="true" selection-start-line="171" selection-start-column="40" selection-end-line="171" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="56" lean-forward="false" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/admin/service.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/packages">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/settings/part-numbers.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://localhost:3000/packages/meteor.js?hash=e3f53db3be730057fed1a5f709ecd5fc7cae1229">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="907">
+          <caret line="267" column="31" lean-forward="false" selection-start-line="267" selection-start-column="31" selection-end-line="267" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/export-data.methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/charts/loss-check.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="256" column="54" lean-forward="true" selection-start-line="256" selection-start-column="52" selection-end-line="256" selection-end-column="62" />
+          <folding>
+            <marker date="1488951445000" expanded="true" signature="10234:10279" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/export-data/export-data.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="153" column="40" lean-forward="true" selection-start-line="153" selection-start-column="40" selection-end-line="153" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/rosa-import.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="44" column="54" lean-forward="true" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
           <folding />
         </state>
       </provider>

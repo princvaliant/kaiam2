@@ -131,26 +131,31 @@ angular.module('kaiamCharts')
                     let ttd1 = Settings.getTestConfigVariablesForPartNumber(pn, item.test, item.subtest);
                     let ttd = _.pluck(ttd1, 'v');
                     _.each(ttd, (v2) => {
-                        if (item.data[v2] instanceof Array) {
-                            if (item.data[v2].length > 0 && typeof item.data[v2][0] === 'string') {
+                        if (item.data) {
+                            if (item.data[v2] instanceof Array) {
+                                if (item.data[v2].length > 0 && typeof item.data[v2][0] === 'string') {
+                                    head += v2 + ',';
+                                    row += item.data[v2].toString().replace(/,/g, '|').replace(/[\n\r,]/g, '') + ',';
+                                } else {
+                                    arr.push(item.data[v2]);
+                                }
+                            } else if (typeof item.data[v2] === 'string') {
                                 head += v2 + ',';
-                                row += item.data[v2].toString().replace(/,/g, '|').replace(/[\n\r,]/g, '') + ',';
+                                row += item.data[v2].replace(/[\n\r,]/g, '').replace(/[\n\r,]/g, '') + ',';
+                            } else if (item.data[v2] !== null && item.data[v2] !== undefined) {
+                                head += v2 + ',';
+                                row += item.data[v2] + ',';
                             } else {
-                                arr.push(item.data[v2]);
+                                head += v2 + ',';
+                                row += ' ,';
                             }
-                        } else if (typeof item.data[v2] === 'string') {
-                            head += v2 + ',';
-                            row += item.data[v2].replace(/[\n\r,]/g, '').replace(/[\n\r,]/g, '') + ',';
-                        } else if (item.data[v2] !== null && item.data[v2] !== undefined) {
-                            head += v2 + ',';
-                            row += item.data[v2] + ',';
                         } else {
                             head += v2 + ',';
                             row += ' ,';
                         }
                     });
                     for (let v2 in item.data) {
-                        if (exportDetails === true) {
+                        if (exportDetails === true && item.data) {
                             if (item.data[v2] instanceof Array && item.data[v2].length > 0) {
                                 let details = item.data[v2][0];
                                 for (let detail in details) {

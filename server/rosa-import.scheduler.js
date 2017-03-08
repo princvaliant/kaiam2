@@ -12,6 +12,7 @@ Meteor.startup(function () {
         },
         job: function () {
             execRosaData();
+            execRosaReworkData();
         }
     });
 });
@@ -19,7 +20,7 @@ Meteor.startup(function () {
 // For testing in development
 Meteor.methods({
     'rosadata': function () {
-        execRosaData();
+        execRosaReworkData();
     }
 });
 
@@ -67,4 +68,39 @@ function execRosaData () {
     }
     return true;
 }
+
+function execRosaReworkData () {
+    let row = true;
+    while (row) {
+        row = SyncFiles.findOne({source: 'DB1', path: '//F1/Public/mmodric_public/ReworkROSA', processed: false}, {sort: {dateCreated: 1}});
+        if (row) {
+            let data = row.content.split('\r\n');
+            let notFound = [];
+            let found = 0;
+            if (data.length > 0) {
+                for (let i = 0; i < data.length; i++) {
+                    let domain = Domains.findOne({'dc.ROSA': data[i].trim()});
+                    if (!domain) {
+                        notFound.push(data[i].trim());
+                    } else {
+                        found += 1;
+                        Domains.update({'dc.ROSA': data[i].trim()},
+                             {$set: {'dc.rosaRework': true}});
+                    }
+                }
+            }
+
+            SyncFiles.update({_id: row._id}, {$set: {processed: true}}, false, true);
+
+            Email.send({
+                to: 'frank@kaiamcorp.com',
+                from: 'kaiamdashboard',
+                subject: 'ROSA REWORK IMPORT STATUS',
+                text: 'PROCESSED: ' + found + '\nNOT FOUND:\n' + notFound
+            });
+        }
+    }
+    return true;
+}
+
 

@@ -245,7 +245,7 @@ angular.module('kaiamCharts').controller('LossCheckController', [
 
         function exportData (tt, doc) {
             $scope.showProgress = true;
-            Meteor.call('exportData', tt ? doc.ids : _.uniq(listOfSerials), [tt], null, null, null, 'F',
+            Meteor.call('exportData', tt ? doc.ids : _.uniq(listOfSerials), [tt], $scope.partNumber, null, null, 'F',
                 (err, data) => {
                     if (err) {
                         $mdToast.show(
