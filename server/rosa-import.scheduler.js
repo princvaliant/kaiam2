@@ -89,7 +89,6 @@ function execRosaMMData () {
                     let dt = data.data[i];
                     for (let j = 0; j < pc; j++) {
                         if (dataDef[j] === 'SN') {
-                            td._id = 'ROSAMM-' +  dt[j];
                             td.mid = 'ROSAMMMID-' +  dt[j];
                             td.device.SerialNumber = dt[j];
                             td.type = 'rosamm';
@@ -113,7 +112,7 @@ function execRosaMMData () {
                             }
                         }
                     }
-                    Testdata.upsert({_id: td._id}, td);
+                    Testdata.insert(td);
                 }
             }
             SyncFiles.update({_id: row._id}, {$set: {processed: true}});
