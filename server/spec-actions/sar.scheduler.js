@@ -772,6 +772,9 @@ function getPartsChangedBetweenDates (product, sw, ew) {
             'device.PartNumber': {
                 $regex: '^' + product
             },
+            step: {
+                $nin: ['link']
+            },
             timestamp: {
                 $gte: sw.toDate(),
                 $lte: ew.toDate()
