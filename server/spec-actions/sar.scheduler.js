@@ -82,6 +82,7 @@ function _execSar (pnum, snum, calcVars, origPnum) {
         for (let m = mom; m.isBefore(moment()); m.add(7, 'days')) {
 
             // Find start and end of week for that range
+            // TODO use mom for sw for first iteration
             let sw = moment(m).startOf('week');
             let ew = moment(m).endOf('week');
 
@@ -772,6 +773,7 @@ function getPartsChangedBetweenDates (product, sw, ew) {
             'device.PartNumber': {
                 $regex: '^' + product
             },
+            //TODO include all that are in flow definition
             step: {
                 $nin: ['link']
             },

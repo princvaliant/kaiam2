@@ -145,7 +145,7 @@ function execRosaReworkData () {
             SyncFiles.update({_id: row._id}, {$set: {processed: true}}, false, true);
 
             Email.send({
-                to: 'frank@kaiamcorp.com',
+                to: 'frank@kaiamcorp.com,max@kaiamcorp.com,vikrant@kaiamcorp.com',
                 from: 'kaiamdashboard',
                 subject: 'ROSA REWORK IMPORT STATUS',
                 text: 'PROCESSED: ' + found + '\nNOT FOUND:\n' + notFound
