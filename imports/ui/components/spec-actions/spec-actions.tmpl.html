@@ -198,15 +198,35 @@
                 <div layout="column">
                     <div layout-padding>Calculate spec</div>
                     <div layout="row">
-                        <md-datepicker ng-model="recalcFromDate" md-placeholder="From date"></md-datepicker>
-                        <md-datepicker ng-model="recalcToDate" md-placeholder="To date"></md-datepicker>
+                        <md-datepicker ng-model="calcObj.recalcFromDate" id="recalcFromDate"  md-placeholder="From date" ng-required="false"></md-datepicker>
+                        <md-input-container style="width:60px;margin-left:10px;">
+                            <label for="recalcFromHour">Hour</label>
+                            <input ng-model="calcObj.recalcFromHour" id="recalcFromHour" aria-label="Hour"
+                                   ng-required="false"/>
+                        </md-input-container>
+                        <md-input-container style="width:60px;margin-left:10px;">
+                            <label for="recalcFromMinute">Minute</label>
+                            <input ng-model="calcObj.recalcFromMinute" id="recalcFromMinute" aria-label="Minute"
+                                   ng-required="false"/>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-button class="md-primary md-raised" style="width:300px;" aria-label="button"
+                                   ng-click="calcSpecFromDateClicked()">Calculate spec from date/time
+                        </md-button>
+                    </div>
+                    <div layout="row">
+                        &nbsp;
+                    </div>
+                    <div layout="row">
+                        &nbsp;
                     </div>
                     <md-input-container class="md-block">
                         <label>Comma delimited list of transceiver serial numbers</label>
-                        <textarea ng-model="recalcSnList" rows="5" md-select-on-focus=""></textarea>
+                        <textarea ng-model="calcObj.recalcSnList" rows="8" md-select-on-focus="" ng-required="false"></textarea>
                     </md-input-container>
-                    <md-button class="md-primary md-raised" style="width:200px;" aria-label="button"
-                               ng-click="calcSpecClicked()">Calculate spec
+                    <md-button class="md-primary md-raised" style="width:300px;" aria-label="button"
+                               ng-click="calcSpecSerialClicked()">Calculate spec for list of serials
                     </md-button>
                     <md-progress-circular md-mode="indeterminate" ng-show="recalcShowProgress"></md-progress-circular>
                 </div>

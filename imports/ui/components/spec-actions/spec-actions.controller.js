@@ -23,6 +23,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         $scope.class = $stateParams.class;
         $scope.isAction = false;
         $scope.newPart = {};
+        $scope.calcObj = {};
         $scope.convbins = {};
 
         $scope.importedMessage = '';
@@ -429,22 +430,40 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
             $scope.gridSarSpecRanges.data = $scope.getReactively('sarSpecRanges') || [];
         });
 
-
         $scope.tabSelected = (idx, field) => {
             $cookies.put('specActionsTabSelected', idx);
             $timeout(function () {
                 initTab(field);
             });
         };
-        $scope.calcSpecClicked = () => {
-            if ($scope.selectedSar) {
+
+        $scope.calcSpecFromDateClicked = () => {
+            setTimeout(() => {
+            if ($scope.selectedSar && $scope.calcObj.recalcFromDate) {
                 let confirm = $mdDialog.confirm()
-                    .title('Would you like to recalculate ' + $scope.selectedSar.name + ' ' + $scope.selectedSar.rev + '?')
+                    .title('Would you like to recalculate ' + $scope.selectedSar.name + ' ' + $scope.selectedSar.rev + ' from date/time ' +
+                        moment($scope.calcObj.recalcFromDate).format('MM/DD/YYYY') + ' ' + ($scope.calcObj.recalcFromHour || 0) + ':' +  ($scope.calcObj.recalcFromMinute || 0) + '?')
                     .ariaLabel('Re-calculate spec')
                     .ok('Submit')
                     .cancel('Cancel');
                 $mdDialog.show(confirm).then(function () {
-                    SpecActionsService.recalculateSar($scope.selectedSar, $scope.recalcSnList, $scope.recalcFromDate, $scope.recalcToDate);
+                    SpecActionsService.recalculateSarFromDate($scope.selectedSar,  moment($scope.calcObj.recalcFromDate).format('YYYY-MM-DD'),
+                        $scope.calcObj.recalcFromHour || 0, $scope.calcObj.recalcFromMinute || 0);
+                    showToast('Recalculation successfully started');
+                });
+            }
+            }, 10);
+        };
+
+        $scope.calcSpecSerialClicked = () => {
+            if ($scope.selectedSar &&  $scope.calcObj.recalcSnList) {
+                let confirm = $mdDialog.confirm()
+                    .title('Would you like to recalculate ' + $scope.selectedSar.name + ' ' + $scope.selectedSar.rev + ' for list of serials?')
+                    .ariaLabel('Re-calculate spec')
+                    .ok('Submit')
+                    .cancel('Cancel');
+                $mdDialog.show(confirm).then(function () {
+                    SpecActionsService.recalculateSarSerial($scope.selectedSar, $scope.calcObj.recalcSnList);
                     showToast('Recalculation successfully started');
                 });
             }
@@ -456,7 +475,8 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
                         if ($scope.getReactively('selectedSar')) {
                             $scope.recalcSnList = $scope.selectedSar.recalcSnList;
                             $scope.recalcFromDate = $scope.selectedSar.recalcFromDate;
-                            $scope.recalcToDate = $scope.selectedSar.recalcToDate;
+                            $scope.recalcFromHour = $scope.selectedSar.recalcFromHour;
+                            $scope.recalcFromMinute = $scope.selectedSar.recalcFromMinute;
                             $scope.recalcShowProgress = $scope.selectedSar.recalcForce;
                         }
                     });

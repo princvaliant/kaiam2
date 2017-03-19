@@ -19,6 +19,19 @@ Meteor.startup(function () {
             });
         }
     });
+
+    // Subscribe on forced calculation
+    let handleCount = Sar.find({class: 'SPEC', recalcForce: true});
+    handleCount.observe({
+        added: function (doc) {
+            forceCalc(doc);
+            return true;
+        },
+        changed: function (doc) {
+            forceCalc(doc);
+            return true;
+        }
+    });
 });
 
 
@@ -27,43 +40,53 @@ Meteor.methods({
     'sarcalc': function (code, pnum2) {
         ScesDomains.getUser(this.userId);
         if (pnum2) {
-            execSar(pnum2, code);  // testing with snum
+            execSar(pnum2, code ? [code] : null);  // testing with snum
         } else {
             let pnums = PartNumbers.find().fetch();
             _.each(pnums, (pnum) => {
                 if (pnum.device === '100GB' && pnum.calc === true) {
-                    execSar(pnum.name, code);
+                    execSar(pnum.name, code ? [code] : null);
                 }
             });
         }
     }
 });
 
+function forceCalc (sar) {
+    Sar.update({_id: sar._id}, {$set: {recalcForce: false}});
+    let dateFrom = null;
+    let listSns = null;
+    if (sar.recalcFromDate) {
+        dateFrom = moment(sar.recalcFromDate + ' ' + (sar.recalcFromHour || '00') + ':' + (sar.recalcFromMinute || '00'));
+    } else {
+        listSns = _.map(sar.recalcSnList.split(','), (o) => {return o.trim()});
+    }
+    execSar(sar.pnum, listSns, dateFrom, sar);
+}
 
-function execSar (pnum, snum) {
-
+function execSar (pnum, snums, dateFrom, sarForce) {
     // First process original pnum
-    _execSar(pnum, snum, true, pnum);
+    _execSar(pnum, snums, true, pnum, dateFrom, sarForce);
 
     // Get related partnumbers that need to be compiled for this unit
     let sarBins = SarSpecBin.find({pnum: pnum, class: 'bin'}).fetch();
     _.each(sarBins, (bin) => {
-        _execSar(bin.pnumLink, snum, false, pnum);
+        _execSar(bin.pnumLink, snums, false, pnum, dateFrom, sarForce);
     });
 }
-// pnum represents part number to claculate serial number for
+// pnum represents part number to calculate serial number for
 // product represent 2 digits in part number for family
-// snum is transceiver serial number (If ommited it will query transceivers test dat from last date synced
+// snum is transceiver serial number (If ommited it will query transceivers test data from last date synced
 // calcVars determines if custom variables should be calculated
 // origPnum original part number
 
 
-function _execSar (pnum, snum, calcVars, origPnum) {
+function _execSar (pnum, snums, calcVars, origPnum, dateFrom, sarForce) {
     // Get latest spec revision for the pnum
-    let sarDef = Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
+    let sarDef = sarForce || Sar.findOne({pnum: pnum, class: 'SPEC', active: 'Y'}, {sort: {rev: -1}});
     // Get latest revision of flow definition
     let flowDef = Sar.findOne({pnum: pnum, class: 'FLOW', active: 'Y'}, {sort: {rev: -1}});
-    // Determin product
+    // Determine product
     let product = PartNumbers.findOne({name: origPnum}).product;
 
     if (sarDef && flowDef) {
@@ -75,24 +98,32 @@ function _execSar (pnum, snum, calcVars, origPnum) {
         let flows = getFlowsGroupedByOrder(flowDef, specs);
 
         // Get list of serials that are changed from last compilation
-        let lastDate = getLastSyncDate('SPEC_' + origPnum);
-        let mom = moment(lastDate);
+        let mom = null;
+        if (!dateFrom && !snums) {
+            let lastDate = getLastSyncDate('SPEC_' + origPnum);
+            mom = moment(lastDate);
+        } else if (dateFrom) {
+            mom = dateFrom;
+        } else if (snums) {
+            mom = moment().add(-4, 'days');
+        }
+        let isFirstPass = true;
 
         // Increment date range weekly and process each week
         for (let m = mom; m.isBefore(moment()); m.add(7, 'days')) {
-
             // Find start and end of week for that range
-            // TODO use mom for sw for first iteration
-            let sw = moment(m).startOf('week');
+            // If this is first pass use last sync date as start, otherwise use beginning of week
+            let sw = (isFirstPass === true) ? m : moment(m).startOf('week');
+            isFirstPass = false;
             let ew = moment(m).endOf('week');
 
             // Get all serials for part number that have testdata inserted between dates
             // or use one from parameter if provided
             let serials = [];
-            if (snum) {
-                serials = [snum];
+            if (snums) {
+                serials = snums;
             } else {
-                serials = getPartsChangedBetweenDates(product, sw, ew);
+                serials = getPartsChangedBetweenDates(product, sw, ew, flows);
             }
 
             // Loop through all the serials to calculate custom variables for last measurement
@@ -566,16 +597,15 @@ function getLastSyncDate (domain) {
             start: date
         });
         return date;
-    } else {
-        Syncstart.update({
-            domain: domain
-        }, {
-            $set: {
-                start: moment().subtract(1, 'hours').toDate()
-            }
-        });
-        return syncstart.start;
     }
+    Syncstart.update({
+        domain: domain
+    }, {
+        $set: {
+            start: moment().subtract(1, 'hours').toDate()
+        }
+    });
+    return syncstart.start;
 }
 
 function getFlowsGroupedByOrder (flow, specs) {
@@ -766,17 +796,24 @@ function getSpecRanges (sar) {
 }
 
 
-function getPartsChangedBetweenDates (product, sw, ew) {
+function getPartsChangedBetweenDates (product, sw, ew, flows) {
+    // Create list of test defined in flow
+    let tests = [];
+    _.each(flows, (flow) => {
+        tests = _.union(tests, flow.tests);
+    });
+    let mtests = _.map(tests, (t) => {
+        let ts = t.split(' - ');
+        return {type: ts[0], subtype: ts[1]};
+    });
+
     // First return list of serials that are changed from last sync date
     let list = Testdata.aggregate([{
         $match: {
             'device.PartNumber': {
                 $regex: '^' + product
             },
-            //TODO include all that are in flow definition
-            step: {
-                $nin: ['link']
-            },
+            $or: mtests,
             timestamp: {
                 $gte: sw.toDate(),
                 $lte: ew.toDate()
@@ -797,8 +834,7 @@ HTTP.methods({
         get: function () {
             let sn = this.query.sn;
             let pnum = this.query.pnum;
-            let prod = PartNumbers.findOne({name: origPnum}).product;
-            execSar(pnum, prod, snum, true);
+            execSar(pnum, [sn]);
             return Testsummary.findOne(
                 {
                     sn: sn

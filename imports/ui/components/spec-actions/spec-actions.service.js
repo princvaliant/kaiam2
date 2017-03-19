@@ -79,15 +79,31 @@ angular.module('kaiamSpecActions')
                         });
                     }
                 },
-                recalculateSar: function (sar, snList, fromDate, toDate) {
+                recalculateSarFromDate: function (sar, fromDate, fromHour, fromMinute) {
                     if (sar) {
                         Sar.update({
                             _id: sar._id
                         }, {
                             $set: {
-                                recalcSnList: snList,
                                 recalcFromDate: fromDate,
-                                recalcToDate: toDate,
+                                recalcFromHour: fromHour,
+                                recalcFromMinute: fromMinute,
+                                recalcSnList: null,
+                                recalcForce: true
+                            }
+                        });
+                    }
+                },
+                recalculateSarSerial: function (sar, snList) {
+                    if (sar) {
+                        Sar.update({
+                            _id: sar._id
+                        }, {
+                            $set: {
+                                recalcFromDate: null,
+                                recalcFromHour: null,
+                                recalcFromMinute: null,
+                                recalcSnList: snList,
                                 recalcForce: true
                             }
                         });
