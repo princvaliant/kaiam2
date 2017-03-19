@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" afterPath="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -858,14 +854,7 @@
       <workItem from="1489717434229" duration="407000" />
       <workItem from="1489779657838" duration="2178000" />
       <workItem from="1489782873437" duration="680000" />
-      <workItem from="1489945363294" duration="13219000" />
-    </task>
-    <task id="LOCAL-00115" summary="- Fix tosa export data&#10;">
-      <created>1481744180586</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1481744180586</updated>
+      <workItem from="1489945363294" duration="13276000" />
     </task>
     <task id="LOCAL-00116" summary="- Add import rosa data from manufacturer spreadsheet&#10;">
       <created>1481919770319</created>
@@ -1203,11 +1192,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489783757342</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="- expose rework code&#10;- 2 new vars in overload">
+      <created>1489962432863</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1489962432863</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1251874000" />
+    <option name="totallyTimeSpent" value="1251931000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
