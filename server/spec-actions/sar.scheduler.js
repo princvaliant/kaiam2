@@ -57,7 +57,7 @@ function forceCalc (sar) {
     let dateFrom = null;
     let listSns = null;
     if (sar.recalcFromDate) {
-        dateFrom = moment(sar.recalcFromDate + ' ' + (sar.recalcFromHour || '00') + ':' + (sar.recalcFromMinute || '00'));
+        dateFrom = moment(sar.recalcFromDate + ' ' + (sar.recalcFromHour || '00') + ':' + (sar.recalcFromMinute || '00')).toDate();
     } else {
         listSns = _.map(sar.recalcSnList.split(','), (o) => {return o.trim()});
     }
@@ -103,7 +103,7 @@ function _execSar (pnum, snums, calcVars, origPnum, dateFrom, sarForce) {
             let lastDate = getLastSyncDate('SPEC_' + origPnum);
             mom = moment(lastDate);
         } else if (dateFrom) {
-            mom = dateFrom;
+            mom = moment(dateFrom);
         } else if (snums) {
             mom = moment().add(-4, 'days');
         }
@@ -804,7 +804,10 @@ function getPartsChangedBetweenDates (product, sw, ew, flows) {
     });
     let mtests = _.map(tests, (t) => {
         let ts = t.split(' - ');
-        return {type: ts[0], subtype: ts[1]};
+        return {
+            type: ts[0],
+            subtype: ts[1]
+        };
     });
 
     // First return list of serials that are changed from last sync date
@@ -813,10 +816,12 @@ function getPartsChangedBetweenDates (product, sw, ew, flows) {
             'device.PartNumber': {
                 $regex: '^' + product
             },
-            $or: mtests,
             timestamp: {
                 $gte: sw.toDate(),
                 $lte: ew.toDate()
+            },
+            step: {
+                $nin: ['link']
             }
         }
     }, {
