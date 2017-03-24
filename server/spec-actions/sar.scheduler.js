@@ -105,12 +105,12 @@ function _execSar (pnum, snums, calcVars, origPnum, dateFrom, sarForce) {
         } else if (dateFrom) {
             mom = moment(dateFrom);
         } else if (snums) {
-            mom = moment().add(-4, 'days');
+            mom = moment().add(-1, 'seconds');
         }
         let isFirstPass = true;
 
         // Increment date range weekly and process each week
-        for (let m = mom; m.isBefore(moment()); m.add(7, 'days')) {
+        for (let m = mom; m.isBefore(moment().endOf('week')); m.add(7, 'days')) {
             // Find start and end of week for that range
             // If this is first pass use last sync date as start, otherwise use beginning of week
             let sw = (isFirstPass === true) ? m : moment(m).startOf('week');

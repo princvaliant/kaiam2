@@ -23,18 +23,7 @@
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="sar.scheduler.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="199" column="33" lean-forward="true" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -176,10 +165,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1505" />
-    <option name="y" value="-796" />
-    <option name="width" value="1440" />
-    <option name="height" value="878" />
+    <option name="y" value="22" />
+    <option name="width" value="1024" />
+    <option name="height" value="696" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -255,20 +243,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="spec-actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -882,14 +856,9 @@
       <workItem from="1489782873437" duration="680000" />
       <workItem from="1489945363294" duration="13315000" />
       <workItem from="1489985577156" duration="2137000" />
-      <workItem from="1489987786748" duration="1530000" />
-    </task>
-    <task id="LOCAL-00117" summary="- Add import rosa data from manufacturer spreadsheet&#10;">
-      <created>1481931420555</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1481931420556</updated>
+      <workItem from="1489987786748" duration="1583000" />
+      <workItem from="1490244212942" duration="11000" />
+      <workItem from="1490381945812" duration="1051000" />
     </task>
     <task id="LOCAL-00118" summary="- Add import rosa data from manufacturer spreadsheet&#10;">
       <created>1481940964542</created>
@@ -1227,11 +1196,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489962512814</updated>
     </task>
-    <option name="localTasksCounter" value="166" />
+    <task id="LOCAL-00166" summary="- Change spec calculations&#10;- Add forced spec calculations&#10;- Calculate 4300 to spec 5">
+      <created>1489989826175</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1489989826176</updated>
+    </task>
+    <option name="localTasksCounter" value="167" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1255637000" />
+    <option name="totallyTimeSpent" value="1256752000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1243,9 +1219,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1505" y="-796" width="1440" height="878" extended-state="0" />
+    <frame x="0" y="22" width="1024" height="696" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25369978" sideWeight="0.70365995" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35892323" sideWeight="0.70365995" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847342" sideWeight="0.4923717" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28098473" sideWeight="0.54129606" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3244275" sideWeight="0.69121623" order="10" side_tool="false" content_ui="tabs" />
@@ -1254,7 +1230,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23589166" sideWeight="0.48445946" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3167939" sideWeight="0.45870394" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31622517" sideWeight="0.45870394" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1306,7 +1282,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="- Fix tosa export data&#10;" />
     <MESSAGE value="- Add import rosa data from manufacturer spreadsheet&#10;" />
     <MESSAGE value="- Adding part numbers&#10;- Adding rosa import in scheduler&#10;- Fixing yield per test step calculation&#10;" />
     <MESSAGE value="- Change transceiver check alghotihm to find all links between TOSA, ROSA and TRANSCEIVER&#10;" />
@@ -1331,7 +1306,8 @@
     <MESSAGE value="- Move prat numbers from ssettings to mongo db&#10;- Fix locations dates&#10;- Fix pnum partNumber in domain table" />
     <MESSAGE value="- expose rework code&#10;- 2 new vars in overload" />
     <MESSAGE value="- Change spec calculations&#10;- Add forced spec calculations" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Change spec calculations&#10;- Add forced spec calculations" />
+    <MESSAGE value="- Change spec calculations&#10;- Add forced spec calculations&#10;- Calculate 4300 to spec 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Change spec calculations&#10;- Add forced spec calculations&#10;- Calculate 4300 to spec 5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1339,20 +1315,12 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js</url>
           <line>832</line>
-          <properties />
           <option name="timeStamp" value="2395" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js</url>
           <line>813</line>
-          <properties />
           <option name="timeStamp" value="2396" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js</url>
-          <line>85</line>
-          <properties />
-          <option name="timeStamp" value="2397" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1363,6 +1331,22 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/settings.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2115">
@@ -1567,8 +1551,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="199" column="33" lean-forward="true" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
+        <state relative-caret-position="144">
+          <caret line="99" column="19" lean-forward="true" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
           <folding />
         </state>
       </provider>
