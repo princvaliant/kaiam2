@@ -20,7 +20,7 @@ Meteor.methods({
                     timestamp: {
                         $gt: moment().subtract(90, 'days').toDate()
                     },
-                    ScriptName: 'Full'
+                    ScriptName: {$regex: 'Full'}
                 }
             }, {
                 $project: {
@@ -165,7 +165,7 @@ Meteor.methods({
                     timestamp: {
                         $gt: moment().subtract(90, 'days').toDate()
                     },
-                    ScriptName: 'Full'
+                    ScriptName: {$regex: 'Full'}
                 }
             }, {
                 $project: {

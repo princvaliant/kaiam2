@@ -10,6 +10,7 @@ LeftSidenavController.$inject = ['triSettings', 'triLayout'];
 function LeftSidenavController(triSettings, triLayout) {
     let vm = this;
     vm.layout = triLayout.layout;
+    vm.version = Settings.site.version;
     vm.sidebarInfo = {
         appName: triSettings.name,
         appLogo: triSettings.logo
