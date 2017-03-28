@@ -21,7 +21,7 @@ Meteor.methods({
                 $regex: pnumregex
             },
             'timestamp': {
-                $gt: moment().subtract(20, 'days').toDate()
+                $gt: moment().subtract(10, 'days').toDate()
             },
             'type': {
                 $nin: ['calibration', 'functionaltest', 'packout', 'download']
