@@ -223,7 +223,7 @@ Meteor.methods({
 
             let ppn = packout.device.PartNumber.substring(0, packout.device.PartNumber.length - 2);
             if (ppn === 'XQX43') {
-                if (testsumm.pnum !== 'XQX4000') {
+                if (testsumm.pnum !== 'XQX4300') {
                     return ScesDomains.addEvent(tray._id, 'error', 'Test part number does not match packout part number');
                 } else {
                     testsumm.pnum = packout.device.PartNumber;
