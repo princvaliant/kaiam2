@@ -1,4 +1,4 @@
-'use strict';
+
 /**
  * Scheduled jobs for mongo aggregation
  * @type {meteor.startup}
