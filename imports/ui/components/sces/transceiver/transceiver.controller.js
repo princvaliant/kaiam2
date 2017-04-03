@@ -2,6 +2,8 @@
 
 import angular from 'angular';
 import {Meteor} from 'meteor/meteor';
+import './edit-part.controller';
+import './edit-part.tmpl.html';
 import '../sces.service';
 /**
  * @ngdoc function
@@ -12,8 +14,8 @@ import '../sces.service';
  *
  */
 angular.module('kaiamSces').controller('ScesTransceiverController', [
-    '$rootScope', '$scope', '$log', '$meteor', '$location', '$translate', '$timeout', '$translatePartialLoader',
-    ($rootScope, $scope, $log, $meteor, $location, $translate, $timeout, $translatePartialLoader) => {
+    '$rootScope', '$scope', '$log', '$meteor', '$location', '$translate', '$timeout', '$mdDialog', '$translatePartialLoader',
+    ($rootScope, $scope, $log, $meteor, $location, $translate, $timeout, $mdDialog, $translatePartialLoader) => {
         $translatePartialLoader.addPart('sces');
         $translate.refresh();
         let unitId = $location.search().id;
@@ -46,6 +48,17 @@ angular.module('kaiamSces').controller('ScesTransceiverController', [
 
         $scope.select = function (obj) {
             $scope.selected = obj;
+        };
+
+        $scope.editClicked = function (obj) {
+            $mdDialog.show({
+                controller: 'ScesEditPartController as ctrl',
+                templateUrl: 'imports/ui/components/sces/transceiver/edit-part.tmpl.html',
+                locals: {
+                    unit: $scope.unit,
+                    position: {top: 150, left: 200},
+                }
+            });
         };
 
         function initData (domain) {

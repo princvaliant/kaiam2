@@ -412,6 +412,59 @@ Meteor.methods({
         return testdata.fetch();
     },
 
+    // Add updating transceivers ROSA, TOSA and PCBA and log the changes
+    updateTransceiver: function(transceiver) {
+        let usr = ScesDomains.isLoggedIn(this.userId);
+        let existing = Domains.findOne({_id: transceiver._id});
+        if (!existing.changes) {
+            existing.changes = [];
+        }
+        existing.tags = [];
+        let set = {};
+        let dirty = false;
+        if (existing.dc.TOSA !== transceiver.dc.TOSA) {
+            set['dc.TOSA'] = transceiver.dc.TOSA;
+            existing.changes.push({
+                param: 'TOSA',
+                old: existing.dc.TOSA,
+                new: transceiver.dc.TOSA,
+                when: new Date(),
+                who: usr.username
+            });
+            dirty = true;
+        }
+        existing.tags.push(transceiver.dc.TOSA);
+        if (existing.dc.ROSA !== transceiver.dc.ROSA) {
+            set['dc.ROSA'] = transceiver.dc.ROSA;
+            existing.changes.push({
+                param: 'ROSA',
+                old: existing.dc.ROSA,
+                new: transceiver.dc.ROSA,
+                when: new Date(),
+                who: usr.username
+            });
+            dirty = true;
+        }
+        existing.tags.push(transceiver.dc.ROSA);
+        if (existing.dc.PCBA !== transceiver.dc.PCBA) {
+            set['dc.PCBA'] = transceiver.dc.PCBA;
+            existing.changes.push({
+                param: 'PCBA',
+                old: existing.dc.PCBA,
+                new: transceiver.dc.PCBA,
+                when: new Date(),
+                who: usr.username
+            });
+            dirty = true;
+        }
+        existing.tags.push(transceiver.dc.PCBA);
+        if (dirty === true) {
+            set.changes = existing.changes;
+            set.tags = existing.tags;
+            Domains.update({_id: transceiver._id}, {$set: set});
+        }
+    },
+
     getFailedTestdata: function (id) {
         check(id, String);
         ScesDomains.isLoggedIn(this.userId);
