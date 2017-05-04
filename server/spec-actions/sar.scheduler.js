@@ -40,7 +40,8 @@ Meteor.methods({
     'sarcalc': function (code, pnum2) {
         ScesDomains.getUser(this.userId);
         if (pnum2) {
-            execSar(pnum2, code ? [code] : null);  // testing with snum
+            let date = moment().add(-60, 'days').toDate();
+            execSar(pnum2, code ? [code] : null, date);  // testing with snum
         } else {
             let pnums = PartNumbers.find().fetch();
             _.each(pnums, (pnum) => {
@@ -69,10 +70,10 @@ function execSar (pnum, snums, dateFrom, sarForce) {
     _execSar(pnum, snums, true, pnum, dateFrom, sarForce);
 
     // Get related partnumbers that need to be compiled for this unit
-    let sarBins = SarSpecBin.find({pnum: pnum, class: 'bin'}).fetch();
-    _.each(sarBins, (bin) => {
-        _execSar(bin.pnumLink, snums, false, pnum, dateFrom, sarForce);
-    });
+    // let sarBins = SarSpecBin.find({pnum: pnum, class: 'bin'}).fetch();
+    // _.each(sarBins, (bin) => {
+    //     _execSar(bin.pnumLink, snums, false, pnum, dateFrom, sarForce);
+    // });
 }
 // pnum represents part number to calculate serial number for
 // product represent 2 digits in part number for family
