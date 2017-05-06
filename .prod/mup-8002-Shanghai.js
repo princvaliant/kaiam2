@@ -32,7 +32,7 @@ module.exports = {
             ROOT_URL: 'http://106.14.14.2', // If you are using ssl, this needs to start with https
             CLUSTER_WORKERS_COUNT: "auto",
             MONGO_URL: "mongodb://max:ka1amc00lc10ud@106.15.90.77:27017/KaiamApp?ssl=true",
-            MONGO_OPLOG_URL: "mongodb://max:ka1amc00lc10ud@106.15.90.77:27017/local?authSource=KaiamApp&ssl=true"
+            MONGO_OPLOG_URL: "mongodb://max:ka1amc00lc10ud@106.15.90.77:27017/local?authSource=admin&ssl=true"
 
         },
         deployCheckWaitTime: 260, // default 10
