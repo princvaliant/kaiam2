@@ -31,15 +31,15 @@ module.exports = {
             PORT: 8001, // useful when deploying multiple instances (optional)
             ROOT_URL: 'http://106.14.14.2', // If you are using ssl, this needs to start with https
             CLUSTER_WORKERS_COUNT: "auto",
-            MONGO_URL: "mongodb://max:ka1amc00lc10ud@106.15.90.77:27017/KaiamApp?ssl=true",
-            MONGO_OPLOG_URL: "mongodb://max:ka1amc00lc10ud@106.15.90.77:27017/local?authSource=admin&ssl=true"
+            MONGO_URL: "mongodb://max:ka1amc00lc10ud@106.15.90.77:27017/KaiamApp?authSource=admin&ssl=true"
+       //     MONGO_OPLOG_URL: "mongodb://max:ka1amc00lc10ud@106.15.90.77:27017/local?authSource=admin&ssl=true"
 
         },
-        deployCheckWaitTime: 260, // default 10
+        deployCheckWaitTime: 120, // default 10
         // lets you define which port to check after the deploy process, if it
         // differs from the meteor port you are serving
         // (like meteor behind a proxy/firewall) (optional)
-        deployCheckPort: 80,
+        deployCheckPort: 8001,
 
         // Shows progress bar while uploading bundle to server (optional)
         // You might need to disable it on CI servers
