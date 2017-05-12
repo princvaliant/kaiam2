@@ -120,8 +120,6 @@ HTTP.methods({
         }
     },
 
-
-
     '/postAssembly': {
         auth: SarHelper.myAuth,
         post: function (postData) {
@@ -131,7 +129,7 @@ HTTP.methods({
             let user = this.query.user;
             let returnErrors = [];
 
-            // query.action = 'CHECK', 'INSERT'
+            // query.action = 'CHECK', 'UPDATE', 'INSERT'
             // [
             //     {
             //         cm:
@@ -147,39 +145,88 @@ HTTP.methods({
 
             _.each(data, (row) => {
                 let domain = Domains.findOne({_id: row.sn});
-                if (domain) {
-                    returnErrors.push({
-                        sn: row.sn,
-                        error: 'ALREADY_EXISTS'
-                    });
+                if (action === 'UPDATE') {
+                    if (!domain) {
+                        returnErrors.push({
+                            sn: row.sn,
+                            error: 'SERIAL_DOES_NOT_EXISTS'
+                        });
+                    } else {
+                        // Update domain
+                        if (row.pnum) {
+                            let pnumcheck = row.pnum.match(/XQX\d\d\d\d/g);
+                            if (!pnumcheck || pnumcheck[0] !== row.pnum) {
+                                returnErrors.push({
+                                    sn: row.sn,
+                                    error: 'PNUM_FORMAT_XQXDDDD'
+                                });
+                            } else {
+                                domain.dc.pnum = row.pnum;
+                                domain.dc.PartNumber = row.pnum;
+                            }
+                        }
+                        if (row.cm) {
+                            domain.dc.cm = row.cm;
+                        }
+                        if (!domain.dc.TOSA && row.TOSA) {
+                            domain.dc.TOSA = row.TOSA;
+                        }
+                        if (!domain.dc.ROSA && row.ROSA) {
+                            domain.dc.ROSA = row.ROSA;
+                        }
+                        if (!domain.dc.PCBA && row.PCBA) {
+                            domain.dc.PCBA = row.PCBA;
+                        }
+                        Domains.update({_id: row.sn}, {$set: {dc: domain.dc}});
+                    }
                 } else if (action === 'INSERT') {
-                    ScesDomains.create('transceiver', user, row.sn, [ASSEMBLY_LOCATION_ID], {
-                        pnum: row.pnum,
-                        PartNumber: row.pnum,
-                        TOSA: row.TOSA,
-                        ROSA: row.ROSA,
-                        PCBA: row.PCBA,
-                        state: 'AddedToLocation',
-                        SerialNumber: row.sn,
-                        cm: row.cm,
-                        cmSerialNumber: row.sncm,
-                        cmShipDate: row.shipDate
-                    }, [row.TOSA, row.ROSA, row.PCBA, row.sncm]);
-                    ScesDomains.addEvent(ASSEMBLY_LOCATION_ID, 'add',
-                        'Transceiver ' + row.sn + ' added to location.', row.sn);
+                    if (!domain) {
+                        ScesDomains.create('transceiver', user, row.sn, [ASSEMBLY_LOCATION_ID], {
+                            pnum: row.pnum,
+                            PartNumber: row.pnum,
+                            TOSA: row.TOSA,
+                            ROSA: row.ROSA,
+                            PCBA: row.PCBA,
+                            state: 'AddedToLocation',
+                            SerialNumber: row.sn,
+                            cm: row.cm,
+                            cmSerialNumber: row.sncm,
+                            cmShipDate: row.shipDate
+                        }, [row.TOSA, row.ROSA, row.PCBA, row.sncm]);
+                        ScesDomains.addEvent(ASSEMBLY_LOCATION_ID, 'add',
+                            'Transceiver ' + row.sn + ' added to location.', row.sn);
+                    } else {
+                        returnErrors.push({
+                            sn: row.sn,
+                            error: 'ALREADY_EXISTS'
+                        });
+                    }
+                } else if (action === 'CHECK') {
+                    if (!domain) {
+                        returnErrors.push({
+                            sn: row.sn,
+                            error: 'SERIAL_DOES_NOT_EXISTS'
+                        });
+                    } else {
+                        returnErrors.push({
+                            sn: row.sn,
+                            error: 'ALREADY_EXISTS'
+                        });
+                    }
                 }
             });
             return returnErrors.length > 0 ? returnErrors : 'OK';
         }
     },
 
+
     '/postTestdata': {
         auth: SarHelper.myAuth,
         post: function (postData) {
             function parse (obj) {
                 obj.timestamp = moment(obj.timestamp).toDate();
-                obj.meta.StartDateTime = moment( obj.meta.StartDateTime).toDate();
-                obj.meta.EndDateTime = moment( obj.meta.EndtDateTime).toDate();
+                obj.meta.StartDateTime = moment(obj.meta.StartDateTime).toDate();
+                obj.meta.EndDateTime = moment(obj.meta.EndtDateTime).toDate();
             }
 
             let data = JSON.parse(postData);
@@ -201,8 +248,8 @@ HTTP.methods({
         post: function (postData) {
             function parse (obj) {
                 obj.timestamp = moment(obj.timestamp).toDate();
-                obj.StartDateTime = moment( obj.StartDateTime).toDate();
-                obj.EndDateTime = moment( obj.EndtDateTime).toDate();
+                obj.StartDateTime = moment(obj.StartDateTime).toDate();
+                obj.EndDateTime = moment(obj.EndtDateTime).toDate();
             }
 
             let data = JSON.parse(postData);

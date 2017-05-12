@@ -40,7 +40,7 @@ Meteor.methods({
     'sarcalc': function (code, pnum2) {
         ScesDomains.getUser(this.userId);
         if (pnum2) {
-            let date = moment().add(-60, 'days').toDate();
+            let date = moment().add(-10, 'days').toDate();
             execSar(pnum2, code ? [code] : null, date);  // testing with snum
         } else {
             let pnums = PartNumbers.find().fetch();
