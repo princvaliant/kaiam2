@@ -4,7 +4,6 @@
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.scheduler.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -28,7 +27,7 @@
       <file leaf-file-name="sar.scheduler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11985">
+            <state relative-caret-position="15">
               <caret line="799" column="9" lean-forward="false" selection-start-line="799" selection-start-column="9" selection-end-line="799" selection-end-column="9" />
               <folding />
             </state>
@@ -38,8 +37,8 @@
       <file leaf-file-name="sar.rest.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1873">
-              <caret line="153" column="28" lean-forward="true" selection-start-line="153" selection-start-column="28" selection-end-line="153" selection-end-column="28" />
+            <state relative-caret-position="201">
+              <caret line="154" column="47" lean-forward="false" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -914,14 +913,7 @@
       <workItem from="1494018320657" duration="3273000" />
       <workItem from="1494030733246" duration="2302000" />
       <workItem from="1494383714231" duration="1954000" />
-      <workItem from="1494565343843" duration="2462000" />
-    </task>
-    <task id="LOCAL-00132" summary="- Modify customer portal to show important test parameters">
-      <created>1484947408364</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1484947408365</updated>
+      <workItem from="1494565343843" duration="2507000" />
     </task>
     <task id="LOCAL-00133" summary="- Add export to customer portal">
       <created>1484951042254</created>
@@ -1259,11 +1251,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494033182507</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="- Disable binning in 100GB calculation">
+      <created>1494568058698</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1494568058698</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1293459000" />
+    <option name="totallyTimeSpent" value="1293504000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1718,14 +1717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11985">
-          <caret line="799" column="9" lean-forward="false" selection-start-line="799" selection-start-column="9" selection-end-line="799" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/sces/domain.core.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -1734,10 +1725,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="799" column="9" lean-forward="false" selection-start-line="799" selection-start-column="9" selection-end-line="799" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1873">
-          <caret line="153" column="28" lean-forward="true" selection-start-line="153" selection-start-column="28" selection-end-line="153" selection-end-column="28" />
+        <state relative-caret-position="201">
+          <caret line="154" column="47" lean-forward="false" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
           <folding />
         </state>
       </provider>

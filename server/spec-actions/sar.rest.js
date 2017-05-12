@@ -152,7 +152,7 @@ HTTP.methods({
                             error: 'SERIAL_DOES_NOT_EXISTS'
                         });
                     } else {
-                        // Update domain
+                        // Update domain object
                         if (row.pnum) {
                             let pnumcheck = row.pnum.match(/XQX\d\d\d\d/g);
                             if (!pnumcheck || pnumcheck[0] !== row.pnum) {
