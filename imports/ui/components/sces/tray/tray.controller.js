@@ -164,7 +164,7 @@ angular.module('kaiamSces').controller('ScesTrayController', [
         };
 
         $scope.addAnyway = function (newValue) {
-            Meteor.call('addTransceiverToTray', newValue.trim(), $scope.domain, true, (err) => {
+            Meteor.call('addTransceiverToTray', newValue.code.trim(), $scope.domain, true, (err) => {
                 if (err) {
                     showError(err.error);
                 }

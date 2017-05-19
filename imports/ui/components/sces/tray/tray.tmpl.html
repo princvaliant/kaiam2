@@ -110,7 +110,7 @@
                                 <p class="text-ellipsis scesPadding">{{de.code}} - {{de.message | translate}} - <a
                                         href="/sces/transceiver?id={{de.code || de.message.split(' ')[0]}}">
                                     view {{de.code}}</a>
-                                    <md-button class="md-primary" aria-label="button" ng-click="addAnyway(de.code)"
+                                    <md-button class="md-primary" aria-label="button" ng-click="addAnyway(de)"
                                                ng-show="isAdmin == true && de.status === 'error'">Add anyway
                                     </md-button>
                                 </p>
