@@ -137,6 +137,7 @@ Meteor.publish('partNumbers', function (options, search, filter) {
 Meteor.methods({
 
     addTransceiverToTray: function (snum, tray, adminOverride) {
+
         check(snum, String);
         ScesDomains.getUser(this.userId);
         // Check if this serial number is already assigned
@@ -223,8 +224,8 @@ Meteor.methods({
 
             let ppn = packout.device.PartNumber.substring(0, packout.device.PartNumber.length - 2);
             if (ppn === 'XQX43') {
-                if (testsumm.pnum !== 'XQX4300') {
-                    return ScesDomains.addEvent(tray._id, 'error', 'Test part number does not match packout part number');
+                if (testsumm.pnum !== 'XQX4300' && !adminOverride) {
+                    return ScesDomains.addEvent(tray._id, 'error', 'Test part number does not match packout part number', snum);
                 } else {
                     testsumm.pnum = packout.device.PartNumber;
                 }
