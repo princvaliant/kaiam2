@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
     </list>
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <ignored path="dassfab.iws" />
@@ -27,18 +26,38 @@
       <file leaf-file-name="sar.scheduler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="11985">
               <caret line="799" column="9" lean-forward="false" selection-start-line="799" selection-start-column="9" selection-end-line="799" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sar.rest.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sar.rest.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
+            <state relative-caret-position="494">
               <caret line="154" column="47" lean-forward="false" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transceiver.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tray.controller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/tray/tray.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1987">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -47,7 +66,7 @@
       <file leaf-file-name="domain.core.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/sces/domain.core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="75">
               <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
               <folding />
             </state>
@@ -235,48 +254,64 @@
     <panes>
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaiam2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec-actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="sces" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="sces" type="462c0819:PsiDirectoryNode" />
+              <item name="transceiver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="sces" type="462c0819:PsiDirectoryNode" />
+              <item name="tray" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="daasfab" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -354,6 +389,75 @@
     </option>
   </component>
   <component name="RunManager" selected="Meteor.Meteor Dev Debug">
+    <configuration name="Build annotate" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
+      <node-options value=" --harmony" />
+      <gruntfile value="$PROJECT_DIR$/Gruntfile.js" />
+      <tasks>
+        <task value="ngAnnotate" />
+      </tasks>
+      <arguments value="--force --verbose" />
+      <envs />
+      <force value="true" />
+      <verbose value="true" />
+    </configuration>
+    <configuration name="Meteor Client Debug JavaScript" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:3000" />
+    <configuration name="Meteor Dev Debug" type="meteor-app-runner" factoryName="Meteor">
+      <option name="envs">
+        <entry key="MONGO_URL" value="mongodb://Miljenko:ka1amc00lc10ud@159.203.231.8:27017/KaiamApp?ssl=true&amp;sslVerifyCertificate=false" />
+      </option>
+      <option name="exePath" value="/usr/local/bin/meteor" />
+      <option name="startBrowserSettings">
+        <browser start="true" with-js-debugger="true" url="http://localhost:3000" />
+      </option>
+      <meteor-runner-state>
+        <startBrowserSettings>
+          <browser start="true" with-js-debugger="true" url="http://localhost:3000" />
+        </startBrowserSettings>
+      </meteor-runner-state>
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
+      <node-options value="--es6 " />
+      <gruntfile value="Build annotate" />
+      <arguments value="--force --verbose" />
+      <envs />
+      <force value="true" />
+      <verbose value="true" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options>-harmony</node-options>
+      <gulpfile>$PROJECT_DIR$/Gulpfile.js</gulpfile>
+      <tasks>
+        <task>default</task>
+      </tasks>
+      <arguments />
+      <envs />
+    </configuration>
+    <configuration default="true" type="meteor-app-runner" factoryName="Meteor">
+      <option name="exePath" value="/usr/local/bin/meteor" />
+      <option name="startBrowserSettings">
+        <browser start="true" with-js-debugger="true" url="http://localhost:3000" />
+      </option>
+      <meteor-runner-state>
+        <startBrowserSettings>
+          <browser start="true" with-js-debugger="true" url="http://localhost:3000" />
+        </startBrowserSettings>
+      </meteor-runner-state>
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -391,88 +495,11 @@
       <option name="filePath" />
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
-      <node-interpreter value="project" />
-      <node-options value="--es6 " />
-      <gruntfile value="Build annotate" />
-      <arguments value="--force --verbose" />
-      <envs />
-      <force value="true" />
-      <verbose value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options>-harmony</node-options>
-      <gulpfile>$PROJECT_DIR$/Gulpfile.js</gulpfile>
-      <tasks>
-        <task>default</task>
-      </tasks>
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
       <scripts />
       <node-interpreter value="project" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="meteor-app-runner" factoryName="Meteor">
-      <option name="exePath" value="/usr/local/bin/meteor" />
-      <option name="startBrowserSettings">
-        <browser start="true" with-js-debugger="true" url="http://localhost:3000" />
-      </option>
-      <meteor-runner-state>
-        <startBrowserSettings>
-          <browser start="true" with-js-debugger="true" url="http://localhost:3000" />
-        </startBrowserSettings>
-      </meteor-runner-state>
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
-    <configuration default="false" name="Build annotate" type="js.build_tools.grunt" factoryName="Grunt.js">
-      <node-interpreter value="project" />
-      <node-options value=" --harmony" />
-      <gruntfile value="$PROJECT_DIR$/Gruntfile.js" />
-      <tasks>
-        <task value="ngAnnotate" />
-      </tasks>
-      <arguments value="--force --verbose" />
-      <envs />
-      <force value="true" />
-      <verbose value="true" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Meteor Client Debug JavaScript" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:3000">
-      <method />
-    </configuration>
-    <configuration default="false" name="Meteor Dev Debug" type="meteor-app-runner" factoryName="Meteor">
-      <option name="envs">
-        <entry key="MONGO_URL" value="mongodb://Miljenko:ka1amc00lc10ud@159.203.231.8:27017/KaiamApp?ssl=true&amp;sslVerifyCertificate=false" />
-      </option>
-      <option name="exePath" value="/usr/local/bin/meteor" />
-      <option name="startBrowserSettings">
-        <browser start="true" with-js-debugger="true" url="http://localhost:3000" />
-      </option>
-      <meteor-runner-state>
-        <startBrowserSettings>
-          <browser start="true" with-js-debugger="true" url="http://localhost:3000" />
-        </startBrowserSettings>
-      </meteor-runner-state>
       <method />
     </configuration>
     <list size="4">
@@ -913,14 +940,8 @@
       <workItem from="1494018320657" duration="3273000" />
       <workItem from="1494030733246" duration="2302000" />
       <workItem from="1494383714231" duration="1954000" />
-      <workItem from="1494565343843" duration="2507000" />
-    </task>
-    <task id="LOCAL-00133" summary="- Add export to customer portal">
-      <created>1484951042254</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1484951042254</updated>
+      <workItem from="1494565343843" duration="2528000" />
+      <workItem from="1495286629040" duration="157000" />
     </task>
     <task id="LOCAL-00134" summary="- Add export to customer portal">
       <created>1484951123067</created>
@@ -1258,11 +1279,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494568058698</updated>
     </task>
-    <option name="localTasksCounter" value="182" />
+    <task id="LOCAL-00182" summary="- Added rest call for updating domains">
+      <created>1494568115494</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1494568115494</updated>
+    </task>
+    <option name="localTasksCounter" value="183" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1293504000" />
+    <option name="totallyTimeSpent" value="1293682000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1285,7 +1313,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45899472" sideWeight="0.48445946" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3227513" sideWeight="0.45870394" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3227513" sideWeight="0.45870394" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1337,7 +1365,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="- Fixing date problem in transceiver check&#10;" />
     <MESSAGE value="- Fixing problem with week grouping after new year&#10;" />
     <MESSAGE value="- Fixing problem with week grouping after new year" />
     <MESSAGE value="- Adding new rest call for inserting assemblies in database&#10;- Modification of getVendorSequence call and adding new call just to retrieve current sequence" />
@@ -1362,7 +1389,8 @@
     <MESSAGE value="- Add updating TOSA, ROSA and PCBA info&#10;- Add logger when something changes&#10;- Finalizing test insertions precalculation to speed up reports" />
     <MESSAGE value="- Add Rack35 &#10;- Add 2 new stations for reporting" />
     <MESSAGE value="- Disable binning in 100GB calculation" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Disable binning in 100GB calculation" />
+    <MESSAGE value="- Added rest call for updating domains" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added rest call for updating domains" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1381,13 +1409,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/test-summary.methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/rosa-import.scheduler.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2085">
@@ -1591,13 +1612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/transceiver/edit-part.tmpl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1719,7 +1733,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/sces/domain.core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="75">
           <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
           <folding />
         </state>
@@ -1727,7 +1741,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.scheduler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="11985">
           <caret line="799" column="9" lean-forward="false" selection-start-line="799" selection-start-column="9" selection-end-line="799" selection-end-column="9" />
           <folding />
         </state>
@@ -1735,8 +1749,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
+        <state relative-caret-position="494">
           <caret line="154" column="47" lean-forward="false" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/sces/tray/tray.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1987">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
