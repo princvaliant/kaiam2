@@ -29,13 +29,13 @@ Meteor.methods({
         if ((interval > 999 && interval <= 1002) || range === 'day') {
             match.d = drange;
         } else if (range === 'week') {
-            match.w = wrange;
+            match.nw = '2017' + wrange;
         } else if (interval > 1002) {
             match.d = {
                 $gte: drange
             };
         } else {
-            match.w = wrange;
+            match.nw = '2017' + wrange;
         }
 
         // Get total passes
