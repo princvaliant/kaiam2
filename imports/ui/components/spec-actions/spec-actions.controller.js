@@ -34,6 +34,7 @@ angular.module('kaiamSpecActions').controller('SpecActionsController', ['$rootSc
         _.each(pnumms, (pnumm) => {
             $scope.partNumbers.push(pnumm.name);
         });
+        $scope.partNumbers.sort();
         $scope.partNumber = $cookies.get('specActionsPartNumber') || 'XQX4000';
 
         refreshBins();

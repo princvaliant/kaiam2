@@ -30,7 +30,7 @@ Meteor.methods({
             query.$and.push({'device.PartNumber': partNumber});
         }
 
-        if (dateFrom !== null && dateTo !== null && (!serial || ignoreDate === false)) {
+        if (dateFrom !== null && dateTo !== null && (!serial || ignoreDate !== true)) {
             query.$and.push({
                 'timestamp': {
                     '$gte': dateFrom,
@@ -183,7 +183,7 @@ Meteor.methods({
         }
 
         let project = {
-            date: '$meta.StartDateTime',
+            date: '$timestamp',
             mid: '$mid',
             snum: '$device.SerialNumber',
             test: '$type',
