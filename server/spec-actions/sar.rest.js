@@ -108,6 +108,25 @@ HTTP.methods({
         }
     },
 
+    '/getTosaLaserPn': {
+        auth: SarHelper.myAuth,
+        get: function () {
+            // Put device serial number
+            // put tosa serial number
+            // Get first member array
+
+            let domain = Domains.findOne({'dc.ROSA': this.query.id}, {fields: {audit: 0}});
+            if (!domain) {
+                return 'not_found';
+            }
+            if (domain.dc.rosaRework === true) {
+                return 'true';
+            } else {
+                return 'false';
+            }
+        }
+    },
+
     '/getConvBin': {
         auth: SarHelper.myAuth,
         get: function () {
