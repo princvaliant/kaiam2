@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
     <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/authentication/signup/signup.controller.js" afterPath="$PROJECT_DIR$/imports/ui/components/authentication/signup/signup.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/accounts.methods.js" afterPath="$PROJECT_DIR$/server/accounts.methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/admin/service.config.js" afterPath="$PROJECT_DIR$/server/admin/service.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
     </list>
     <ignored path="dassfab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -212,79 +207,6 @@
             <path>
               <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
               <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="authentication" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="charts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -940,14 +862,7 @@
       <workItem from="1498716132212" duration="17000" />
       <workItem from="1498716158727" duration="2041000" />
       <workItem from="1501121321259" duration="48000" />
-      <workItem from="1501121379602" duration="2327000" />
-    </task>
-    <task id="LOCAL-00137" summary="- Add binning functionality to transceiver view.">
-      <created>1485308851471</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1485308851471</updated>
+      <workItem from="1501121379602" duration="2618000" />
     </task>
     <task id="LOCAL-00138" summary="Fixing compiler for test data. Some transceivers didn't update status&#10;Adding transceivers">
       <created>1485403919723</created>
@@ -1285,11 +1200,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498717987211</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="- Fix loss per week&#10;- Sort part numbers in UI&#10;- Check obsolete view">
+      <created>1501123729385</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1501123729385</updated>
+    </task>
+    <option name="localTasksCounter" value="187" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1305519000" />
+    <option name="totallyTimeSpent" value="1305810000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
