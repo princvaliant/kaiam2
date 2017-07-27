@@ -115,15 +115,11 @@ HTTP.methods({
             // put tosa serial number
             // Get first member array
 
-            let domain = Domains.findOne({'dc.ROSA': this.query.id}, {fields: {audit: 0}});
-            if (!domain) {
+            let testData = Testdata.findOne({'device.SerialNumber': this.query.id}, {fields: {'data.laser_pn': 1}});
+            if (!testData ||  !testData.data.laser_pn || testData.data.laser_pn.length === 0) {
                 return 'not_found';
             }
-            if (domain.dc.rosaRework === true) {
-                return 'true';
-            } else {
-                return 'false';
-            }
+            return testData.data.laser_pn[0];
         }
     },
 

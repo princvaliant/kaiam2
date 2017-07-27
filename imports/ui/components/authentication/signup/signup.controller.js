@@ -2,7 +2,6 @@
 
 import angular from 'angular';
 import {Accounts} from 'meteor/accounts-base';
-
 /**
  * @ngdoc function
  * @name SignupController
@@ -13,6 +12,7 @@ import {Accounts} from 'meteor/accounts-base';
  *
  * Handles sending of signup info to api and response
  */
+
 angular.module('kaiamAuthentication')
     .controller('SignupController', ['$scope', '$reactive', '$translate', '$state', '$mdToast', '$location',
         function ($scope, $reactive, $translate, $state, $mdToast, $location) {
