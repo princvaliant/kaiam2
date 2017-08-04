@@ -31,7 +31,7 @@ Meteor.methods({
 
 function getYieldPipe () {
     let p = JSON.stringify(getPipeline());
-    p = p.replace('\"DATEFILTER\"', 'new ISODate(\"' + moment().subtract(160, 'days').toISOString() + '\")');
+    p = p.replace('\"DATEFILTER\"', 'new ISODate(\"' + moment().subtract(400, 'days').toISOString() + '\")');
     return p;
 }
 
