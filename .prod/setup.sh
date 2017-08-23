@@ -1,0 +1,1 @@
+meteor mup setup --config=kaiamApp1.js --settings=settings.json
