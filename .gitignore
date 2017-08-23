@@ -1,5 +1,7 @@
 node_modules/
 .DS_Store
+.idea/**
+.idea/workspace.xml
 .idea/.DS_Store
 .idea/runConfigurations/
 .meteor/.DS_Store
