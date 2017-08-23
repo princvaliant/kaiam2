@@ -1,14 +1,14 @@
 module.exports = {
     servers: {
         one: {
-            host: '47.88.63.160',
+            host: '138.68.2.121',
             username: 'root',
             password: 'Ka1amC00lC10ud'
         }
     },
 
     meteor: {
-        name: 'kaiam-8001',
+        name: 'kaiam',
         path: '..',
         // lets you add docker volumes (optional)
         docker: {
@@ -28,11 +28,11 @@ module.exports = {
             allowIncompatibleUpdates: true
         },
         env: {
-            PORT: 8001, // useful when deploying multiple instances (optional)
-            ROOT_URL: 'http://47.88.63.160', // If you are using ssl, this needs to start with https
+            PORT: 80, // useful when deploying multiple instances (optional)
+            ROOT_URL: 'http://138.68.2.121', // If you are using ssl, this needs to start with https
             CLUSTER_WORKERS_COUNT: "auto",
-            MONGO_URL: "mongodb://max:ka1amc00lc10ud@47.88.53.179:27017/KaiamApp?ssl=true",
-            MONGO_OPLOG_URL: "mongodb://max:ka1amc00lc10ud@47.88.53.179:27017/local?authSource=KaiamApp&ssl=true"
+            MONGO_URL: "mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/KaiamApp?ssl=true",
+            MONGO_OPLOG_URL: "mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/local?authSource=KaiamApp&ssl=true"
 
         },
         deployCheckWaitTime: 260, // default 10
