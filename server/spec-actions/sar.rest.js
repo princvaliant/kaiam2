@@ -89,6 +89,43 @@ HTTP.methods({
         auth: SarHelper.myAuth,
         get: function () {
             let domain = Domains.findOne({_id: this.query.id}, {fields: {audit: 0}});
+            if (!domain) // Could be LS2 Module
+            {
+                let dc = Testdata.findOne({'type': 'LS2', 'subtype':'dc', 'device.SerialNumber':this.query.id}, {fields: {audit: 0}})
+                if (dc)
+                {
+                    dc = dc['device'];
+
+
+                    let data = new Object();
+
+                    data.pnum = dc['PartNumber'];
+                    data.PartNumber = dc['PartNumber'];
+                    data.TOSA = dc['SerialNumber'];
+                    data.ROSA = dc['SerialNumber'];
+                    data.PCBA = dc['PCBSerialNumber'];
+                    data.state = '';
+                    data.SerialNumber = dc['SerialNumber'];
+                    data.cm = '';
+                    data.cmSerialNumber = '';
+                    data.cmShipDate = '';
+
+                    dc['dc'] = JSON.parse(JSON.stringify(data));
+/*
+                    dc['dc']['pnum'] = dc['PartNumber'];
+                    dc['dc.PartNumber'] = dc['PartNumber'];
+                    dc['dc.TOSA'] = dc['SerialNumber'];
+                    dc['dc.ROSA'] = dc['SerialNumber'];
+                    dc['dc.PCBA'] = dc['PCBSerialNumber'];
+                    dc['dc.state'] = '';
+                    dc['dc.SerialNumber'] = dc['SerialNumber'];
+                    dc['dc.cm'] = '';
+                    dc['dc.cmSerialNumber'] = '';
+                    dc['dc.cmShipDate'] = '';
+*/
+                    return dc;
+                }
+            }
             return domain;
         }
     },
@@ -115,11 +152,38 @@ HTTP.methods({
             // put tosa serial number
             // Get first member array
 
-            let testData = Testdata.findOne({'device.SerialNumber': this.query.id}, {fields: {'data.laser_pn': 1}});
-            if (!testData ||  !testData.data.laser_pn || testData.data.laser_pn.length === 0) {
-                return 'not_found';
+            // LS1 UK part numbers:
+            let occlaro408 = ["TOS-N04-XB0-400"];
+            let renesas409 = ["TOS-N04-XB0-40R"];
+
+            // LS2 UK part numbers
+            occlaro408.push("TRN-N04-XB0-500");
+            renesas409.push("TRN-N04-XB0-50R");
+
+            // See if UK data exists in Oracle I-Track Database
+            let testData = Testdata.findOne({'device.SerialNumber': this.query.id, 'subtype' : 'dc'}, {fields: {'device.UKDevicePartNumber': 1}});
+
+            // UK data doesn't exist, return laser pn from name in MySQL Database
+            if (!testData || testData.device.UKDevicePartNumber === "Not Found")
+            {
+                let testData = Testdata.findOne({'device.SerialNumber': this.query.id, 'subtype' : 'dc'}, {fields: {'data.laser_pn': 1}});
+                if (!testData ||  !testData.data.laser_pn || testData.data.laser_pn.length === 0) {
+                    return 'not_found';
+                }
+
+                return testData.data.laser_pn[0];
             }
-            return testData.data.laser_pn[0];
+
+            if (occlaro408.includes(testData.device.UKDevicePartNumber))
+            {
+                return "408";
+            }
+            if (renesas409.includes(testdata.device.UKDevicePartNumber))
+            {
+                return "409";
+            }
+
+            return testData.device.UKDevicePartNumber;
         }
     },
 
