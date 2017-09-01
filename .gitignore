@@ -1,9 +1,8 @@
 node_modules/
 .DS_Store
-.idea/**
 .idea/workspace.xml
 .idea/.DS_Store
-.idea/runConfigurations/
+.idea/runConfigurations
 .meteor/.DS_Store
 imports/.DS_Store
 imports/ui/daasfab/.DS_Store
@@ -19,3 +18,4 @@ public/assets/images/.DS_Store
 public/assets/images/backgrounds/.DS_Store
 server/.DS_Store
 server/spec-actions/.DS_Store
+.idea/**
