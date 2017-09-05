@@ -169,7 +169,7 @@ HTTP.methods({
             if (occlaro408.includes(testData.device.UKDevicePartNumber)) {
                 return "408";
             }
-            if (renesas409.includes(testdata.device.UKDevicePartNumber)) {
+            if (renesas409.includes(testData.device.UKDevicePartNumber)) {
                 return "409";
             }
 
