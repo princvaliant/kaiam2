@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="eb6aca2f-2e9d-48a8-93df-665c9c608ff8" name="New changelist" comment="New changelist" />
-    <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="- Fix deployment commands">
+    <list default="true" id="1f168d6d-2a17-47c6-a272-d3bb70a09dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" afterPath="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
     </list>
     <ignored path="dassfab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,7 +22,18 @@
     <favorites_list name="dassfab" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="sar.rest.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4680">
+              <caret line="312" column="6" lean-forward="true" selection-start-line="312" selection-start-column="6" selection-end-line="312" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -135,8 +147,8 @@
         <option value="$PROJECT_DIR$/.do/setup.sh" />
         <option value="$PROJECT_DIR$/.do/deploy.sh" />
         <option value="$PROJECT_DIR$/.dev/kaiamApp1.js" />
-        <option value="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/server/spec-actions/sar.rest.js" />
       </list>
     </option>
   </component>
@@ -201,6 +213,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,12 +222,21 @@
               <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
               <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kaiam2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kaiam2" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="spec-actions" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -870,14 +893,8 @@
       <workItem from="1503520316405" duration="257000" />
       <workItem from="1504241527614" duration="487000" />
       <workItem from="1504336905012" duration="4000" />
-      <workItem from="1504581313030" duration="53000" />
-    </task>
-    <task id="LOCAL-00143" summary="- Add XQX4300 and XQX4400&#10;- Add sensitivity calculation for CWDM and CLR4&#10;- Import DC files from Scotland">
-      <created>1485979157004</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1485979157004</updated>
+      <workItem from="1504581313030" duration="1450000" />
+      <workItem from="1504584806449" duration="77000" />
     </task>
     <task id="LOCAL-00144" summary="- Add longdistance variables to export&#10;- Fix problem with XQX4095">
       <created>1486097580133</created>
@@ -1215,11 +1232,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504241915078</updated>
     </task>
-    <option name="localTasksCounter" value="192" />
+    <task id="LOCAL-00192" summary="- Fix deployment commands">
+      <created>1504581370233</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1504581370234</updated>
+    </task>
+    <option name="localTasksCounter" value="193" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1309082000" />
+    <option name="totallyTimeSpent" value="1310556000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1279,6 +1303,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1343,6 +1377,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.dev/setup.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1606,8 +1648,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/spec-actions/sar.rest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="119" column="24" lean-forward="false" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
+        <state relative-caret-position="4680">
+          <caret line="312" column="6" lean-forward="true" selection-start-line="312" selection-start-column="6" selection-end-line="312" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>

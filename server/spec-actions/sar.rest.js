@@ -110,18 +110,6 @@ HTTP.methods({
                     data.cmShipDate = '';
 
                     dc.dc = JSON.parse(JSON.stringify(data));
-                    /*
-                                        dc['dc']['pnum'] = dc['PartNumber'];
-                                        dc['dc.PartNumber'] = dc['PartNumber'];
-                                        dc['dc.TOSA'] = dc['SerialNumber'];
-                                        dc['dc.ROSA'] = dc['SerialNumber'];
-                                        dc['dc.PCBA'] = dc['PCBSerialNumber'];
-                                        dc['dc.state'] = '';
-                                        dc['dc.SerialNumber'] = dc['SerialNumber'];
-                                        dc['dc.cm'] = '';
-                                        dc['dc.cmSerialNumber'] = '';
-                                        dc['dc.cmShipDate'] = '';
-                    */
                     return dc;
                 }
             }
@@ -166,7 +154,7 @@ HTTP.methods({
             }, {fields: {'device.UKDevicePartNumber': 1}});
 
             // UK data doesn't exist, return laser pn from name in MySQL Database
-            if (!testData || testData.device.UKDevicePartNumber === "Not Found") {
+            if (!testData || !testData.device.UKDevicePartNumber || testData.device.UKDevicePartNumber === "Not Found") {
                 let testData = Testdata.findOne({
                     'device.SerialNumber': this.query.id,
                     'subtype': 'dc'
