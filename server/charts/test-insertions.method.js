@@ -10,7 +10,7 @@ Meteor.methods({
         ScesDomains.getUser(this.userId);
         let pnumregex = '^XQX';
         if (device === '100GB') {
-            pnumregex = '^XQX4';
+            pnumregex = '^XQX4|^XQX5';
         } else if (device === '40GB') {
             pnumregex = '^XQX3|^XQX2';
         }

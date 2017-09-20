@@ -89,7 +89,7 @@ HTTP.methods({
         auth: SarHelper.myAuth,
         get: function () {
             let domain = Domains.findOne({_id: this.query.id}, {fields: {audit: 0}});
-            if (!domain) { // Could be LS2 Module
+            if (!domain || domain.dc['PartNumber'] === 'XQX5000' || domain.dc['SerialNumber'].startsWith('BL')) { // Could be LS2 Module
                 let dc = Testdata.findOne({
                     'type': 'LS2',
                     'subtype': 'dc',
@@ -140,12 +140,12 @@ HTTP.methods({
             // Get first member array
 
             // LS1 UK part numbers:
-            let occlaro408 = ["TOS-N04-XB0-400"];
-            let renesas409 = ["TOS-N04-XB0-40R"];
+            let occlaro408 = ['TOS-N04-XB0-400'];
+            let renesas409 = ['TOS-N04-XB0-40R'];
 
             // LS2 UK part numbers
-            occlaro408.push("TRN-N04-XB0-500");
-            renesas409.push("TRN-N04-XB0-50R");
+            occlaro408.push('TRN-N04-XB0-500');
+            renesas409.push('TRN-N04-XB0-50R');
 
             // See if UK data exists in Oracle I-Track Database
             let testData = Testdata.findOne({
@@ -154,8 +154,8 @@ HTTP.methods({
             }, {fields: {'device.UKDevicePartNumber': 1}});
 
             // UK data doesn't exist, return laser pn from name in MySQL Database
-            if (!testData || !testData.device.UKDevicePartNumber || testData.device.UKDevicePartNumber === "Not Found") {
-                let testData = Testdata.findOne({
+            if (!testData || !testData.device.UKDevicePartNumber || testData.device.UKDevicePartNumber === 'Not Found') {
+                testData = Testdata.findOne({
                     'device.SerialNumber': this.query.id,
                     'subtype': 'dc'
                 }, {fields: {'data.laser_pn': 1}});
@@ -167,10 +167,10 @@ HTTP.methods({
             }
 
             if (occlaro408.includes(testData.device.UKDevicePartNumber)) {
-                return "408";
+                return '408';
             }
             if (renesas409.includes(testData.device.UKDevicePartNumber)) {
-                return "409";
+                return '409';
             }
 
             return testData.device.UKDevicePartNumber;

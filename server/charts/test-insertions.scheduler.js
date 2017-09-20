@@ -27,7 +27,7 @@ function execPerType (type) {
     let pipeline = [{
         $match: {
             'device.PartNumber': {
-                $regex: '^XQX4|^XQX3|^XQX2'
+                $regex: '^XQX4|^XQX5|^XQX3|^XQX2'
             },
             'timestamp': {
                 $gt: 'DATEFILTER'
