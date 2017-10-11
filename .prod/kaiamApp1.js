@@ -33,7 +33,6 @@ module.exports = {
             CLUSTER_WORKERS_COUNT: "auto",
             MONGO_URL: "mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/KaiamApp?ssl=true",
             MONGO_OPLOG_URL: "mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/local?authSource=KaiamApp&ssl=true"
-
         },
         deployCheckWaitTime: 260, // default 10
         // lets you define which port to check after the deploy process, if it
