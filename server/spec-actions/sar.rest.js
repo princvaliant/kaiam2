@@ -149,17 +149,28 @@ HTTP.methods({
             occlaro408pn.push('TRN-N04-XB0-500');
             renesas409pn.push('TRN-N04-XB0-50R');
 
+            let queryString = this.query.id;
+
+            if (queryString.includes('A'))
+            {
+                queryString = queryString.replace('A','');
+            }
+            if (queryString.includes('B'))
+            {
+                queryString = queryString.replace('B','');
+            }
+
             // See if UK data exists in Oracle I-Track Database
             let testData = Testdata.findOne({
-                'device.SerialNumber': this.query.id,
+                'device.SerialNumber': queryString,
                 'subtype': 'dc'
             }, {sort: {'timestamp': -1, limit: 1}
             }, {fields: {'device.UKDevicePartNumber': 1}});
 
-            // UK data doesn't exist, return laser pn from name in MySQL Database
+            // Data doesn't exist in UK I-Track Database, return laser pn from name in UK MySQL Database
             if (!testData || !testData.device.UKDevicePartNumber || !testData.device.UKDeviceType || testData.device.UKDevicePartNumber === 'Not Found') {
                 testData = Testdata.findOne({
-                    'device.SerialNumber': this.query.id,
+                    'device.SerialNumber': queryString,
                     'subtype': 'dc'
                 }, {sort: {'timestamp': -1, limit: 1}
                 }, {fields: {'data.laser_pn': 1}});
