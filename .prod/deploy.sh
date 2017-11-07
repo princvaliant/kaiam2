@@ -1,1 +1,1 @@
-meteor mup deploy --config=kaiamApp1.js --settings=settings.json
+meteor mup deploy --config=mup.js --settings=settings.json
