@@ -39,7 +39,7 @@ function execPerType (type) {
                 $in: Settings.spcRacks100GB.concat(Settings.spcRacks40GB)
             },
             'meta.ScriptName': {
-                $nin: ['Control']
+                $nin: ['Control', '.Control']
             }
         }
     }, {

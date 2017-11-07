@@ -140,24 +140,39 @@ HTTP.methods({
             // Get first member array
 
             // LS1 UK part numbers:
-            let occlaro408 = ['TOS-N04-XB0-400'];
-            let renesas409 = ['TOS-N04-XB0-40R'];
+            let occlaro408pn = ['TOS-N04-XB0-400'];
+            let renesas409pn = ['TOS-N04-XB0-40R'];
+            let occlaro408deviceType = ['4x28T408'];
+            let renesas409deviceType = ['4x28T409'];
 
             // LS2 UK part numbers
-            occlaro408.push('TRN-N04-XB0-500');
-            renesas409.push('TRN-N04-XB0-50R');
+            occlaro408pn.push('TRN-N04-XB0-500');
+            renesas409pn.push('TRN-N04-XB0-50R');
+
+            let queryString = this.query.id;
+
+            if (queryString.includes('A'))
+            {
+                queryString = queryString.replace('A','');
+            }
+            if (queryString.includes('B'))
+            {
+                queryString = queryString.replace('B','');
+            }
 
             // See if UK data exists in Oracle I-Track Database
             let testData = Testdata.findOne({
-                'device.SerialNumber': this.query.id,
+                'device.SerialNumber': queryString,
                 'subtype': 'dc'
+            }, {sort: {'timestamp': -1, limit: 1}
             }, {fields: {'device.UKDevicePartNumber': 1}});
 
-            // UK data doesn't exist, return laser pn from name in MySQL Database
-            if (!testData || !testData.device.UKDevicePartNumber || testData.device.UKDevicePartNumber === 'Not Found') {
+            // Data doesn't exist in UK I-Track Database, return laser pn from name in UK MySQL Database
+            if (!testData || !testData.device.UKDevicePartNumber || !testData.device.UKDeviceType || testData.device.UKDevicePartNumber === 'Not Found') {
                 testData = Testdata.findOne({
-                    'device.SerialNumber': this.query.id,
+                    'device.SerialNumber': queryString,
                     'subtype': 'dc'
+                }, {sort: {'timestamp': -1, limit: 1}
                 }, {fields: {'data.laser_pn': 1}});
                 if (!testData || !testData.data.laser_pn || testData.data.laser_pn.length === 0) {
                     return 'not_found';
@@ -166,11 +181,18 @@ HTTP.methods({
                 return testData.data.laser_pn[0];
             }
 
-            if (occlaro408.includes(testData.device.UKDevicePartNumber)) {
+            if (occlaro408pn.includes(testData.device.UKDevicePartNumber)) {
                 return '408';
             }
-            if (renesas409.includes(testData.device.UKDevicePartNumber)) {
+            if (renesas409pn.includes(testData.device.UKDevicePartNumber)) {
                 return '409';
+            }
+
+            if (renesas409deviceType.includes(testData.device.UKDeviceType)) {
+                return '409';
+            }
+            if (occlaro408deviceType.includes(testData.device.UKDeviceType)) {
+                return '408';
             }
 
             return testData.device.UKDevicePartNumber;

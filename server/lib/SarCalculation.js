@@ -269,6 +269,3 @@ SarCalculation = {
         obj[param] = value;
     }
 };
-
-
-

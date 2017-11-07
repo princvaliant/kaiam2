@@ -43,7 +43,7 @@ Meteor.methods({
                 query['device.PartNumber'] = new RegExp('^LR4', 'i');
             }
             if (device === '100GB' && testType !== 'calibration') {
-                query['device.PartNumber'] = 'XQX4000_Control';
+                query['meta.ScriptName'] = '.Control';
             }
         }
         if (rack !== '-all-') {
