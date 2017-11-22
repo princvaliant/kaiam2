@@ -140,10 +140,12 @@ HTTP.methods({
             // Get first member array
 
             // LS1 UK part numbers:
-            let occlaro408pn = ['TOS-N04-XB0-400'];
+            let occlaro408pn = ['TOS-N04-XB0-400','RB9096-04928'];
             let renesas409pn = ['TOS-N04-XB0-40R'];
-            let occlaro408deviceType = ['4x28T408'];
-            let renesas409deviceType = ['4x28T409'];
+            let occlaro408deviceType = ['4x28T408','408','LS2100G408'];
+            let renesas409deviceType = ['4x28T409','409','LS2100G409'];
+            let occlaro408Description = ['LS2 100G OSA Sub assembly with 408 Oclaro LD','LS2 100G Transceiver with 408 Oclaro LD','LS2 100G Transceiver with 408 Oclaro LDs','LS2 100G Transceiver with 408 RECLAIM COCs Oclaro LD'];
+            let renesas409Description = ['LS2 100G OSA Sub assembly with 409 Renesas LD','LS2 100G Transceiver with 409 Renesas LD'];
 
             // LS2 UK part numbers
             occlaro408pn.push('TRN-N04-XB0-500');
@@ -151,13 +153,10 @@ HTTP.methods({
 
             let queryString = this.query.id;
 
-            if (queryString.includes('A'))
+            // Only for LS1 TOSAs (that are reworked). If we stop making them, remove this.
+            if (queryString.includes('A') && queryString.charAt(0) === '1')
             {
                 queryString = queryString.replace('A','');
-            }
-            if (queryString.includes('B'))
-            {
-                queryString = queryString.replace('B','');
             }
 
             // See if UK data exists in Oracle I-Track Database
@@ -192,6 +191,13 @@ HTTP.methods({
                 return '409';
             }
             if (occlaro408deviceType.includes(testData.device.UKDeviceType)) {
+                return '408';
+            }
+
+            if (renesas409Description.includes(testData.device.UKDeviceDescription)) {
+                return '409';
+            }
+            if (occlaro408Description.includes(testData.device.UKDeviceDescription)) {
                 return '408';
             }
 
