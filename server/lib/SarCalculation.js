@@ -234,12 +234,40 @@ SarCalculation = {
                                 yArr.push(sens.Q);
                             }
                         });
+                        let exec = require('child-process-promise').exec;
+                        let Fiber = require('fibers');
+                        let Future = require('fibers/future');
+
+                        let connection_string = process.env.MONGO_URL.replace('sslVerifyCertificate=false', 'ssl_cert_reqs=CERT_NONE');
+
+                        let script_execution = 'python '.concat(Assets.absoluteFilePath('python/curveFit.py'),' ',xArr.toString(),' ',yArr.toString(),' "',
+                                                                connection_string,'" ',ts[2],' ',ts[0],' ',ts[1],' ',proc.channel,' ',proc.tmpr);
+
+                        let future = new Future();
+                        new Fiber(function () {
+                            exec(script_execution).then(function (result) {
+                                if (result.stderr)
+                                {
+                                    future.return('stderr: '.concat(result.stderr));
+                                }
+                                else {
+                                    future.return('stdout: '.concat(result.stdout));
+                                }
+                            }).catch(function (err) {
+                                future.return('ERROR: '.concat(err.toString()));
+                            });
+                        }).run();
+
+                        let ret = future.wait();
+                        console.log(sn.concat(' completed R2 python script: ', ret));
+
+                        /*
                         let regression = Meteor.linearRegression(xArr, yArr);
                         set.$set['data.R2_sens'] = regression.rSquared;
                         set.$set['data.CWDM4_sens'] = regression.evaluateX([-0.63357])[0];
                         set.$set['data.CWDM4_sens_alt1'] = regression.evaluateX([-0.67004])[0];
                         set.$set['data.CLR4'] = regression.evaluateX([-1.07918])[0];
-                        hasUpdate = true;
+                        hasUpdate = true; */
                     }
 
                     // console.log(JSON.stringify(query));
