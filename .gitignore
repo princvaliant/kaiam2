@@ -18,4 +18,4 @@ public/assets/images/.DS_Store
 public/assets/images/backgrounds/.DS_Store
 server/.DS_Store
 server/spec-actions/.DS_Store
-.idea/*
+.idea/
