@@ -39,7 +39,7 @@
                         <md-card-content ng-repeat="test in scan.data" style="padding:-10px;margin-top:-15px;margin-bottom:-5px;">
                             <span class="meas_status_{{test.status}}">{{test.msg}}</span>
                             <span
-                                    class="trans_status">{{test.ts | date:'MM/dd/yyyy hh:mm:ss'}} Meas: {{test.status}}</span>
+                                    class="trans_status">{{test.ts | date:'MM/dd/yyyy HH:mm:ss'}} Meas: {{test.status}}</span>
                         </md-card-content>
                     </md-card>
                     <div style="text-align:right;font-size:45px;font-weight:700;">{{scan.rework}}
