@@ -154,17 +154,25 @@ HTTP.methods({
             let queryString = this.query.id;
 
             // Only for LS1 TOSAs (that are reworked). If we stop making them, remove this.
-            if (queryString.includes('A') && queryString.charAt(0) === '1')
-            {
+            if (queryString.includes('A') && queryString.charAt(0) === '1') {
                 queryString = queryString.replace('A','');
             }
 
             // See if UK data exists in Oracle I-Track Database
             let testData = Testdata.findOne({
                 'device.SerialNumber': queryString,
-                'subtype': 'dc'
+                'subtype': 'dc',
+                'device.UKDeviceType': {$ne: 'Not Found'}
             }, {sort: {'timestamp': -1, limit: 1}
             }, {fields: {'device.UKDevicePartNumber': 1}});
+
+            if (!testData) {
+                testData = Testdata.findOne({
+                    'device.SerialNumber': queryString,
+                    'subtype': 'dc'
+                }, {sort: {'timestamp': -1, limit: 1}
+                }, {fields: {'device.UKDevicePartNumber': 1}});
+            }
 
             // Data doesn't exist in UK I-Track Database, return laser pn from name in UK MySQL Database
             if (!testData || !testData.device.UKDevicePartNumber || !testData.device.UKDeviceType || testData.device.UKDevicePartNumber === 'Not Found') {
