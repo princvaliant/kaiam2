@@ -89,12 +89,12 @@ HTTP.methods({
         auth: SarHelper.myAuth,
         get: function () {
             let domain = Domains.findOne({_id: this.query.id}, {fields: {audit: 0}});
-            if (!domain || domain.dc['PartNumber'] === 'XQX5000' || domain.dc['SerialNumber'].startsWith('BL')) { // Could be LS2 Module
+            if (!domain || domain.dc['SerialNumber'].startsWith('B')) { // Could be LS2 Module
                 let dc = Testdata.findOne({
                     'type': 'LS2',
                     'subtype': 'dc',
                     'device.SerialNumber': this.query.id
-                }, {fields: {audit: 0}})
+                }, {fields: {audit: 0}});
                 if (dc) {
                     dc = dc.device;
                     let data = {};

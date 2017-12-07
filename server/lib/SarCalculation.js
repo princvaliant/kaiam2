@@ -233,7 +233,7 @@ SarCalculation = {
                                 xArr.push(sens.Oma);
                                 yArr.push(sens.Q);
                             }
-                        });
+                        });/*
                         let exec = require('child-process-promise').exec;
                         let Fiber = require('fibers');
                         let Future = require('fibers/future');
@@ -261,13 +261,13 @@ SarCalculation = {
                         let ret = future.wait();
                         console.log(sn.concat(' completed R2 python script: ', ret));
 
-                        /*
+                        */
                         let regression = Meteor.linearRegression(xArr, yArr);
                         set.$set['data.R2_sens'] = regression.rSquared;
                         set.$set['data.CWDM4_sens'] = regression.evaluateX([-0.63357])[0];
                         set.$set['data.CWDM4_sens_alt1'] = regression.evaluateX([-0.67004])[0];
                         set.$set['data.CLR4'] = regression.evaluateX([-1.07918])[0];
-                        hasUpdate = true; */
+                        hasUpdate = true;
                     }
 
                     // console.log(JSON.stringify(query));

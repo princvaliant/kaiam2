@@ -12,7 +12,7 @@ module.exports = {
         path: '..',
         // lets you add docker volumes (optional)
         docker: {
-            image: 'kaiam/meteorpy:base'
+            image: 'abernix/meteord:base'
         },
 
         // list of servers to deploy, from the 'servers' list
