@@ -23,8 +23,7 @@ class DbManager:
         """
         db_path = connection_string
         client = MongoClient(db_path)
-        db = client.KaiamApp
-        return db
+        return client
 
 def func(x, mFL, a, b, c):
     return mFL*scipy.special.erfc((x-a)/(b*np.sqrt(2))) + c
@@ -65,11 +64,14 @@ def main(test_info):
 	
 	# Update Server
 	db = DbManager.connect_to_mongodb_coll(connection_string)
-	result = db.testdata.update_many(
+	result = db.KaiamApp.testdata.update_many(
 		{"mid": mid, "type": type, "subtype": subtype, "meta.Channel": int(channel), "meta.SetTemperature_C": float(temp)},
-		{"$set": {"data.R2_sens": rsquared, "data.CWDM4_sens": cwdm.x, "data.CWDM4_sens_alt1": cwdm_alt.x, "data.CLR4": CLR.x}}
+		{"$set": {"data.R2_sens": rsquared, "data.CWDM4_sens": cwdm.x, "data.CWDM4_sens_alt1": cwdm_alt.x, "data.CLR4": CLR.x, "data.CurveFitMethod":"ERFC_Fit"}}
 	)
-	return "Python curveFit.py Completed successfully"
+	db.close()
+
+	print("Python curveFit.py Completed successfully")
+	return
 
 if __name__ == '__main__':
     main(sys.argv)
