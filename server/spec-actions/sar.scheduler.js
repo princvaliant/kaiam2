@@ -53,6 +53,17 @@ Meteor.methods({
     }
 });
 
+// For testing in development
+Meteor.methods({
+    'calcLatestSpec': function (sns, pnum) {
+        ScesDomains.getUser(this.userId);
+        let dateFrom = null;
+        let sar = null;
+        let listSns = _.map(sns.split(','), (o) => {return o.trim()});
+        execSar(pnum, listSns, dateFrom, sar);
+    }
+});
+
 function forceCalc (sar) {
     Sar.update({_id: sar._id}, {$set: {recalcForce: false}});
     let dateFrom = null;
@@ -133,6 +144,7 @@ function _execSar (pnum, snums, calcVars, origPnum, dateFrom, sarForce) {
                     _.each(flows, (flow) => {
                         calculateCustomVars(getLastTestData(product, serials[i], ew.toDate(), flow.step));
                     });
+                    // calculateCustomVars(getSensitivityData(product, serials[i], ew.toDate()));
                 }
             }
             // Loop through the serials and populate doList
@@ -681,6 +693,41 @@ function commonAggregation (product, serial, endWeek, step) {
     }];
 }
 
+/*
+function commonAggregationSens (product, serial, endWeek) {
+    return [{
+        $match: {
+            'device.SerialNumber': serial,
+            'device.PartNumber': {
+                $regex: '^' + product
+            },
+            step: 'test',
+            type: 'rxtests',
+            subtype: 'sensitivity',
+            'timestamp': {
+                $lte: endWeek
+            }
+        }
+    }, {
+        $project: _.extend(
+            Scheduler.getYieldProject(),
+            {
+                data: '$data',
+                s: '$subtype',
+                tf: '$TestFail',
+                tmpr: '$meta.SetTemperature_C',
+                channel: '$meta.Channel',
+                volt: '$meta.SetVoltage'
+            })
+    }, {
+        // First sort by serial and date
+        $sort: {
+            sn: 1,
+            sd: 1
+        }
+    }];
+} */
+
 function getLastTestData (product, serial, ew, step) {
     let lastTestAggregation = commonAggregation(product, serial, ew, step).concat([{
         // Group by serial and tests to prepare for finding last tests
@@ -758,6 +805,12 @@ function getLastTestData (product, serial, ew, step) {
     }]);
     return Testdata.aggregate(lastTestAggregation, {allowDiskUse: true});
 }
+
+/*
+function getSensitivityData (product, serial, ew) {
+    let sensTestAggregation = commonAggregationSens(product, serial, ew);
+    return Testdata.aggregate(sensTestAggregation, {allowDiskUse: true});
+} */
 
 function getSpecRanges (sar) {
     // Get active specs for this part number and group them by type, subtype and temperature
