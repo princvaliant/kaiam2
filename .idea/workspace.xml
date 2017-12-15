@@ -168,7 +168,6 @@
         <option value="$PROJECT_DIR$/model/testinsertions.js" />
         <option value="packages/meteor.js" />
         <option value="$PROJECT_DIR$/server/charts/test-insertions.method.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/transceiver/transceiver.controller.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/transceiver/edit-part.tmpl.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/sces/transceiver/edit-part.controller.js" />
@@ -184,7 +183,6 @@
         <option value="$PROJECT_DIR$/imports/ui/components/sces/tray/tray.controller.js" />
         <option value="$PROJECT_DIR$/.prod/test.sh" />
         <option value="$PROJECT_DIR$/.do/test.sh" />
-        <option value="$PROJECT_DIR$/.prod/deploy.sh" />
         <option value="$PROJECT_DIR$/server/export-data.methods.js" />
         <option value="$PROJECT_DIR$/server/charts/loss.method.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/spec-actions/spec-actions.controller.js" />
@@ -363,7 +361,6 @@
     <property name="node.js.selected.package.standard" value="C:\Users\jdominguez\AppData\Roaming\npm\node_modules\eslint" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="node.js.detected.package.standard" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -487,7 +484,7 @@
     </configuration>
     <configuration name="Meteor Prod" type="meteor-app-runner" factoryName="Meteor">
       <option name="envs">
-        <entry key="MONGO_URL" value="mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/KaiamApp?ssl=true&amp;sslVerifyCertificate=false" />
+        <entry key="MONGO_URL" value="mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/KaiamApp?ssl=true" />
       </option>
       <option name="exePath" value="$USER_HOME$/AppData/Local/.meteor/meteor.bat" />
       <option name="startBrowserSettings">
@@ -525,8 +522,8 @@
     <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Grunt.js.Build annotate" />
       <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Meteor Client Debug JavaScript" />
-      <item index="2" class="java.lang.String" itemvalue="Meteor.Meteor Dev Debug" />
-      <item index="3" class="java.lang.String" itemvalue="Meteor.Meteor Prod" />
+      <item index="2" class="java.lang.String" itemvalue="Meteor.Meteor Prod" />
+      <item index="3" class="java.lang.String" itemvalue="Meteor.Meteor DEV" />
     </list>
   </component>
   <component name="RuntimeDashboard">
@@ -1369,7 +1366,21 @@
       <option name="project" value="LOCAL" />
       <updated>1504584893140</updated>
     </task>
-    <option name="localTasksCounter" value="194" />
+    <task id="LOCAL-00194" summary="- Jacinto changes">
+      <created>1507745328812</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1507745328814</updated>
+    </task>
+    <task id="LOCAL-00195" summary="- Jacinto changes">
+      <created>1510028329871</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1510028329872</updated>
+    </task>
+    <option name="localTasksCounter" value="196" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1600,8 +1611,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/test-summary.methods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="495">
+          <caret line="33" column="76" lean-forward="false" selection-start-line="33" selection-start-column="76" selection-end-line="33" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -1650,7 +1661,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/sces/transceiver.scheduler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-3153">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -1779,15 +1790,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/settings/upload-data.methods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.prod/settings.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1827,7 +1838,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/charts/test-insertions.scheduler.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/daasfab/layouts/leftsidenav/leftsidenav.tmpl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
