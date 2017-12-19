@@ -1,4 +1,10 @@
-FROM abernix/meteord:node-8.4.0-base
+FROM abernix/meteord:node-8-base
+
+RUN apt-get upgrade -y && apt-get update
+
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+RUN echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.6 main" | tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+RUN apt-get update && apt-get install -y mongodb-org
 
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -8,6 +14,4 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install pymongo
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.6.list
-RUN apt-get update && apt-get install -y mongodb-org
+RUN apt-get upgrade -y && apt-get update
