@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MyKaiam.iml" filepath="$PROJECT_DIR$/.idea/MyKaiam.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../kaiam2/.idea/kaiam2.iml" filepath="$PROJECT_DIR$/../kaiam2/.idea/kaiam2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kaiam2.iml" filepath="$PROJECT_DIR$/.idea/kaiam2.iml" />
     </modules>
   </component>
 </project>
