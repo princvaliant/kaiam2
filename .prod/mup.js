@@ -4,6 +4,9 @@ module.exports = {
             host: '138.68.2.121',
             username: 'root',
             password: 'Ka1amC00lC10ud'
+            // host: '54.193.62.228',
+            // username: 'ubuntu',
+            // pem: 'NewSandboxApp.pem'
         }
     },
 
@@ -31,7 +34,7 @@ module.exports = {
             PORT: 80, // useful when deploying multiple instances (optional)
             ROOT_URL: 'http://138.68.2.121', // If you are using ssl, this needs to start with https
             CLUSTER_WORKERS_COUNT: "auto",
-            MONGO_URL: "mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/KaiamApp?ssl=true",
+            MONGO_URL: "mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/KaiamApp?ssl=true&sslVerifyCertificate=false",
             MONGO_OPLOG_URL: "mongodb://Miljenko:ka1amc00lc10ud@cloud.kaiamcorp.com:27017/local?authSource=KaiamApp&ssl=true"
         },
         deployCheckWaitTime: 100, // default 10

@@ -240,7 +240,7 @@ SarCalculation = {
 
                         let connectionString = process.env.MONGO_URL.replace('sslVerifyCertificate=false', 'ssl_cert_reqs=CERT_NONE');
 
-                        let scriptExecution = 'python3 '.concat(Assets.absoluteFilePath('python/curveFit.py'),' ',xArr.toString(),' ',yArr.toString(),' "',
+                        let scriptExecution = 'python '.concat(Assets.absoluteFilePath('python/curveFit.py'),' ',xArr.toString(),' ',yArr.toString(),' "',
                                                                 connectionString,'" ',ts[2],' ',ts[0],' ',ts[1],' ',proc.channel,' ',proc.tmpr);
 
                         let future = new Future();
@@ -267,6 +267,7 @@ SarCalculation = {
                         set.$set['data.CLR4'] = regression.evaluateX([-1.07918])[0];
                         hasUpdate = true;
                         */
+
                     }
 
                     // console.log(JSON.stringify(query));
