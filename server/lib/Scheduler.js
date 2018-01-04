@@ -127,11 +127,11 @@ Scheduler = {
                     $week: {
                         $subtract: ['$meta.StartDateTime', offset]
                     }
-                }, 0]
+                }, 1]
             },
             nw: {
                 $dateToString: {
-                    format: '%Y%U',
+                    format: '%Y%V',
                     date: {
                         $subtract: ['$meta.StartDateTime', offset]
                     }

@@ -379,6 +379,8 @@ function compileDoList (doList, sarDef, pnum, sn, ew, binPnum, product) {
                 if (testItems.length === 0) {
                     // This test is missing, add it to missing tests
                     missingTests.add(spec.type + '-' + spec.subtype);
+                    failTests.add(spec.type + '-' + spec.subtype);
+                    failTestsWithCodes.add(spec.type + ' - ' + spec.subtype + ' - ' + spec.param + '|M');
                 } else {
                     _.each(testItems, (testItem) => {
                         date = testItem.sd;

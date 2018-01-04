@@ -4,9 +4,6 @@ module.exports = {
             host: '138.68.2.121',
             username: 'root',
             password: 'Ka1amC00lC10ud'
-            // host: '54.193.62.228',
-            // username: 'ubuntu',
-            // pem: 'NewSandboxApp.pem'
         }
     },
 

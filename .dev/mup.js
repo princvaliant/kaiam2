@@ -31,7 +31,7 @@ module.exports = {
             PORT: 80, // useful when deploying multiple instances (optional)
             ROOT_URL: 'http://159.203.231.8', // If you are using ssl, this needs to start with https
             CLUSTER_WORKERS_COUNT: "auto",
-            MONGO_URL: "mongodb://Miljenko:ka1amc00lc10ud@159.203.231.8:27017/KaiamApp?ssl=true",
+            MONGO_URL: "mongodb://Miljenko:ka1amc00lc10ud@159.203.231.8:27017/KaiamApp?ssl=true&sslVerifyCertificate=false",
             MONGO_OPLOG_URL: "mongodb://Miljenko:ka1amc00lc10ud@159.203.231.8:27017/local?authSource=KaiamApp&ssl=true"
         },
         deployCheckWaitTime: 260, // default 10
