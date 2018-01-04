@@ -75,9 +75,11 @@ function getPipeline () {
                 }
             },
             w: {
-                $week: {
-                    $subtract: ['$meta.StartDateTime', offset]
-                }
+                $add: [{
+                    $week: {
+                        $subtract: ['$meta.StartDateTime', offset]
+                    }
+                }, 1]
             },
             d: {
                 $dateToString: {

@@ -6,6 +6,6 @@
 Meteor.publish('dashboard', function () {
     ScesDomains.getUser(this.userId);
     let date = moment().format('YYYY');
-    let w = parseInt(moment().format('w')) ;
+    let w = parseInt(moment().week()) ;
     return Dashboards.find({'p': {$regex: '^XQX'}, 'd': {$regex: '^' + date}, w: w});
 });
