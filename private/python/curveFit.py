@@ -66,7 +66,7 @@ def main(test_info):
 	db = DbManager.connect_to_mongodb_coll(connection_string)
 	result = db.KaiamApp.testdata.update_many(
 		{"mid": mid, "type": type, "subtype": subtype, "meta.Channel": int(channel), "meta.SetTemperature_C": float(temp)},
-		{"$set": {"data.R2_sens": rsquared, "data.CWDM4_sens": cwdm.x, "data.CWDM4_sens_alt1": cwdm_alt.x, "data.CLR4": CLR.x, "data.CurveFitMethod":"ERFC_Fit"}}
+		{"$set": {"data.R2_sens": rsquared, "data.CWDM4_sens": cwdm.x, "data.CWDM4_sens_alt1": cwdm_alt.x, "data.CLR4": CLR.x, "data.CurveFitMethod":"Extended_ERFC_Fit"}}
 	)
 	db.close()
 

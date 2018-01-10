@@ -226,6 +226,7 @@ SarCalculation = {
                     }
                     // R2_sens
                     if (proc.RawDataSensitivity !== undefined && proc.RawDataSensitivity.length > 0) {
+                        // Frist try linear fit
                         let xArr = [];
                         let yArr = [];
                         _.each(proc.RawDataSensitivity, (sens) => {
@@ -234,40 +235,51 @@ SarCalculation = {
                                 yArr.push(sens.Q);
                             }
                         });
-                        let exec = require('child-process-promise').exec;
-                        let Fiber = require('fibers');
-                        let Future = require('fibers/future');
 
-                        let connectionString = process.env.MONGO_URL.replace('sslVerifyCertificate=false', 'ssl_cert_reqs=CERT_NONE');
-
-                        let scriptExecution = 'python '.concat(Assets.absoluteFilePath('python/curveFit.py'),' ',xArr.toString(),' ',yArr.toString(),' "',
-                                                                connectionString,'" ',ts[2],' ',ts[0],' ',ts[1],' ',proc.channel,' ',proc.tmpr);
-
-                        let future = new Future();
-                        new Fiber(function () {
-                            exec(scriptExecution).then(function (result) {
-                                if (result.stderr) {
-                                    future.return('stderr: '.concat(result.stderr));
-                                } else {
-                                    future.return('stdout: '.concat(result.stdout));
-                                }
-                            }).catch(function (err) {
-                                future.return('ERROR: '.concat(err.toString()));
-                            });
-                        }).run();
-
-                        let ret = future.wait();
-                        console.log(sn.concat(' completed R2 python script: ', ret));
-                        
-                        /*
                         let regression = Meteor.linearRegression(xArr, yArr);
-                        set.$set['data.R2_sens'] = regression.rSquared;
-                        set.$set['data.CWDM4_sens'] = regression.evaluateX([-0.63357])[0];
-                        set.$set['data.CWDM4_sens_alt1'] = regression.evaluateX([-0.67004])[0];
-                        set.$set['data.CLR4'] = regression.evaluateX([-1.07918])[0];
-                        hasUpdate = true;
-                        */
+                        let rSquared = regression.rSquared;
+                        if (rSquared > 0.98) {
+                            set.$set['data.R2_sens'] = rSquared;
+                            set.$set['data.CWDM4_sens'] = regression.evaluateX([-0.63357])[0];
+                            set.$set['data.CWDM4_sens_alt1'] = regression.evaluateX([-0.67004])[0];
+                            set.$set['data.CLR4'] = regression.evaluateX([-1.07918])[0];
+                            set.$set['data.CurveFitMethod'] = 'Linear_Fit';
+                            hasUpdate = true;
+                        } else {
+                            // ERFC curve fit since linear fit had too great an R_squared
+                            let curveXArr = [];
+                            let curveYArr = [];
+                            _.each(proc.RawDataSensitivity, (sens) => {
+                                if (sens.Q <= -0.3 && sens.Q >= -1.5) {
+                                    curveXArr.push(sens.Oma);
+                                    curveYArr.push(sens.Q);
+                                }
+                            });
+                            let exec = require('child-process-promise').exec;
+                            let Fiber = require('fibers');
+                            let Future = require('fibers/future');
 
+                            let connectionString = process.env.MONGO_URL.replace('sslVerifyCertificate=false', 'ssl_cert_reqs=CERT_NONE');
+
+                            let scriptExecution = 'python '.concat(Assets.absoluteFilePath('python/curveFit.py'), ' ', curveXArr.toString(), ' ', curveYArr.toString(), ' "',
+                                connectionString, '" ', ts[2], ' ', ts[0], ' ', ts[1], ' ', proc.channel, ' ', proc.tmpr);
+
+                            let future = new Future();
+                            new Fiber(function () {
+                                exec(scriptExecution).then(function (result) {
+                                    if (result.stderr) {
+                                        future.return('stderr: '.concat(result.stderr));
+                                    } else {
+                                        future.return('stdout: '.concat(result.stdout));
+                                    }
+                                }).catch(function (err) {
+                                    future.return('ERROR: '.concat(err.toString()));
+                                });
+                            }).run();
+
+                            let ret = future.wait();
+                            console.log(sn.concat(' completed R2 python script: ', ret));
+                        }
                     }
 
                     // console.log(JSON.stringify(query));

@@ -117,6 +117,29 @@ HTTP.methods({
         }
     },
 
+    '/calculateSensitivityLine': {
+        auth: SarHelper.myAuth,
+        get: function () {
+            let _id = this.query.id;
+            let testdata = Testdata.findOne({ _id });
+            let xArr = [];
+            let yArr = [];
+            _.each(testdata.data.RawData, (sens) => {
+                if (sens.Q <= -0.60206 && sens.Q >= -0.91913) {
+                    xArr.push(sens.Oma);
+                    yArr.push(sens.Q);
+                }
+            });
+
+            let regression = Meteor.linearRegression(xArr, yArr);
+            return { 'R2_sens': regression.rSquared,
+                     'CWDM4_sens': regression.evaluateX([-0.63357])[0],
+                     'CWDM4_sens_alt1': regression.evaluateX([-0.67004])[0],
+                     'CLR4': regression.evaluateX([-1.07918])[0]
+            };
+        }
+    },
+
     '/getRosaRework': {
         auth: SarHelper.myAuth,
         get: function () {
