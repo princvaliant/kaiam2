@@ -48,8 +48,8 @@ angular.module('kaiamCharts').controller('LossCheckController', [
             } else {
                 // This is retrieval per week
                 $scope.range = 'week';
-                $scope.intervalValue = moment().week() - $stateParams.week;
-                $scope.rangeLabel = moment().week() - $scope.intervalValue;
+                $scope.intervalValue = moment().format('WW') - $stateParams.week;
+                $scope.rangeLabel = moment().format('WW') - $scope.intervalValue;
             }
             let iv = $scope.intervalValue;
             if (iv < 0) {

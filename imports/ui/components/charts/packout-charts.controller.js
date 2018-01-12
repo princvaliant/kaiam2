@@ -136,7 +136,8 @@ angular.module('kaiamCharts').controller('PackoutChartsController', [
                 } else {
                     query.wk = t.wk + '';
                 }
-                $meteor.subscribe('packoutexports', query).then((subhandle) => {
+                // Doesn't Work
+                $meteor.subscribe('packoutexport', query).then((subhandle) => {
                     let packouts = PackoutsExports.find(query).fetch();
                     let ret = '';
                     _.each(packouts, (item) => {

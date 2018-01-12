@@ -178,7 +178,7 @@ Meteor.methods({
                 },
                 week: {
                     $dateToString: {
-                        format: '%Y%U',
+                        format: '%Y%V',
                         date: {
                             $subtract: ['$audit.when', offset]
                         }

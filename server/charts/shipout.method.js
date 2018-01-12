@@ -75,7 +75,7 @@ Meteor.methods({
                 },
                 wk: {
                     $dateToString: {
-                        format: '%Y%U',
+                        format: '%Y%V',
                         date: '$state.when'
                     }
                 },

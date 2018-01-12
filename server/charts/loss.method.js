@@ -12,7 +12,9 @@ Meteor.methods({
         // Date and week range values
         ScesDomains.getUser(this.userId);
         let drange = moment().subtract(interval - 1000, 'days').format('YYYY-MM-DD');
-        let wrange = moment().week() - interval;
+        let wrange = moment().format('WW') - interval;
+        let year = interval < 0 ? moment().format('YYYY') - 1 : moment().format('YYYY');
+
         if (wrange < 1) {
             wrange = 53 - interval;
         }
@@ -29,13 +31,13 @@ Meteor.methods({
         if ((interval > 999 && interval <= 1002) || range === 'day') {
             match.d = drange;
         } else if (range === 'week') {
-            match.nw = '2017' + wrange;
+            match.nw = year.toString() + (wrange < 10 ? '0' : '') + wrange.toString();
         } else if (interval > 1002) {
             match.d = {
                 $gte: drange
             };
         } else {
-            match.nw = '2017' + wrange;
+            match.nw = year.toString() + (wrange < 10 ? '0' : '') + wrange.toString();
         }
 
         // Get total passes

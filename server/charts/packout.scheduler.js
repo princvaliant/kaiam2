@@ -68,7 +68,7 @@ function execPackout () {
             },
             wk: {
                 $dateToString: {
-                    format: '%Y%U',
+                    format: '%Y%V',
                     date: {
                         $subtract: ['$meta.StartDateTime', offset]
                     }
@@ -172,7 +172,7 @@ function execPackoutExport () {
             },
             wk: {
                 $dateToString: {
-                    format: '%Y%U',
+                    format: '%Y%V',
                     date: {
                         $subtract: ['$meta.StartDateTime', offset]
                     }
