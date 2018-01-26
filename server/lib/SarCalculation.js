@@ -230,7 +230,7 @@ SarCalculation = {
                         let xArr = [];
                         let yArr = [];
                         _.each(proc.RawDataSensitivity, (sens) => {
-                            if (sens.Q <= -0.60206 && sens.Q >= -0.91913) {
+                            if (sens.Q <= -0.60206 && sens.Q >= -1) {
                                 xArr.push(sens.Oma);
                                 yArr.push(sens.Q);
                             }
@@ -247,21 +247,13 @@ SarCalculation = {
                             hasUpdate = true;
                         } else {
                             // ERFC curve fit since linear fit had too great an R_squared
-                            let curveXArr = [];
-                            let curveYArr = [];
-                            _.each(proc.RawDataSensitivity, (sens) => {
-                                if (sens.Q <= -0.3 && sens.Q >= -1.5) {
-                                    curveXArr.push(sens.Oma);
-                                    curveYArr.push(sens.Q);
-                                }
-                            });
                             let exec = require('child-process-promise').exec;
                             let Fiber = require('fibers');
                             let Future = require('fibers/future');
 
                             let connectionString = process.env.MONGO_URL.replace('sslVerifyCertificate=false', 'ssl_cert_reqs=CERT_NONE');
 
-                            let scriptExecution = 'python '.concat(Assets.absoluteFilePath('python/curveFit.py'), ' ', curveXArr.toString(), ' ', curveYArr.toString(), ' "',
+                            let scriptExecution = 'python '.concat(Assets.absoluteFilePath('python/curveFit.py'), ' ', xArr.toString(), ' ', yArr.toString(), ' "',
                                 connectionString, '" ', ts[2], ' ', ts[0], ' ', ts[1], ' ', proc.channel, ' ', proc.tmpr);
 
                             let future = new Future();
