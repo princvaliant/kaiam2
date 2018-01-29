@@ -8,7 +8,7 @@ Meteor.startup(function () {
         name: 'Calculate specs',
         schedule: function (parser) {
             // parser is a later.parse object
-            return parser.text('every 1 hour');
+            return parser.text('every 30 minutes');
         },
         job: function () {
             let pnums = PartNumbers.find().fetch();
