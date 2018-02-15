@@ -177,8 +177,9 @@ HTTP.methods({
             let queryString = this.query.id;
 
             // Only for LS1 TOSAs (that are reworked). If we stop making them, remove this.
-            if (queryString.includes('A') && queryString.charAt(0) === '1') {
-                queryString = queryString.replace('A','');
+            if (queryString.charAt(queryString.length - 1).match(/[a-z]/i) && queryString.charAt(0) === '1') {
+                queryString = queryString.slice(0, queryString.length - 1);
+                console.log(queryString);
             }
 
             // See if UK data exists in Oracle I-Track Database
