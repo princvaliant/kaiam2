@@ -27,6 +27,10 @@ angular.module('kaiamSettings').controller('SettingsUsersController', ['$reactiv
             field: 'username',
             width: 150
         }, {
+            name: 'Email',
+            field: 'emails[0].address',
+            width: 150
+        }, {
             name: 'Date registered',
             field: 'createdAt',
             type: 'date',
