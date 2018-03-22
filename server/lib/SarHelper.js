@@ -243,5 +243,70 @@ SarHelper = {
         ];
         return Sar.aggregate(pipeline)[0];
     }
+    ,
+
+    getFlow: function(sarId) {
+        let pipeline = [
+            {
+                $match: {_id: sarId}
+            }, {
+                $lookup: {
+                    from: 'sarflows',
+                    localField: '_id',
+                    foreignField: 'sarId',
+                    as: 'flows'
+                }
+            }, {
+                $unwind: '$flows'
+            }, {
+                $project: {
+                    pnum: '$pnum',
+                    name: '$name',
+                    revision: '$rev',
+                    revtype: '$type',
+                    step: '$flows.step',
+                    type: '$flows.type',
+                    subtype: '$flows.subtype',
+                    order: '$flows.order',
+                    required: '$flows.required',
+                    ignoreSeq: '$flows.ignoreSeq',
+                    specId: '$specs._id'
+                }
+            }, {
+                $sort: {
+                    'order': 1
+                }
+            }, {
+                $group: {
+                    _id: {
+                        pnum: '$pnum',
+                        name: '$name',
+                        revision: '$revision',
+                        revtype: '$revtype'
+                    },
+                    flow: {
+                        $push: {
+                            step: '$step',
+                            type: '$type',
+                            subtype: '$subtype',
+                            order: '$order',
+                            required: '$required',
+                            ignoreSeq: '$ignoreSeq'
+                        }
+                    }
+                }
+            }, {
+                $project: {
+                    _id:0,
+                    pnum: '$_id.pnum',
+                    name: '$_id.name',
+                    revision: '$_id.revision',
+                    revtype: '$_id.revtype',
+                    flow: '$flow'
+                }
+            }
+        ];
+        return Sar.aggregate(pipeline)[0];
+    }
 }
 ;

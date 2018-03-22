@@ -36,6 +36,17 @@ HTTP.methods({
             return SarHelper.getSpecs(sar._id);
         }
     },
+    '/getRevisionFlow': {
+        auth: SarHelper.myAuth,
+        get: function() {
+            let query = SarHelper.getQuery(this.query);
+            if (typeof query === 'string') {
+                return query;
+            }
+            let sar = Sar.findOne(query, {sort: {rev: -1}});
+            return SarHelper.getFlow(sar._id);
+        }
+    },
     '/getTransceiverStatus': {
         auth: SarHelper.myAuth,
         get: function () {
