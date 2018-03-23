@@ -163,6 +163,7 @@ angular.module('kaiamSces').controller('ScesTrayController', [
             $scope.serial = '';
         };
 
+        // Called when "Add Anyway" is clicked
         $scope.addAnyway = function (newValue) {
             Meteor.call('addTransceiverToTray', newValue.code.trim(), $scope.domain, true, (err) => {
                 if (err) {
@@ -171,18 +172,19 @@ angular.module('kaiamSces').controller('ScesTrayController', [
             });
         };
 
+        // Called when serial number is manually submitted or scanned (regardless of whether add or remove is toggled)
         function addOrRemove (newValue) {
             if ($scope.domain.canEdit()) {
                 if (newValue) {
                     if ($scope.scanadd) {
-                        Meteor.call('addTransceiverToTray', newValue.trim(), $scope.domain, (err) => {
+                        Meteor.call('addTransceiverToTray', newValue.trim().toUpperCase(), $scope.domain, (err) => {
                             if (err) {
                                 showError(err.error);
                             }
                         });
                     }
                     if ($scope.scanremove) {
-                        Meteor.call('removeTransceiverFromTray', domainId, $scope.domain, (err) => {
+                        Meteor.call('removeTransceiverFromTray', newValue.trim().toUpperCase(), $scope.domain, (err) => {
                             if (err) {
                                 showError(err.error);
                             }
